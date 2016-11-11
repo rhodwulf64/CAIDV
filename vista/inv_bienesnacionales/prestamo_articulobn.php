@@ -40,7 +40,7 @@ if($Datos_Docente)
 else
 {
     $operacion='registrar_articulobn';
-    $titulo   ='Registrar Nuevo Prestamo de Bienes Nacionales';
+    $titulo   ='Registrar prestamo de bienes nacionales';
 }
 
 ?>
@@ -52,12 +52,12 @@ else
     <h3><?php print($titulo); ?></h3>
     <div class="alert alert-info">
         <ul>
-            <li>En este formulario podrá prestar bienes nacionales a los diferentes entes externos.</li>
+            <li>En este formulario podrá realizar prestamos de bienes nacionales a los diferentes entes externos.</li>
             <li>Sí necesitas ayuda para usar este formulario haga click en el botón <button class="btn btn-warning" type="button" onclick="javascript:introJs().start();"><i class="fa fa-question-circle"></i> Ayuda</button>.</li>
         </ul>
     </div>
     <form class="formulario" action="../controlador/control_docente.php" method="POST" id="f_formulario" name="f_formulario">
-        <legend class="label label-info"><h4>Prestamo: Datos de la Operación</h4></legend>
+        <legend class="label label-info"><h4>Datos de la operación</h4></legend>
         <input type="hidden" value="Prestamos" name="txtSegmento" id="txtSegmento"/>
         <input type="hidden" value="nulo" name="txtAccion" id="txtAccion"/>
         <input type="hidden" value="0" name="txtExito" id="txtExito"/>
@@ -67,13 +67,13 @@ else
         <input type="hidden"  name="txtFila" id="txtFila"/>
         <div class="row-fluid">
             <div class="col-lg-6 span6">
-                <label>Número de Documento<span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Número de Documento."><i class="fa fa-question" ></i></span></label>
+                <label>Número del prestamo<span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Número de referencia que identifica el prestamo"><i class="fa fa-question" ></i></span></label>
                 <input type="text" class="span12" maxlength="9"  name="txtNroDocumento" id="txtNroDocumento" onblur="BuscarPrestamoporCodigo(this.value)" <?php print($OnKey); ?> value="<?php print($Datos_Docente['iddocente']);?>" required/>
 
             </div>
 
             <div class="col-lg-6 span6">
-                <label>Fecha del Prestamo<span class="asterisco">*</span><span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Fecha del Prestamo."><i class="fa fa-question" ></i></span></label>
+                <label>Fecha del prestamo<span class="asterisco">*</span><span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Fecha en la que se realiza el prestamo."><i class="fa fa-question" ></i></span></label>
                 <div class="span10 input-append date"  id="dp3" data-date="<?php print $fechaHoy; ?>"  data-date-format="dd-mm-yyyy" data-date-viewmode="years">
                     <input type="text" class="span12"  name="txtFechaLlegada" size="16" id="txtFechaLlegada" required value="<?php print($Datos_Consultados['FechaLlegada']);?>" required/>
                   <span class="add-on"><i class="icon-th"></i></span>
@@ -83,14 +83,14 @@ else
         </div>
         <div class="row-fluid">
             <div class="col-lg-6 span6">
-                <label>Responsable<span class="asterisco">*</span>  <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Responsable de la Prestamo."><i class="fa fa-question" ></i></span></label>
+                <label>Personal responsable<span class="asterisco">*</span>  <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Responsable de la Prestamo."><i class="fa fa-question" ></i></span></label>
                 <select name="txtResponsable" id="txtResponsable" class="span12" required>
-                    <option value="0">SELECCIONE UNA OPCION</option>
+                    <option value="0">SELECCIONE UN PERSONAL</option>
                     <?php print $loFuncGenerales->fnCombosPersonalActivos($selectedPersonal); ?>
                 </select>
             </div>
             <div class="col-lg-6 span6">
-                <label>Fecha de Restitución Acordada<span class="asterisco">*</span><span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Fecha de Restitución Acordada."><i class="fa fa-question" ></i></span></label>
+                <label>Fecha de Restitución Acordada<span class="asterisco">*</span><span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Fecha de entrega del prestamo"><i class="fa fa-question" ></i></span></label>
                 <div class="span10 input-append date"  id="dp4" data-date="<?php print $fechaHoy; ?>"  data-date-format="dd-mm-yyyy" data-date-viewmode="years">
                     <input type="text" class="span12"  name="txtFechaAcordada" size="16" id="txtFechaAcordada" required value="<?php print($Datos_Consultados['FechaLlegada']);?>" required/>
                   <span class="add-on"><i class="icon-th"></i></span>
@@ -99,16 +99,16 @@ else
         </div>
         <div class="row-fluid">
             <div class="col-lg-6 span6">
-                <label>Ente Externo<span class="asterisco">*</span>  <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Ente Externo."><i class="fa fa-question" ></i></span></label>
+                <label>Ente externo<span class="asterisco">*</span>  <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Ente al que se hará el prestamo"><i class="fa fa-question" ></i></span></label>
                 <select name="txtEnte" id="txtEnte" class="span12" required>
-                    <option value="0">SELECCIONE UNA OPCION</option>
+                    <option value="0">SELECCIONE UN ENTE</option>
                     <?php print $loFuncGenerales->fnCombosEntesExternos($selectedEntesExternos); ?>
                 </select>
             </div>
             <div class="col-lg-6 span6">
-                <label>Responsable del Ente Externo<span class="asterisco">*</span>  <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Responsable del Ente Externo."><i class="fa fa-question" ></i></span></label>
+                <label>Personal responsable<span class="asterisco">*</span>  <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Responsable del ente externo."><i class="fa fa-question" ></i></span></label>
                 <select name="txtResponsableEnte" id="txtResponsableEnte" class="span12" required>
-                    <option value="0">SELECCIONE UNA OPCION</option>
+                    <option value="0">SELECCIONE UN PERSONAL</option>
                     <?php print $loFuncGenerales->fnCombosResponsablesEnte($selectedResponsaEnte); ?>
                 </select>
             </div>
@@ -129,26 +129,26 @@ else
             </div>
         </div>
          <legend class="label label-info" >
-         <h4>Prestamo: Selección de Bienes Nacionales</h4>
+         <h4>Selección de bienes nacionales</h4>
          </legend>
             <div class="row-fluid">
                 <div class="col-lg-12 span12">
-                   <center> <button type="button" class="btn btn-success" style="border-radius: 0;font-family: \"Courier New\", Courier, monospace;" name="btn_agregar" id="btn_agregar" onclick="MostrarSeleccionBN();"><b>Haga Click Aquí para <br>Seleccionar los Bienes Nacionales <br></b><i class="icon-search icon-white"></i></button></center>
+                   <center> <button type="button" class="btn btn-success" style="border-radius: 0;font-family: \"Courier New\", Courier, monospace;" name="btn_agregar" id="btn_agregar" onclick="MostrarSeleccionBN();"><b>Haga click aquí para <br>Seleccionar los bienes nacionales <br></b><i class="icon-search icon-white"></i></button></center>
                 </div>
             </div>
             <br>
               <div id="detalle_bn" class="row-fluid" border="2" class="label label-info">       
                 <legend class="label label-info">
-                    <h4>Prestamo: Bienes Nacionales Seleccionados</h4>
+                    <h4>Bienes nacionales seleccionados</h4>
                 </legend>
             </div>
             <table cellspacing="5" cellpadding="6%" width="" class="row-fluid" border="0" style="color:#808080">
                 <tr>
                     <th id="n1" >N°<hr id="barra_vertical"></th>
-                    <th id="n2" >Código de Bien Nacional<hr id="barra_vertical"></th>
-                    <th id="n3" >Código Institucional<hr id="barra_vertical"></th>
+                    <th id="n2" >Código de bien nacional<hr id="barra_vertical"></th>
+                    <th id="n3" >Código institucional<hr id="barra_vertical"></th>
                     <th id="n4" >Serial<hr id="barra_vertical"></th>
-                    <th style="width: 80px;" id="n5" >Tipo de Bien<hr id="barra_vertical"></th>
+                    <th style="width: 80px;" id="n5" >Tipo de bien<hr id="barra_vertical"></th>
                     <th style="width: 60px;" id="n6" >Marca<hr id="barra_vertical"></th>
                     <th style="width: 60px;" id="n7" >Modelo<hr id="barra_vertical"></th>
                     <th id="n9" >Descripción<hr id="barra_vertical"></th>
@@ -185,15 +185,15 @@ else
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="myModalLabel">Selecciona Bienes Nacionales</h4>
+                        <h4 class="modal-title" id="myModalLabel">Selecciona bienes nacionales</h4>
                     </div>
                     <div class="modal-body" style="max-height: 500px;">
                         <div class="row">
                             <div class="col-lg-12 span12">
 
-                                <label>Tipo de Bien<span class="asterisco">*</span>  <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Sexo del docente."><i class="fa fa-question" ></i></span></label>
+                                <label>Tipo del bien <span class="asterisco">*</span>  <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Tipon del bien nacional"><i class="fa fa-question" ></i></span></label>
                                 <select name="txtTipoBN" id="txtTipoBN" class="span12" onchange="fpFiltraBienesPorTipo(this.value);">
-                                    <option value="0">SELECCIONE UNA OPCIÓN</option>
+                                    <option value="0">SELECCIONE UN TIPO</option>
                                     <?php
                                         print $loFuncGenerales->fnCombosGeneralesActivos("tipobn","des_tbien","des_tbien","cod_tbien","status",$selectedTipoBN); 
                                     ?> 

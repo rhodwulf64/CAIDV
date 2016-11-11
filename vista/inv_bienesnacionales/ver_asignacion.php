@@ -35,7 +35,7 @@ for($i=0;$i<count($laModulos);$i++)
   {
     if (document.getElementById("txtMotivoAnulacion").value!="0")
     {
-      if(confirm("¿Esta seguro que desea desactivar el docente seleccionado?"))
+      if(confirm("¿Esta seguro que desea desactivar lo seleccionado?"))
       {
         var moviobjeto=document.getElementById("txtMoviObjeto").value;
         document.getElementById("txtAccion").value="desactivaAsignacion";
@@ -124,10 +124,10 @@ for($i=0;$i<count($laModulos);$i++)
     } );
 </script>  
 <div style="float: left" class="col-lg-10 span10 pull-left">
-    <h3> Asignación de Bienes Nacionales</h3>
+    <h3> Asignación de bienes nacionales</h3>
     <div class="alert alert-info">
         <ul>
-           En este módulo podrá asignar los Bienes Nacionales.
+           En este módulo podrá asignar los bienes nacionales.
         </ul>
     </div>
     <form action="../controlador/cConsultasAjaxBN.php" method="POST" id="form_recepcion" name="form_recepcion">
@@ -139,7 +139,7 @@ for($i=0;$i<count($laModulos);$i++)
         if($registrar)
         {
             echo ('
-                <a class="btn btn-success" id="btn_registrar" href="?vista=inv_bienesnacionales/asignacion_articulobn"><i class="icon-lock icon-white"></i> Registrar Nueva Asignación</a>
+                <a class="btn btn-success" id="btn_registrar" href="?vista=inv_bienesnacionales/asignacion_articulobn"><i class="icon-lock icon-white"></i> Registrar </a>
                
               ');
         }
@@ -214,7 +214,7 @@ for($i=0;$i<count($laModulos);$i++)
             <div class="modal-content">
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">Desactivar Asignación</h4>
+                <h4 class="modal-title" id="myModalLabel">Desactivar asignación</h4>
               </div>
               <div class="modal-body">
                    <div class="row">

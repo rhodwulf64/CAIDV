@@ -28,18 +28,18 @@ else
         <input type="hidden" value="<?php print($Datos_Instrumento['idTentesexternos']);?>" name="idinstrumento" />
         <div class="row-fluid">
             <div class="col-lg-6 span6">
-                <label>Razón Social <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Razón Social."><i class="fa fa-question" ></i></span></label>
-                <input type="text" class="span12" maxlength="50" name="txtRazonSocial" id="txtRazonSocial" maxlength="20" value="<?php print($Datos_Instrumento['RazonSocial']);?>" required/>
+                <label>Razón Social <span class="label label-warning"  data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Nombre de persona jurídica o persona natural"><i class="fa fa-question" ></i></span></label>
+                <input type="text" class="span12" placeholder="CAIDV C.A." maxlength="50" name="txtRazonSocial" id="txtRazonSocial" maxlength="20" value="<?php print($Datos_Instrumento['RazonSocial']);?>" required/>
             </div>       
             <div class="col-lg-6 span6">
-                <label>Rif <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Nombre del instrumento."><i class="fa fa-question" ></i></span></label>
-                <input type="text" class="span12" maxlength="12" name="txtRif" id="txtRif" value="<?php print($Datos_Instrumento['Rif']);?>" required/>
+                <label>Rif <span class="label label-warning"  data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Registro de información fiscal"><i class="fa fa-question" ></i></span></label>
+                <input type="text" class="span12" placeholder="v-12345678-9" maxlength="12" name="txtRif" id="txtRif" value="<?php print($Datos_Instrumento['Rif']);?>" required/>
             </div>    
         </div>
         <div class="row-fluid">
             <div class="col-lg-6 span6">
-                <label>Teléfono <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Nombre del instrumento."><i class="fa fa-question" ></i></span></label>
-                <input type="text" class="span12" maxlength="12" name="txtTelefono" id="txtTelefono" value="<?php print($Datos_Instrumento['Telefono']);?>" required/>
+                <label>Teléfono <span class="label label-warning"  data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Número telefónico"><i class="fa fa-question" ></i></span></label>
+                <input type="text" class="span12" placeholder="04141234567" maxlength="12" name="txtTelefono" id="txtTelefono" value="<?php print($Datos_Instrumento['Telefono']);?>" required/>
             </div>    
         </div>
         <div class="botonera">

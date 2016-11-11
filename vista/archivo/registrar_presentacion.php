@@ -10,7 +10,7 @@
     <h3>Registrar presentación</h3>
         <div class="alert alert-info">
             <ul>
-                <li>En este formulario podrá registrar la presentación en el sistema.</li>
+                <li>En este formulario podrá registrar la presentación.</li>
                 <li>Si necesitas ayuda para usar este formulario haz clic en el botón <button class="btn btn-warning" type="button" onclick="javascript:introJs().start();"><i class="fa fa-question-circle"></i> Ayuda</button>.</li>
             </ul>
         </div>

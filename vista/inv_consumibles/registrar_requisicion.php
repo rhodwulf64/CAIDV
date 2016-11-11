@@ -1,8 +1,8 @@
 <div style="float: left; border:none;" class="col-lg-8 span8 pull-left show">
-    <h3>Registrar Nueva Solicitud de Recepción </h3>
+    <h3>Registrar solicitud de recepción </h3>
       <div class="alert alert-info">
         <ul>
-            <li>En este formulario se registrará la nueva Solicitud de Recepción.</li>
+            <li>En este formulario se registrará la solicitud de recepción.</li>
             <li>Si necesitas ayuda para usar este formulario haz clic en el botón <button class="btn btn-warning" type="button" onclick="javascript:introJs().start();"><i class="fa fa-question-circle"></i> Ayuda</button>.</li>
         </ul>
     </div>
@@ -13,7 +13,7 @@
         <input type="hidden" id="cam_contador" value="1" name="contador" />
         <div class="row-fluid">
             <div class="col-lg-3 span6">
-                <label>Fecha de la solicitud: <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Fecha de la solicitud."><i class="fa fa-question" ></i></span></label>
+                <label>Fecha de la solicitud: <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Fecha en la que se realiza la solicitud "><i class="fa fa-question" ></i></span></label>
                 <div class=" input-append date"  data-step="1" id="cam_fecha" data-date="01-01-2016"  data-intro="Ingrese la fecha de la solicitud" data-date-format="dd-mm-yyyy" data-date-viewmode="years">
                 <input type="text" style="width:220px;" class="span12" name="fecha" size="16" id="cam_fecha2" required value="" />
                 <span class="add-on"><i class="icon-th"></i></span>
@@ -40,7 +40,7 @@
        
         <table class="table table-striped table-hover table-bordered">
             <thead>
-                <th>Nombre de Consumible <span class="label label-warning" data-step="2" data-intro="Ingrese el nombre del insumo" style="width:10px; display:inline;;color:#fff" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Nombre del insumo."><i class="fa fa-question" ></i></span></th>
+                <th>Nombre del Consumible <span class="label label-warning" data-step="2" data-intro="Ingrese el nombre del insumo" style="width:10px; display:inline;;color:#fff" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Nombre del insumo."><i class="fa fa-question" ></i></span></th>
                 <th>Cantidad <span class="label label-warning" data-step="3" data-intro="Ingrese la cantidad del insumo" style="width:10px; display:inline;color:#fff;" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Cantidad a introducir."><i class="fa fa-question" ></i></span></th>
                 <th>Operación <span class="label label-warning" data-step="4" data-intro="Permite agregar o quitar consumibles en la lista" style="width:10px; display:inline;;color:#fff" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Agregar o quitar consumibles."><i class="fa fa-question" ></i></span></th>
             </thead>

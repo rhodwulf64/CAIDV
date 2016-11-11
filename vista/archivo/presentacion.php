@@ -72,7 +72,7 @@ for($i=0;$i<count($laModulos);$i++)
     <h3>Presentación</h3>
    <div class="alert alert-info">
         <ul>
-            En este módulo podrá registrar, consultar, editar, desactivar y activar las presentaciones en el sistema.
+            En este módulo podrá registrar, consultar, editar, desactivar y/o activar las presentaciones en el sistema.
         </ul>
     </div>
     <form action="../controlador/control_presentacion.php" method="POST" name="form_presentacion">
@@ -81,7 +81,7 @@ for($i=0;$i<count($laModulos);$i++)
         <?php
         if($registrar)
         {
-            echo '<a id="btn_registrar" class="btn btn-success" href="?vista=archivo/registrar_presentacion"><i class="icon-plus icon-white"></i> Registrar presentación</a>';
+            echo '<a id="btn_registrar" class="btn btn-success" href="?vista=archivo/registrar_presentacion"><i class="icon-plus icon-white"></i> Registrar </a>';
         }
         ?>
         <table class="table table-striped table-hover table-bordered bootstrap-datatable datatable dataTable" id="filtro">

@@ -87,10 +87,10 @@ function Mensaje(e){
     } );
 </script>  
 <div style="float: left" class="col-lg-8 span8 pull-left">
-    <h3>Solicitud de Recepción de Bienes Consumibles</h3>
+    <h3>Solicitud de recepción de bienes consumibles</h3>
    <div class="alert alert-info">
         <ul>
-            En éste módulo podrá registrar, consultar, desactivar y activar las Solicitudes de Recepciones de Bienes Consumibles.
+            En éste módulo podrá registrar, consultar, desactivar y/o activar las solicitudes de recepciones de bienes consumibles.
         </ul>
     </div>
     <form action="../controlador/control_requisicion.php" method="POST" name="form_requisicion">

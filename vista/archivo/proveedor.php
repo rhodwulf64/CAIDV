@@ -38,7 +38,7 @@ for($i=0;$i<count($laModulos);$i++)
     {
 
      swal({   title: "Restaurar solicitud",   
-        text: "¿Esta seguro que desea desactivar el Proveedor seleccionado?",   
+        text: "¿Esta seguro que desea desactivar el proveedor seleccionado?",   
         type: "warning",   showCancelButton: true,   
         confirmButtonColor: "#DD6B55",   
         confirmButtonText: "¡Si, estoy seguro!",   
@@ -92,7 +92,7 @@ for($i=0;$i<count($laModulos);$i++)
     <h3>Proveedor</h3>
     <div class="alert alert-info">
         <ul>
-            En este módulo podrá registrar, consultar, editar, desactivar y activar el proveedor que será aplicado en la evaluación.
+            En este módulo podrá registrar, consultar, editar, desactivar y/o activar el proveedor que será aplicado en la evaluación.
         </ul>
     </div>
     <form action="../controlador/control_proveedor.php" method="POST" name="form_config">
@@ -101,7 +101,7 @@ for($i=0;$i<count($laModulos);$i++)
         <?php
         if($registrar)
         {
-            echo '<a id="btn_registrar" class="btn btn-success" href="?vista=archivo/registrar_proveedor"><i class="icon-plus icon-white"></i> Registrar Proveedor</a>';
+            echo '<a id="btn_registrar" class="btn btn-success" href="?vista=archivo/registrar_proveedor"><i class="icon-plus icon-white"></i> Registrar </a>';
         }
         ?>
         <table class="table table-striped table-hover table-bordered bootstrap-datatable datatable dataTable" id="filtro">

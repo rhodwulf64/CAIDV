@@ -17,7 +17,7 @@ if($Datos_Consultados)
 else
 {
     $operacion='recepcion_articulobn';
-    $titulo   ='Registrar Nueva Recepción de Bienes Nacionales';
+    $titulo   ='Registrar recepción de bienes nacionales';
 }
 
 ?>
@@ -31,7 +31,7 @@ else
         </ul>
     </div>
     <form class="formulario" action="../controlador/control_docente.php" method="POST" id="f_recepcion" name="f_recepcion">
-    <legend class="label label-info"><h4>Recepción: Datos de la Operación</h4></legend>
+    <legend class="label label-info"><h4>Datos de la Operación</h4></legend>
     <input type="hidden" value="Recepciones" name="txtSegmento" id="txtSegmento"/>
     <input type="hidden" value="nulo" name="txtAccion" id="txtAccion"/>
     <input type="hidden" value="0" name="txtExito" id="txtExito"/>
@@ -40,11 +40,11 @@ else
     <input type="hidden"  name="txtFila" id="txtFila"/>
         <div class="row-fluid">
             <div class="col-lg-6 span6">
-                <label>Número de Documento<span class="asterisco">*</span>  <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Numero de Documento."><i class="fa fa-question" ></i></span></label>
+                <label>Número de recepción<span class="asterisco">*</span>  <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Número de referencia que identifica la recepción"><i class="fa fa-question" ></i></span></label>
                 <input type="text" class="span12" maxlength="9"  name="txtNroDocumento" id="txtNroDocumento" onblur="BuscarRecepcionporCodigo(this.value)" <?php print($OnKey); ?> value="<?php print($Datos_Consultados['iddocente']);?>" required/>
             </div>
             <div class="col-lg-6 span6">
-                <label>Fecha de Llegada<span class="asterisco">*</span>  <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Fecha de Llegada."><i class="fa fa-question" ></i></span></label>
+                <label>Fecha de entrada<span class="asterisco">*</span>  <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Fecha de recepción del bien nacional"><i class="fa fa-question" ></i></span></label>
                 <div class="span10 input-append date"  id="dp3" data-date="<?php print $fechaHoy; ?>"  data-date-format="dd-mm-yyyy" data-date-viewmode="years">
                     <input type="text" class="span12"  name="txtFechaLlegada" size="16" id="txtFechaLlegada" required value="<?php print($Datos_Consultados['FechaLlegada']);?>" required/>
                   <span class="add-on"><i class="icon-th"></i></span>
@@ -53,16 +53,16 @@ else
         </div>
         <div class="row-fluid">
             <div class="col-lg-6 span6">
-                <label>Proveedor<span class="asterisco">*</span>  <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Proveedor."><i class="fa fa-question" ></i></span></label>
+                <label>Proveedor<span class="asterisco">*</span>  <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Nombre del proveedor"><i class="fa fa-question" ></i></span></label>
                 <select name="txtProveedor" id="txtProveedor" class="span12" required>
-                    <option value="0">SELECCIONE UNA OPCIÓN</option>
+                    <option value="0">SELECCIONE UN PROVEEDOR</option>
                     <?php print $loFuncGenerales->fnCombosGeneralesActivos("proveedores","id_prov","des_prov","rif_prov","status",$selectedTipoBN); ?>
                 </select>
             </div>
             <div class="col-lg-6 span6">
-                <label>Responsable<span class="asterisco">*</span>  <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Responsable."><i class="fa fa-question" ></i></span></label>
+                <label>Personal responsable<span class="asterisco">*</span>  <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Nombre del receptor del bien nacional"><i class="fa fa-question" ></i></span></label>
                 <select name="txtResponsable" id="txtResponsable" class="span12" required>
-                    <option value="0">SELECCIONE UNA OPCIÓN</option>
+                    <option value="0">SELECCIONE UN PERSONAL</option>
                     <?php print $loFuncGenerales->fnCombosPersonalActivos($selectedPersonal); ?>
                 </select>
             </div>
@@ -86,19 +86,19 @@ else
 
          <legend class="label label-info" >
           <button type="button" class="btn btn-default" mame="REFmodoDetalle" id="REFmodoDetalle" data-ModoAejecutar="muestra" onclick="despliegaDetalleBN(this);"><i id="REFmodoDetalleIcon" class="icon-plus icon-black"></i></button>
-         <h4 style="display:inline;">Recepción: Detalles de los Bienes Nacionales</h4>
+         <h4 style="display:inline;">Detalles de los bienes nacionales</h4>
          </legend>
         <div id="bloqueDetalles" style="display: none;">
             <br>
             <div class="row-fluid" id="datos-entrada-bien4">
                 <div class="col-lg-6 span6">
-                    <label>Código del Bien Nacional <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Código del Bien Nacional."><i class="fa fa-question" ></i></span></label>
+                    <label>Código del bien nacional <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Código que identifica al bien nacional"><i class="fa fa-question" ></i></span></label>
                     <input type="text" class="span12" maxlength="120"  name="txtCodBN" id="txtCodBN" onblur="BuscarBNporCodigo(this.value)"  <?php print($OnKey); ?> value="<?php print($Datos_Consultados['iddocente']);?>"/>
                 </div>
                 <div class="col-lg-6 span6">
-                    <label>Tipo de Bien Nacional<span class="asterisco">*</span>  <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Tipo de Bien Nacional."><i class="fa fa-question" ></i></span></label>
+                    <label>Tipo de bien nacional<span class="asterisco">*</span>  <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Tipo de Bien Nacional."><i class="fa fa-question" ></i></span></label>
                     <select name="txtTipoBN" id="txtTipoBN" class="span12">
-                        <option value="0">SELECCIONE UNA OPCIÓN</option>
+                        <option value="0">SELECCIONE UN TIPO</option>
                         <?php
 
                             print $loFuncGenerales->fnCombosGeneralesActivos("tipobn","id_tbien","des_tbien","cod_tbien","status",$selectedTipoBN); 
@@ -109,13 +109,13 @@ else
             </div>
             <div class="row-fluid" id="datos-entrada-bien5">       
                 <div class="col-lg-6 span6">
-                    <label>Serial. <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Serial."><i class="fa fa-question" ></i></span></label>
+                    <label>Serial <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Serial del bien nacional"><i class="fa fa-question" ></i></span></label>
                     <input type="text" class="span12" maxlength="50"  name="txtSerialBN" id="txtSerialBN" onblur="this.value=this.value.toUpperCase();"  <?php print($OnKey); ?> value="<?php print($Datos_Consultados['iddocente']);?>"/>
                 </div>
                 <div class="col-lg-6 span6">
-                    <label>Marca <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Sexo del docente."><i class="fa fa-question" ></i></span></label>
+                    <label>Marca <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Marca del bien nacional"><i class="fa fa-question" ></i></span></label>
                     <select name="txtMarcaBN" id="txtMarcaBN" class="span12">
-                        <option value="0">SELECCIONE UNA OPCIÓN</option>
+                        <option value="0">SELECCIONE UNA MARCA</option>
                         <?php print $loFuncGenerales->fnComboDependiente("marcabn","id_marca","nom_marca",$selectedMarca,"","","status"); ?>
 
                     </select>
@@ -123,9 +123,9 @@ else
             </div>
             <div class="row-fluid" id="datos-entrada-bien6">        
                 <div class="col-lg-6 span6">
-                    <label>Modelo <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Modelo."><i class="fa fa-question" ></i></span></label>
+                    <label>Modelo <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Modelo del bien nacional"><i class="fa fa-question" ></i></span></label>
                     <select name="txtModeloBN" id="txtModeloBN" class="span12">
-                        <option value="0">SELECCIONE UNA OPCIÓN</option>
+                        <option value="0">SELECCIONE UN MODELO</option>
                         <?php print $loFuncGenerales->fnComboDependiente("modelobn","id_modelo","nom_modelo",$selectedModelo,"Mo","idFmarca","status"); ?>
 
                        
@@ -138,7 +138,7 @@ else
             </div>
                     <div class="row-fluid" id="datos-entrada-bien6">
                <div class="col-lg-6 span6">
-                    <label>Observación <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Observación."><i class="fa fa-question" ></i></span></label>
+                    <label>Observación <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="De poseer alguna observación escribala a continuación"><i class="fa fa-question" ></i></span></label>
                     <textarea class="span12" maxlength="400"  name="txtObservacionBN" id="txtObservacionBN"></textarea>
                 </div>
             </div>
@@ -151,17 +151,17 @@ else
         </div>
             <div id="detalle_bn" class="row-fluid" border="2" class="label label-info">       
                 <legend class="label label-info">
-                    <h4>Recepción: Bienes Nacionales Seleccionados</h4>
+                    <h4>Bienes nacionales seleccionados</h4>
                 </legend>
             </div>
             <!-- <tr><td colspan="3" >-->
             <table cellspacing="5" cellpadding="6%" width="" class="row-fluid" border="0" style="color:#808080">
                 <tr>
                     <th id="n1" >N°<hr id="barra_vertical"></th>
-                    <th id="n2" >Código de Bien Nacional<hr id="barra_vertical"></th>
-                    <th id="n3" >Código Institucional<hr id="barra_vertical"></th>
+                    <th id="n2" >Código de bien nacional<hr id="barra_vertical"></th>
+                    <th id="n3" >Código institucional<hr id="barra_vertical"></th>
                     <th id="n4" >Serial<hr id="barra_vertical"></th>
-                    <th style="width: 80px;" id="n5" >Tipo de Bien<hr id="barra_vertical"></th>
+                    <th style="width: 80px;" id="n5" >Tipo de bien<hr id="barra_vertical"></th>
                     <th style="width: 60px;" id="n6" >Marca<hr id="barra_vertical"></th>
                     <th style="width: 60px;" id="n7" >Modelo<hr id="barra_vertical"></th>
                     <th id="n9" >Descripción<hr id="barra_vertical"></th>

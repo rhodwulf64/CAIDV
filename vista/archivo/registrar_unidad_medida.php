@@ -20,11 +20,11 @@
         <div class="row-fluid">
             <div class="col-lg-6 span6">
             <label>Nombre <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Nombre de la unidad de medida."><i class="fa fa-question" ></i></span></label>
-            <input type="text" name="nombreunidad_medida" id="cam_nombreunidad_medida" maxlength="15" data-step="1" data-intro="Ingrese el nombre de la unidad de medida" data-position="right" required/>
+            <input type="text" placeholder="Kilogramo" name="nombreunidad_medida" id="cam_nombreunidad_medida" maxlength="15" data-step="1" data-intro="Ingrese el nombre de la unidad de medida" data-position="right" required/>
             </div>
             <div class="col-lg-6 span6">
             <label>Abreviatura <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Abreviatura de la unidad de medida."><i class="fa fa-question" ></i></span></label>
-            <input type="text" name="abrunidad_medida" id="cam_abrunidad_medida" maxlength="8" data-step="2" data-intro="Ingrese la abreviatura de la unidad de medida" data-position="right" required/>
+            <input type="text" placeholder="Kg" name="abrunidad_medida" id="cam_abrunidad_medida" maxlength="8" data-step="2" data-intro="Ingrese la abreviatura de la unidad de medida" data-position="right" required/>
             </div>
         </div>
         <div class="botonera">

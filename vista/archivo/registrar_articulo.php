@@ -6,10 +6,10 @@
     $articulos= $lobjarticulo->consultar_articulos_inactivos();
 ?>
 <div style="float: left" class="col-lg-8 span8 pull-left">
-    <h3>Registrar Nuevo Bien Consumible</h3>
+    <h3>Registrar bien consumible</h3>
         <div class="alert alert-info">
             <ul>
-                <li>En este formulario podrá registrar un nuevo Bien Consumible.</li>
+                <li>En este formulario podrá registrar un bien consumible.</li>
                 <li>Si necesitas ayuda para usar este formulario haz clic en el botón <button class="btn btn-warning" type="button" onclick="javascript:introJs().start();"><i class="fa fa-question-circle"></i> Ayuda</button>.</li>
             </ul>
         </div>
@@ -19,11 +19,11 @@
        <div style="float:right" id="status"></div>
             <div class="row-fluid">
             <div class="col-lg-6 span6">
-                <label>Nombre <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Nombre del insumo."><i class="fa fa-question" ></i></span></label>
+                <label>Nombre <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Nombre por defecto del insumo"><i class="fa fa-question" ></i></span></label>
                 <input type="text" autofocus name="descripcionart" id="cam_descripcionart" maxlength="20" data-step="1" data-intro="Ingrese el nombre del insumo" data-position="right" required/> 
             </div>
             <div class="col-lg-6 span6">
-                <label>Unidad de medida <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Unidad de medida del insumo."><i class="fa fa-question" ></i></span></label>
+                <label>Unidad de medida <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Unidad de medida del insumo"><i class="fa fa-question" ></i></span></label>
                 <select class="span7" name="idunidadmedida"  style="width:220px;" data-step="2" data-intro="Seleccione la unidad de medida del insumo" data-position="right" id="cam_idunidadmedida" required>
                 <option value="">-</option>
                 <?php 
@@ -53,7 +53,7 @@
                 </select>   
                 </div>
                 <div class="col-lg-6 span6">
-                <label>Categoría <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Grupo del insumo."><i class="fa fa-question" ></i></span></label>
+                <label>Categoría <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Grupo al que pertenece el insumo."><i class="fa fa-question" ></i></span></label>
                 <select class="span7" name="idgrupo" data-step="4" style="width:220px;" data-intro="Seleccione el grupo del insumo" data-position="right" id="cam_idgrupo" required>
                     <option value="">-</option>
                         <?php 

@@ -19,7 +19,7 @@ else
     <h3><?php print($titulo); ?></h3>
     <div class="alert alert-info">
      <ul>
-    <li>En este formulario podrá registar el Motivo que será aplicado en la evaluación.
+    <li>En este formulario podrá registrar el Motivo.
     <li>Sí necesitas ayuda para usar este formulario haz clic en el botón <button class="btn btn-warning" type="button" onclick="javascript:introJs().start();"><i class="fa fa-question-circle"></i> Ayuda</button>.
     <ul>
     </div>    
@@ -28,11 +28,11 @@ else
         <input type="hidden" value="<?php print($Datos_Instrumento['id_motivo_mov']);?>" name="idinstrumento" />
         <div class="row-fluid">
             <div class="col-lg-6 span6">
-                <label>Descripción <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Nombre del instrumento."><i class="fa fa-question" ></i></span></label>
+                <label>Descripción <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Nombre que desea darle al motivo."><i class="fa fa-question" ></i></span></label>
                 <input type="text" class="span12"  name="txtDescripcion" maxlength="50" id="txtDescripcion" value="<?php print($Datos_Instrumento['des_motivo_mov']);?>" required/>
             </div>    
             <div class="col-lg-6 span6">
-                <label>Tipo de Motivo<span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Asignatura para la cual se usará el instrumento."><i class="fa fa-question" ></i></span></label>
+                <label>Tipo de Motivo<span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Tipo de motivo"><i class="fa fa-question" ></i></span></label>
                 
                <select name="txtTipo" id="txtTipo" class="span12" required>
                     <option value="">SELECCIONE UN MOTIVO</option>

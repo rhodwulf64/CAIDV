@@ -124,10 +124,10 @@ for($i=0;$i<count($laModulos);$i++)
     } );
 </script>  
 <div style="float: left" class="col-lg-10 span10 pull-left">
-    <h3> Desincorporación de Bienes Nacionales</h3>
+    <h3> Desincorporación de bienes nacionales</h3>
     <div class="alert alert-info">
         <ul>
-           En este módulo podrá desincorporar los Bienes Nacionales.
+           En este módulo podrá desincorporar los bienes nacionales.
         </ul>
     </div>
     <form action="../controlador/cConsultasAjaxBN.php" method="POST" id="form_recepcion" name="form_recepcion">
@@ -140,7 +140,7 @@ for($i=0;$i<count($laModulos);$i++)
         {
             echo ('
               
-                <a class="btn btn-danger" id="btn_registrar" href="?vista=inv_bienesnacionales/desincorporar_articulobn"><i class="icon-minus icon-white"></i> Registrar Nueva Desincorporación</a>
+                <a class="btn btn-danger" id="btn_registrar" href="?vista=inv_bienesnacionales/desincorporar_articulobn"><i class="icon-minus icon-white"></i> Registrar</a>
                
               ');
         }
@@ -149,7 +149,7 @@ for($i=0;$i<count($laModulos);$i++)
         ?>
         <table class="table table-striped table-hover table-bordered bootstrap-datatable datatable dataTable" id="filtro">
             <thead>
-                <th>N° Desin.</th><th>Fecha Desin.</th><th>Fecha de Registro</th><th>Responsable Desin.</th><th>Usuario</th><th>Motivo</th><th>Observación</th><th>Acción</th>
+                <th>N° Desin.</th><th>Fecha Desin.</th><th>Fecha de registro</th><th>Responsable Desin.</th><th>Usuario</th><th>Motivo</th><th>Observación</th><th>Acción</th>
             </thead>
             <tbody>
             <?php

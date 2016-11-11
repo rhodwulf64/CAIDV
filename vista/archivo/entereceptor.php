@@ -50,7 +50,7 @@ for($i=0;$i<count($laModulos);$i++)
   
   function restaurar(id)
   {
-     if(confirm("¿Esta seguro que desea restaurar el Ente Externo seleccionado?"))
+     if(confirm("¿Esta seguro que desea restaurar el ente externo seleccionado?"))
     {
       document.getElementById("cam_idinstrumento").value=id;
       document.getElementById("cam_operacion").value='restaurar_entereceptor';
@@ -71,7 +71,7 @@ for($i=0;$i<count($laModulos);$i++)
     <h3>Ente Externo</h3>
     <div class="alert alert-info">
         <ul>
-            En este módulo podrá registrar, consultar, editar, desactivar y activar los Entes Externos que podrán recibir algun prestamo.
+            En este módulo podrá registrar, consultar, editar, desactivar y/o activar los entes externos que podrán recibir algun prestamo.
         </ul>
     </div>
     <form action="../controlador/control_entereceptor.php" method="POST" name="form_config">
@@ -80,7 +80,7 @@ for($i=0;$i<count($laModulos);$i++)
         <?php
         if($registrar)
         {
-            echo '<a id="btn_registrar" class="btn btn-success" href="?vista=archivo/registrar_entereceptor"><i class="icon-plus icon-white"></i> Registrar Ente Externo</a>';
+            echo '<a id="btn_registrar" class="btn btn-success" href="?vista=archivo/registrar_entereceptor"><i class="icon-plus icon-white"></i> Registrar </a>';
         }
         ?>
         <table class="table table-striped table-hover table-bordered bootstrap-datatable datatable dataTable" id="filtro">

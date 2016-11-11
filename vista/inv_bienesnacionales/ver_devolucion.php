@@ -58,7 +58,7 @@ for($i=0;$i<count($laModulos);$i++)
                 }
                 else    
                 {
-                    Notifica_Error("No se puede desactivar esta Devolución, inténtelo mas tarde.");
+                    Notifica_Error("No se puede desactivar esta devolución, inténtelo mas tarde.");
                 }
                 
             }
@@ -68,7 +68,7 @@ for($i=0;$i<count($laModulos);$i++)
     }
     else
     {
-      Notifica_Error("Debe Seleccionar un motivo válido antes de continuar.");
+      Notifica_Error("Debe seleccionar un motivo válido antes de continuar.");
     }
     
   }
@@ -124,10 +124,10 @@ for($i=0;$i<count($laModulos);$i++)
     } );
 </script>  
 <div style="float: left" class="col-lg-10 span10 pull-left">
-    <h3> Devolución de Bienes Nacionales</h3>
+    <h3> Devolución de bienes nacionales</h3>
     <div class="alert alert-info">
         <ul>
-           En este módulo podrá devolver los Bienes Nacionales.
+           En este módulo podrá devolver los bienes nacionales.
         </ul>
     </div>
     <form action="../controlador/cConsultasAjaxBN.php" method="POST" id="form_recepcion" name="form_recepcion">
@@ -139,7 +139,7 @@ for($i=0;$i<count($laModulos);$i++)
         if($registrar)
         {
             echo ('
-                <a class="btn btn-warning" id="btn_registrar" href="?vista=inv_bienesnacionales/devolucion_articulobn"><i class="icon-arrow-left icon-white"></i> Registrar Nueva Devolución</a>
+                <a class="btn btn-warning" id="btn_registrar" href="?vista=inv_bienesnacionales/devolucion_articulobn"><i class="icon-arrow-left icon-white"></i> Registrar </a>
                
               ');
         }
@@ -214,12 +214,12 @@ for($i=0;$i<count($laModulos);$i++)
             <div class="modal-content">
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">Descactivar Devolución</h4>
+                <h4 class="modal-title" id="myModalLabel">Descactivar devolución</h4>
               </div>
               <div class="modal-body">
                    <div class="row">
                         <div class="col-lg-3 span3">
-                            <label>Motivo <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Razón por la cual desea desactivar al docente."><i class="fa fa-question" ></i></span></label>
+                            <label>Motivo <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Razón por la cual desea desactivar"><i class="fa fa-question" ></i></span></label>
                             <select name="txtMotivoAnulacion" class="form-control" onchange="SeleccionaItem(this.value);" id="txtMotivoAnulacion" value="">
                             <option value="0">SELECCIONE UN MOTIVO</option>
                             <?php

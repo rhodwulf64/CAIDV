@@ -36,7 +36,7 @@ for($i=0;$i<count($laModulos);$i++)
   {
     if (document.getElementById("txtMotivoAnulacion").value!="0")
     {
-      if(confirm("¿Esta seguro que desea desactivar el docente seleccionado?"))
+      if(confirm("¿Esta seguro que desea desactivar lo seleccionado?"))
       {
         var moviobjeto=document.getElementById("txtMoviObjeto").value;
         document.getElementById("txtAccion").value="desactivaRecepcion";
@@ -123,10 +123,10 @@ for($i=0;$i<count($laModulos);$i++)
     } );
 </script>  
 <div style="float: left" class="col-lg-10 span10 pull-left">
-    <h3> Recepción de Bienes Nacionales </h3>
+    <h3> Recepción de bienes nacionales </h3>
     <div class="alert alert-info">
         <ul>
-            En este módulo podrá registrar los Bienes Nacionales.
+            En este módulo podrá registrar los bienes nacionales.
         </ul>
     </div>
     <form action="../controlador/cConsultasAjaxBN.php" method="POST" id="form_recepcion" name="form_recepcion">
@@ -139,7 +139,7 @@ for($i=0;$i<count($laModulos);$i++)
         {
             echo ('
 
-              <a class="btn btn-success" id="btn_registrar" href="?vista=inv_bienesnacionales/recepcion_articulobn"><i class="icon-plus icon-white"></i> Registrar Nueva Recepción</a>
+              <a class="btn btn-success" id="btn_registrar" href="?vista=inv_bienesnacionales/recepcion_articulobn"><i class="icon-plus icon-white"></i> Registrar</a>
                
               ');
         }

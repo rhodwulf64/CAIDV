@@ -32,7 +32,7 @@ else
         </ul>
     </div>
     <form class="formulario" action="../controlador/control_docente.php" method="POST" id="f_recepcion" name="f_recepcion">
-    <legend class="label label-info"><h4>Recepción: Datos de Entrada</h4></legend>
+    <legend class="label label-info"><h4>Datos de Entrada</h4></legend>
     <input type="hidden" value="Recepciones" name="txtSegmento" id="txtSegmento"/>
     <input type="hidden" value="nulo" name="txtAccion" id="txtAccion"/>
     <input type="hidden" value="0" name="txtExito" id="txtExito"/>
@@ -41,11 +41,11 @@ else
     <input type="hidden"  name="txtFila" id="txtFila" value="<?php print count($Datos_Consultados); ?>" />
         <div class="row-fluid">
             <div class="col-lg-6 span6">
-                <label>Numero de Documento<span class="asterisco">*</span>  <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Cédula de identidad del docente."><i class="fa fa-question" ></i></span></label>
+                <label>Número de recepción<span class="asterisco">*</span>  <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Número de referencia que identifica la recepción"><i class="fa fa-question" ></i></span></label>
                 <input type="text" class="span12" maxlength="9"  name="txtNroDocumento" id="txtNroDocumento" <?php print($OnKey); ?> value="<?php print($Datos_Consultados['0']['nro_document']);?>" disabled/>
             </div>
                         <div class="col-lg-6 span6">
-                <label>Fecha de Llegada<span class="asterisco">*</span>  <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Fecha de nacimiento del docente."><i class="fa fa-question" ></i></span></label>
+                <label>Fecha de entrada<span class="asterisco">*</span>  <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Fecha de recepción del bien nacional "><i class="fa fa-question" ></i></span></label>
                 <div class="span10 input-append date"  id="dp3" data-date="<?php print $fechaHoy; ?>"  data-date-format="dd-mm-yyyy" data-date-viewmode="years">
                     <input type="text" class="span12"  name="txtFechaLlegada" size="16" id="txtFechaLlegada" disabled value="<?php print($Datos_Consultados['0']['fecha_mov']);?>" disabled/>
                   <span class="add-on"><i class="icon-th"></i></span>
@@ -54,14 +54,14 @@ else
         </div>
         <div class="row-fluid">
             <div class="col-lg-6 span6">
-                <label>Proveedor<span class="asterisco">*</span>  <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Sexo del docente."><i class="fa fa-question" ></i></span></label>
+                <label>Proveedor<span class="asterisco">*</span>  <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Nombre del proveedor"><i class="fa fa-question" ></i></span></label>
                 <select name="txtProveedor" id="txtProveedor" class="span12" disabled>
                     <option value="0">SELECCIONE UNA OPCION</option>
                     <?php print $loFuncGenerales->fnCombosGeneralesActivos("proveedores","id_prov","des_prov","rif_prov","status",$selectedTipoBN); ?>
                 </select>
             </div>
             <div class="col-lg-6 span6">
-                <label>Responsable de la Recepción<span class="asterisco">*</span>  <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Sexo del docente."><i class="fa fa-question" ></i></span></label>
+                <label>Personal Responsable<span class="asterisco">*</span>  <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Nombre del receptor del bien nacional"><i class="fa fa-question" ></i></span></label>
                 <select name="txtResponsable" id="txtResponsable" class="span12" disabled>
                     <option value="0">SELECCIONE UNA OPCION</option>
                     <?php print $loFuncGenerales->fnCombosPersonalActivos($selectedPersonal); ?>

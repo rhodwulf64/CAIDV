@@ -124,10 +124,10 @@ for($i=0;$i<count($laModulos);$i++)
     } );
 </script>  
 <div style="float: left" class="col-lg-10 span10 pull-left">
-    <h3> Prestamo de Bienes Nacionales</h3>
+    <h3> Prestamo de bienes nacionales</h3>
     <div class="alert alert-info">
         <ul>
-           En este módulo podrá prestar los Bienes Nacionales.
+           En este módulo podrá realizar prestamos de los Bienes Nacionales.
         </ul>
     </div>
     <form action="../controlador/cConsultasAjaxBN.php" method="POST" id="form_recepcion" name="form_recepcion">
@@ -139,7 +139,7 @@ for($i=0;$i<count($laModulos);$i++)
         if($registrar)
         {
             echo ('
-                <a class="btn btn-success" id="btn_registrar" href="?vista=inv_bienesnacionales/prestamo_articulobn"><i class="icon-plane icon-white"></i> Registrar Nuevo Prestamo</a>
+                <a class="btn btn-success" id="btn_registrar" href="?vista=inv_bienesnacionales/prestamo_articulobn"><i class="icon-plane icon-white"></i> Registrar </a>
                
               ');
         }
@@ -148,7 +148,7 @@ for($i=0;$i<count($laModulos);$i++)
         ?>
         <table class="table table-striped table-hover table-bordered bootstrap-datatable datatable dataTable" id="filtro">
             <thead>
-                <th>N° Prest.</th><th>Fecha Prest.</th><th>Fecha de Registro</th><th>ENTE Beneficiado</th><th>Resp. ENTE</th><th>Resp. CAIDV</th><th>Fecha Acordada</th><th>Fecha Restituido</th><th>Usuario</th><th>Motivo</th><th>Observación</th><th>Acción</th>
+                <th>N° Prest.</th><th>Fecha prest.</th><th>Fecha de registro</th><th>Ente beneficiado</th><th>Ente resp.</th><th>Resp. CAIDV</th><th>Fecha acordada</th><th>Fecha restituido</th><th>Usuario</th><th>Motivo</th><th>Observación</th><th>Acción</th>
             </thead>
             <tbody>
             <?php

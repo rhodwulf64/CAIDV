@@ -40,7 +40,7 @@ if($Datos_Docente)
 else
 {
     $operacion='registrar_restitucion';
-    $titulo   ='Registrar Nueva Restitución de Prestamo';
+    $titulo   ='Registrar restitución de prestamo';
 }
 
 ?>
@@ -57,7 +57,7 @@ else
         </ul>
     </div>
     <form class="formulario" action="../controlador/control_docente.php" method="POST" id="f_formulario" name="f_formulario">
-        <legend class="label label-info"><h4>Restitución: Datos de la Operación</h4></legend>
+        <legend class="label label-info"><h4>Datos de la operación</h4></legend>
         <input type="hidden" value="Restituciones" name="txtSegmento" id="txtSegmento"/>
         <input type="hidden" value="nulo" name="txtAccion" id="txtAccion"/>
         <input type="hidden" value="0" name="txtExito" id="txtExito"/>
@@ -67,13 +67,13 @@ else
         <input type="hidden"  name="txtFila" id="txtFila"/>
         <div class="row-fluid">
             <div class="col-lg-6 span6">
-                <label>Número de Documento<span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Número de Documento."><i class="fa fa-question" ></i></span></label>
+                <label>Número de restitución<span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Número de referencia que identifica la restitución"><i class="fa fa-question" ></i></span></label>
                 <input type="text" class="span12" maxlength="9"  name="txtNroDocumento" id="txtNroDocumento" onblur="BuscarRestitucionporCodigo(this.value)" <?php print($OnKey); ?> value="<?php print($Datos_Docente['iddocente']);?>" required/>
 
             </div>
 
             <div class="col-lg-6 span6">
-                <label>Fecha de la Restitución<span class="asterisco">*</span><span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Fecha de la Restitución."><i class="fa fa-question" ></i></span></label>
+                <label>Fecha de la restitución<span class="asterisco">*</span><span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Fecha en que se realiza la restitución"><i class="fa fa-question" ></i></span></label>
                 <div class="span10 input-append date"  id="dp3" data-date="<?php print $fechaHoy; ?>"  data-date-format="dd-mm-yyyy" data-date-viewmode="years">
                     <input type="text" class="span12"  name="txtFechaLlegada" size="16" id="txtFechaLlegada" required value="<?php print($Datos_Consultados['FechaLlegada']);?>" required/>
                   <span class="add-on"><i class="icon-th"></i></span>
@@ -83,14 +83,14 @@ else
         </div>
         <div class="row-fluid">
             <div class="col-lg-6 span6">
-                <label>Responsable<span class="asterisco">*</span>  <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Responsable de la Restitución."><i class="fa fa-question" ></i></span></label>
+                <label>Personal responsable<span class="asterisco">*</span>  <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Responsable de la restitución"><i class="fa fa-question" ></i></span></label>
                 <select name="txtResponsable" id="txtResponsable" class="span12" required>
-                    <option value="0">SELECCIONE UNA OPCION</option>
+                    <option value="0">SELECCIONE UN PERSONAL</option>
                     <?php print $loFuncGenerales->fnCombosPersonalActivos($selectedPersonal); ?>
                 </select>
             </div>
             <div class="col-lg-6 span6">
-                <label>Fecha de la Restitución Acordada<span class="asterisco">*</span><span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Fecha de la Restitución Acordada."><i class="fa fa-question" ></i></span></label>
+                <label>Fecha acordada<span class="asterisco">*</span><span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Fecha de la restitución acordada."><i class="fa fa-question" ></i></span></label>
                 <div class="span10 input-append date"  id="dp4" data-date="<?php print $fechaHoy; ?>"  data-date-format="dd-mm-yyyy" data-date-viewmode="years">
                     <input type="text" class="span12"  name="txtFechaRestitucion" size="16" id="txtFechaRestitucion" disabled="" required value="<?php print($Datos_Consultados['FechaLlegada']);?>" required/>
                   <span class="add-on"><i class="icon-th"></i></span>
@@ -99,16 +99,16 @@ else
         </div>
         <div class="row-fluid">
             <div class="col-lg-6 span6">
-                <label>Ente Externo<span class="asterisco">*</span>  <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Ente Externo."><i class="fa fa-question" ></i></span></label>
+                <label>Ente externo<span class="asterisco">*</span>  <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Personal del ente externo"><i class="fa fa-question" ></i></span></label>
                 <select name="txtEnte" id="txtEnte" class="span12" disabled="" required>
-                    <option value="0">SELECCIONE UNA OPCION</option>
+                    <option value="0">SELECCIONE UN ENTE</option>
                     <?php print $loFuncGenerales->fnCombosEntesExternos($selectedEntesExternos); ?>
                 </select>
             </div>
             <div class="col-lg-6 span6">
-                <label>Responsable del Ente Externo<span class="asterisco">*</span>  <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Responsable del Ente Externo."><i class="fa fa-question" ></i></span></label>
+                <label>Personal responsable<span class="asterisco">*</span>  <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Responsable del ente externo."><i class="fa fa-question" ></i></span></label>
                 <select name="txtResponsableEnte" id="txtResponsableEnte" class="span12" required>
-                    <option value="0">SELECCIONE UNA OPCION</option>
+                    <option value="0">SELECCIONE UN PERSONAL</option>
                     <?php print $loFuncGenerales->fnCombosResponsablesEnte($selectedResponsaEnte); ?>
                 </select>
             </div>
@@ -129,17 +129,17 @@ else
             </div>
         </div>
          <legend class="label label-info" >
-         <h4>Restitución: Selección de Prestamo</h4>
+         <h4>Selección de prestamo</h4>
          </legend>
             <div class="row-fluid">
                 <div class="col-lg-12 span12">
-                   <center> <button type="button" class="btn btn-success" style="border-radius: 0;font-family: \"Courier New\", Courier, monospace;" name="btn_agregar" id="btn_agregar" onclick="MostrarSeleccionBN();"><b>Haga Click Aquí para <br>Seleccionar Un Prestamo <br></b><i class="icon-search icon-white"></i></button></center>
+                   <center> <button type="button" class="btn btn-success" style="border-radius: 0;font-family: \"Courier New\", Courier, monospace;" name="btn_agregar" id="btn_agregar" onclick="MostrarSeleccionBN();"><b>Haga click aquí para <br>seleccionar un prestamo <br></b><i class="icon-search icon-white"></i></button></center>
                 </div>
             </div>
             <br>
               <div id="detalle_bn" class="row-fluid" border="2" class="label label-info">       
                 <legend class="label label-info">
-                    <h4>Restitución: Prestamo Seleccionado</h4>
+                    <h4>Prestamo seleccionado</h4>
                 </legend>
             </div>
              <table cellspacing="5" cellpadding="6%" width="" class="row-fluid" border="0" style="color:#808080">

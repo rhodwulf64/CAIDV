@@ -129,10 +129,10 @@ for($i=0;$i<count($laModulos);$i++)
     } );
 </script>  
 <div style="float: left" class="col-lg-10 span10 pull-left">
-    <h3> Restitución de Prestamo</h3>
+    <h3> Restitución de prestamo</h3>
     <div class="alert alert-info">
         <ul>
-           En este módulo podrá restituir los Prestamos.
+           En este módulo podrá restituir los prestamos.
         </ul>
     </div>
     <form action="../controlador/cConsultasAjaxBN.php" method="POST" id="form_recepcion" name="form_recepcion">
@@ -144,7 +144,7 @@ for($i=0;$i<count($laModulos);$i++)
         if($registrar)
         {
             echo ('
-                <a class="btn btn-success" id="btn_registrar" href="?vista=inv_bienesnacionales/registrar_restitucion"><i class="icon-check icon-white"></i> Registrar Nueva Restitución</a>
+                <a class="btn btn-success" id="btn_registrar" href="?vista=inv_bienesnacionales/registrar_restitucion"><i class="icon-check icon-white"></i> Registrar</a>
                
               ');
         }

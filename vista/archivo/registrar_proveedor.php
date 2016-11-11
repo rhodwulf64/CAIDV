@@ -19,7 +19,7 @@ else
     <h3><?php print($titulo); ?></h3>
     <div class="alert alert-info">
      <ul>
-    <li>En este formulario podrá registar el proveedor que será aplicado en la evaluación.
+    <li>En este formulario podrá registrar el proveedor.
     <li>Sí necesitas ayuda para usar este formulario haz clic en el botón <button class="btn btn-warning" type="button" onclick="javascript:introJs().start();"><i class="fa fa-question-circle"></i> Ayuda</button>.
     <ul>
     </div>    
@@ -28,12 +28,12 @@ else
         <input type="hidden" value="<?php print($Datos_Instrumento['id_prov']);?>" name="idinstrumento" />
         <div class="row-fluid">
             <div class="col-lg-6 span6">
-                <label>Nombre <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Nombre del instrumento."><i class="fa fa-question"></i></span></label>
-                <input type="text" class="span12" maxlength="50" name="txtDescripcion" id="txtDescripcion" value="<?php print($Datos_Instrumento['des_prov']);?>" required/>
+                <label>Nombre <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Nombre del proveedor"><i class="fa fa-question"></i></span></label>
+                <input type="text" class="span12" placeholder="Pedro Sandoval" maxlength="50" name="txtDescripcion" id="txtDescripcion" value="<?php print($Datos_Instrumento['des_prov']);?>" required/>
             </div>    
             <div class="col-lg-6 span6">
-                <label>Rif <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Asignatura para la cual se usará el instrumento."><i class="fa fa-question" ></i></span></label>
-                <input type="text" class="span12" maxlength="12" name="txtRif" id="txtRif" value="<?php print($Datos_Instrumento['rif_prov']);?>" required/>
+                <label>Rif <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Registro de información fiscal"><i class="fa fa-question" ></i></span></label>
+                <input type="text" class="span12" placeholder="v-12345678-9" maxlength="12" name="txtRif" id="txtRif" value="<?php print($Datos_Instrumento['rif_prov']);?>" required/>
             </div>         
         </div>
         <div class="botonera">

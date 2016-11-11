@@ -71,7 +71,7 @@ for($i=0;$i<count($laModulos);$i++)
     <h3>Modelo</h3>
     <div class="alert alert-info">
         <ul>
-            En este módulo podrá registrar, consultar, editar, desactivar y activar los Modelos de los Bienes Nacionales.
+            En este módulo podrá registrar, consultar, editar, desactivar y/o activar los modelos de los bienes nacionales.
         </ul>
     </div>
     <form action="../controlador/control_modelo.php" method="POST" name="form_config">
@@ -80,7 +80,7 @@ for($i=0;$i<count($laModulos);$i++)
         <?php
         if($registrar)
         {
-            echo '<a id="btn_registrar" class="btn btn-success" href="?vista=archivo/registrar_modelo"><i class="icon-plus icon-white"></i> Registrar Modelo</a>';
+            echo '<a id="btn_registrar" class="btn btn-success" href="?vista=archivo/registrar_modelo"><i class="icon-plus icon-white"></i> Registrar </a>';
         }
         ?>
         <table class="table table-striped table-hover table-bordered bootstrap-datatable datatable dataTable" id="filtro">
