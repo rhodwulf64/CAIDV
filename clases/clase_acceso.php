@@ -3,7 +3,7 @@
 	require_once('../nucleo/ModeloConect.php');
 	class clsAcceso extends ModeloConect
 	{
-		
+
 		private $lcIdAcceso;
 		private $lcIp;
 		private $lcExito;
@@ -34,7 +34,7 @@
 		{
 			$this->conectar();
 			$sql="INSERT INTO `tacceso`(`ipacc`, `exitoacc`, `idusuario`,estatusacc) VALUES ('$this->lcIp','$this->lcExito','$this->lcUsuario','$this->lcExito')";
-			$lnHecho=$this->ejecutar($sql);			
+			$lnHecho=$this->ejecutar($sql);
 			$this->desconectar();
 			return $lnHecho;
 		}
@@ -43,7 +43,7 @@
 		{
 			$this->conectar();
 			$sql="UPDATE `tacceso` SET `fecha_salidaacc`=NOW(),estatusacc='0' WHERE idacceso='$this->lcIdAcceso' AND idusuario='$this->lcUsuario' AND estatusacc='1'";
-			$lnHecho=$this->ejecutar($sql);			
+			$lnHecho=$this->ejecutar($sql);
 			$this->desconectar();
 			return $lnHecho;
 		}
@@ -58,7 +58,7 @@
 			while($laRow=$this->proximo($pcsql))
 			{
 				$idacceso =$laRow['idacceso'];
-			}		
+			}
 			$this->desconectar();
 			return $idacceso;
 		}
@@ -98,7 +98,7 @@
 				$fila[$cont]['ipacc'] =$laRow['ipacc'];
 				$fila[$cont]['tiempo'] =($laRow['tiempo'])?$laRow['tiempo']:'El usuario no inició sesión';;
 				$cont++;
-			}		
+			}
 			$this->desconectar();
 			return $fila;
 		}

@@ -1,5 +1,5 @@
 <?php
-    
+
     session_start(); //inicia la session, la cual permite trabajar con la variable $_SESSION
     $msj=(isset($_SESSION['msj']))?$_SESSION['msj']:"";
     $vista=(isset($_GET['vista']))?$_GET['vista']:"";//toma el valor que se guarda en la variable vista que está en la URL.
@@ -12,7 +12,7 @@
     $lobjConfiguracion = new clsConfiguracion();
     $DatosConfiguracion = $lobjConfiguracion->consultar_configuracion_bitacora();
 ?>
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html>
 <head>
 	<meta charset="UTF-8">
@@ -41,10 +41,10 @@
 	<header class="h6 sticky-enabled no-topbar">
 		<section class="top">
 			<div>
-				<p><a class="text-white" href="?vista=acceso_intranet"><i class="fa fa-lock"></i> ENTRAR</a> </p>
+				
 			</div>
 		</section>
-		
+
 		<section class="main-header">
 			<p class="title">
 				<a href="./">
@@ -59,22 +59,22 @@
 				<ul>
 					<li <?php if($vista==''){echo 'class="current-menu-item"';}?> >
 						<a href="./"><i class="fa fa-home"></i> INICIO</a>
-					</li>					
+					</li>
 					<li <?php if($vista=='informacion'){echo 'class="current-menu-item"';}?>>
 						<a href="?vista=informacion"><i class="fa fa-caret-right"></i> INFORMACIÓN</a>
 					</li>
 					<li <?php if($vista=='noticias'){echo 'class="current-menu-item"';}?>>
 						<a href="?vista=noticias"><i class="fa fa-caret-right"></i> BLOG - NOTICIAS</a>
-					</li>					
+					</li>
 					<li <?php if($vista=='acceso_intranet'){echo 'class="current-menu-item"';}?>>
 						<a href="?vista=acceso_intranet"><i class="fa fa-caret-right"></i> INTRANET</a>
 					</li>
 					<li <?php if($vista=='contactanos'){echo 'class="current-menu-item"';}?>>
 						<a href="?vista=contactanos"><i class="fa fa-caret-right"></i> CONTACTANOS</a>
-					</li>					
-				</ul>			
+					</li>
+				</ul>
 			</nav>
-			
+
 			<div class="clear"></div>
 		</section>
 	</header>
@@ -83,13 +83,13 @@
 	require_once('../clases/clase_slider.php');
     $lobjslider=new clsSlider;
     $lasliders=$lobjslider->consultar_slider_activas();
-               
+
     if(!file_exists('../vista/'.$vista.'.php'))
     {
     	?>
     		<section class="slider3 p02">
     			<div class="slider">
-			
+
     	<?php
 
     	for($s=0;$s<count($lasliders);$s++)
@@ -116,12 +116,12 @@
 	        if(file_exists('../vista/'.$vista.'.php')) //verifica el contenido de la variable vista.
 	        {
 	                include('../vista/'.$vista.'.php');// y si exite el archivo que trae este incluirá el cintenido
-	        }   
+	        }
 	        else
 	        {
 	            include('../vista/inicio.php');// Si no exite o no tiene nada la variable vista entonces trae por defecto la vista index.html
 	        }
-    	?> 
+    	?>
 	</section>
 
 	<footer>
@@ -137,7 +137,7 @@
 		</section>
 	</footer></div>
 
-	
+
 
 	<!--[if lt IE 9]>
 		<script type="text/javascript" src="js/ie.js"></script>

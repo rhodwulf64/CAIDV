@@ -45,7 +45,20 @@
 		{
 			$this->conectar();
 			$Fila[0]=0;
-			$sql="SELECT tusuario.idusuario as id,idTusuario,nombrerol,idrol,nombreusu,TO_DAYS(fechafincla)as fechafincla,TO_DAYS(NOW())as fechaactual,estatususu,(SELECT CONCAT_WS(' / ',DATE_FORMAT(fechaacc,'%d-%m-%Y %h-%i %p'),DATE_FORMAT(fecha_salidaacc,'%d-%m-%Y %h-%i %p')) FROM tacceso WHERE id=idusuario ORDER BY idacceso DESC LIMIT 1)as ultimo_acceso,(SELECT TIMEDIFF(fecha_salidaacc,fechaacc) FROM tacceso WHERE id=idusuario ORDER BY idacceso DESC LIMIT 1)as tiempo FROM tusuario,trol,tclave WHERE idusuario='".mysql_real_escape_string($this->lcUsuario)."' AND idusuario=tusuario_idusuario AND clavecla=sha1('".mysql_real_escape_string($this->lcClave)."') AND trol.idrol=trol_idrol AND estatuscla='1' ";
+			$sql="SELECT
+			tusuario.idusuario  AS id,
+			idTusuario,
+			nombrerol,
+			idrol,
+			nombreusu,
+			TO_DAYS(fechafincla) AS fechafincla,
+			TO_DAYS(NOW()) AS fechaactual,
+			estatususu,
+			(SELECT unix_timestamp(fechaacc) FROM tacceso WHERE id=idusuario ORDER BY idacceso DESC LIMIT 1) AS ultimo_acceso,
+			(SELECT DATE_FORMAT(fechaacc,'%h:%i %p') FROM tacceso WHERE id=idusuario ORDER BY idacceso DESC LIMIT 1) AS Horaultimo_acceso,
+			(SELECT TIMEDIFF(fecha_salidaacc,fechaacc) FROM tacceso WHERE id=idusuario ORDER BY idacceso DESC LIMIT 1) AS tiempo
+			FROM tusuario,trol,tclave
+			WHERE idusuario='".mysql_real_escape_string($this->lcUsuario)."' AND idusuario=tusuario_idusuario AND clavecla=sha1('".mysql_real_escape_string($this->lcClave)."') AND trol.idrol=trol_idrol AND estatuscla='1' ";
 			$pcsql=$this->filtro($sql);
 			if($laRow=$this->proximo($pcsql))
 			{
@@ -58,6 +71,7 @@
 				$Fila[6]=$laRow['ultimo_acceso'];
 				$Fila[7]=$laRow['tiempo'];
 				$Fila[8]=$laRow['idTusuario'];
+				$Fila[9]=$laRow['Horaultimo_acceso'];
 			}
 			$this->desconectar();
 			return $Fila;
@@ -161,19 +175,19 @@
 			$sql="SELECT * FROM tusuario WHERE idusuario='$this->lcUsuario' AND (SELECT tiempoconexion FROM tsistema)<TIMESTAMPDIFF(MINUTE,ultima_actividadusu,NOW())";
 			$pcsql=$this->filtro($sql);
 			if($laRow=$this->proximo($pcsql))
-			{	
+			{
 				$llEncontro=false;
 			}
 			$this->desconectar();
 			return $llEncontro;
 		}
 
-		
+
 		function cerrar_accesos_activos()
 		{
 			$this->conectar();
 			$sql="UPDATE `tacceso`,tusuario SET `fecha_salidaacc`=NOW(),estatusacc='0' WHERE tacceso.idusuario='$this->lcUsuario' AND tacceso.idusuario=tusuario.idusuario AND estatusacc='1' AND (SELECT tiempoconexion FROM tsistema)<TIMESTAMPDIFF(MINUTE,ultima_actividadusu,NOW())";
-			$lnHecho=$this->ejecutar($sql);			
+			$lnHecho=$this->ejecutar($sql);
 			$this->desconectar();
 			return $lnHecho;
 		}
@@ -182,7 +196,7 @@
 		{
 			$this->conectar();
 			$sql="UPDATE `tusuario`,tacceso SET `ultima_actividadusu`=NOW(),`ultima_actividadacc`=NOW() WHERE tusuario.idusuario='$this->lcUsuario' AND tusuario.idusuario=tacceso.idusuario AND idacceso='$idacceso' AND estatusacc='1'";
-			$lnHecho=$this->ejecutar($sql);			
+			$lnHecho=$this->ejecutar($sql);
 			$this->desconectar();
 			return $lnHecho;
 		}
@@ -192,7 +206,7 @@
 			$this->conectar();
 			$sql="INSERT INTO `tusuario`(`idusuario`,`idFpersonal`, `nombreusu`, `emailusu`, `estatususu`, `trol_idrol`, `cedula`)
 			 VALUES ('$this->lcUsuario','$IDpersonal',UPPER('$this->lcNombre'),UPPER('$this->lcEmail'),'1','$this->lnIdRol','$this->lnIdPersona')";
-			$lnHecho=$this->ejecutar($sql);			
+			$lnHecho=$this->ejecutar($sql);
 			$this->desconectar();
 			$this->insertar_clave();
 			return $lnHecho;
@@ -201,19 +215,19 @@
 		function insertar_clave()
 		{
 			$this->conectar();
-			$sql=" INSERT INTO `tclave`(`clavecla`, `fechainiciocla`, `fechafincla`, `estatuscla`, `tusuario_idusuario`) 
+			$sql=" INSERT INTO `tclave`(`clavecla`, `fechainiciocla`, `fechafincla`, `estatuscla`, `tusuario_idusuario`)
 			VALUES (sha1((SELECT clavepredeterminada FROM tsistema)),now(), ADDDATE(NOW(), (SELECT tiempocaducida FROM tsistema)),'1','$this->lcUsuario');";
-			$lnHecho=$this->ejecutar($sql);			
-			$this->desconectar();	
+			$lnHecho=$this->ejecutar($sql);
+			$this->desconectar();
 			return $lnHecho;
 		}
 
 		function editar_usuario()
 		{
 			$this->conectar();
-			$sql="UPDATE `tusuario` SET 
+			$sql="UPDATE `tusuario` SET
 				`idusuario`='$this->lcUsuario',`emailusu`=UPPER('$this->lcEmail'),`trol_idrol`='$this->lnIdRol',`cedula`='$this->lnIdPersona' WHERE idusuario='$this->lcUsuario'";
-			$lnHecho=$this->ejecutar($sql);			
+			$lnHecho=$this->ejecutar($sql);
 			$this->desconectar();
 			return $lnHecho;
 		}
@@ -221,9 +235,9 @@
 		function bloquear_usuario()
 		{
 			$this->conectar();
-			$sql="UPDATE `tusuario` SET 
+			$sql="UPDATE `tusuario` SET
 				`estatususu`='0' WHERE idusuario='$this->lcUsuario'";
-			$lnHecho=$this->ejecutar($sql);			
+			$lnHecho=$this->ejecutar($sql);
 			$this->desconectar();
 			return $lnHecho;
 		}
@@ -231,9 +245,9 @@
 		function cantidad_intentos()
 		{
 			$this->conectar();
-			$sql="UPDATE `tusuario` SET 
+			$sql="UPDATE `tusuario` SET
 				`intentos_fallidos`=intentos_fallidos+1 WHERE idusuario='$this->lcUsuario'";
-			$lnHecho=$this->ejecutar($sql);			
+			$lnHecho=$this->ejecutar($sql);
 			$this->desconectar();
 			return $lnHecho;
 		}
@@ -241,9 +255,9 @@
 		function eliminar_accesos_fallidos()
 		{
 			$this->conectar();
-			$sql="UPDATE `tusuario` SET 
+			$sql="UPDATE `tusuario` SET
 				`intentos_fallidos`='0' WHERE idusuario='$this->lcUsuario'";
-			$lnHecho=$this->ejecutar($sql);			
+			$lnHecho=$this->ejecutar($sql);
 			$this->desconectar();
 			return $lnHecho;
 		}
@@ -275,7 +289,7 @@
 					$Fila[$cont][4]=$laRow['estatususu'];
 					$cont++;
 				}
-			
+
 			$this->desconectar();
 			return $Fila;
 		}

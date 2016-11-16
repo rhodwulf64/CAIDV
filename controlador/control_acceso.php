@@ -4,14 +4,14 @@
 	require_once('../clases/clase_acceso.php');
 	require_once('../clases/clase_configuracion.php');
 	require_once('../libreria/utilidades.php');
-	$lobjUsuario= new clsUsuario;//Instancia la clase clsUsuario en $lobjUsuario, para poder usar sus metodos y atributos 
+	$lobjUsuario= new clsUsuario;//Instancia la clase clsUsuario en $lobjUsuario, para poder usar sus metodos y atributos
 	$lobjAcceso= new clsAcceso;
 	$lobjConfiguracion= new clsConfiguracion;
 	$lobjUtil=new clsUtil;
 
 	$usuario=$_POST['usuario'];//Captura los datos enviados desde el campo USUARIO en la vista del acceso_intranet.php
 	$clave=$_POST['clave'];//Captura los datos enviados desde el campo CLAVE en la vista del acceso_intranet.php
-	
+
 	$lcReal_ip=$lobjUtil->get_real_ip();
 
 	$lobjUsuario->set_Usuario($usuario);//Envia el dato USUARIO a la clase clsUsuario Mediante el metodo SET_Usuario
@@ -20,14 +20,14 @@
 	$lobjAcceso->set_Ip($lcReal_ip);
 	//En esta serie de IF() se intenta determinar desde donde fue accionado o llamado este archivo, si desde el acceso_intranet con el botón ENTRAR o desde la intranet con el botón SALIR.
 	if($_POST['entrar'])//Sí el botón ENTRAR es accionado ingresa en la condición.
-	{	
+	{
 
 		$datosUsuario=$lobjUsuario->login();//Como los datos ya fueron enviados a la clase, el solo tiene que ejecutar la funcion login() de la clase ClsUsuario, para verificar los datos del usuario.
 		$lobjAcceso->set_Usuario($usuario); //envia a la clase Acceso el usuario ingresado
 		if($datosUsuario[0])// sí los datos del usuario y clave son correctos entonces entra en la condición para verificar otras cosas
 		{
 			$sesion_activa=$lobjAcceso->consultar_acceso_activo(); // Consulta sí el usuario tienen una sesión activa.
-			
+
 				if($datosUsuario[5]=='1') //Sí el usuario está activo entonces entra en la condición
 				{
 					if($sesion_activa['acceso']) //sí el usuario no tiene una sesión activa entonces entra en la condición para guardar los datos en variables $_SESSION
@@ -46,18 +46,19 @@
 						$_SESSION['caduca_clave']=$datosUsuario[4]; // se guarda cuando cáduca la clave actual del usuario
 						$_SESSION['estatususu']=$datosUsuario[5]; // se guarda el estatus del usuario
 						$_SESSION['ultimo_acceso']=$datosUsuario[6]; // se guarda la fecha del ultimo acceso del usuario
+						$_SESSION['Horaultimo_acceso']=$datosUsuario[9]; // se guarda la fecha del ultimo acceso del usuario
 						$_SESSION['tiempo']=$datosUsuario[7]; // se guarda cuanto tiempo estuvo conectado el usuario en su ultimo acceso
 						$_SESSION['prueba']=''; // se limpia el valor para la navegación en modo de prueba del sistema
 						$_SESSION['clave']=$clave; //Se guarda la clave actual del usuario para validarla en caso de que quiera hacer cambio de clave
 	    				$lobjUsuario->actualizar_actividad($_SESSION['idacceso']); // se actualiza la actividad del usuario
 						$lobjUsuario->cerrar_accesos_activos(); // se cierran todos los accesos activos por el usuario
 						require_once('../controlador/start_lapso.php'); //chequea las fechas y estatus de los lapsos académicos actuales, los apertura y/o cierra de ser necesario
-						
+
 						if($_SESSION['caduca_clave']<=0)// Sí la clave ha caducado mostrará un mensaje y redireccionará al usuario directamente al cambio de clave.
 						{
 							$_SESSION['msj']='Bienvenido al sistema '.$datosUsuario[3].'. Su clave a caducado, debe ingresar una nueva.';//Se guarda un mensaje, que posterior mente será borrado.
 							header('location: ../vista/intranet.php?vista=seguridad/cambiar_clave');//Y se redirecciona al archivo intranet.php
-							
+
 						}
 						else if(!$llAcceso) // Sí no es su primer acceso le dará un mensaje de bienvenida y lo llevará directamente al inicio de la intranet.
 						{
@@ -88,6 +89,7 @@
 							$_SESSION['caduca_clave']=$datosUsuario[4];
 							$_SESSION['estatususu']=$datosUsuario[5];
 							$_SESSION['ultimo_acceso']=$datosUsuario[6];
+							$_SESSION['Horaultimo_acceso']=$datosUsuario[9];
 							$_SESSION['tiempo']=$datosUsuario[7];
 							$_SESSION['prueba']='';
 							$_SESSION['clave']=$clave;
@@ -100,7 +102,7 @@
 						else // sí el usuario con el que intenta acceder al sistema tienen una sesión activa desde otro equipo se le mostrará un mensaje y se redireccionará a acceso_intranet.php
 						{
 							$_SESSION['msj']='El usuario con el que intenta ingresar está en una sesión activa con otra dirección IP.';
-							header('location: ../vista/index.php?vista=acceso_intranet');//Y se redirecciona al archivo index.php					
+							header('location: ../vista/index.php?vista=acceso_intranet');//Y se redirecciona al archivo index.php
 						}
 
 					}
@@ -116,7 +118,7 @@
 		else//Si el usuario no existe o es incorrecto el usuario y/o clave este es sacado del sistema
 		{
 
-			$lobjAcceso->set_Exito('0'); 
+			$lobjAcceso->set_Exito('0');
 			$lobjAcceso->registrar_acceso(); //se registra un intento sin éxito de acceso al sistema
 			if($datosUsuario=$lobjUsuario->consultar_usuario()) //Sí el usuario ingresado para iniciar sesión existe en el sistema, entonces entra en la condición
 			{
@@ -139,14 +141,14 @@
 			}
 			header('location: ../vista/index.php?vista=acceso_intranet');//Y se redirecciona al archivo acceso_intranet.php
 		}
-		
+
 	}
 	elseif($_POST['salir'])// Si el usuario ingresó aquí a traves de la intranet por medio del botón SALIR, entonces entrará en esta condicion.
 	{
 		header('location: Logout.php');
 	}
 	else //Si no entro por ningun botón o hubo un error entonces lo va a sacar.
-	{ 
+	{
 			$_SESSION['msj']='Disculpe ha habido un error.';//Se guarda un mensaje, que posterior mente será borrado.
 			header('location: ../index.php');//Y se redirecciona al archivo index.php
 	}

@@ -20,7 +20,7 @@ if($llHecho)
 	header('location: ../index.php');//Y se redirecciona al archivo index.php
 }
 else //Si no entro por ningun botón o hubo un error entonces lo va a sacar.
-{ 
+{
 	$_SESSION['msj']='Disculpe ha habido un error al cerrar la sesión.';//Se guarda un mensaje, que posterior mente será borrado.
 	header('location: ../vista/intranet.php');//Y se redirecciona al archivo intranet.php
 }

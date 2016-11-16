@@ -1,27 +1,27 @@
-<?php  
+<?php
     session_start(); //inicia la session, la cual permite trabajar con la variable $_SESSION
-    
+
     $usuario=(isset($_SESSION['usuario']))?$_SESSION['usuario']:"";//toma el valor que se guarda en la variable usuario que está en la variable $_SESSION
     $prueba=(isset($_SESSION['prueba']))?$_SESSION['prueba']:"";//toma el valor que se guarda en la variable usuario que está en la variable $_SESSION
     $msj=(isset($_SESSION['msj']))?$_SESSION['msj']:"";//toma el valor que se guarda en la variable mensaje que está en la variable $_SESSION
     $vista=(isset($_GET['vista']))?$_GET['vista']:"Panel_inicio";//toma el valor que se guarda en la variable vista que está en la URL.
     $operacion=(isset($_GET['o']))?$_GET['o']:"Navegar";//toma el valor que se guarda en la variable vista que está en la URL.
 
- 
+
 
     require_once('../clases/clase_rol.php');//Trae el archivo clase_rol.php para instanciarlo
     require_once('../clases/clase_usuario.php');//Trae el archivo clase_usuario.php para instanciarlo
     require_once('../libreria/utilidades.php');//Trae el archivo utilidades.php para luego instanciarlo
     require_once('../clases/clase_bitacora.php');//Trae el archivo utilidades.php para luego instanciarlo
     require_once('../clases/update2016/func_generales.php');//Trae el archivo utilidades.php para luego instanciarlo
-    $lobjRol=new clsRol;//Instancia la clase clsRol en $lobjRol, para poder usar sus metodos y atributos 
-    $lobjUtil=new clsUtil;//Instancia la clase clsUtil en $lobjRol, para poder usar sus metodos 
+    $lobjRol=new clsRol;//Instancia la clase clsRol en $lobjRol, para poder usar sus metodos y atributos
+    $lobjUtil=new clsUtil;//Instancia la clase clsUtil en $lobjRol, para poder usar sus metodos
     $lobjBitacora=new clsBitacora;//Instancia la clase clsUtil en $lobjRol, para poder usar sus metodos
     $lobjUsuario=new clsUsuario;//Instancia la clase clsUsuario en $lobjUsuario, para poder usar sus metodos
     $loFuncGenerales=new clsFuncGenerales;//Instancia la clase clsUsuario en $lobjUsuario, para poder usar sus metodos
     $menu='';//Declaro la variable $menu
     $lobjUsuario->set_Usuario($_SESSION['usuario']);
-    $tiempo_conexion=$lobjUsuario->consultar_tiempo_conexion(); // 
+    $tiempo_conexion=$lobjUsuario->consultar_tiempo_conexion(); //
     $lobjRol->set_Rol($_SESSION['idrol']);//Aquí se envia  mediante un metodo SET a la clase rol el idrol del usuario (que se guardo cuando se logueo en el sistema).
     $laModulos=$lobjRol->consultar_modulos_menu();//Se consultan y se guardan en la variable $laModulos los módulos que tiene asignado el rol del usuario,
 
@@ -31,13 +31,13 @@
     {
         $g=($k>1)?$g+$k:1;
         // se arma en la variable $menu todo el menu que se le mostrará al usuario
-        $menu.='<li class="dropdown">'; 
+        $menu.='<li class="dropdown">';
         $menu.='<a href="#" tabindex="'.$g.'" title="'.$laModulos[$i][1].'" class="dropdown-toggle" data-toggle="dropdown">'.$laModulos[$i][1].'<b class="caret"></b></a>';//Aquí se guar el nombre del módulo y los servicios de este modulo se van a ir anidando a partir de aquí.
         $menu.='<ul class="dropdown-menu">';
 
         $laServicios=$lobjRol->consultar_servicios_menu($laModulos[$i][0]); // aquí se consultan y guardan en la variable $laServicios los servicios que tiene registrado este módulo.
         for ($k=$g,$j=0; $j <count($laServicios) ; $j++) //Se recorre un ciclo para poder extraer los datos de cada uno de los servicios que tiene asignado el modulo para poder constuir el menú
-        { 
+        {
             if ($laServicios[$j][5]=="1")
             {
                 $colorFila="#97E1AA";
@@ -45,7 +45,7 @@
             elseif ($laServicios[$j][5]=="2")
             {
                 $colorFila="#97BAE1";
-            }  
+            }
             else
             {
                 $colorFila="";
@@ -53,22 +53,22 @@
 
 
              if($laServicios[$j][3]==true && $laServicios[$j][2]=='ayuda/manual_usuario')//Sí el servicio es visible para el menú lo agrega, sino no
-            {    
+            {
                 $k++;
                 $menu.='<li><a tabindex="'.$k.'"  title="'.$laServicios[$j][1].'" href="'.$laServicios[$j][2].'.pdf" target="_blank">'.$laServicios[$j][1].'</a></li>'; //aqui se van agregando cada uno de los servicios al menú.
             }
             elseif($laServicios[$j][3]==true && $laServicios[$j][2]=='ayuda/terminos_condiciones')//Sí el servicio es visible para el menú lo agrega, sino no
-            {    
+            {
                 $k++;
                 $menu.='<li><a tabindex="'.$k.'"  title="'.$laServicios[$j][1].'" href="'.$laServicios[$j][2].'.pdf" target="_blank">'.$laServicios[$j][1].'</a></li>'; //aqui se van agregando cada uno de los servicios al menú.
             }
              elseif($laServicios[$j][3]==true && $laServicios[$j][2]=='ayuda/normas_procedimientos')//Sí el servicio es visible para el menú lo agrega, sino no
-            {    
+            {
                 $k++;
                 $menu.='<li><a tabindex="'.$k.'"  title="'.$laServicios[$j][1].'" href="'.$laServicios[$j][2].'.pdf" target="_blank">'.$laServicios[$j][1].'</a></li>'; //aqui se van agregando cada uno de los servicios al menú.
             }
             elseif($laServicios[$j][3])//Sí el servicio es visible para el menú lo agrega, sino no
-            {    
+            {
                 $k++;
                 $menu.='<li><a tabindex="'.$k.'" style="background-color: '.$colorFila.';" title="'.$laServicios[$j][1].'" href="?vista='.$laServicios[$j][2].'">'.$laServicios[$j][1].'</a></li>'; //aqui se van agregando cada uno de los servicios al menú.
             }
@@ -77,12 +77,12 @@
             {
                 $Acceso_servicio=true;
 
-            }                                
-        } 
-        $menu.='</ul>'; 
+            }
+        }
+        $menu.='</ul>';
         $menu.='</li>'; //se cierra la construccion del menú
     }
-                                    
+
 
 
     $lcReal_ip=$lobjUtil->get_real_ip();//Ejecuta el función get_real_ip para saber la IP de el usuario.
@@ -100,7 +100,7 @@
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> 
+<!--[if gt IE 8]><!-->
 <html lang="es" class="no-js"> <!--<![endif]-->
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -118,7 +118,7 @@
             }
 
         </style>
-        <link rel="stylesheet" type="text/css" href="../libreria/sweetalert-master/dist/sweetalert.css">    
+        <link rel="stylesheet" type="text/css" href="../libreria/sweetalert-master/dist/sweetalert.css">
         <link rel="stylesheet" href="../bootstrap/css/bootstrap-responsive.min.css">
         <link rel="stylesheet" href="../bootstrap/css/main.css">
         <link rel="stylesheet" href="../media/css/style<?php echo $_SESSION['prueba'];?>.css">
@@ -168,7 +168,7 @@
                         Notifica_Error("Acceso Denegado! Usted no tiene una sesión iniciada en el sistema.");window.location.href="index.php?vista=acceso_intranet";
                     });
 
-                </script>'; // Si no existe un usuario logeado entonces le mostraŕa un mensaje y lo sacará para el inicio! 
+                </script>'; // Si no existe un usuario logeado entonces le mostraŕa un mensaje y lo sacará para el inicio!
         }
         if($msj)  //verifica si existe algún texto en el arreglo msj de la variable $_SESSION
         {
@@ -178,24 +178,25 @@
                         Notifica_Logro("'.$msj.'");
                     });
 
-               </script>';// si existia un mensaje este lo imprime mediante 
+               </script>';// si existia un mensaje este lo imprime mediante
         }
 
     if((!$tiempo_conexion)&&($prueba==''))
     {
         $lobjUsuario->cerrar_accesos_activos();
-        session_destroy();
+
         echo '<script>
                    $( document ).ready(function()
                     {
                         Notifica_Error("Acceso Denegado! Usted a superado el tiempo de inactividad en esta conexión.");
+                        window.location.href="../controlador/Logout.php";
                     });
 
                </script>';
 
     }
 
-    if((!$Acceso_servicio)&&($_SESSION['prueba']==''))  //verifica si existe algún usuario logueado en el arreglo usuario de la variable 
+    if((!$Acceso_servicio)&&($_SESSION['prueba']==''))  //verifica si existe algún usuario logueado en el arreglo usuario de la variable
     {
         if((!$usuario)&&($_prueba==''))  //verifica si existe algún usuario logueado en el arreglo usuario de la variable $_SESSION
         {
@@ -218,7 +219,7 @@
 
                </script>';
     }
-       
+
             unset($_SESSION['msj']);//borra lo que habia en la variable.
         ?>
 
@@ -229,7 +230,7 @@
         <![endif]-->
 
         <!-- This code is taken from http://twitter.github.com/bootstrap/examples/hero.html -->
-    <div class="container">        
+    <div class="container">
         <header class="navbar navbar-fixed-top" style="width: 1100px;
 margin: 0 auto;position:absolute">
             <div id="row"  style="height:115px">
@@ -293,14 +294,14 @@ margin: 0 auto;position:absolute">
 
         <section class="container-fluid" style="width: 1100px;
 margin: 0 auto;">
-            
+
             <div class="span12" style="width: 1100px;margin: 0 auto;display:block;">
                     <?php
                          if(file_exists($vista.'.php')) //verifica el contenido de la variable vista.
                     {
                             include($vista.'.php');// y si exite el archivo que trae este incluirá el cintenido
-                    }   
-                        
+                    }
+
                     ?>
             </div>
             <?php
@@ -319,7 +320,7 @@ margin: 0 auto;">
 
         </section> <!-- /container -->
 
-    </div> 
+    </div>
     </body>
     <script>
     // single keys
@@ -331,7 +332,7 @@ margin: 0 auto;">
             patron = /[1234567890]/;
             te = String.fromCharCode(tecla);
             return patron.test(te);
-        
+
         }
 
         function SoloAlfaNumerico(e)
@@ -342,7 +343,6 @@ margin: 0 auto;">
             te = String.fromCharCode(tecla);
             return patron.test(te);
         }
-        
+
     </script>
 </html>
-
