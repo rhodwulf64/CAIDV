@@ -2,6 +2,7 @@
 include_once('../libreria/constantes.php');
 class ModeloConect
 {
+	private $servidor='127.0.0.1';
 	private $usuario='job';
 	private $clave='1234';
 	public $bd=BD;
