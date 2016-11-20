@@ -2,8 +2,7 @@
 include_once('../libreria/constantes.php');
 class ModeloConect
 {
-	private $servidor='cleveland15-pc';
-	private $usuario='root';
+	private $usuario='job';
 	private $clave='1234';
 	public $bd=BD;
 	protected $laRow = array();
