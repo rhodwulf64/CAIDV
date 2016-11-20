@@ -202,13 +202,13 @@ else
 
          if(cedula.length<7)
         {
-            alert('Cédula invalida, debe ingresar una cédula valida.');
+            Notifica_Error('Cédula invalida, debe ingresar una cédula valida.');
             $("#cam_iddocente").focus();
             return false;
         }
         else if(telefono.length<11)
         {
-            alert('Telefono invalido, debe ingresar un telefono valido de 11 caracteres.');
+            Notifica_Error('Telefono invalido, debe ingresar un telefono valido de 11 caracteres.');
             $("#cam_telefonodoc").focus();
             return false;
         }
@@ -218,7 +218,7 @@ else
         }
         else
         {
-            alert('El docente es menor de edad o tiene una fecha de nacimiento incorrecta, debe indicar una fecha de nacimiento valida.');
+            Notifica_Error('El docente es menor de edad o tiene una fecha de nacimiento incorrecta, debe indicar una fecha de nacimiento valida.');
             $("#cam_fechanacimientodoc").focus();
             return false;
         }

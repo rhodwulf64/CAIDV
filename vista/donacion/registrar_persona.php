@@ -81,7 +81,7 @@
 <script type="text/javascript">
 function validar(){
     if(document.getElementById("cam_cedulamod").value.length<8){
-        alert("Debe introduccir al menos 8 caracteres para la cedula");
+        Notifica_Error("Debe introduccir al menos 8 caracteres para la cedula");
         document.getElementById("cam_cedulamod").value="";
         return false;
     }
@@ -94,7 +94,7 @@ function validar_nombre()
         {
             if(nom_modulos[i].value==nombre_modulo.value.toUpperCase())
             {
-                alert('Debe ingresar una cedula distinto, este ya se encuentra registrado.');
+                Notifica_Error('Debe ingresar una cedula distinto, este ya se encuentra registrado.');
                 nombre_modulo.value='';
                 nombre_modulo.focus();
             }

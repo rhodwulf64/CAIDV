@@ -45,12 +45,12 @@ function enviar()
 
     if(clave_actual!=clave_anterior)
     {
-        alert('La clave actual no coincide con su clave.');
+        Notifica_Error('La clave actual no coincide con su clave.');
         return false;
     }
     else if(clave_nueva!=clave_nueva_repetir)
     {
-        alert('La nueva clave no coincide con su repetición');
+        Notifica_Error('La nueva clave no coincide con su repetición');
         return false;
     }
     else

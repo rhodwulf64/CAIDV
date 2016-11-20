@@ -5,7 +5,7 @@
 
     if($usuario)  //verifica si existe algún usuario logueado en el arreglo usuario de la variable $_SESSION
     {
-        echo '<script>alert("Usted tiene una sesíón abierta!");window.location.href="intranet.php";</script>'; // Si no existe un usuario logeado entonces le mostraŕa un mensaje y lo sacará para el inicio! 
+        echo '<script>Notifica_Error("Usted tiene una sesíón abierta!");window.location.href="intranet.php";</script>'; // Si no existe un usuario logeado entonces le mostraŕa un mensaje y lo sacará para el inicio! 
     }
 
 ?>

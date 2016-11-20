@@ -113,7 +113,7 @@
                     $('#cam_idcurso').prop("disabled", true);
                     $('#cam_idlapso').val('');
                     $('#cam_idcurso').val('');
-                    alert('El participante no tiene cursos inscritos en este lapso.');
+                    Notifica_Error('El participante no tiene cursos inscritos en este lapso.');
                 }
                
              }

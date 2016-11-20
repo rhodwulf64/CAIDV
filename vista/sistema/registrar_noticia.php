@@ -74,20 +74,20 @@ tinymce.init({
         expresion=/^[^\'\"]*$/;
         if(expresion.test(textonot)==false)
         {
-            alert('No se permiten comillas simples (\') o comillas dobles (\").');            
+            Notifica_Error('No se permiten comillas simples (\') o comillas dobles (\").');            
             tinyMCE.execCommand('mceFocus', false, 'cam_textonot');
             return false;
             
         }    
         else if(textonot == '' )
         {
-            alert('Debe escribir un mensaje en el campo para poder continuar.');
+            Notifica_Error('Debe escribir un mensaje en el campo para poder continuar.');
             tinyMCE.execCommand('mceFocus', false, 'cam_textonot');
             return false;
         }
         else if(textonot.length<250 )
         {
-            alert('El texto del mensaje no puede ser menor de 250 caracteres.');
+            Notifica_Error('El texto del mensaje no puede ser menor de 250 caracteres.');
             tinyMCE.execCommand('mceFocus', false, 'cam_textonot');
             return false;
         }

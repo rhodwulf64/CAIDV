@@ -772,7 +772,7 @@ function desplegar_ingreso_otro()
         edad=calcular_edad(fecha);
         if(edad<1)
         {
-            alert("La fecha ingresada es incorrecta o el participante muy joven para ser inscrito, por favor verifique la fecha de nacimiento.")
+            Notifica_Error("La fecha ingresada es incorrecta o el participante muy joven para ser inscrito, por favor verifique la fecha de nacimiento.")
         }
     }
 
@@ -788,7 +788,7 @@ function desplegar_ingreso_otro()
             }
             if(cont==2)
             {
-                alert('Solo un familiar puede ser representante del participante');
+                Notifica_Error('Solo un familiar puede ser representante del participante');
                 e.checked=false;
                 break;
             }
@@ -807,7 +807,7 @@ function desplegar_ingreso_otro()
             }
             if(cont==2)
             {
-                alert('No se pueden repetir los parentescos');
+                Notifica_Error('No se pueden repetir los parentescos');
                 e.value='';
                 break;
             }
@@ -826,7 +826,7 @@ function desplegar_ingreso_otro()
             }
             if(cont==2)
             {
-                alert('No se pueden repetir los familiares');
+                Notifica_Error('No se pueden repetir los familiares');
                 c.value='';
                 n.value='';
                 break;
@@ -841,30 +841,30 @@ function desplegar_ingreso_otro()
         parentescofam=document.getElementsByName("parentescofam[]");
         representantefam=document.getElementsByName("representantefam[]");
         if(($('#cam_provieneinstitucion1').prop('checked')==false)&&($('#cam_provieneinstitucion2').prop('checked')==false)) {
-                        alert('Debe seleccionar si el participante proviene de alguna institución.');
+                        Notifica_Error('Debe seleccionar si el participante proviene de alguna institución.');
                         $('#cam_provieneinstitucion1').focus();
                         return false;
                     }
                     if(($('#cam_provieneinstitucion1').prop('checked')==true))
                     {
                          if(!$('#cam_tinstitucion_idinstitucion2').val()) {
-                        alert('Debe seleccionar la institución de la cual proviene el participante.');
+                        Notifica_Error('Debe seleccionar la institución de la cual proviene el participante.');
                         $('#cam_tinstitucion_idinstitucion2').focus();
                         return false;
                         }
                          if(!$('#cam_gradoins').val()) {
-                            alert('Debe seleccionar el grado que cursaba el participante en la institución de la cual proviene.');
+                            Notifica_Error('Debe seleccionar el grado que cursaba el participante en la institución de la cual proviene.');
                             $('#cam_gradoins').focus();
                             return false;
                         }
                          if(!$('#cam_seccionins').val()) {
-                            alert('Debe seleccionar la sección del grado que cursaba el participante en la institución de la cual proviene.');
+                            Notifica_Error('Debe seleccionar la sección del grado que cursaba el participante en la institución de la cual proviene.');
                             $('#cam_seccionins').focus();
                             return false;
                         }
                     }
                     if(!$('#cam_disponibilidadins').val()) {
-                            alert('Debe seleccionar la dispoiblidad del participante para asistir.');
+                            Notifica_Error('Debe seleccionar la dispoiblidad del participante para asistir.');
                             $('#cam_disponibilidadins').focus();
                             return false;
                         }
@@ -880,27 +880,27 @@ function desplegar_ingreso_otro()
                     };
                      if(cont<1)
                         {
-                            alert('Debe haber seleccionar almenos un dia para asistir Lu/Ma/Mi/Ju/Vi.');
+                            Notifica_Error('Debe haber seleccionar almenos un dia para asistir Lu/Ma/Mi/Ju/Vi.');
                             bueno=false;
                             return bueno;
                         }
                     if(($('#cam_partidanacimientoins1').prop('checked')==false)&&($('#cam_partidanacimientoins2').prop('checked')==false)) {
-                        alert('Seleccione si el participante presentó partida de nacimiento.');
+                        Notifica_Error('Seleccione si el participante presentó partida de nacimiento.');
                         $('#cam_partidanacimientoins1').focus();
                         return false;
                     }
                     if(($('#cam_copiacedulains1').prop('checked')==false)&&($('#cam_copiacedulains2').prop('checked')==false)) {
-                        alert('Seleccione si el participante presentó copia de la cédula.');
+                        Notifica_Error('Seleccione si el participante presentó copia de la cédula.');
                         $('#cam_copiacedulains1').focus();
                         return false;
                     }
                     if(($('#cam_informemedico1').prop('checked')==false)&&($('#cam_informemedico2').prop('checked')==false)) {
-                        alert('Seleccione si el participante presentó informe médico.');
+                        Notifica_Error('Seleccione si el participante presentó informe médico.');
                         $('#cam_informemedico1').focus();
                         return false;
                     }
                     if(($('#cam_repitienteins1').prop('checked')==false)&&($('#cam_repitienteins2').prop('checked')==false)) {
-                        alert('Seleccione si el participante es repitiente.');
+                        Notifica_Error('Seleccione si el participante es repitiente.');
                         $('#cam_repitienteins1').focus();
                         return false;
                     }
@@ -923,7 +923,7 @@ function desplegar_ingreso_otro()
                                 $("#status").hide();
                                 $("#cam_cedulapar").val('');
                                 $("#btn_enviar").prop( "disabled", true );
-                                alert('Ya existe un participante con esta cedula.');                              
+                                Notifica_Error('Ya existe un participante con esta cedula.');                              
                             }
                             else
                             {
@@ -1007,93 +1007,93 @@ diasasistenciains=document.getElementsByName("diasasistenciains[]");
                     telefono=$('#cam_telefonopar').val();
                     // Make sure we entered the name
                     if(!$('#cam_cedulapar').val()) {
-                        alert('Debe ingresar la cedula del participante');
+                        Notifica_Error('Debe ingresar la cedula del participante');
                         $('#cam_cedulapar').focus();
                         return false;
                     }
                     if(cedula.length<6)
                     {
-                        alert('Cédula invalida, debe ingresar una cédula valida.');
+                        Notifica_Error('Cédula invalida, debe ingresar una cédula valida.');
                         $("#cam_cedulapar").focus();
                         return false;
                     }
                     if(!$('#cam_nombreunopar').val()) {
-                        alert('Debe ingresar el primer nombre del participante');
+                        Notifica_Error('Debe ingresar el primer nombre del participante');
                         $('#cam_nombreunopar').focus();
                         return false;
                     }
                     if(!$('#cam_apellidounopar').val()) {
-                        alert('Debe ingresar el primer apellido del participante');
+                        Notifica_Error('Debe ingresar el primer apellido del participante');
                         $('#cam_apellidounopar').focus();
                         return false;
                     }
                     if(($('#cam_sexopar1').prop('checked')==false)&&($('#cam_sexopar2').prop('checked')==false)) {
-                        alert('Debe seleccionar el sexo del participante');
+                        Notifica_Error('Debe seleccionar el sexo del participante');
                         $('#cam_sexopar1').focus();
                         return false;
                     }
                     if(!$('#cam_telefonopar').val()) {
-                        alert('Debe ingresar el nro de teléfono del participante');
+                        Notifica_Error('Debe ingresar el nro de teléfono del participante');
                         $('#cam_telefonopar').focus();
                         return false;
                     }
                     if(telefono.length<11)
                     {
-                        alert('Teléfono invalido, debe ingresar un teléfono valido de 11 caracteres.');
+                        Notifica_Error('Teléfono invalido, debe ingresar un teléfono valido de 11 caracteres.');
                         $("#cam_telefonopar").focus();
                         return false;
                     }
                     if(!$('#cam_fechanacimientopar').val()) {
-                        alert('Debe ingresar la fecha de nacimiento del participante');
+                        Notifica_Error('Debe ingresar la fecha de nacimiento del participante');
                         $('#cam_fechanacimientopar').focus();
                         return false;
                     }
                     if(!$('#cam_direccionpar').val()) {
-                        alert('Debe ingresar la dirección del participante');
+                        Notifica_Error('Debe ingresar la dirección del participante');
                         $('#cam_direccionpar').focus();
                         return false;
                     }
                     if(!$('#cam_tlocalidad_idlocalidad').val()) {
-                        alert('Debe seleccionar la localidad donde vive el participante.');
+                        Notifica_Error('Debe seleccionar la localidad donde vive el participante.');
                         $('#cam_tlocalidad_idlocalidad').focus();
                         return false;
                     }
                     if(!$('#cam_viviendapar').val()) {
-                        alert('Debe seleccionar cual es el estus de vivienda en el cual se encuentra el participante.');
+                        Notifica_Error('Debe seleccionar cual es el estus de vivienda en el cual se encuentra el participante.');
                         $('#cam_viviendapar').focus();
                         return false;
                     }
                     if(!$('#cam_medioviviendapar').val()) {
-                        alert('Debe seleccionar el medio en el cual el participante vive.');
+                        Notifica_Error('Debe seleccionar el medio en el cual el participante vive.');
                         $('#cam_medioviviendapar').focus();
                         return false;
                     }
 
                     if(!$('#cam_numhijopar').val()) {
-                        alert('Debe seleccionar el nro de hijo del participante dentro de su familia.');
+                        Notifica_Error('Debe seleccionar el nro de hijo del participante dentro de su familia.');
                         $('#cam_numhijopar').focus();
                         return false;
                     }                    
                     if(($('#cam_braillepar1').prop('checked')==false)&&($('#cam_braillepar2').prop('checked')==false)) {
-                        alert('Debe seleccionar si el participante conoce braille.');
+                        Notifica_Error('Debe seleccionar si el participante conoce braille.');
                         $('#cam_braillepar').focus();
                         return false;
                     }
                     if(!$('#cam_tdiagnostico_iddiagnostico').val()) {
-                        alert('Debe seleccionar el diagnostico del participante.');
+                        Notifica_Error('Debe seleccionar el diagnostico del participante.');
                         $('#cam_tdiagnostico_iddiagnostico').focus();
                         return false;
                     }                    
                     if(($('#cam_etniapar1').prop('checked')==false)&&($('#cam_etniapar2').prop('checked')==false)) 
                     {
-                        alert('Debe seleccionar si el participante pertenece a alguna etnia indigena.');
+                        Notifica_Error('Debe seleccionar si el participante pertenece a alguna etnia indigena.');
                         $('#cam_etniapar1').focus();
                         return false;
                     }
                     edad=calcular_edad($('#cam_fechanacimientopar').val());
                     if(edad<4)
                     {
-                        alert('Por favor retifique la fecha de nacimiento.');
+                        Notifica_Error('Por favor retifique la fecha de nacimiento.');
                         $('#cam_fechanacimientopar').focus();
                         return false;                        
                     }
@@ -1111,7 +1111,7 @@ diasasistenciains=document.getElementsByName("diasasistenciains[]");
 
                         if(cedulafam[i].value=='')
                         {
-                            alert('La cedula del familiar de la fila: '+(i+1)+' está vacia.');
+                            Notifica_Error('La cedula del familiar de la fila: '+(i+1)+' está vacia.');
                             return bueno;
                         }
                     };
@@ -1121,7 +1121,7 @@ diasasistenciains=document.getElementsByName("diasasistenciains[]");
                         bueno=false;
                         if(parentescofam[i].value=='')
                         {
-                            alert('El parentesco de la fila: '+(i+1)+' está vacio.');
+                            Notifica_Error('El parentesco de la fila: '+(i+1)+' está vacio.');
                             return bueno;
                         }
                     };
@@ -1136,7 +1136,7 @@ diasasistenciains=document.getElementsByName("diasasistenciains[]");
                     };
                      if(cont<1)
                         {
-                            alert('Debe haber almenos un representante.');
+                            Notifica_Error('Debe haber almenos un representante.');
                             bueno=false;
                             
                             return bueno;
@@ -1159,7 +1159,7 @@ diasasistenciains=document.getElementsByName("diasasistenciains[]");
                    document.getElementById('btn_siguiente').style.display="block";
                 }
             },onTabClick: function(tab, navigation, index) {
-                        alert('Debe continuar mediante el botón de SIGUIENTE');
+                        Notifica_Error('Debe continuar mediante el botón de SIGUIENTE');
                         $('#btn_siguiente').focus();
                         return false;
             }, onTabShow: function(tab, navigation, index) {

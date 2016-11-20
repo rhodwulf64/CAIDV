@@ -162,7 +162,7 @@
                         if(vacio==false)
                         {
                             objetivo[0].focus();
-                            alert("Debe seleccionar al menos un objetivo");
+                            Notifica_Error("Debe seleccionar al menos un objetivo");
                             return false;
                         }
                     }
@@ -170,7 +170,7 @@
                 else
                 {
                     $('#cam_unidad'+i).focus();
-                    alert('Debe seleccionar una unidad');
+                    Notifica_Error('Debe seleccionar una unidad');
                     return false;
                 }
             }
@@ -179,7 +179,7 @@
                 if($('#cam_observacion'+i).val()=='')
                 {
                     $('#cam_observacion'+i).focus();
-                    alert("Indique porqué el participante no asistió.");
+                    Notifica_Error("Indique porqué el participante no asistió.");
                     return false;
                 }
             }

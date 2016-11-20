@@ -73,7 +73,7 @@ function validar_nombre()
         {
             if(nom_aulas[i].value==nombre_aula.value.toUpperCase())
             {
-                alert('Debe ingresar un nombre distinto, este ya se encuentra registrado.');
+                Notifica_Error('Debe ingresar un nombre distinto, este ya se encuentra registrado.');
                 nombre_aula.value='';
                 nombre_aula.focus();
             }

@@ -125,7 +125,7 @@ document.getElementById("agregar").onclick = function()
     if(cantidad_value!="0" && cantidad_value!=""){
         muchos(idTabla,campos,boton_eliminar);
     }else{
-        alert("Debe agregar una cantidad mayor o igual a 1");
+        Notifica_Error("Debe agregar una cantidad mayor o igual a 1");
     }
 };
 

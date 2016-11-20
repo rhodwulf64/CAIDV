@@ -54,7 +54,7 @@ function validar_nombre()
         {
             if(nom_actividad[i].value==nombre_actividad.value.toUpperCase())
             {
-                alert('Debe ingresar un nombre distinto, este ya se encuentra registrado.');
+                Notifica_Error('Debe ingresar un nombre distinto, este ya se encuentra registrado.');
                 nombre_actividad.value='';
                 nombre_actividad.focus();
             }

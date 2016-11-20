@@ -185,7 +185,7 @@ function validar()
     }
     else
     {
-        alert('Debe ingresar al menos una hora en teorica y/o practica.');
+        Notifica_Error('Debe ingresar al menos una hora en teorica y/o practica.');
         return false;
     }
 }
@@ -350,7 +350,7 @@ $(document).ready(function() {
                    document.getElementById('btn_siguiente').style.display="inline";
                 }
             },onTabClick: function(tab, navigation, index) {
-                        alert('Debe continuar mediante el botón de SIGUIENTE');
+                        Notifica_Error('Debe continuar mediante el botón de SIGUIENTE');
                         $('#btn_siguiente').focus();
                         return false;
             }, onTabShow: function(tab, navigation, index) {

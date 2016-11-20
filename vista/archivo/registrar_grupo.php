@@ -71,7 +71,7 @@ function validar_edad()
 
     if(parseInt(edadmax.value)<=parseInt(edadmin.value))
     {
-        alert('La edad máxima debe ser mayor a la edad mínima.');
+        Notifica_Error('La edad máxima debe ser mayor a la edad mínima.');
         edadmax.value='';
         return false;
     }
@@ -85,7 +85,7 @@ function validar_nombre()
         {
             if(nombre_grupos[i].value==nombre_grupo.value.toUpperCase())
             {
-                alert('Debe ingresar un nombre distinto, este ya se encuentra registrado.');
+                Notifica_Error('Debe ingresar un nombre distinto, este ya se encuentra registrado.');
                 nombre_grupo.value='';
                 nombre_grupo.focus();
             }

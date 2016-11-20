@@ -9,11 +9,11 @@
 
     if((!$usuario)&&($_prueba==''))  //verifica si existe algún usuario logueado en el arreglo usuario de la variable $_SESSION
     {
-        echo '<script>alert("Acceso Denegado! Usted no tiene una sesión iniciada en el sistema.");window.location.href="index.php?vista=acceso_intranet";</script>'; // Si no existe un usuario logeado entonces le mostraŕa un mensaje y lo sacará para el inicio! 
+        echo '<script>Notifica_Error("Acceso Denegado! Usted no tiene una sesión iniciada en el sistema.");window.location.href="index.php?vista=acceso_intranet";</script>'; // Si no existe un usuario logeado entonces le mostraŕa un mensaje y lo sacará para el inicio! 
     }
     if($msj)  //verifica si existe algún texto en el arreglo msj de la variable $_SESSION
     {
-        echo '<script>alert("'.$msj.'");</script>';// si existia un mensaje este lo imprime mediante 
+        echo '<script>Notifica_Logro("'.$msj.'");</script>';// si existia un mensaje este lo imprime mediante 
         unset($_SESSION['msj']);//borra lo que habia en la variable.
     }
 
@@ -35,7 +35,7 @@
     {
         $lobjUsuario->cerrar_accesos_activos();
         session_destroy();
-        echo '<script>alert("Acceso Denegado! Usted a superado el tiempo de inactividad en esta conexión.");window.location.href="index.php?vista=acceso_intranet";</script>';
+        echo '<script>Notifica_Error("Acceso Denegado! Usted a superado el tiempo de inactividad en esta conexión.");window.location.href="index.php?vista=acceso_intranet";</script>';
 
     }
     $Acceso_servicio=false;//Para verificar que el usuario no entre a un servicio que no tiene asignado declaro una variable como false, y luego la cambiaré a true si alguno de los servicios que tiene asignado el usuario es igual a la direccion a la que está entrando.
@@ -95,9 +95,9 @@
     {
          if((!$usuario)&&($_prueba==''))  //verifica si existe algún usuario logueado en el arreglo usuario de la variable $_SESSION
         {
-            echo '<script>alert("Acceso Denegado! Usted no tiene una sesión iniciada en el sistema.");window.location.href="index.php?vista=acceso_intranet";</script>'; // Si no existe un usuario logeado entonces le mostraŕa un mensaje y lo sacará para el inicio! 
+            echo '<script>Notifica_Error("Acceso Denegado! Usted no tiene una sesión iniciada en el sistema.");window.location.href="index.php?vista=acceso_intranet";</script>'; // Si no existe un usuario logeado entonces le mostraŕa un mensaje y lo sacará para el inicio! 
         }
-        echo '<script>alert("Acceso Denegado! Usted no tiene el acceso permitido a este servicio del sistema.");window.location.href="intranet.php";</script>'; // Si no tiene asignado el servicio al cual intentó entrar, entonces lo manda al inicio de la intranet.! 
+        echo '<script>Notifica_Error("Acceso Denegado! Usted no tiene el acceso permitido a este servicio del sistema.");window.location.href="intranet.php";</script>'; // Si no tiene asignado el servicio al cual intentó entrar, entonces lo manda al inicio de la intranet.! 
     }
     $lobjUsuario->actualizar_actividad($_SESSION['idacceso']);
 ?>
@@ -278,7 +278,7 @@ margin: 0 auto;">
     </body>
     <script>
     // single keys
-        Mousetrap.bind('ctrl+g', function(){ alert(1); });
+        Mousetrap.bind('ctrl+g', function(){ Notifica_Logro(1); });
         function SoloNumeros(e){
         var tecla = (document.all) ? e.keyCode : e.which;
         if((tecla==8)||(tecla==0))return true;

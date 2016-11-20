@@ -46,7 +46,7 @@ function validar_nombre()
         {
             if(nom_Diagnosticos[i].value==nombre_Diagnostico.value.toUpperCase())
             {
-                alert('Debe ingresar un nombre distinto, este ya se encuentra registrado.');
+                Notifica_Error('Debe ingresar un nombre distinto, este ya se encuentra registrado.');
                 nombre_Diagnostico.value='';
                 nombre_Diagnostico.focus();
             }

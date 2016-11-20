@@ -47,7 +47,7 @@ function validar_nombre()
         {
             if(nom_municipios[i].value==nombre_municipio.value.toUpperCase())
             {
-                alert('Debe ingresar un nombre distinto, este ya se encuentra registrado.');
+                Notifica_Error('Debe ingresar un nombre distinto, este ya se encuentra registrado.');
                 nombre_municipio.value='';
                 nombre_municipio.focus();
             }

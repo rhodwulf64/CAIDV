@@ -124,13 +124,13 @@ $('.datepicker').datepicker({
                 if(fecha[i].value=='')
                 {
                     fecha[i].focus();
-                    alert("Por favor seleccione la fecha en la cual se desincorporar al participante.");   
+                    Notifica_Error("Por favor seleccione la fecha en la cual se desincorporar al participante.");   
                     return false;
                 }
                 if(motivo[i].value=='')
                 {
                     motivo[i].focus();
-                    alert("Por favor ingrese el motivo por el cual se desincorporar participante.");
+                    Notifica_Error("Por favor ingrese el motivo por el cual se desincorporar participante.");
                     return false;
                 }
             }

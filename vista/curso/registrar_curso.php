@@ -256,12 +256,12 @@ else
 
             if((capacidades[i].value==" ") || (aulas[i].value==" ") || (nombre_grupos[i].value==" ") || (nombre_asignatura[i].value==" ") || (nombre_curso[i].value==" ") || (docentes[i].value==" "))
             {
-                alert('Debe ingresar cada uno de los campos.');
+                Notifica_Error('Debe ingresar cada uno de los campos.');
                 return false;
             }
             else if(parseInt(capacidades[i].value)=="0")
             {
-                alert('Debe ingresar una capacidad mayor a 0.');
+                Notifica_Error('Debe ingresar una capacidad mayor a 0.');
                 capacidades[i].focus();
                 return false;
             }
@@ -298,14 +298,14 @@ else
                 {
                         if(capacidad_escrita>capacidad_aula)
                         {
-                            alert('No puede ingresar una cantidad mayor a la permitida para esta aula: '+capacidad_aula);
+                            Notifica_Error('No puede ingresar una cantidad mayor a la permitida para esta aula: '+capacidad_aula);
                             capacidades[i].value=capacidad_aula;
                         }
                     
                 }
                 else
                 {
-                    alert('Debe seleccionar primero el aula en la cual se dictará este curso.');
+                    Notifica_Error('Debe seleccionar primero el aula en la cual se dictará este curso.');
                     capacidades[i].value='';
                 }
             }

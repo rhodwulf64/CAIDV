@@ -43,7 +43,7 @@ function validar_nombre()
         {
             if(nom_modulos[i].value==nombre_modulo.value.toUpperCase())
             {
-                alert('Debe ingresar un nombre distinto, este ya se encuentra registrado.');
+                Notifica_Error('Debe ingresar un nombre distinto, este ya se encuentra registrado.');
                 nombre_modulo.value='';
                 nombre_modulo.focus();
             }

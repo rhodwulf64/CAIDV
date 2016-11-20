@@ -38,19 +38,19 @@
 <script >
   $("#fecha_i").change(function(){
     if($("#fecha_i").val()>$("#fecha_f").val() && $("#fecha_f").val()!=""){
-        alert("LA FECHA DE INICIO NO PUEDE SER MAYOR A LA FINAL");
+        Notifica_Error("LA FECHA DE INICIO NO PUEDE SER MAYOR A LA FINAL");
         $("#fecha_i").val("");
     }
   });
   $("#fecha_f").change(function(){
     if($("#fecha_f").val()<$("#fecha_i").val()){
-        alert("LA FECHA DE FIN NO PUEDE SER MENOR A LA FECHA DE INICIO");
+        Notifica_Error("LA FECHA DE FIN NO PUEDE SER MENOR A LA FECHA DE INICIO");
         $("#fecha_f").val("");
     }
   });
   $("#btn_enviar").click(function(){
     if($("#fecha_f").val()!="" && $("#fecha_i").val()=="" ){
-        alert("NO HA SELECCIONADO UNA FECHA DE INICIO");
+        Notifica_Error("NO HA SELECCIONADO UNA FECHA DE INICIO");
         return false;
     }
     $("#form_preinscritos").submit();

@@ -5,7 +5,7 @@
     $vista=(isset($_GET['vista']))?$_GET['vista']:"";//toma el valor que se guarda en la variable vista que está en la URL.
     if($msj) //verifica si existe algún texto en el arreglo msj de la variable $_SESSION
     {
-        echo '<script>alert("'.$msj.'");</script>'; // si existia un mensaje este lo imprime mediante un alert!
+        echo '<script>Notifica_Logro("'.$msj.'");</script>'; // si existia un mensaje este lo imprime mediante un alert!
         unset($_SESSION['msj']); //borra lo que habia en la variable.
     }
     include('../clases/clase_configuracion.php');

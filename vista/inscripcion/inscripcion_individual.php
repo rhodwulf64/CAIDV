@@ -122,7 +122,7 @@ function activar_motivo(e,i)
                 if(fecha[i].value=='')
                 {
                     fecha[i].focus();
-                    alert("Por favor seleccione la fecha en la cual se incorpora al participante.");   
+                    Notifica_Error("Por favor seleccione la fecha en la cual se incorpora al participante.");   
                     return false;
                 }
 

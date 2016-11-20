@@ -108,11 +108,11 @@
 <script type="text/javascript">
 function validar(){
     if(document.getElementById("idPersona").value==""){
-        alert("No ha seleccionado la persona");
+        Notifica_Error("No ha seleccionado la persona");
         return false;
     }
     if(document.getElementById("articulo-0")==null){
-        alert("No ha asignado ningun articulo");
+        Notifica_Error("No ha asignado ningun articulo");
         return false;
     }
     document.form_modulo.submit();
@@ -150,7 +150,7 @@ document.getElementById("agregar").onclick = function()
     if(articulo_value!=0 && cantidad_value!="0" && cantidad_value!=""){
         muchos(idTabla,campos,boton_eliminar);
     }else{
-        alert("Debe seleccionar un articulo y agregar una cantidad");
+        Notifica_Error("Debe seleccionar un articulo y agregar una cantidad");
 
     }
 };

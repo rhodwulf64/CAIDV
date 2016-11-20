@@ -67,12 +67,12 @@
 <script>
     function f_enviar(){
         if(document.form1.estatus.value=='-'){
-            alert("Debe seleccionar una Estatus para realizar busqueda");
+            Notifica_Error("Debe seleccionar una Estatus para realizar busqueda");
         }else if(document.form1.fecha_ini.value==''){
-            alert("Debe ingresar una fecha de inicio");
+            Notifica_Error("Debe ingresar una fecha de inicio");
             document.form1.fecha_ini.focus();
         }else if(document.form1.fecha_fin.value==''){
-            alert("Debe una fecha final");
+            Notifica_Error("Debe una fecha final");
             document.form1.fecha_fin.focus();
         }else{
             document.form1.submit();

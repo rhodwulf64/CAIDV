@@ -103,7 +103,7 @@ function validar_nombre()
         {
             if(nom_Instituciones[i].value==nombre_Institucione.value.toUpperCase())
             {
-                alert('Debe ingresar un nombre distinto, este ya se encuentra registrado.');
+                Notifica_Error('Debe ingresar un nombre distinto, este ya se encuentra registrado.');
                 nombre_Institucione.value='';
                 nombre_Institucione.focus();
             }

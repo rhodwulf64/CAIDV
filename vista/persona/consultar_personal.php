@@ -201,7 +201,7 @@ else
                                 $("#status").hide();
                                 $("#cam_idpersonal").val('');
                                 $("#btn_enviar").prop( "disabled", true );
-                                alert('Ya existe una persona del personal con esta cedula.');                              
+                                Notifica_Error('Ya existe una persona del personal con esta cedula.');                              
                             }
                             else
                             {
@@ -248,7 +248,7 @@ else
         }
         else
         {
-            alert('El personal es menor de edad o tiene una fecha de nacimiento incorrecta, debe indicar una fecha de nacimiento valida.');
+            Notifica_Error('El personal es menor de edad o tiene una fecha de nacimiento incorrecta, debe indicar una fecha de nacimiento valida.');
             $("#cam_fechanacimientoper").focus();
             return false;
         }

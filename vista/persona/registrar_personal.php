@@ -206,7 +206,7 @@ else
                                 $("#status").hide();
                                 $("#cam_idpersonal").val('');
                                 $("#btn_enviar").prop( "disabled", true );
-                                alert('Ya existe una persona del personal con esta cedula.');                              
+                                Notifica_Error('Ya existe una persona del personal con esta cedula.');                              
                             }
                             else
                             {
@@ -252,13 +252,13 @@ else
         
         if(cedula.length<6)
         {
-            alert('Cédula invalida, debe ingresar una cédula valida.');
+            Notifica_Error('Cédula invalida, debe ingresar una cédula valida.');
             $("#cam_idpersonal").focus();
             return false;
         }
         else if(telefono.length<11)
         {
-            alert('Telefono invalido, debe ingresar un telefono valido de 11 caracteres.');
+            Notifica_Error('Telefono invalido, debe ingresar un telefono valido de 11 caracteres.');
             $("#cam_telefonoper").focus();
             return false;
         }
@@ -268,7 +268,7 @@ else
         }
         else
         {
-            alert('El personal es menor de edad o tiene una fecha de nacimiento incorrecta, debe indicar una fecha de nacimiento valida.');
+            Notifica_Error('El personal es menor de edad o tiene una fecha de nacimiento incorrecta, debe indicar una fecha de nacimiento valida.');
             $("#cam_fechanacimientoper").focus();
             return false;
         }

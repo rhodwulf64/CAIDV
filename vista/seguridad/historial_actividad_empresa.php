@@ -33,7 +33,7 @@
 <script>
     function f_enviar(){
         if(document.form1.empresa.value=='-'){
-            alert("Debe seleccionar una Empresa");
+            Notifica_Error("Debe seleccionar una Empresa");
         }else{
             document.form1.submit();
         }

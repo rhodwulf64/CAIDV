@@ -42,7 +42,7 @@ function validar_nombre()
         {
             if(nom_roles[i].value==nombre_rol.value.toUpperCase())
             {
-                alert('Debe ingresar un nombre distinto, este ya se encuentra registrado.');
+                Notifica_Error('Debe ingresar un nombre distinto, este ya se encuentra registrado.');
                 nombre_rol.value='';
                 nombre_rol.focus();
             }

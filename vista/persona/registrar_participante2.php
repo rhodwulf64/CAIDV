@@ -562,7 +562,7 @@ else
             }
             if(cont==2)
             {
-                alert('Solo un familiar puede ser representante del participante');
+                Notifica_Error('Solo un familiar puede ser representante del participante');
                 e.checked=false;
                 break;
             }
@@ -581,7 +581,7 @@ else
             }
             if(cont==2)
             {
-                alert('No se pueden repetir los parentescos');
+                Notifica_Error('No se pueden repetir los parentescos');
                 e.value='';
                 break;
             }
@@ -600,7 +600,7 @@ else
             }
             if(cont==2)
             {
-                alert('No se pueden repetir los familiares');
+                Notifica_Error('No se pueden repetir los familiares');
                 c.value='';
                 n.value='';
                 break;
@@ -627,7 +627,7 @@ else
         };
          if(cont<1)
             {
-                alert('Debe haber seleccionar almenos un dia para asistir Lu/Ma/Mi/Ju/Vi.');
+                Notifica_Error('Debe haber seleccionar almenos un dia para asistir Lu/Ma/Mi/Ju/Vi.');
                 bueno=false;
                 return bueno;
             }
@@ -637,7 +637,7 @@ else
             if(cedulafam[i].value=='')
             {
                 bueno=false;
-                alert('La cedula del familiar de la fila: '+(i+1)+' está vacia.');
+                Notifica_Error('La cedula del familiar de la fila: '+(i+1)+' está vacia.');
                 return bueno;
             }
         };
@@ -647,7 +647,7 @@ else
             if(parentescofam[i].value=='')
             {
                 bueno=false;
-                alert('El parentesco de la fila: '+(i+1)+' está vacio.');
+                Notifica_Error('El parentesco de la fila: '+(i+1)+' está vacio.');
                 return bueno;
             }
         };
@@ -662,7 +662,7 @@ else
         };
          if(cont<1)
             {
-                alert('Debe haber almenos un representante.');
+                Notifica_Error('Debe haber almenos un representante.');
                 bueno=false;
                 
             }
@@ -686,7 +686,7 @@ else
                                 $("#status").hide();
                                 $("#cam_cedulapar").val('');
                                 $("#btn_enviar").prop( "disabled", true );
-                                alert('Ya existe un participante con esta cedula.');                              
+                                Notifica_Error('Ya existe un participante con esta cedula.');                              
                             }
                             else
                             {

@@ -128,7 +128,7 @@
       } 
     else if(cerrar=='0') 
     {
-      alert('No se pudo trasladar el curso por que no existe ninguno igual')
+      Notifica_Error('No se pudo trasladar el curso por que no existe ninguno igual')
 
     }
   

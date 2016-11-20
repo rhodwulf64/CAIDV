@@ -296,7 +296,7 @@ function item_repetido(e)
         if(valor==item[i].value && e.id!=item[i].id)
         {
             e.value='';
-            alert('Este item ya está seleccionado, por favor seleccione otro.');
+            Notifica_Error('Este item ya está seleccionado, por favor seleccione otro.');
         }
     }
 

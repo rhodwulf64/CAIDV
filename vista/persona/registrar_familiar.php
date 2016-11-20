@@ -222,7 +222,7 @@ $("#cam_idfamiliar").change(function() {
                                 $("#status").hide();
                                 $("#cam_idfamiliar").val('');
                                 $("#btn_enviar").prop( "disabled", true );
-                                alert('Ya existe un familiar con esta cedula.');                              
+                                Notifica_Error('Ya existe un familiar con esta cedula.');                              
                             }
                             else
                             {
@@ -268,13 +268,13 @@ function validar()
 
          if(cedula.length<6)
         {
-            alert('Cédula invalida, debe ingresar una cédula valida.');
+            Notifica_Error('Cédula invalida, debe ingresar una cédula valida.');
             $("#cam_idfamiliar").focus();
             return false;
         }
         else if(telefono.length<11)
         {
-            alert('Telefono invalido, debe ingresar un telefono valido de 11 caracteres.');
+            Notifica_Error('Telefono invalido, debe ingresar un telefono valido de 11 caracteres.');
             $("#cam_telefonofam").focus();
             return false;
         }
@@ -284,7 +284,7 @@ function validar()
         }
         else
         {
-            alert('El Familiar es menor de edad o tiene una fecha de nacimiento incorrecta, debe indicar una fecha de nacimiento valida.');
+            Notifica_Error('El Familiar es menor de edad o tiene una fecha de nacimiento incorrecta, debe indicar una fecha de nacimiento valida.');
             $("#cam_fechanacimientofam").focus();
             return false;
         }

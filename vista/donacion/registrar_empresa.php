@@ -62,7 +62,7 @@
 <script type="text/javascript">
 function validar(){
     if(document.getElementById("cam_rifmod").value.length<8){
-        alert("Debe introduccir al menos 8 caracteres para el rif");
+        Notifica_Error("Debe introduccir al menos 8 caracteres para el rif");
         document.getElementById("cam_rifmod").value="";
         return false;
     }
@@ -75,7 +75,7 @@ function validar_nombre()
         {
             if(nom_modulos[i].value==nombre_modulo.value.toUpperCase())
             {
-                alert('Debe ingresar un rif distinto, este ya se encuentra registrado.');
+                Notifica_Error('Debe ingresar un rif distinto, este ya se encuentra registrado.');
                 nombre_modulo.value='';
                 nombre_modulo.focus();
             }

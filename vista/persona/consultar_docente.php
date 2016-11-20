@@ -182,7 +182,7 @@ else
         }
         else
         {
-            alert('El docente es menor de edad o tiene una fecha de nacimiento incorrecta, debe indicar una fecha de nacimiento valida.');
+            Notifica_Error('El docente es menor de edad o tiene una fecha de nacimiento incorrecta, debe indicar una fecha de nacimiento valida.');
             $("#cam_fechanacimientodoc").focus();
             return false;
         }

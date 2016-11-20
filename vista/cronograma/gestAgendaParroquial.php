@@ -554,19 +554,19 @@ var loF=document.fr_agenda;
 				
 			if(loF.Lugar_Enc.value=="")
 			{
-				alert("Escriba un lugar para la Actividad.");
+				Notifica_Error("Escriba un lugar para la Actividad.");
 				loF.Lugar_Enc.focus();
 				vInvalido=1;
 			}
 			if(loF.Hora_Ini.value=="")
 			{
-				alert("Indique una Hora para la Actividad.");
+				Notifica_Error("Indique una Hora para la Actividad.");
 				loF.Hora_Ini.focus();
 				vInvalido=1;
 			}
 			if(loF.Fecha_Ini.value=="")
 			{
-				calert("Indique una Fecha para la Actividad.");
+				cNotifica_Error("Indique una Fecha para la Actividad.");
 				loF.Fecha_Ini.focus();
 				vInvalido=1;
 			}
@@ -576,7 +576,7 @@ var loF=document.fr_agenda;
 
 					if(loF.CodigoTipoActividad.value=="-")
 					{
-						alert("Seleccione Tipo de Actividad.");
+						Notifica_Error("Seleccione Tipo de Actividad.");
 						loF.CodigoTipoActividad.focus();
 						vInvalido=1;
 					}
@@ -584,7 +584,7 @@ var loF=document.fr_agenda;
 				
 					if(loF.Nombre.value=="")
 					{
-						alert("Escriba un Nombre para la Actividad.");
+						Notifica_Error("Escriba un Nombre para la Actividad.");
 						loF.Nombre.focus();
 						vInvalido=1;
 					}
@@ -593,7 +593,7 @@ var loF=document.fr_agenda;
 			    case \'0\':
 			       	if(loF.Actividad.value=="-")
 					{
-						alert("Seleccione una Actividad.");
+						Notifica_Error("Seleccione una Actividad.");
 						loF.Actividad.focus();
 						vInvalido=1;
 					}
@@ -627,15 +627,15 @@ var loF=document.fr_agenda;
 
 				if((fecha_ini <= events[x].end && fecha_ini >= events[x].start)||(fecha_fin <= events[x].end && fecha_fin >= events[x].start)){
 					if(events[x].org === org){
-						alert("organizacion ocupada");
+						Notifica_Error("organizacion ocupada");
 						return false;
 					}
 					if(events[x].per_emp === per_emp){
-						alert("Responsable empresa ocupado");
+						Notifica_Error("Responsable empresa ocupado");
 						return false;
 					}
 					if(events[x].per_caidv === per_caidv){
-						alert("Responsable CAIDV ocupado");
+						Notifica_Error("Responsable CAIDV ocupado");
 						return false;
 					}
 				}

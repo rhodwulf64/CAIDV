@@ -61,7 +61,7 @@ $("#cam_tmunicipio_municipio").change(function() {
                                 $("#status").hide();
                                 $("#cam_descripcionloc").val('');
                                 $("#btn_enviar").prop( "disabled", true );
-                                alert('Ya existe una localidad con ese nombre es ese Municipio.');                              
+                                Notifica_Error('Ya existe una localidad con ese nombre es ese Municipio.');                              
                             }
                             else
                             {

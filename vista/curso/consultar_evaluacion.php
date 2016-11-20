@@ -100,7 +100,7 @@ function consultar_participantes_instrumento(id)
                     $('#cam_idinstrumento').prop("disabled", true);
                     $('#cam_idinstrumento').val('');
                     $('#cam_idinstrumento').val('');
-                    alert('No existen participantes inscritos en el curso seleccionado.');
+                    Notifica_Error('No existen participantes inscritos en el curso seleccionado.');
                 }
                
              }
@@ -127,7 +127,7 @@ function consultar_instrumentos(id,url)
                     $('#cam_idinstrumento').prop("disabled", true);
                     $('#cam_idinstrumento').val('');
 
-                    alert('No existen intrumentos registrados en la asignatura del curso seleccionado.');
+                    Notifica_Error('No existen intrumentos registrados en la asignatura del curso seleccionado.');
                 }
                
              }

@@ -86,7 +86,7 @@
                             });
                             function validarmax(){
                                 if($("#cantidad").val() > Number(maximo)){
-                                    alert('HA SOBREPASADO LA CANTIDAD DEL ARTICULO');
+                                    Notifica_Error('HA SOBREPASADO LA CANTIDAD DEL ARTICULO');
                                     $("#cantidad").val('');
                                 }
                             }
@@ -122,12 +122,12 @@
 <script type="text/javascript">
 function validar(){
     if(document.getElementById("idPersona").value==""){
-        alert("No ha seleccionado la persona");
+        Notifica_Error("No ha seleccionado la persona");
         return false;
     }
     var arr = document.getElementsByName("idArticulo[]");
     if(arr.length==0){
-        alert("No ha asignado ningun articulo");
+        Notifica_Error("No ha asignado ningun articulo");
         return false;
     }
     document.form_modulo.submit();
@@ -166,14 +166,14 @@ document.getElementById("agregar").onclick = function()
         if(arr.length>0){
             for(var i=0;i<arr.length;i++){
                 if(arr[i].value == articulo_value){
-                    alert("Ya ha ingresado este articulo");
+                    Notifica_Error("Ya ha ingresado este articulo");
                     return false;
                 }
             }
         }
         muchos(idTabla,campos,boton_eliminar);
     }else{
-        alert("Debe seleccionar un articulo y agregar una cantidad");
+        Notifica_Error("Debe seleccionar un articulo y agregar una cantidad");
 
     }
 };

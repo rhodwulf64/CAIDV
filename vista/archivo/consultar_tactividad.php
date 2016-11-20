@@ -47,7 +47,7 @@ function validar_nombre()
         {
             if(nom_tipoa[i].value==nombre_tipoa.value.toUpperCase())
             {
-                alert('Debe ingresar un nombre distinto, este ya se encuentra registrado.');
+                Notifica_Error('Debe ingresar un nombre distinto, este ya se encuentra registrado.');
                 nombre_tipoa.value='';
                 nombre_tipoa.focus();
             }
