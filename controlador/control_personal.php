@@ -46,8 +46,12 @@
 		break;
 		case 'registrar_personal':
 			$hecho=$lobjPersonal->registrar_personal();
+<<<<<<< HEAD
 			$IDenvi=$lobjPersonal->get_IDagregado();
 			$hecho=$lobjUsuario->registrar_usuario($IDenvi);
+=======
+			$hecho=$lobjUsuario->registrar_usuario();
+>>>>>>> caidv2
 			if($hecho)
 			{
 				$lobjBitacora->set_Datos($_SERVER['HTTP_REFERER'],$ldFecha,$lcReal_ip,'Registrar','Cargar datos','*','tpersonal','','',$_SESSION['usuario'],$operacion); //envia los datos a la clase bitacora

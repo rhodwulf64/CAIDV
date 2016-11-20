@@ -7,6 +7,10 @@
     {
         echo '<script>Notifica_Error("Usted tiene una sesíón abierta!");window.location.href="intranet.php";</script>'; // Si no existe un usuario logeado entonces le mostraŕa un mensaje y lo sacará para el inicio! 
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> caidv2
 ?>
 
 <link rel="stylesheet" type="text/css" href="../libreria/jquery.realperson.package-2.0.1/jquery.realperson.css"> <!--CSS que da estilo al plugin del captcha-->

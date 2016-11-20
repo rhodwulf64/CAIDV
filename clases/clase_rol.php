@@ -104,7 +104,11 @@
 		{
 			$this->conectar();
 			$cont=0;
+<<<<<<< HEAD
 				$sql="SELECT tservicio_trol.idservicio,nombreser,MarcaAgregacion,enlaceser,visibleser,orden FROM tservicio_trol,tservicio WHERE idrol='$this->lcIdRol' AND idmodulo='$IdModulo' AND tservicio_trol.idservicio=tservicio.idservicio ORDER BY orden ASC";
+=======
+				$sql="SELECT tservicio_trol.idservicio,nombreser,enlaceser,visibleser,orden FROM tservicio_trol,tservicio WHERE idrol='$this->lcIdRol' AND idmodulo='$IdModulo' AND tservicio_trol.idservicio=tservicio.idservicio ORDER BY orden ASC";
+>>>>>>> caidv2
 				$pcsql=$this->filtro($sql);
 				while($laRow=$this->proximo($pcsql))
 				{
@@ -113,7 +117,10 @@
 					$Fila[$cont][2]=$laRow['enlaceser'];
 					$Fila[$cont][3]=$laRow['visibleser'];
 					$Fila[$cont][4]=$laRow['orden'];
+<<<<<<< HEAD
 					$Fila[$cont][5]=$laRow['MarcaAgregacion'];
+=======
+>>>>>>> caidv2
 
 					$cont++;
 				}

@@ -310,11 +310,18 @@
     }
     .table-striped tbody tr:nth-child(odd) td,
     .table-striped tbody tr:nth-child(odd) th {
+<<<<<<< HEAD
 
       border-top: solid 1px #eee;
       border-bottom: solid 1px #eee;
     }
 
+=======
+      background-color: #f7f7f7;
+      border-top: solid 1px #eee;
+      border-bottom: solid 1px #eee;
+    }
+>>>>>>> caidv2
     .table tbody tr:hover td,
     .table tbody tr:hover th {
       background-color: #eee;

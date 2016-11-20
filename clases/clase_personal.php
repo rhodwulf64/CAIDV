@@ -18,6 +18,7 @@
 		private $lcDiagnostico;
 		private $lcLocalidad;
 		private $lcCorreo;
+<<<<<<< HEAD
 		private $lcIDagregado;
 
 	
@@ -25,6 +26,8 @@
 			$this->clsConexion();
 			$this->G = "";
 		}
+=======
+>>>>>>> caidv2
 
 		function set_Personal($pcIdPersonal)
 		{
@@ -101,6 +104,7 @@
 			$this->lcLocalidad=$pcLocalidad;
 		}
 
+<<<<<<< HEAD
 
 		function get_IDagregado()
 		{
@@ -108,6 +112,8 @@
 		}
 
 
+=======
+>>>>>>> caidv2
 		function consultar_personal()
 		{
 			$this->conectar();
@@ -215,9 +221,13 @@
 
 		function registrar_personal()
 		{
+<<<<<<< HEAD
 			$lnHecho=false;		
 			$this->inicio_trans(); // inicializo la trasaccion
 
+=======
+			$this->conectar();
+>>>>>>> caidv2
 			$sql="INSERT INTO 
 					`tpersonal`(nacionalidadper, `idpersonal`, `nombreunoper`, `nombredosper`, `apellidounoper`, `apellidodosper`, 
 					`sexoper`, `fechanacimientoper`, `direccionper`, `telefonoper`, `cargoper`, `estatusper`, 
@@ -226,6 +236,7 @@
 				('$this->lcNacionalidad', '$this->lcIdPersonal',UPPER('$this->lcNombreuno'),UPPER('$this->lcNombredos'),UPPER('$this->lcApellidouno'),UPPER('$this->lcApellidodos'),
 					UPPER('$this->lcSexo'),'$this->lcFecha',UPPER('$this->lcDireccion'),'$this->lcTelefono',UPPER('$this->lcCargo'),'1',
 					'$this->lcDiagnostico','$this->lcCorreo','$this->lcLocalidad')";
+<<<<<<< HEAD
 			$this->ejecuta($sql);
 			if ( $this->como_va() )
 			{
@@ -244,6 +255,10 @@
 			 	$this->deshacer_trans(); // finalizo la transaccion fallida 
 			}
 				
+=======
+			$lnHecho=$this->ejecutar($sql);			
+			$this->desconectar();
+>>>>>>> caidv2
 			return $lnHecho;
 		}
 

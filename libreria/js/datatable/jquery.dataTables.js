@@ -2075,8 +2075,13 @@
 			
 			var sSearchStr = oSettings.oLanguage.sSearch;
 			sSearchStr = (sSearchStr.indexOf('_INPUT_') !== -1) ?
+<<<<<<< HEAD
 			  sSearchStr.replace('_INPUT_', '<input type="text" id="buscadorCampoDT" />') :
 			  sSearchStr==="" ? '<input type="text" id="buscadorCampoDT" />' : sSearchStr+' <input type="text" id="buscadorCampoDT"/>';
+=======
+			  sSearchStr.replace('_INPUT_', '<input type="text" />') :
+			  sSearchStr==="" ? '<input type="text" />' : sSearchStr+' <input type="text" />';
+>>>>>>> caidv2
 			
 			var nFilter = document.createElement( 'div' );
 			nFilter.className = oSettings.oClasses.sFilter;
@@ -2117,6 +2122,7 @@
 					} );
 				}
 			} );
+<<<<<<< HEAD
 			jqFilter.bind( 'focus.DT', function(e) {
 				/* Update all other filter input elements for the new display */
 				var n = oSettings.aanFeatures.f;
@@ -2141,6 +2147,8 @@
 					} );
 				}
 			} );
+=======
+>>>>>>> caidv2
 		
 			jqFilter
 				.attr('aria-controls', oSettings.sTableId)

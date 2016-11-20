@@ -133,7 +133,11 @@ for($i=0;$i<count($laModulos);$i++)
             <div class="modal-content">
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+<<<<<<< HEAD
                 <h4 class="modal-title" id="myModalLabel">Desactivar instrumento</h4>
+=======
+                <h4 class="modal-title" id="myModalLabel">Descactivar instrumento</h4>
+>>>>>>> caidv2
               </div>
               <div class="modal-body">
                    <div class="row">

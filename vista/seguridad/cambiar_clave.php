@@ -19,12 +19,20 @@ $titulo   ='Cambiar clave';
         </div>
         <div class="row-fluid">
             <div class="col-lg-6 span6">
+<<<<<<< HEAD
                 <label>Clave nueva <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Clave nueva con la cual podrá acceder al sistema."><i class="fa fa-question" ></i></span></label>
+=======
+                <label>Clave Nueva <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Clave nueva con la cual podrá acceder al sistema."><i class="fa fa-question" ></i></span></label>
+>>>>>>> caidv2
                 <input type="password"  name="clave_nueva" id="cam_clave_nueva" value="" required/>
                 
             </div>
             <div class="col-lg-6 span6">
+<<<<<<< HEAD
                 <label>Repita clave nueva <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Debe repetir la clave nueva con la cual podrá acceder al sistema."><i class="fa fa-question" ></i></span></label>
+=======
+                <label>Repita Clave Nueva <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Debe repetir la clave nueva con la cual podrá acceder al sistema."><i class="fa fa-question" ></i></span></label>
+>>>>>>> caidv2
                 <input type="password"  name="repita_clave_nueva" id="cam_repita_clave_nueva" value="" required/>
             </div>
         </div>

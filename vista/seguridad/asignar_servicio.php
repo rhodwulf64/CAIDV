@@ -2,7 +2,11 @@
     <h3>Asignar servicio</h3>
      <div class="alert alert-info">
         <ul>
+<<<<<<< HEAD
             En este módulo podrá asignar sub-módulo y operación al rol del sistema. https://jqueryui.com/sortable/
+=======
+            En este módulo podrá asignar sub-módulo y operación al rol del sistema.
+>>>>>>> caidv2
         </ul>
     </div>
     <form action="../controlador/control_rol.php" method="POST" name="form_servicio">
@@ -36,7 +40,11 @@
                     require_once('../clases/clase_servicio.php');
                     $lobjServicio=new clsServicio;
                     $laServicios=$lobjServicio->consultar_servicios_modulo($laModulos[$i][0]);
+<<<<<<< HEAD
                     echo '<div class="col-lg-5 span5" style="display:inline">';
+=======
+                    echo '<div class="col-lg-5 span5" style="display:inline">';                  
+>>>>>>> caidv2
                         echo '<h5>'.$laModulos[$i][1].'</h5>';
                         if($laServicios)
                         {
@@ -47,7 +55,11 @@
                                         <th>Servicio</th>
                                         <th>Tipo</th>
                                         <th><input type="checkbox" value="" title="Asignar todos" name="" id="cam_check_todos'.$i.'" onclick="habilitar_todos(this,'; echo "'".$i."'";echo ');" /> Asignar</th>
+<<<<<<< HEAD
                                         <th>Orden</th>
+=======
+                                        <th>Orden</th>                    
+>>>>>>> caidv2
                                     </thead>
                                     <tbody>';
                                 $laServicios_Rol=$lobjRol->consultar_servicios($laModulos[$i][0]);
@@ -64,7 +76,11 @@
                                            $disabled='';
                                            break;
                                         }
+<<<<<<< HEAD
 
+=======
+                                        
+>>>>>>> caidv2
                                     }
 
                                     if($cheked!='checked')
@@ -91,6 +107,7 @@
                                     echo '<td style="text-align:center">
                                             <input type="checkbox" name="idservicio'.$i.'[]" onclick="habilitar(this)" id="cam_asignar_'.$i.'_'.$j.'" value="'.$laServicios[$j][0].'" '.$cheked.'>
                                           </td>';
+<<<<<<< HEAD
 
                                     if($tipo=='Sub-Módulo'){echo '<td style="display:block" >';}
                                     elseif($tipo=='Operación'){echo '<td style="display:none">';}
@@ -101,13 +118,30 @@
 
                                                 for ($g=1; $g<=count($laServicios) ; $g++)
                                                 {
+=======
+                                    
+                                    if($tipo=='Sub-Módulo'){echo '<td style="display:block" >';}
+                                    elseif($tipo=='Operación'){echo '<td style="display:none">';}
+                                    
+                                            echo '<select style="width:60px" name="orden'.$i.'[]" onchange="validar_orden(this)" id="cam_orden_'.$i.'_'.$j.'" '.$disabled.' >
+                                                <option value="">-</option>
+                                                ';
+                                         
+                                                for ($g=1; $g<=count($laServicios) ; $g++) 
+                                                { 
+>>>>>>> caidv2
                                                     $selected='';
                                                     if($cheked=='checked')
                                                     {
                                                         if($laServicios_Rol[$j-$c][4]==$g)
                                                         {
+<<<<<<< HEAD
                                                             $selected='selected';
 
+=======
+                                                            $selected='selected';  
+                                                            
+>>>>>>> caidv2
                                                         }
                                                     }
                                                     echo '<option value="'.$g.'" '.$selected.'>'.$g.'</option>';
@@ -149,11 +183,19 @@
 
         if(cam_asignar.checked==true)
         {
+<<<<<<< HEAD
            cam_orden.disabled=false;
         }
         else
         {
             cam_orden.disabled=true;
+=======
+           cam_orden.disabled=false; 
+        }
+        else
+        {
+            cam_orden.disabled=true; 
+>>>>>>> caidv2
         }
     }
 
@@ -185,6 +227,12 @@
                 break;
             }
         };
+<<<<<<< HEAD
 
     }
 </script>
+=======
+        
+    }
+</script>
+>>>>>>> caidv2

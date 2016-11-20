@@ -3,7 +3,11 @@
 	require_once('../nucleo/ModeloConect.php');
 	class clsAcceso extends ModeloConect
 	{
+<<<<<<< HEAD
 
+=======
+		
+>>>>>>> caidv2
 		private $lcIdAcceso;
 		private $lcIp;
 		private $lcExito;
@@ -34,7 +38,11 @@
 		{
 			$this->conectar();
 			$sql="INSERT INTO `tacceso`(`ipacc`, `exitoacc`, `idusuario`,estatusacc) VALUES ('$this->lcIp','$this->lcExito','$this->lcUsuario','$this->lcExito')";
+<<<<<<< HEAD
 			$lnHecho=$this->ejecutar($sql);
+=======
+			$lnHecho=$this->ejecutar($sql);			
+>>>>>>> caidv2
 			$this->desconectar();
 			return $lnHecho;
 		}
@@ -43,7 +51,11 @@
 		{
 			$this->conectar();
 			$sql="UPDATE `tacceso` SET `fecha_salidaacc`=NOW(),estatusacc='0' WHERE idacceso='$this->lcIdAcceso' AND idusuario='$this->lcUsuario' AND estatusacc='1'";
+<<<<<<< HEAD
 			$lnHecho=$this->ejecutar($sql);
+=======
+			$lnHecho=$this->ejecutar($sql);			
+>>>>>>> caidv2
 			$this->desconectar();
 			return $lnHecho;
 		}
@@ -58,7 +70,11 @@
 			while($laRow=$this->proximo($pcsql))
 			{
 				$idacceso =$laRow['idacceso'];
+<<<<<<< HEAD
 			}
+=======
+			}		
+>>>>>>> caidv2
 			$this->desconectar();
 			return $idacceso;
 		}
@@ -68,6 +84,10 @@
 			$fila['acceso']=true;
 			$this->conectar();
 			$sql="SELECT * FROM tacceso,tusuario WHERE tacceso.idusuario='$this->lcUsuario' AND tacceso.idusuario=tusuario.idusuario AND estatusacc='1' AND (SELECT tiempoconexion FROM tsistema)>TIMESTAMPDIFF(MINUTE,ultima_actividadacc,NOW())";
+<<<<<<< HEAD
+=======
+			//echo $sql;
+>>>>>>> caidv2
 			$pcsql=$this->filtro($sql);
 			if($laRow=$this->proximo($pcsql))
 			{
@@ -98,9 +118,17 @@
 				$fila[$cont]['ipacc'] =$laRow['ipacc'];
 				$fila[$cont]['tiempo'] =($laRow['tiempo'])?$laRow['tiempo']:'El usuario no inició sesión';;
 				$cont++;
+<<<<<<< HEAD
 			}
+=======
+			}		
+>>>>>>> caidv2
 			$this->desconectar();
 			return $fila;
 		}
 	}
+<<<<<<< HEAD
 ?>
+=======
+?>
+>>>>>>> caidv2
