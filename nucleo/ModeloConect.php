@@ -3,7 +3,7 @@ include_once('../libreria/constantes.php');
 class ModeloConect
 {
 	private $servidor='127.0.0.1';
-	private $usuario='job';
+	private $usuario='root';
 	private $clave='1234';
 	public $bd=BD;
 	protected $laRow = array();
@@ -14,15 +14,15 @@ class ModeloConect
 
 	function clsConexion()  // constructor de la clase
 	{
-		$this->OmyI = new  mysqli( $this->servidor, $this->usuario, $this->clave, $this->bd );// se 
+		$this->OmyI = new  mysqli( $this->servidor, $this->usuario, $this->clave, $this->bd );// se
 	}
 
-	
+
 	protected function maxid()
  	{
 	    $ultimo=mysql_insert_id($this->con);
 	    return $ultimo;
-	}  
+	}
 
 	protected function conectar()
 	{
@@ -40,14 +40,14 @@ class ModeloConect
 		return $this->asIDinsertado;
 	}
 
-	  
+
 	  //FUNCION PROTEGIDA FILTRO DE BUSQUEDA
       protected function filtro($sql)
       {
       	 $lrTb=mysql_query($sql,$this->con) OR die(mysql_error());
       	 return $lrTb;
       }
-	  
+
       //FUNCION PROTEGIDA CIERRAFILTRO DE BUSQUEDA
       protected function cierrafiltro($result)
       {
@@ -68,10 +68,10 @@ class ModeloConect
       	 $laRow=mysql_fetch_array($result);
       	 return $laRow;
       }
-      
+
 	  //FUNCION PROTEGIDA NUMERO DE REGISTROS PARA SABER LA CANTIDAD DE REGISTROS EXISTENTES
       protected function num_registros($result)
-      {  
+      {
  	     $lnRegistros=mysql_num_rows($result);
  	     return $lnRegistros;
       }
@@ -81,13 +81,13 @@ class ModeloConect
 	  {
 	     mysql_query("BEGIN",$this->con);
 	  }
-	  
+
 	  //FUNCION COMMIT
 	  protected function commit()
 	  {
 	     mysql_query("COMMIT",$this->con);
 	  }
-	  
+
 	  //FUNCION ROLLBACK
 	  protected function rollback()
 	  {
@@ -119,6 +119,9 @@ class ModeloConect
 			return false;
 		}
 	}
+
+
+
 	function TraerArreglo($rs){ // convierte un record set en un arreglo
 		return $rs->fetch_array(MYSQLI_ASSOC);
 	}
@@ -131,6 +134,12 @@ class ModeloConect
 	}
 	function deshacer_trans(){ // deshago la transaccion
 		$this->ejecuta("ROLLBACK");
+	}
+	function generaRecuperador($rango=30)
+	{
+		$recuperador=substr(str_shuffle("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, $rango);
+
+		return $recuperador;
 	}
 
 }

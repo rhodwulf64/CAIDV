@@ -49,7 +49,8 @@
 						$_SESSION['Horaultimo_acceso']=$datosUsuario[9]; // se guarda la fecha del ultimo acceso del usuario
 						$_SESSION['tiempo']=$datosUsuario[7]; // se guarda cuanto tiempo estuvo conectado el usuario en su ultimo acceso
 						$_SESSION['prueba']=''; // se limpia el valor para la navegación en modo de prueba del sistema
-						$_SESSION['clave']=$clave; //Se guarda la clave actual del usuario para validarla en caso de que quiera hacer cambio de clave
+						// jaja!? $_SESSION['clave']=$clave; //Se guarda la clave actual del usuario para validarla en caso de que quiera hacer cambio de clave
+						$_SESSION['msjModo']="";
 	    				$lobjUsuario->actualizar_actividad($_SESSION['idacceso']); // se actualiza la actividad del usuario
 						$lobjUsuario->cerrar_accesos_activos(); // se cierran todos los accesos activos por el usuario
 						require_once('../controlador/start_lapso.php'); //chequea las fechas y estatus de los lapsos académicos actuales, los apertura y/o cierra de ser necesario

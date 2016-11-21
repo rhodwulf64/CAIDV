@@ -37,6 +37,7 @@
 				else
 				{
 					$_SESSION['msj']='Error en el registro';
+					$_SESSION['msjModo']="E";
 				}
 			}
 		break;

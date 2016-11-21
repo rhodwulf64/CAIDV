@@ -2,7 +2,7 @@
 //Validación lemez version 1.1
 //Nota: Es importante validar del lado servidor.
 	jQuery.fn.lemez_aceptar = function (a,z) {
-		
+
 	  $(this).attr("autocomplete","off");var c=true;var d=false;var e="#CC0000";
 	  var f=$(this).css("border-top-color");
 	  var f2=$(this).css("border-bottom-color");
@@ -46,11 +46,11 @@
 	  case"rifpublico":var h=/([G])+-([0-9]{4,8})+-([0-9])/;
 	  var d=true;
 	  var i="Debe introducir un Rif Publico valido Ej: G-20000033-3";
-	  break;		  
+	  break;
 	  case"rif":var h=/([A-Z])+-([0-9]{4,8})+-([0-9])/;
 	  var d=true;
 	  var i="Debe introducir un Rif válido Ej: J-10605343-3";
-	  break;	  
+	  break;
 	  case"ip":var h=/\b(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\b/;
 	  var d=true;
 	  var i="Debe introducir una ip valida Ej: 192.168.1.1";
@@ -66,15 +66,15 @@
 
 	  		case"sin_comillas":var h=/^[a-zA-ZÁáÀàÉéÈèÍíÌìÓóÒòÚúÙùÑñüÜ0-9!¡¿<>@#\%\^&\*\?_~,\.\/ ]+$/;var i="No se permiten comillas simples (\') o comillas dobles (\") .";break;
 	  default:{var h=a;var d=true;var i="Existe un error de Validacion, Por Favor Verifique sus campos."}}
-	   
+
 posicion=g.position();var j=document.createElement("div");j.id="div_msj"+g.attr("id");var k=g.height()+4;$(j).css({border:"1px solid #777",background:"#E6E6E6",position:"absolute","border-radius":"3px",top:posicion.top+k+6,left:posicion.left});
 	    j.innerHTML=i;$("body").append(j);$(j).hide();$(this).keypress(function(a){if(d==false){c=h.test(String.fromCharCode(a.which));if(a.which==8||a.which==0)c=true;return c}});
-		
+
 $(this).keyup(function(){j.innerHTML=i;if(d==false){if(c==false){$("#div_msj"+g.attr("id")).show().delay(3e3).fadeOut(2e3)}else{$("#div_msj"+g.attr("id")).hide()}}});
-$(this).blur(function(){if(z!=""&&g.val()){if(h.test(g.val())==false){$(g).css("border-color",e);$(g).focus();Notifica_Error(i);return false}else{$(g).css("border-color",f);$("#div_msj"+g.attr("id")).hide();return true}}});
+$(this).blur(function(){if(z!=""&&g.val()){if(h.test(g.val())==false){$(g).css("border-color",e);swal(i,"","error");return false}else{$(g).css("border-color",f);$("#div_msj"+g.attr("id")).hide();return true}}});
 		//if(!z) {z="form"; b="no"};
 	    $("button").click(function () {
-			
+
 			recolorear();
 if($(this).attr("id")&&z){boton_clic=$(this).attr("id");todo_id_boton=z;id_boton=todo_id_boton.split(",");for(ii=0;ii<id_boton.length;ii++){if(boton_clic!=id_boton[ii]){b="no"}else{b="si";ii=10000}}}else{b="no"}
 	       if(b=="si"&&g.val()==""){j.innerHTML="Campo obligatorio";$("#div_msj"+g.attr("id")).show().delay(3e3).fadeOut(2e3)}else{$("#div_msj"+g.attr("id")).hide()}if(b=="si"||b=="no"&&g.val()!=""){if(h.test(g.val())==false){$(g).css("border-color",e);return false}else{recolorear();return true}}})

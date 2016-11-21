@@ -61,19 +61,20 @@ if($_POST)
 	else if($lsOperacion=='ingrese_clave')
 	{
 		$lsClave=addslashes($_POST['clave']);
-		$lobjPregunta->set_Usuario($lsCuenta);
-		$llHecho = $lobjPregunta->cambio_clave($lsClave);
+		$lsRecuperador=addslashes($_POST['recuperador']);
+		$lobjPregunta->set_IDTUsuario($lsCuenta);
+		$llHecho = $lobjPregunta->cambio_clave($lsClave,$lsRecuperador);
 
 		if($llHecho)
 		{
-			$msj='Cambio de clave exitosamente, inicie sesión.';
+			$msj='Su clave ha sido modificada exitosamente.';
 			$form1=true;
 			$form2=false;
 			$form3=false;
 		}
 		else
 		{
-			$msj='Ya a usado esta clave anteriormente, intente de nuevo.';
+			$msj='La clave ingresada ya ha sido utilizada anteriormente, inténtelo de nuevo.';
 			$form1=true;
 			$form2=false;
 			$form3=false;
@@ -103,11 +104,14 @@ else
         <link rel="stylesheet" href="../bootstrap/css/bootstrap-responsive.min.css">
         <link rel="stylesheet" href="../bootstrap/css/main.css">
         <link rel="stylesheet" href="../media/css/style.css">
+				<link rel="stylesheet" type="text/css" href="../libreria/sweetalert-master/dist/sweetalert.css">
+				<script src="../libreria/sweetalert-master/dist/sweetalert.min.js"></script>
         <link href="../libreria/css/datatable/jquery-ui-1.8.4.custom.css" rel="stylesheet" type="text/css" />
         <link href="../libreria/css/formularios.css" rel="stylesheet" type="text/css" />
         <link href="../libreria/datepicker/css/datepicker.css" rel="stylesheet" type="text/css" />
         <script src="../bootstrap/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+				<script type="text/javascript" src="../libreria/validacion/js/lemez_validacion1.1.js"></script>
         <script>window.jQuery || document.write('<script src="../bootstrap/js/vendor/jquery-1.10.1.min.js"><\/script>')</script>
 
         <script src="../bootstrap/js/vendor/bootstrap.min.js"></script>
@@ -186,15 +190,17 @@ else
 		                <input type="hidden" value="ingrese_clave" name="operacion" />
 		                <input type="hidden" value="<?php print($lsCuenta);?>" name="cuenta" />
 		                <input type="hidden" value="<?php print($lsNombreFull);?>" name="nombreFull" />
+										<input type="hidden" value="<?php print($Pregunta[0]['Recuperador']);?>" name="recuperador" />
 		                <div class="row-fluid">
 		                    <div class="col-lg-1 span6">
-		                        <label>Cuenta: <br><b><?php print($lsNombreFull);?></b></label>
+		                        <h4>Estás a sólo un paso</h4>
+		                        <label><b>Cuenta Seleccionada:</b><br><?php print($lsNombreFull);?></label><br>
 		                        <input type="password" class="span6"  name="clave" id="cam_clave"  value="" required placeholder="Ingrese su nueva clave"/>
-
+		                        <input type="password" class="span6"  name="clave2" id="cam_clave2"  value="" required placeholder="Repita la clave"/>
 		                    </div>
 		                </div>
 		                <div class="botonera">
-		                    <input type="submit" class="btn btn-success" name="btn_enviar" id="btn_enviar" value="Aceptar">
+		                    <input type="submit" class="btn btn-success" name="btn_enviar" id="btn_enviar" value="Aceptar" onclick="return enviar();">
 		                    <input type="button" class="btn btn-danger" name="btn_regresar" id="btn_regresar" value="Cerrar Ventana" onclick="window.close();">
 		                </div>
 		            </form>
@@ -216,4 +222,30 @@ else
 </html>
 <script type="text/javascript">
     $('#dp3').datepicker();
+
 </script>
+
+<?php if($form3){ ?>
+	<script type="text/javascript">
+	$(function(){
+		$("#cam_clave").lemez_aceptar("contraseña");
+		$("#cam_clave2").lemez_aceptar("contraseña");
+	});
+	function enviar()
+	{
+		var clave = document.getElementById('cam_clave').value;
+		var clave2 = document.getElementById('cam_clave2').value;
+
+		if(clave!=clave2)
+		{
+				Notifica_Error('Las claves ingresadas no coinciden');
+				return false;
+		}
+		else
+		{
+				return true;
+		}
+	}
+
+	</script>
+<?php }?>

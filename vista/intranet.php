@@ -3,6 +3,7 @@
 
     $usuario=(isset($_SESSION['usuario']))?$_SESSION['usuario']:"";//toma el valor que se guarda en la variable usuario que está en la variable $_SESSION
     $prueba=(isset($_SESSION['prueba']))?$_SESSION['prueba']:"";//toma el valor que se guarda en la variable usuario que está en la variable $_SESSION
+    $msjModo=(isset($_SESSION['msjModo']))?$_SESSION['msjModo']:"";//toma el valor que se guarda en la variable mensaje que está en la variable $_SESSION
     $msj=(isset($_SESSION['msj']))?$_SESSION['msj']:"";//toma el valor que se guarda en la variable mensaje que está en la variable $_SESSION
     $vista=(isset($_GET['vista']))?$_GET['vista']:"Panel_inicio";//toma el valor que se guarda en la variable vista que está en la URL.
     $operacion=(isset($_GET['o']))?$_GET['o']:"Navegar";//toma el valor que se guarda en la variable vista que está en la URL.
@@ -172,13 +173,25 @@
         }
         if($msj)  //verifica si existe algún texto en el arreglo msj de la variable $_SESSION
         {
+          if ($msjModo=="E")
+          {
             echo '<script>
-                   $( document ).ready(function()
-                    {
-                        Notifica_Logro("'.$msj.'");
-                    });
+            $( document ).ready(function()
+            {
+              Notifica_Error("'.$msj.'");
+            });
+            </script>';// si existia un mensaje este lo imprime mediante
+          }
+          else
+          {
+            echo '<script>
+            $( document ).ready(function()
+            {
+              Notifica_Logro("'.$msj.'");
+            });
+            </script>';// si existia un mensaje este lo imprime mediante
+          }
 
-               </script>';// si existia un mensaje este lo imprime mediante
         }
 
     if((!$tiempo_conexion)&&($prueba==''))
@@ -221,6 +234,7 @@
     }
 
             unset($_SESSION['msj']);//borra lo que habia en la variable.
+            unset($_SESSION['msjModo']);//borra lo que habia en la variable.
         ?>
 
     </head>

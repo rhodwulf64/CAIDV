@@ -29,12 +29,13 @@
             ?>
         </select>
         <div class="checkbox">
+          Seleccionar todos los módulos <input type="checkbox" value="" title="Seleccionar todos los módulos" name="" id="cam_check_todos" onclick="habilitar_todos(this);" />
             <table class="table table-striped">
                 <thead>
                     <br>
                     <th align="center">Módulo</th>
-                    <th align="center">Asignar <input type="checkbox" value="" title="Asignar todos" name="" id="cam_check_todos" onclick="habilitar_todos(this);" /></th>
-                    <th align="center">Orden</th>                  
+                    <th align="center">Asignar</th>
+                    <th align="center">Orden</th>
                 </thead>
                 <tbody>
                 <?php
@@ -73,21 +74,21 @@
                                 <select style="width:50px" name="orden[]" onchange="validar_orden(this)" id="cam_orden'.$i.'" '.$disabled.' >
                                     <option value="">-</option>
                                     ';
-                                   
-                                    for ($g=1; $g<=count($laModulos) ; $g++) 
-                                    { 
+
+                                    for ($g=1; $g<=count($laModulos) ; $g++)
+                                    {
                                         $selected='';
                                         if($cheked=='checked')
                                         {
                                             if($laModulos_Rol[$i-$c][2]==$g)
                                             {
-                                                $selected='selected';  
-                                                
+                                                $selected='selected';
+
                                             }
                                         }
                                         echo '<option value="'.$g.'" '.$selected.'>'.$g.'</option>';
                                     }
-                                
+
                                 echo '</select>
                               </td>';
                         echo '</tr>';
@@ -114,11 +115,11 @@
 
         if(cam_asignar.checked==true)
         {
-           cam_orden.disabled=false; 
+           cam_orden.disabled=false;
         }
         else
         {
-            cam_orden.disabled=true; 
+            cam_orden.disabled=true;
         }
     }
 
@@ -149,6 +150,6 @@
                 break;
             }
         };
-        
+
     }
 </script>

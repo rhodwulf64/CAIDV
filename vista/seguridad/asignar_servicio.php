@@ -41,12 +41,12 @@
                         if($laServicios)
                         {
                             $c=0;
-                            echo '<div  class="checkbox" style="border: solid 1px #ccc">
+                            echo '<div  class="checkbox" style="border: solid 1px #ccc">Seleccionar todos los servicios <input type="checkbox" value="" title="Seleccionar todos los servicios" name="" id="cam_check_todos'.$i.'" onclick="habilitar_todos(this,'; echo "'".$i."'";echo ');" />
                                 <table class="table table-striped">
                                     <thead>
                                         <th>Servicio</th>
                                         <th>Tipo</th>
-                                        <th><input type="checkbox" value="" title="Asignar todos" name="" id="cam_check_todos'.$i.'" onclick="habilitar_todos(this,'; echo "'".$i."'";echo ');" /> Asignar</th>
+                                        <th>Asignar</th>
                                         <th>Orden</th>
                                     </thead>
                                     <tbody>';

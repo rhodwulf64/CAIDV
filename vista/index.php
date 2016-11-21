@@ -27,7 +27,7 @@
 
     <script type="text/javascript" src="../media/js/jquery.js"></script>
 	<script type="text/javascript" src="../media/js/scripts.js"></script>
-    <script type="text/javascript" src="../libreria/validacion/js/lemez_validacion_intranet.js"></script>
+    <script type="text/javascript" src="../libreria/validacion/js/lemez_validacion1.1.js"></script>
 	<!--[if lt IE 9]>
 		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 		<link href="style-ie.css" rel="stylesheet" type="text/css" media="screen">
@@ -41,7 +41,7 @@
 	<header class="h6 sticky-enabled no-topbar">
 		<section class="top">
 			<div>
-				
+
 			</div>
 		</section>
 

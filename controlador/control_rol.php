@@ -16,13 +16,13 @@
 	$lcReal_ip=$lobjUtil->get_real_ip();
     $ldFecha=date('Y-m-d h:m');
 
-	switch ($operacion) 
+	switch ($operacion)
 	{
 		case 'registrar_rol':
 			if(!$lobjRol->validar_repetido())
 			{
 				$hecho=$lobjRol->registrar_rol();
-			
+
 				if($hecho)
 				{
 					$lobjBitacora->set_Datos($_SERVER['HTTP_REFERER'],$ldFecha,$lcReal_ip,'Registrar','Cargar datos','*','trol','','',$_SESSION['usuario'],$operacion); //envia los datos a la clase bitacora
@@ -30,12 +30,12 @@
 					$_SESSION['msj']='Se ha registrado exitosamente';
 				}
 				else
-				{	
+				{
 					$_SESSION['msj']='Error en el registro';
 				}
 			}
 			else
-			{	
+			{
 				$_SESSION['msj']='Error , el rol a registrar ya existe.';
 			}
 			header('location: ../vista/intranet.php?vista=seguridad/rol');
@@ -49,14 +49,14 @@
 				$_SESSION['msj']='Se ha modificado exitosamente';
 			}
 			else
-			{	
+			{
 				$_SESSION['msj']='No se realizarón cambios';
 			}
 		}
 		else
-		{	
-			$_SESSION['msj']='Error , el rol a registrar ya existe.';
-		}	
+		{
+			$_SESSION['msj']='Error , el rol que desea registrar ya existe.';
+		}
 			header('location: ../vista/intranet.php?vista=seguridad/rol');
 		break;
 		case 'eliminar_rol':
@@ -68,7 +68,7 @@
 				$_SESSION['msj']='Se ha desactivado exitosamente';
 			}
 			else
-			{	
+			{
 				$_SESSION['msj']='Error al eliminar';
 			}
 			header('location: ../vista/intranet.php?vista=seguridad/rol');
@@ -77,19 +77,19 @@
 			$hecho=$lobjRol->asignar_modulo();
 			if($hecho)
 			{
-				$_SESSION['msj']='Se han asignado los modulos exitosamente';
+				$_SESSION['msj']='Se han asignado los módulos exitosamente';
 			}
 			else
-			{	
-				$_SESSION['msj']='Error al asignar los modulo';
+			{
+				$_SESSION['msj']='Error al asignar los módulos';
 			}
-			header('location: ../vista/intranet.php?vista=seguridad/asignar_servicio&id='.$_POST['idrol']);
+			header('location: ../vista/intranet.php?vista=seguridad/asignar_modulo&id='.$_POST['idrol']);
 		break;
 		case 'asignar_servicio':
 			require_once('../clases/clase_modulo.php');
             $lobjModulo=new clsModulo;
             $laModulos=$lobjRol->consultar_modulos_menu();
-            $lobjRol->quitar_servicios();            
+            $lobjRol->quitar_servicios();
 				for ($i=0; $i <count($laModulos);$i++)
 				{
 					if($_POST['idservicio'.$i])
@@ -99,13 +99,13 @@
 						$hecho=$lobjRol->asignar_servicio();
 					}
 				}
-			
+
 			if($hecho)
 			{
 				$_SESSION['msj']='Se han asignado los servicios exitosamente';
 			}
 			else
-			{	
+			{
 				$_SESSION['msj']='Error al asignar los servicios';
 			}
 
@@ -120,7 +120,7 @@
 				$_SESSION['msj']='Se ha restaurado exitosamente';
 			}
 			else
-			{	
+			{
 				$_SESSION['msj']='No se pudo restaurar el servicio';
 			}
 
