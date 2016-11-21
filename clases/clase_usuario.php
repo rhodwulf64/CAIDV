@@ -58,7 +58,7 @@
 			(SELECT DATE_FORMAT(fechaacc,'%h:%i %p') FROM tacceso WHERE id=idusuario ORDER BY idacceso DESC LIMIT 1) AS Horaultimo_acceso,
 			(SELECT TIMEDIFF(fecha_salidaacc,fechaacc) FROM tacceso WHERE id=idusuario ORDER BY idacceso DESC LIMIT 1) AS tiempo
 			FROM tusuario,trol,tclave
-			WHERE idusuario='".mysql_real_escape_string($this->lcUsuario)."' AND idusuario=tusuario_idusuario AND clavecla=sha1('".mysql_real_escape_string($this->lcClave)."') AND trol.idrol=trol_idrol AND estatuscla='1' ";
+			WHERE idusuario='".mysql_real_escape_string($this->lcUsuario)."' AND idTusuario=tusuario_idusuario AND clavecla=sha1('".mysql_real_escape_string($this->lcClave)."') AND trol.idrol=trol_idrol AND estatuscla='1' ";
 			$pcsql=$this->filtro($sql);
 			if($laRow=$this->proximo($pcsql))
 			{
@@ -81,7 +81,7 @@
 		{
 			$cont=0;
 			$this->conectar();
-			$sql="SELECT tusuario.idusuario as id,nombrerol,idrol,nombreusu,TO_DAYS(fechafincla)as fechafincla,TO_DAYS(NOW())as fechaactual,estatususu,(SELECT CONCAT_WS(' / ',DATE_FORMAT(fechaacc,'%d-%m-%Y %h-%i %p'),DATE_FORMAT(fecha_salidaacc,'%d-%m-%Y %h-%i %p')) FROM tacceso WHERE id=idusuario ORDER BY idacceso DESC LIMIT 1)as ultimo_acceso,emailusu,cedula FROM tusuario,trol,tclave WHERE tusuario.idusuario=tusuario_idusuario AND idrol=trol_idrol AND estatuscla='1'";
+			$sql="SELECT tusuario.idusuario as id,nombrerol,idrol,nombreusu,TO_DAYS(fechafincla)as fechafincla,TO_DAYS(NOW())as fechaactual,estatususu,(SELECT CONCAT_WS(' / ',DATE_FORMAT(fechaacc,'%d-%m-%Y %h-%i %p'),DATE_FORMAT(fecha_salidaacc,'%d-%m-%Y %h-%i %p')) FROM tacceso WHERE id=idusuario ORDER BY idacceso DESC LIMIT 1)as ultimo_acceso,emailusu,cedula FROM tusuario,trol,tclave WHERE tusuario.idTusuario=tusuario_idusuario AND idrol=trol_idrol AND estatuscla='1'";
 			$pcsql=$this->filtro($sql);
 			while($laRow=$this->proximo($pcsql))
 			{
@@ -121,7 +121,7 @@
 		function consultar_usuario()
 		{
 			$this->conectar();
-			$sql="SELECT tusuario.idusuario,nombrerol,idrol FROM tusuario,trol,tclave WHERE idusuario='$this->lcUsuario' AND idusuario=tusuario_idusuario  AND trol.idrol=trol_idrol AND estatuscla='1' ";
+			$sql="SELECT tusuario.idusuario,nombrerol,idrol FROM tusuario,trol,tclave WHERE idusuario='$this->lcUsuario' AND idTusuario=tusuario_idusuario  AND trol.idrol=trol_idrol AND estatuscla='1' ";
 			$pcsql=$this->filtro($sql);
 			if($laRow=$this->proximo($pcsql))
 			{
@@ -136,7 +136,7 @@
 		function consultar_datos_usuario()
 		{
 			$this->conectar();
-			$sql="SELECT tusuario.idusuario as id,nombrerol,idrol,nombreusu,TO_DAYS(fechafincla)as fechafincla,TO_DAYS(NOW())as fechaactual,estatususu,(SELECT CONCAT_WS(' / ',DATE_FORMAT(fechaacc,'%d-%m-%Y %h:%i %p'),DATE_FORMAT(fecha_salidaacc,'%d-%m-%Y %h:%i %p')) FROM tacceso WHERE id=idusuario ORDER BY idacceso DESC LIMIT 1)as ultimo_acceso FROM tusuario,trol,tclave WHERE tusuario.idusuario='$this->lcUsuario' AND tusuario.idusuario=tusuario_idusuario AND idrol=trol_idrol AND estatuscla='1'";
+			$sql="SELECT tusuario.idusuario as id,nombrerol,idrol,nombreusu,TO_DAYS(fechafincla)as fechafincla,TO_DAYS(NOW())as fechaactual,estatususu,(SELECT CONCAT_WS(' / ',DATE_FORMAT(fechaacc,'%d-%m-%Y %h:%i %p'),DATE_FORMAT(fecha_salidaacc,'%d-%m-%Y %h:%i %p')) FROM tacceso WHERE id=idusuario ORDER BY idacceso DESC LIMIT 1)as ultimo_acceso FROM tusuario,trol,tclave WHERE tusuario.idusuario='$this->lcUsuario' AND tusuario.idTusuario=tusuario_idusuario AND idrol=trol_idrol AND estatuscla='1'";
 			$pcsql=$this->filtro($sql);
 			if($laRow=$this->proximo($pcsql))
 			{
@@ -216,7 +216,7 @@
 		{
 			$this->conectar();
 			$sql=" INSERT INTO `tclave`(`clavecla`, `fechainiciocla`, `fechafincla`, `estatuscla`, `tusuario_idusuario`)
-			VALUES (sha1((SELECT clavepredeterminada FROM tsistema)),now(), ADDDATE(NOW(), (SELECT tiempocaducida FROM tsistema)),'1','$this->lcUsuario');";
+			VALUES (sha1((SELECT clavepredeterminada FROM tsistema)),now(), ADDDATE(NOW(), (SELECT tiempocaducida FROM tsistema)),'1','$this->lcIDTUsuario');";
 			$lnHecho=$this->ejecutar($sql);
 			$this->desconectar();
 			return $lnHecho;

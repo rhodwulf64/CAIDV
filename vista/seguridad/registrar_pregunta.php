@@ -4,7 +4,7 @@ include('../clases/clase_pregunta.php');
 $lobjConfiguracion = NEW clsConfiguracion();
 $lobjPregunta = NEW clsPregunta();
 $id=(isset($_GET['id']))?$_GET['id']:"";
-$lobjPregunta->set_Usuario($_SESSION['usuario']);
+$lobjPregunta->set_IDTUsuario($_SESSION['idTusuario']);
 $Datos_Configuracion = $lobjConfiguracion->consultar_configuracion_bitacora();
 $Datos_Pregunta     = $lobjPregunta->consultar_preguntas();
 
@@ -18,7 +18,7 @@ else
     $operacion='registrar_pregunta';
     $titulo   ='Registrar pregunta de seguridad';
 }
-?>       
+?>
 
 <div style="float: left" class="col-lg-8 span8 pull-left">
     <h3><?php print($titulo); ?></h3>

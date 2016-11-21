@@ -3,28 +3,33 @@ if($_POST)
 {
 	include('../clases/clase_pregunta.php');
 	$lobjPregunta = new clsPregunta();
-	if($_POST['operacion']=='recuperar_cuenta')
+	$lsOperacion=addslashes($_POST['operacion']);
+
+	$lsCuenta=addslashes($_POST['cuenta']);
+	if($lsOperacion=='recuperar_cuenta')
 	{
-		$lobjPregunta->set_Usuario($_POST['correo']);
+		$lsCorreo=addslashes($_POST['correo']);
+		$lobjPregunta->set_Correo($lsCorreo);
 		$Pregunta = $lobjPregunta->consultar_pregunta_correo();
 		if(!$Pregunta[0]['idpregunta'])
 		{
 			$msj='Correo invalido, intente nuevamente';
-			$form1='show';
-			$form2='hide';
-			$form3='hide';
+			$form1=true;
+			$form2=false;
+			$form3=false;
 		}
 		else
 		{
 			$msj='Responda la siguiente pregunta.';
-			$form1='hide';
-			$form2='show';
-			$form3='hide';
+			$form1=false;
+			$form2=true;
+			$form3=false;
 		}
 	}
-	else if($_POST['operacion']=='ingrese_pregunta')
+	else if($lsOperacion=='ingrese_pregunta')
 	{
-		$lobjPregunta->set_Usuario($_POST['cuenta']);
+		$lobjPregunta->set_IDTUsuario($lsCuenta);
+		$lsNombreFull=addslashes($_POST["nombreFull"]);
 		$preguntas= $_POST['pregunta'];
 		$respuestas= $_POST['respuesta'];
 		for($i=0;$i<count($preguntas);$i++)
@@ -41,46 +46,47 @@ if($_POST)
 		if(!$llHecho)
 		{
 			$msj='Respuesta incorrecta, intente nuevamente';
-			$form1='hide';
-			$form2='show';
-			$form3='hide';
+			$form1=false;
+			$form2=true;
+			$form3=false;
 		}
 		else
 		{
 			//$msj='Responda la siguiente pregunta.';
-			$form1='hide';
-			$form2='hide';
-			$form3='show';
+			$form1=false;
+			$form2=false;
+			$form3=true;
 		}
 	}
-	else if($_POST['operacion']=='ingrese_clave')
+	else if($lsOperacion=='ingrese_clave')
 	{
-		$lobjPregunta->set_Usuario($_POST['cuenta']);
-		$llHecho = $lobjPregunta->cambio_clave($_POST['clave']);
-		
+		$lsClave=addslashes($_POST['clave']);
+		$lobjPregunta->set_Usuario($lsCuenta);
+		$llHecho = $lobjPregunta->cambio_clave($lsClave);
+
 		if($llHecho)
 		{
 			$msj='Cambio de clave exitosamente, inicie sesión.';
-			$form1='show';
-			$form2='hide';
-			$form3='hide';
+			$form1=true;
+			$form2=false;
+			$form3=false;
 		}
 		else
 		{
 			$msj='Ya a usado esta clave anteriormente, intente de nuevo.';
-			$form1='show';
-			$form2='hide';
-			$form3='hide';
+			$form1=true;
+			$form2=false;
+			$form3=false;
 		}
 	}
-	
-	
+
+
 }
 else
 {
-	$form1='show';
-	$form2='hide';
-	$form3='hide';
+	$form1=true;
+	$form2=false;
+	$form3=false;
 }
 
 ?>
@@ -115,7 +121,7 @@ else
         <![endif]-->
 
         <!-- This code is taken from http://twitter.github.com/bootstrap/examples/hero.html -->
-                    <div class="container">        
+                    <div class="container">
                         <header class="navbar navbar-fixed-top" style="
                 margin: 0 auto;position:absolute">
                             <div id="row"  style="height:115px">
@@ -124,19 +130,20 @@ else
                             </div>
                             <div class="navbar-inner">
                                 <div class="container">
-                                   
+
 
                                 </div>
                             </div>
                         </header>
 
         <section class="container-fluid" <?php if($msj=='')?>>
-                            
+
          <div class="span12" style="margin: 150px auto;display:block;">
             <div class="span8" style="margin-left:0;">
 		        <div style="float: left" class="col-lg-8 span8 pull-left">
 		            <h3>Recuperar cuenta</h3>
-		            <form class="formulario <?php print($form1);?>" action="./recuperar_cuenta.php" method="POST" name="form_recupera">
+								<?php if($form1){?>
+		            <form class="formulario" action="recuperar_cuenta.php" method="POST" name="form_recupera">
 		                <input type="hidden" value="recuperar_cuenta" name="operacion" />
 		                <div class="row-fluid">
 		                    <div class="col-lg-1 span6">
@@ -150,9 +157,11 @@ else
 		                    <input type="button" class="btn btn-danger" name="btn_regresar" id="btn_regresar" value="Cerrar Ventana" onclick="window.close();">
 		                </div>
 		            </form>
-		            <form class="formulario <?php print($form2);?>" action="./recuperar_cuenta.php" method="POST" name="form_recupera">
+								<?php } if($form2){ ?>
+		            <form class="formulario" action="recuperar_cuenta.php" method="POST" name="form_recupera">
 		                <input type="hidden" value="ingrese_pregunta" name="operacion" />
 		                <input type="hidden" value="<?php print($Pregunta[0]['tusuario_idusuario']);?>" name="cuenta" />
+		                <input type="hidden" value="<?php print($Pregunta[0]['nombreFull']);?>" name="nombreFull" />
 		                <?php for($i=0;$i<count($Pregunta);$i++)
 		                {
 		                ?>
@@ -164,7 +173,7 @@ else
 		                		<input type="hidden" value="<?php print($Pregunta[$i]['idpregunta']);?>" name="pregunta[]" />
 		                    </div>
 		                </div>
-		                <?php 
+		                <?php
 		                }
 		                ?>
 		                <div class="botonera">
@@ -172,14 +181,16 @@ else
 		                    <input type="button" class="btn btn-danger" name="btn_regresar" id="btn_regresar" value="Cerrar Ventana" onclick="window.close();">
 		                </div>
 		            </form>
-		            <form class="formulario <?php print($form3);?>" action="./recuperar_cuenta.php" method="POST" name="form_recupera">
+								<?php } if($form3){ ?>
+		            <form class="formulario" action="recuperar_cuenta.php" method="POST" name="form_recupera">
 		                <input type="hidden" value="ingrese_clave" name="operacion" />
-		                <input type="hidden" value="<?php print($_POST['cuenta']);?>" name="cuenta" />
+		                <input type="hidden" value="<?php print($lsCuenta);?>" name="cuenta" />
+		                <input type="hidden" value="<?php print($lsNombreFull);?>" name="nombreFull" />
 		                <div class="row-fluid">
 		                    <div class="col-lg-1 span6">
-		                        <label>Cuenta: <b><?php print($_POST['cuenta']);?></b></label>
+		                        <label>Cuenta: <br><b><?php print($lsNombreFull);?></b></label>
 		                        <input type="password" class="span6"  name="clave" id="cam_clave"  value="" required placeholder="Ingrese su nueva clave"/>
-		  
+
 		                    </div>
 		                </div>
 		                <div class="botonera">
@@ -187,10 +198,12 @@ else
 		                    <input type="button" class="btn btn-danger" name="btn_regresar" id="btn_regresar" value="Cerrar Ventana" onclick="window.close();">
 		                </div>
 		            </form>
+								<?php }?>
+
 		        </div>
-            </div>                    
+            </div>
         </div>
-    
+
 
             <footer style="text-align:center;" class="col-lg-12 span12 pull-left" >
                 <p >&copy; Todos los derechos reservados CAIDV <?php echo date('Y');?></p>
@@ -198,7 +211,7 @@ else
 
         </section> <!-- /container -->
 
-    </div> 
+    </div>
     </body>
 </html>
 <script type="text/javascript">
