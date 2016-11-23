@@ -18,7 +18,6 @@
 		private $lcDiagnostico;
 		private $lcLocalidad;
 		private $lcCorreo;
-<<<<<<< HEAD
 		private $lcIDagregado;
 
 	
@@ -26,8 +25,6 @@
 			$this->clsConexion();
 			$this->G = "";
 		}
-=======
->>>>>>> caidv2
 
 		function set_Personal($pcIdPersonal)
 		{
@@ -104,16 +101,11 @@
 			$this->lcLocalidad=$pcLocalidad;
 		}
 
-<<<<<<< HEAD
-
 		function get_IDagregado()
 		{
 			return $this->lcIDagregado;
 		}
 
-
-=======
->>>>>>> caidv2
 		function consultar_personal()
 		{
 			$this->conectar();
@@ -139,7 +131,7 @@
 					$Fila[$cont][14]=$laRow['nacionalidadper'];
 					$cont++;
 				}
-			
+
 			$this->desconectar();
 			return $Fila;
 		}
@@ -169,7 +161,7 @@
 					$Fila[$cont][14]=$laRow['nacionalidadper'];
 					$cont++;
 				}
-			
+
 			$this->desconectar();
 			return $Fila;
 		}
@@ -179,7 +171,7 @@
 			$this->conectar();
 				$sql="SELECT *,date_format(fechanacimientoper,'%d-%m-%Y') AS fechanacimientoper FROM `tpersonal` WHERE idpersonal='$this->lcIdPersonal'";
 				$pcsql=$this->filtro($sql);
-				
+
 				if($laRow=$this->proximo($pcsql))
 				{
 					$Fila[0]=$laRow['idpersonal'];
@@ -198,7 +190,7 @@
 					$Fila[13]=$laRow['tlocalidad_idlocalidad'];
 					$Fila[14]=$laRow['nacionalidadper'];
 				}
-			
+
 			$this->desconectar();
 			return $Fila;
 		}
@@ -221,22 +213,18 @@
 
 		function registrar_personal()
 		{
-<<<<<<< HEAD
-			$lnHecho=false;		
+			$lnHecho=false;
 			$this->inicio_trans(); // inicializo la trasaccion
 
-=======
-			$this->conectar();
->>>>>>> caidv2
-			$sql="INSERT INTO 
-					`tpersonal`(nacionalidadper, `idpersonal`, `nombreunoper`, `nombredosper`, `apellidounoper`, `apellidodosper`, 
-					`sexoper`, `fechanacimientoper`, `direccionper`, `telefonoper`, `cargoper`, `estatusper`, 
-					`tdiagnostico_iddiagnostico`, `correoper`,tlocalidad_idlocalidad) 
-				VALUES 
+			$sql="INSERT INTO
+					`tpersonal`(nacionalidadper, `idpersonal`, `nombreunoper`, `nombredosper`, `apellidounoper`, `apellidodosper`,
+					`sexoper`, `fechanacimientoper`, `direccionper`, `telefonoper`, `cargoper`, `estatusper`,
+					`tdiagnostico_iddiagnostico`, `correoper`,tlocalidad_idlocalidad)
+				VALUES
 				('$this->lcNacionalidad', '$this->lcIdPersonal',UPPER('$this->lcNombreuno'),UPPER('$this->lcNombredos'),UPPER('$this->lcApellidouno'),UPPER('$this->lcApellidodos'),
 					UPPER('$this->lcSexo'),'$this->lcFecha',UPPER('$this->lcDireccion'),'$this->lcTelefono',UPPER('$this->lcCargo'),'1',
 					'$this->lcDiagnostico','$this->lcCorreo','$this->lcLocalidad')";
-<<<<<<< HEAD
+
 			$this->ejecuta($sql);
 			if ( $this->como_va() )
 			{
@@ -248,17 +236,13 @@
 			if( $lnHecho)
 			{
 			 	$this->fin_trans(); // finalizo la transaccion con exito
-			 	//$this->deshacer_trans(); // finalizo la transaccion fallida 
+			 	//$this->deshacer_trans(); // finalizo la transaccion fallida
 			}
 			else
 			{
-			 	$this->deshacer_trans(); // finalizo la transaccion fallida 
+			 	$this->deshacer_trans(); // finalizo la transaccion fallida
 			}
-				
-=======
-			$lnHecho=$this->ejecutar($sql);			
-			$this->desconectar();
->>>>>>> caidv2
+
 			return $lnHecho;
 		}
 
@@ -266,7 +250,7 @@
 		{
 			$this->conectar();
 			$sql="UPDATE tpersonal SET estatusper='0' WHERE idpersonal='$this->lcIdPersonal' ";
-			$lnHecho=$this->ejecutar($sql);			
+			$lnHecho=$this->ejecutar($sql);
 			$this->desconectar();
 			return $lnHecho;
 		}
@@ -275,7 +259,7 @@
 		{
 			$this->conectar();
 			$sql="UPDATE tpersonal SET estatusper='1' WHERE idpersonal='$this->lcIdPersonal' ";
-			$lnHecho=$this->ejecutar($sql);			
+			$lnHecho=$this->ejecutar($sql);
 			$this->desconectar();
 			return $lnHecho;
 		}
@@ -283,12 +267,12 @@
 		function editar_personal()
 		{
 			$this->conectar();
-			$sql="UPDATE `tpersonal` 
+			$sql="UPDATE `tpersonal`
 					SET nacionalidadper='$this->lcNacionalidad', `nombreunoper`=UPPER('$this->lcNombreuno'),`nombredosper`=UPPER('$this->lcNombredos'),`apellidounoper`=UPPER('$this->lcApellidouno')
 					,`apellidodosper`=UPPER('$this->lcApellidodos'),`sexoper`='$this->lcSexo',`fechanacimientoper`='$this->lcFecha'
 					,`direccionper`=UPPER('$this->lcDireccion'),`telefonoper`='$this->lcTelefono',`cargoper`=UPPER('$this->lcCargo'), correoper='$this->lcCorreo'
 					,`tdiagnostico_iddiagnostico`='$this->lcDiagnostico',tlocalidad_idlocalidad='$this->lcLocalidad' WHERE idpersonal='$this->lcIdPersonal'";
-			$lnHecho=$this->ejecutar($sql);			
+			$lnHecho=$this->ejecutar($sql);
 			$this->desconectar();
 			return $lnHecho;
 		}
