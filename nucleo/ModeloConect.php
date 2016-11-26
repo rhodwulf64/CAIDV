@@ -2,18 +2,14 @@
 include_once('../libreria/constantes.php');
 class ModeloConect
 {
-<<<<<<< HEAD
+
 	private $servidor='cleveland15-pc';
-=======
-	private $servidor='127.0.0.1';
->>>>>>> caidv2
 	private $usuario='root';
 	private $clave='1234';
 	public $bd=BD;
 	protected $laRow = array();
 	private $con;
 	private $res;
-<<<<<<< HEAD
 	private $OmyI;
 	private $asIDinsertado;
 
@@ -26,11 +22,7 @@ class ModeloConect
 	protected function maxid()
  	{
 	    $ultimo=mysql_insert_id($this->con);
-	    return $ultimo;
-	}  
-=======
-
->>>>>>> caidv2
+	    return $ultimo	}  ;
 
 	protected function conectar()
 	{
@@ -43,14 +35,10 @@ class ModeloConect
 		mysql_close($this->con);
 	}
 
-<<<<<<< HEAD
 	protected function fpGetIDinsertado()
 	{
 		return $this->asIDinsertado;
 	}
-
-=======
->>>>>>> caidv2
 	  
 	  //FUNCION PROTEGIDA FILTRO DE BUSQUEDA
       protected function filtro($sql)
@@ -106,7 +94,7 @@ class ModeloConect
 	  }
 
 	  protected function fecha_bd($pcFecha)
-<<<<<<< HEAD
+	  
 	  {
 	  	 return $fecha=date("Y-m-d",strtotime($pcFecha));
 	  }
@@ -144,11 +132,6 @@ class ModeloConect
 	function deshacer_trans(){ // deshago la transaccion
 		$this->ejecuta("ROLLBACK");
 	}
-=======
-		  {
-		  	 return $fecha=date("Y-m-d",strtotime($pcFecha));
-		  }
->>>>>>> caidv2
 
 }
 ?>
