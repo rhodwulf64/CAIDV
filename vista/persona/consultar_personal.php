@@ -101,11 +101,9 @@ else
                                 $tmpvar=$laLocalidades[$i][4];
                                 print('<optgroup label="'.$laLocalidades[$i][4].'">');
                             }//Fin IF
-<<<<<<< HEAD
+                            
                             ?><option value="<?php print($laLocalidades[$i][0])?>" <?php if($laLocalidades[$i][0]==$Datos_Personal['tlocalidad_idlocalidad']){print('SELECTED');}?>><?php print($laLocalidades[$i][1])?></option>
-=======
                             ?><option value="<?php print($laLocalidades[$i][0])?>" <?php if($laLocalidades[$i][0]==$Datos_Participante['tlocalidad_idlocalidad']){print('SELECTED');}?>><?php print($laLocalidades[$i][1])?></option>
->>>>>>> caidv2
                         <?php 
                         } //Fin For?>
                 </select>
