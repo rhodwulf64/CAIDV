@@ -1,5 +1,4 @@
 
-<<<<<<< HEAD
 confirmacionModal=false;
 
 
@@ -95,5 +94,3 @@ function tplural(nume,singu,plu)
     }
     return resulta;
 }
-=======
->>>>>>> caidv2
