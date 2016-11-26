@@ -1,9 +1,5 @@
 <?php
-<<<<<<< HEAD
 
-=======
-    
->>>>>>> caidv2
     session_start(); //inicia la session, la cual permite trabajar con la variable $_SESSION
     $msj=(isset($_SESSION['msj']))?$_SESSION['msj']:"";
     $vista=(isset($_GET['vista']))?$_GET['vista']:"";//toma el valor que se guarda en la variable vista que está en la URL.
@@ -16,11 +12,9 @@
     $lobjConfiguracion = new clsConfiguracion();
     $DatosConfiguracion = $lobjConfiguracion->consultar_configuracion_bitacora();
 ?>
-<<<<<<< HEAD
+
 <!DOCTYPE html>
-=======
-<!DOCTYPE html> 
->>>>>>> caidv2
+ caidv2
 <html>
 <head>
 	<meta charset="UTF-8">
@@ -49,17 +43,10 @@
 	<header class="h6 sticky-enabled no-topbar">
 		<section class="top">
 			<div>
-<<<<<<< HEAD
-				
-			</div>
-		</section>
-
-=======
 				<p><a class="text-white" href="?vista=acceso_intranet"><i class="fa fa-lock"></i> ENTRAR</a> </p>
 			</div>
 		</section>
-		
->>>>>>> caidv2
+
 		<section class="main-header">
 			<p class="title">
 				<a href="./">
@@ -74,48 +61,30 @@
 				<ul>
 					<li <?php if($vista==''){echo 'class="current-menu-item"';}?> >
 						<a href="./"><i class="fa fa-home"></i> INICIO</a>
-<<<<<<< HEAD
 					</li>
-=======
-					</li>					
->>>>>>> caidv2
+
 					<li <?php if($vista=='informacion'){echo 'class="current-menu-item"';}?>>
 						<a href="?vista=informacion"><i class="fa fa-caret-right"></i> INFORMACIÓN</a>
 					</li>
 					<li <?php if($vista=='noticias'){echo 'class="current-menu-item"';}?>>
 						<a href="?vista=noticias"><i class="fa fa-caret-right"></i> BLOG - NOTICIAS</a>
-<<<<<<< HEAD
 					</li>
 					<li <?php if($vista=='acceso_intranet'){echo 'class="current-menu-item"';}?>>
 						<a href="?vista=acceso_intranet"><i class="fa fa-caret-right"></i> INTRANET</a>
 					</li>
-					<li <?php if($vista=='contactanos'){echo 'class="current-menu-item"';}?>>
+
+          <li <?php if($vista=='preinscripcion/preinscripcion'){echo 'class="current-menu-item"';}?>>
+            <a href="?vista=preinscripcion/preinscripcion"><i class="fa fa-caret-right"></i> PRE-INSCRIPCION</a>
+          </li>
+          <li <?php if($vista=='listado_cronograma'){echo 'class="current-menu-item"';}?>>
+						<a href="?vista=listado_cronograma"><i class="fa fa-caret-right"></i> CRONOGRAMA CAIDV</a>
+					</li>
+          <li <?php if($vista=='contactanos'){echo 'class="current-menu-item"';}?>>
 						<a href="?vista=contactanos"><i class="fa fa-caret-right"></i> CONTACTANOS</a>
 					</li>
 				</ul>
 			</nav>
 
-=======
-					</li>					
-					<li <?php if($vista=='acceso_intranet'){echo 'class="current-menu-item"';}?>>
-						<a href="?vista=acceso_intranet"><i class="fa fa-caret-right"></i> INTRANET</a>
-					</li>
-					<li <?php if($vista=='preinscripcion/preinscripcion'){echo 'class="current-menu-item"';}?>>
-						<a href="?vista=preinscripcion/preinscripcion"><i class="fa fa-caret-right"></i> PRE-INSCRIPCION</a>
-					</li>
-					
-					<li <?php if($vista=='contactanos'){echo 'class="current-menu-item"';}?>>
-						<a href="?vista=contactanos"><i class="fa fa-caret-right"></i> CONTACTANOS</a>
-					</li>
-
-					<li <?php if($vista=='listado_cronograma'){echo 'class="current-menu-item"';}?>>
-						<a href="?vista=listado_cronograma"><i class="fa fa-caret-right"></i> CRONOGRAMA CAIDV</a>
-					</li>	
-								
-				</ul>			
-			</nav>
-			
->>>>>>> caidv2
 			<div class="clear"></div>
 		</section>
 	</header>
@@ -124,21 +93,13 @@
 	require_once('../clases/clase_slider.php');
     $lobjslider=new clsSlider;
     $lasliders=$lobjslider->consultar_slider_activas();
-<<<<<<< HEAD
 
-=======
-               
->>>>>>> caidv2
     if(!file_exists('../vista/'.$vista.'.php'))
     {
     	?>
     		<section class="slider3 p02">
     			<div class="slider">
-<<<<<<< HEAD
 
-=======
-			
->>>>>>> caidv2
     	<?php
 
     	for($s=0;$s<count($lasliders);$s++)
@@ -165,30 +126,22 @@
 	        if(file_exists('../vista/'.$vista.'.php')) //verifica el contenido de la variable vista.
 	        {
 	                include('../vista/'.$vista.'.php');// y si exite el archivo que trae este incluirá el cintenido
-<<<<<<< HEAD
 	        }
-=======
-	        }   
->>>>>>> caidv2
+
 	        else
 	        {
 	            include('../vista/inicio.php');// Si no exite o no tiene nada la variable vista entonces trae por defecto la vista index.html
 	        }
-<<<<<<< HEAD
     	?>
-=======
-    	?> 
->>>>>>> caidv2
+
 	</section>
 
 	<footer>
 
 		<section class="bottom">
-<<<<<<< HEAD
+
 			<p>CENTRO DE ATENCIÓN INTEGRAL DE DEFICIENCIAS VISUALES: Dirección calle Luis Braille con Av. Circunvalación, detrás del centro de Bellas Artes. Sector Los Cortijos, Acarigua estado Portuguesa. Teléfonos: 04145562997 - 04245642522. Email: caidvacarigua@jahoo.es. COD. DEA: OD08081808 Fecha de Fundación: 16 de septiembre de 1986.</p><p style="text-align:center; width:100%"> &copy; Todos los derechos reservados CAIDV / UPTP "J.J. Montilla" - info.caidv@gmail.com</p>
-=======
-			<p>CENTRO DE ATENCIÓN INTEGRAL DE DEFICIENCIAS VISUALES: Dirección calle Luis Braille con Av. Circunvalación, detrás del centro de Bellas Artes. Sector Los Cortijos, Acarigua estado Portuguesa. Teléfonos: 04145562997 - 04245642522. Email: caidvacarigua@jahoo.es. COD. DEA: OD08081808 Fecha de Fundación: 16 de septiembre de 1986.</p><p style="text-align:center; width:100%"> &copy; Todos los derechos reservados CAIDV / UPTP "J.J. Montilla" 2014 / 2015 - info.caidv@gmail.com</p>
->>>>>>> caidv2
+
 			<nav class="social">
 				<ul>
 					<li><a href="#" class="facebook">Facebook</a></li>
@@ -198,19 +151,9 @@
 		</section>
 	</footer></div>
 
-<<<<<<< HEAD
-
-=======
-	
->>>>>>> caidv2
-
 	<!--[if lt IE 9]>
 		<script type="text/javascript" src="js/ie.js"></script>
 	<![endif]-->
 </body>
 
-<<<<<<< HEAD
 </html>
-=======
-</html>
->>>>>>> caidv2

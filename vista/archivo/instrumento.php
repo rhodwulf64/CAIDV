@@ -1,9 +1,9 @@
 <?php
 $consultar= $registrar= $eliminar=false;
-for($i=0;$i<count($laModulos);$i++) 
+for($i=0;$i<count($laModulos);$i++)
     {
-         
-        $laServicios=$lobjRol->consultar_servicios_menu($laModulos[$i][0]); 
+
+        $laServicios=$lobjRol->consultar_servicios_menu($laModulos[$i][0]);
         for ($j=0; $j <count($laServicios) ; $j++) //Se recorre un ciclo para poder extraer los datos de cada uno de los servicios que tiene asignado el modulo para poder constuir el menú
         {
             if($laServicios[$j][2]=='archivo/consultar_instrumento')
@@ -53,10 +53,10 @@ for($i=0;$i<count($laModulos);$i++)
         oTable = $('#filtro').dataTable({
             "bJQueryUI": true,
             "sPaginationType": "full_numbers",
-            "iDisplayLength": 5                    
+            "iDisplayLength": 5
         });
     } );
-</script>  
+</script>
 <div style="float: left" class="col-lg-10 span10 pull-left">
     <h3>Instrumento</h3>
     <div class="alert alert-info">
@@ -66,7 +66,7 @@ for($i=0;$i<count($laModulos);$i++)
     </div>
     <form action="../controlador/control_instrumento.php" method="POST" name="form_instrumento">
         <input type="hidden" value="eliminar_instrumento" name="operacion" id="cam_operacion"/>
-        <input type="hidden"  name="idinstrumento" id="cam_idinstrumento"/>        
+        <input type="hidden"  name="idinstrumento" id="cam_idinstrumento"/>
         <?php
         if($registrar)
         {
@@ -92,7 +92,7 @@ for($i=0;$i<count($laModulos);$i++)
                         {
                             $laInstrumentos[$i][3]='Activo';
                         }
-                        elseif(!$laInstrumentos[$i][3]) 
+                        elseif(!$laInstrumentos[$i][3])
                         {
                             $laInstrumentos[$i][3]='Inactivo';
                         }
@@ -114,14 +114,14 @@ for($i=0;$i<count($laModulos);$i++)
                                 {
                                     echo '<a class="btn btn-danger" href="#" title="Desactivar" data-toggle="modal" data-target="#myModal" onclick="eliminar('.$laInstrumentos[$i][0].')" ><i class="icon-remove icon-white"></i></a> ';
                                 }
-                                elseif ($laInstrumentos[$i][3]=='Inactivo') 
+                                elseif ($laInstrumentos[$i][3]=='Inactivo')
                                 {
                                     echo '<a class="btn btn-warning" title="Restaurar" href="#" onclick="restaurar('.$laInstrumentos[$i][0].')" ><i class="icon-refresh icon-white"></i></a>';
                                 }
                             }
                             echo "</td>";
                         }
-                       
+
                         echo '</tr>';
                     }
                 ?>
@@ -133,11 +133,7 @@ for($i=0;$i<count($laModulos);$i++)
             <div class="modal-content">
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-<<<<<<< HEAD
                 <h4 class="modal-title" id="myModalLabel">Desactivar instrumento</h4>
-=======
-                <h4 class="modal-title" id="myModalLabel">Descactivar instrumento</h4>
->>>>>>> caidv2
               </div>
               <div class="modal-body">
                    <div class="row">
