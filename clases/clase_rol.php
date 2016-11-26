@@ -54,14 +54,14 @@
 		function consultar_dependencia()
 		{
 			$this->conectar();
-			$dependencia=false;			
+			$dependencia=false;
 				$sql="SELECT * FROM tusuario,tmodulo_trol,tservicio_trol WHERE tusuario.trol_idrol='$this->lcIdRol' OR tmodulo_trol.idrol='$this->lcIdRol' OR tservicio_trol.idrol='$this->lcIdRol'";
 				$pcsql=$this->filtro($sql);
 				if($laRow=$this->proximo($pcsql))
 				{
 					$dependencia=true;
 				}
-			
+
 			$this->desconectar();
 			return $dependencia;
 		}
@@ -104,11 +104,7 @@
 		{
 			$this->conectar();
 			$cont=0;
-<<<<<<< HEAD
 				$sql="SELECT tservicio_trol.idservicio,nombreser,MarcaAgregacion,enlaceser,visibleser,orden FROM tservicio_trol,tservicio WHERE idrol='$this->lcIdRol' AND idmodulo='$IdModulo' AND tservicio_trol.idservicio=tservicio.idservicio ORDER BY orden ASC";
-=======
-				$sql="SELECT tservicio_trol.idservicio,nombreser,enlaceser,visibleser,orden FROM tservicio_trol,tservicio WHERE idrol='$this->lcIdRol' AND idmodulo='$IdModulo' AND tservicio_trol.idservicio=tservicio.idservicio ORDER BY orden ASC";
->>>>>>> caidv2
 				$pcsql=$this->filtro($sql);
 				while($laRow=$this->proximo($pcsql))
 				{
@@ -117,14 +113,11 @@
 					$Fila[$cont][2]=$laRow['enlaceser'];
 					$Fila[$cont][3]=$laRow['visibleser'];
 					$Fila[$cont][4]=$laRow['orden'];
-<<<<<<< HEAD
 					$Fila[$cont][5]=$laRow['MarcaAgregacion'];
-=======
->>>>>>> caidv2
 
 					$cont++;
 				}
-			
+
 			$this->desconectar();
 			return $Fila;
 		}
@@ -145,12 +138,12 @@
 
 					$cont++;
 				}
-			
+
 			$this->desconectar();
 			return $Fila;
 		}
 
-	
+
 		function consultar_rol()
 		{
 			$this->conectar();
@@ -185,7 +178,7 @@
 		{
 			$this->conectar();
 			$sql="INSERT INTO trol (nombrerol)VALUES(UPPER('$this->lcNombre'))";
-			$lnHecho=$this->ejecutar($sql);			
+			$lnHecho=$this->ejecutar($sql);
 			$this->desconectar();
 			return $lnHecho;
 		}
@@ -194,7 +187,7 @@
 		{
 			$this->conectar();
 			$sql="UPDATE trol SET estatusrol='0' WHERE idrol='$this->lcIdRol' ";
-			$lnHecho=$this->ejecutar($sql);			
+			$lnHecho=$this->ejecutar($sql);
 			$this->desconectar();
 			return $lnHecho;
 		}
@@ -203,7 +196,7 @@
 		{
 			$this->conectar();
 			$sql="UPDATE trol SET estatusrol='1' WHERE idrol='$this->lcIdRol' ";
-			$lnHecho=$this->ejecutar($sql);			
+			$lnHecho=$this->ejecutar($sql);
 			$this->desconectar();
 			return $lnHecho;
 		}
@@ -212,7 +205,7 @@
 		{
 			$this->conectar();
 			$sql="UPDATE trol SET nombrerol=UPPER('$this->lcNombre') WHERE idrol='$this->lcIdRol' ";
-			$lnHecho=$this->ejecutar($sql);			
+			$lnHecho=$this->ejecutar($sql);
 			$this->desconectar();
 			return $lnHecho;
 		}
@@ -223,7 +216,7 @@
 			$this->begin();
 			$sql="DELETE FROM tmodulo_trol WHERE idrol='$this->lcIdRol' ";
 			$this->ejecutar($sql);
-			for($i=0;$i<count($this->lcModulo);$i++) 
+			for($i=0;$i<count($this->lcModulo);$i++)
 			{
 				$idModulo=$this->lcModulo[$i];
 				$Orden=$this->lcOrden[$i];
@@ -247,7 +240,7 @@
 		{
 			$this->conectar();
 			$sql="DELETE FROM tservicio_trol WHERE idrol='$this->lcIdRol' ";
-			$lnHecho=$this->ejecutar($sql);			
+			$lnHecho=$this->ejecutar($sql);
 			$this->desconectar();
 			return $lnHecho;
 		}
@@ -256,7 +249,7 @@
 		{
 			$this->conectar();
 			$this->begin();
-			for($i=0;$i<count($this->lcServicio);$i++) 
+			for($i=0;$i<count($this->lcServicio);$i++)
 			{
 				$idservicio=$this->lcServicio[$i];
 				$Orden=$this->lcOrden[$i];
