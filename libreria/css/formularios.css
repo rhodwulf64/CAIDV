@@ -1,5 +1,5 @@
 
-    /* 
+    /*
         ///////////////////////////////
         cuerpo tipo lista: tabla_zebra;
         ///////////////////////////////
@@ -76,10 +76,10 @@
         text-align: right;
     }
     .tabla_zebra {
-            width: 100%;   
+            width: 100%;
     }
     .tabla_zebra a:hover{
-        text-decoration: underline;   
+        text-decoration: underline;
     }
     .tabla_zebra select
     {
@@ -87,28 +87,28 @@
     }
     .tabla_zebra td, .tabla_zebra th {
         padding: 10px;
-        border-bottom: 1px solid #f2f2f2;  
-        vertical-align: middle;   
+        border-bottom: 1px solid #f2f2f2;
+        vertical-align: middle;
     }
 
     .tabla_zebra tbody tr:nth-child(even) {
         background: #e3ecf3;
-        -webkit-box-shadow: 0 1px 0 rgba(255,255,255,.8) inset; 
-        -moz-box-shadow:0 1px 0 rgba(255,255,255,.8) inset;  
-        box-shadow: 0 1px 0 rgba(255,255,255,.8) inset;        
+        -webkit-box-shadow: 0 1px 0 rgba(255,255,255,.8) inset;
+        -moz-box-shadow:0 1px 0 rgba(255,255,255,.8) inset;
+        box-shadow: 0 1px 0 rgba(255,255,255,.8) inset;
     }
     .tabla_zebra th {
         text-align: center;
-        text-shadow: 0 1px 0 rgba(255,255,255,.5); 
+        text-shadow: 0 1px 0 rgba(255,255,255,.5);
         border-bottom: 1px solid #ccc;
         background-color: #aaa;
         background-image: -webkit-gradient(linear, left top, left bottom, from(#e1e1e1), to(#aaa));
         background-image: -webkit-linear-gradient(top, #e1e1e1, #aaa);
         background-image:    -moz-linear-gradient(top, #e1e1e1, #aaa);
         background-image:     -ms-linear-gradient(top, #e1e1e1, #aaa);
-        background-image:      -o-linear-gradient(top, #e1e1e1, #aaa); 
+        background-image:      -o-linear-gradient(top, #e1e1e1, #aaa);
         background-image:         linear-gradient(top, #e1e1e1, #aaa);
-        font-size: 15px;        
+        font-size: 15px;
         color: #414141;
         font-weight: bold;
         cursor: pointer;
@@ -117,7 +117,7 @@
     .tabla_zebra th:first-child {
         -moz-border-radius: 6px 0 0 0;
         -webkit-border-radius: 6px 0 0 0;
-        border-radius: 6px 0 0 0;  
+        border-radius: 6px 0 0 0;
     }
     .tabla_zebra th:last-child {
         -moz-border-radius: 0 6px 0 0;
@@ -137,8 +137,8 @@
         background-image: -webkit-linear-gradient(top, #e1e1e1, #aaa);
         background-image:    -moz-linear-gradient(top, #e1e1e1, #aaa);
         background-image:     -ms-linear-gradient(top, #e1e1e1, #aaa);
-        background-image:      -o-linear-gradient(top, #e1e1e1, #aaa); 
-        background-image:         linear-gradient(top, #e1e1e1, #aaa);  
+        background-image:      -o-linear-gradient(top, #e1e1e1, #aaa);
+        background-image:         linear-gradient(top, #e1e1e1, #aaa);
     }
     .tabla_zebra tfoot td:first-child {
         -moz-border-radius: 0 0 0 6px;
@@ -195,17 +195,17 @@
     }
     .sombra
     {
-        box-shadow:0px 1px 4px #999; 
+        box-shadow:0px 1px 4px #999;
         border-radius: 9px;
     }
     .sombra_lados
     {
-        border-top-left-radius: 10px; 
+        border-top-left-radius: 10px;
         border-top-right-radius: 10px;
-        border-bottom-left-radius: 10px; 
+        border-bottom-left-radius: 10px;
         border-bottom-right-radius: 10px;
         border-top: solid 1px #ccc;
-        border-bottom: solid 1px #ccc; 
+        border-bottom: solid 1px #ccc;
     }
     .sombra_lados:last-child
     {
@@ -310,18 +310,12 @@
     }
     .table-striped tbody tr:nth-child(odd) td,
     .table-striped tbody tr:nth-child(odd) th {
-<<<<<<< HEAD
 
-      border-top: solid 1px #eee;
-      border-bottom: solid 1px #eee;
-    }
-
-=======
       background-color: #f7f7f7;
       border-top: solid 1px #eee;
       border-bottom: solid 1px #eee;
     }
->>>>>>> caidv2
+
     .table tbody tr:hover td,
     .table tbody tr:hover th {
       background-color: #eee;
