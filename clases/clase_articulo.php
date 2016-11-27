@@ -1,5 +1,4 @@
 <?php
-<<<<<<< HEAD
 
 	require_once('../nucleo/ModeloConect.php');
 	class clsarticulo extends ModeloConect
@@ -70,33 +69,6 @@
 					$Fila[$cont][5]=$laRow['existencia'];
 					$Fila[$cont][6]=$laRow['estatusart'];
 					$Fila[$cont][7]=$laRow['stockminimo'];
-=======
-	require_once('../nucleo/ModeloConect.php');
-	class clsArticulo extends ModeloConect
-	{
-		private $idArticulo,$nombre,$idTipo_articulo,$estatus;
-		function __set($var,$val){
-			$this->$var=strtoupper($val);
-		}		
-		function __get($var){
-			return $this->$var;
-		}
-		
-
-		function consultar_articulo()
-		{
-			$this->conectar();
-			$cont=0;
-				$sql="SELECT *,a.nombre AS nombre_a,ta.nombre AS nombre_ta,a.estatus AS estatus_a FROM am_tarticulo a INNER JOIN am_ttipo_articulo ta ON a.idTipo_articulo=ta.idTipo_articulo";
-				$pcsql=$this->filtro($sql);
-				while($laRow=$this->proximo($pcsql))
-				{
-					$Fila[$cont][0]=$laRow['idArticulo'];
-					$Fila[$cont][1]=$laRow['nombre_a'];
-					$Fila[$cont][2]=$laRow['nombre_ta'];
-					$Fila[$cont][3]=$laRow['cantidad'];
-					$Fila[$cont][4]=$laRow['estatus_a'];
->>>>>>> caidv2
 					$cont++;
 				}
 			
@@ -104,7 +76,6 @@
 			return $Fila;
 		}
 
-<<<<<<< HEAD
 		function consultar_articulos()
 		{
 			$this->conectar();
@@ -163,27 +134,12 @@
 					$Fila[4]=$laRow['nom_cat'];
 					$Fila[5]=$laRow['existencia'];
 					$Fila[6]=$laRow['stockminimo'];
-=======
-		function consultar_articulo_id()
-		{
-			$this->conectar();
-				$sql="SELECT * FROM am_tarticulo WHERE idArticulo='$this->idArticulo'";
-				$pcsql=$this->filtro($sql);
-				if($laRow=$this->proximo($pcsql))
-				{
-					$Fila[0]=$laRow['idArticulo'];
-					$Fila[1]=$laRow['nombre'];
-					$Fila[2]=$laRow['idTipo_articulo'];
-					$Fila[3]=$laRow['cantidad'];
-					$Fila[4]=$laRow['estatus'];
->>>>>>> caidv2
 				}
 			
 			$this->desconectar();
 			return $Fila;
 		}
 
-<<<<<<< HEAD
 		function consultar_dependencia()
 		{
 			$this->conectar();
@@ -203,12 +159,6 @@
 		{
 			$this->conectar();
 			$sql="INSERT INTO tarticulo (descripcionart,idunidadmedida,idpresentacion,idgrupo,stockminimo)VALUES(UPPER('$this->lcdescripcionart'),'$this->lcidunidadmedida','$this->lcpresentacion','$this->lcgrupo','$this->lcstockminimo')";
-=======
-		function registrar_articulo()
-		{
-			$this->conectar();
-			$sql="INSERT INTO am_tarticulo (nombre,idTipo_articulo,cantidad,estatus) VALUES ('$this->nombre','$this->idTipo_articulo','0','1')";
->>>>>>> caidv2
 			$lnHecho=$this->ejecutar($sql);			
 			$this->desconectar();
 			return $lnHecho;
@@ -217,11 +167,7 @@
 		function eliminar_articulo()
 		{
 			$this->conectar();
-<<<<<<< HEAD
 			$sql="UPDATE tarticulo SET estatusart='0' WHERE idarticulo='$this->lcIdarticulo' ";
-=======
-			$sql="UPDATE am_tarticulo SET estatus='0' WHERE idArticulo='$this->idArticulo' ";
->>>>>>> caidv2
 			$lnHecho=$this->ejecutar($sql);			
 			$this->desconectar();
 			return $lnHecho;
@@ -230,33 +176,20 @@
 		function restaurar_articulo()
 		{
 			$this->conectar();
-<<<<<<< HEAD
 			$sql="UPDATE tarticulo SET estatusart='1' WHERE idarticulo='$this->lcIdarticulo' ";
-=======
-			$sql="UPDATE am_tarticulo SET estatus='1' WHERE idArticulo='$this->idArticulo' ";
->>>>>>> caidv2
 			$lnHecho=$this->ejecutar($sql);			
 			$this->desconectar();
 			return $lnHecho;
 		}
-<<<<<<< HEAD
 		
 		function editar_articulo()
 		{
 			$this->conectar();
 			$sql="UPDATE tarticulo SET descripcionart=UPPER('$this->lcdescripcionart'), idunidadmedida='$this->lcidunidadmedida', idpresentacion='$this->lcpresentacion', idgrupo='$this->lcgrupo', stockminimo='$this->lcstockminimo' WHERE idarticulo='$this->lcIdarticulo' ";
-=======
-
-		function editar_articulo()
-		{
-			$this->conectar();
-			$sql="UPDATE am_tarticulo SET nombre='$this->nombre',idTipo_articulo='$this->idTipo_articulo',cantidad='$this->cantidad' WHERE idArticulo='$this->idArticulo' ";
->>>>>>> caidv2
 			$lnHecho=$this->ejecutar($sql);			
 			$this->desconectar();
 			return $lnHecho;
 		}
-<<<<<<< HEAD
 
 		function consultar_detalle_departamento($p)
 		{
@@ -331,16 +264,6 @@
 					$Fila[10]=$laRow['cantAsignaciones'];
 
 					$cont++;
-=======
-		function consultar_tipo_articulo()
-		{
-			$this->conectar();
-				$sql="SELECT * FROM am_ttipo_articulo WHERE estatus='1';";
-				$pcsql=$this->filtro($sql);
-				while($laRow=$this->proximo($pcsql))
-				{
-					$Fila[]=$laRow;
->>>>>>> caidv2
 				}
 			
 			$this->desconectar();
