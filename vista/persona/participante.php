@@ -62,7 +62,7 @@ for($i=0;$i<count($laModulos);$i++)
     <form action="../controlador/control_inscripcion.php" method="POST" name="form_participante">
         <input type="hidden" value="eliminar_participante" name="operacion" id="cam_operacion"/>
         <input type="hidden"  name="idparticipante" id="cam_idparticipante"/>
-        <a class="btn btn-success" id="btn_registrar" href="?vista=persona/registrar_participante"><i class="icon-plus icon-white"></i> Registrar Hoja de vida</a>
+        <a class="btn btn-success" id="btn_registrar" href="?vista=persona/registrar_participante"><i class="icon-plus icon-white"></i> Registrar</a>
         <table class="table table-striped table-hover table-bordered bootstrap-datatable datatable dataTable" id="filtro">
             <thead>
                 <th>Cédula</th><th>Apellido Nombre</th><th>Edad</th><th>Dirección</th><th>Teléfono</th><th>Estatus</th><th>Acción</th>

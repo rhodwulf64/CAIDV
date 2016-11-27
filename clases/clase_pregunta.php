@@ -3,11 +3,12 @@
 	require_once('../nucleo/ModeloConect.php');
 	class clsPregunta extends ModeloConect
 	{
-		
+
 		private $lcIdPregunta;
 		private $lcPregunta;
 		private $lcRespuesta;
 		private $lcUsuario;
+		private $lsRecuperador;
 
 		function set_IdPregunta($pcIdPregunta)
 		{
@@ -19,9 +20,19 @@
 			$this->lcPregunta=$pcPregunta;
 		}
 
+		function set_Correo($pcCorreo)
+		{
+			$this->lcCorreo=$pcCorreo;
+		}
+
 		function set_Respuesta($pcRespuesta)
 		{
 			$this->lcRespuesta=$pcRespuesta;
+		}
+
+		function set_IDTUsuario($pcIDTUsuario)
+		{
+			$this->lcIDTUsuario=$pcIDTUsuario;
 		}
 
 		function set_Usuario($pcUsuario)
@@ -29,11 +40,16 @@
 			$this->lcUsuario=$pcUsuario;
 		}
 
+		function set_Recuperador($pcRecuperador)
+		{
+			$this->lsRecuperador=$pcRecuperador;
+		}
+
 		function consultar_pregunta()
 		{
 			$this->conectar();
 			$cont=0;
-				$sql="SELECT `idpregunta`, `pregunta`, `respuesta`, `tusuario_idusuario` FROM `tpregunta` WHERE idpregunta='$this->lcIdPregunta' AND tusuario_idusuario='$this->lcUsuario'";
+				$sql="SELECT `idpregunta`, `pregunta`, `respuesta`, `tusuario_idusuario` FROM `tpregunta` WHERE idpregunta='$this->lcIdPregunta' AND tusuario_idusuario='$this->lcIDTUsuario'";
 				$pcsql=$this->filtro($sql);
 				while($laRow=$this->proximo($pcsql))
 				{
@@ -42,7 +58,7 @@
 					$Fila[2]=$laRow['respuesta'];
 					$Fila[3]=$laRow['tusuario_idusuario'];
 				}
-			
+
 			$this->desconectar();
 			return $Fila;
 		}
@@ -51,36 +67,58 @@
 		{
 			$this->conectar();
 			$cont=0;
-				$sql="SELECT `idpregunta`, `pregunta`, `respuesta`, `tusuario_idusuario` FROM `tpregunta` WHERE tusuario_idusuario IN (SELECT idusuario FROM tusuario WHERE UPPER(emailusu)=UPPER('$this->lcUsuario')) ORDER BY RAND() LIMIT 5;";
-				$pcsql=$this->filtro($sql);
-				while($laRow=$this->proximo($pcsql))
-				{
-					$Fila[$cont]["idpregunta"]			=$laRow['idpregunta'];
-					$Fila[$cont]["pregunta"]			=$laRow['pregunta'];
-					$Fila[$cont]["respuesta"]			=$laRow['respuesta'];
-					$Fila[$cont]["tusuario_idusuario"]	=$laRow['tusuario_idusuario'];
-					$cont++;
-				}
-			
+			$sql="SELECT
+			tp.idpregunta,
+			tp.pregunta,
+			tp.respuesta,
+			CONCAT(tu.nombreusu,'<br>',tu.idusuario) AS nombreFull,
+			tp.tusuario_idusuario
+			FROM tusuario AS tu
+			INNER JOIN tpregunta AS tp ON tu.idTusuario=tp.tusuario_idusuario
+			WHERE UPPER(tu.emailusu)=UPPER('$this->lcCorreo')
+			ORDER BY RAND() LIMIT 5;";
+			$pcsql=$this->filtro($sql);
+			while($laRow=$this->proximo($pcsql))
+			{
+				$Fila[$cont]["idpregunta"]			=$laRow['idpregunta'];
+				$Fila[$cont]["pregunta"]			=$laRow['pregunta'];
+				$Fila[$cont]["respuesta"]			=$laRow['respuesta'];
+				$Fila[$cont]["nombreFull"]	=$laRow['nombreFull'];
+				$Fila[$cont]["tusuario_idusuario"]	=$laRow['tusuario_idusuario'];
+				$cont++;
+			}
+
 			$this->desconectar();
 			return $Fila;
 		}
 
 		function consultar_pregunta_rand()
 		{
-			$this->conectar();
-			$cont=0;
-				$sql="SELECT `idpregunta`, `pregunta`, `respuesta`, `tusuario_idusuario` FROM `tpregunta` WHERE tusuario_idusuario ='$this->lcUsuario' ORDER BY RAND() LIMIT 5;";
+				$this->conectar();
+				$cont=0;
+				$sql="SELECT
+				tu.Recuperador,
+				tp.idpregunta,
+				tp.pregunta,
+				tp.respuesta,
+				CONCAT(tu.nombreusu,'<br>',tu.idusuario) AS nombreFull,
+				tp.tusuario_idusuario
+				FROM tusuario AS tu
+				INNER JOIN tpregunta AS tp ON tu.idTusuario=tp.tusuario_idusuario
+				WHERE tp.tusuario_idusuario ='$this->lcIDTUsuario'
+				ORDER BY RAND() LIMIT 5;";
 				$pcsql=$this->filtro($sql);
 				while($laRow=$this->proximo($pcsql))
 				{
+					$Fila[$cont]["Recuperador"]=$laRow['Recuperador'];
 					$Fila[$cont]["idpregunta"]			=$laRow['idpregunta'];
 					$Fila[$cont]["pregunta"]			=$laRow['pregunta'];
 					$Fila[$cont]["respuesta"]			=$laRow['respuesta'];
+					$Fila[$cont]["nombreFull"]	=$laRow['nombreFull'];
 					$Fila[$cont]["tusuario_idusuario"]	=$laRow['tusuario_idusuario'];
 					$cont++;
 				}
-			
+
 			$this->desconectar();
 			return $Fila;
 		}
@@ -89,7 +127,7 @@
 		{
 			$this->conectar();
 			$cont=0;
-				$sql="SELECT `idpregunta`, `pregunta`, `respuesta`, `tusuario_idusuario` FROM `tpregunta` WHERE tusuario_idusuario='$this->lcUsuario'";
+				$sql="SELECT `idpregunta`, `pregunta`, `respuesta`, `tusuario_idusuario` FROM `tpregunta` WHERE tusuario_idusuario='$this->lcIDTUsuario'";
 				$pcsql=$this->filtro($sql);
 				while($laRow=$this->proximo($pcsql))
 				{
@@ -99,7 +137,7 @@
 					$Fila[$cont][3]=$laRow['tusuario_idusuario'];
 					$cont++;
 				}
-			
+
 			$this->desconectar();
 			return $Fila;
 		}
@@ -107,7 +145,7 @@
 		function consultar_pregunta_bitacora()
 		{
 			$this->conectar();
-				$sql="SELECT `idpregunta`, `pregunta`, `respuesta`, `tusuario_idusuario` FROM `tpregunta` WHERE idpregunta='$this->lcIdPregunta' AND tusuario_idusuario='$this->lcUsuario'";
+				$sql="SELECT `idpregunta`, `pregunta`, `respuesta`, `tusuario_idusuario` FROM `tpregunta` WHERE idpregunta='$this->lcIdPregunta' AND tusuario_idusuario='$this->lcIDTUsuario'";
 				$pcsql=$this->filtro($sql);
 				if($laRow=$this->proximo($pcsql))
 				{
@@ -123,8 +161,8 @@
 		function registrar_pregunta()
 		{
 			$this->conectar();
-			$sql="INSERT INTO `tpregunta`(`pregunta`, `respuesta`, `tusuario_idusuario`) VALUES (UPPER('$this->lcPregunta'),UPPER('$this->lcRespuesta'),'$this->lcUsuario')";
-			$lnHecho=$this->ejecutar($sql);			
+			$sql="INSERT INTO `tpregunta`(`pregunta`, `respuesta`, `tusuario_idusuario`) VALUES (UPPER('$this->lcPregunta'),UPPER('$this->lcRespuesta'),'$this->lcIDTUsuario')";
+			$lnHecho=$this->ejecutar($sql);
 			$this->desconectar();
 			return $lnHecho;
 		}
@@ -133,7 +171,7 @@
 		{
 			$this->conectar();
 			$sql="DELETE FROM `tpregunta` WHERE idpregunta='$this->lcIdPregunta' ";
-			$lnHecho=$this->ejecutar($sql);			
+			$lnHecho=$this->ejecutar($sql);
 			$this->desconectar();
 			return $lnHecho;
 		}
@@ -141,8 +179,8 @@
 		function editar_pregunta()
 		{
 			$this->conectar();
-			$sql="UPDATE `tpregunta` SET `pregunta`=UPPER('$this->lcPregunta'),`respuesta`=UPPER('$this->lcRespuesta') WHERE tusuario_idusuario='$this->lcUsuario' AND idpregunta='$this->lcIdPregunta'";
-			$lnHecho=$this->ejecutar($sql);			
+			$sql="UPDATE `tpregunta` SET `pregunta`=UPPER('$this->lcPregunta'),`respuesta`=UPPER('$this->lcRespuesta') WHERE tusuario_idusuario='$this->lcIDTUsuario' AND idpregunta='$this->lcIdPregunta'";
+			$lnHecho=$this->ejecutar($sql);
 			$this->desconectar();
 			return $lnHecho;
 		}
@@ -150,8 +188,8 @@
 		function desbloquear()
 		{
 			$this->conectar();
-			$sql="UPDATE `tusuario` SET estatususu='1' WHERE idusuario='$this->lcUsuario'";
-			$lnHecho=$this->ejecutar($sql);			
+			$sql="UPDATE `tusuario` SET estatususu='1' WHERE idusuario='$this->lcIDTUsuario'";
+			$lnHecho=$this->ejecutar($sql);
 			$this->desconectar();
 			return $lnHecho;
 		}
@@ -159,72 +197,116 @@
 		function validar()
 		{
 			$this->conectar();
+			$seCrea=false;
 			$llHecho=false;
-				$sql="SELECT `idpregunta`, `pregunta`, `respuesta`, `tusuario_idusuario` FROM `tpregunta` WHERE idpregunta='$this->lcIdPregunta' AND tusuario_idusuario='$this->lcUsuario' AND respuesta=UPPER('$this->lcRespuesta')";
-				$pcsql=$this->filtro($sql);
-				while($laRow=$this->proximo($pcsql))
-				{
-					$llHecho = true;
-				}
-			
+			$lsRandomRecuperador=$this->generaRecuperador(30);
+			$sqlRecuperador="UPDATE tusuario SET Recuperador=UPPER('$lsRandomRecuperador') WHERE idTusuario='$this->lcIDTUsuario'";
+			$seCrea=$this->ejecutar($sqlRecuperador);
+			if ($seCrea)
+			{
+				$this->lsRecuperador=$lsRandomRecuperador;
+				$sql="SELECT
+					tu.Recuperador,
+					tp.idpregunta,
+					tp.pregunta,
+					tp.respuesta,
+					tp.tusuario_idusuario
+					FROM tusuario AS tu
+					INNER JOIN tpregunta AS tp ON tp.tusuario_idusuario=tu.idTusuario
+					WHERE tp.idpregunta='$this->lcIdPregunta' AND tu.idTusuario='$this->lcIDTUsuario' AND tp.respuesta=UPPER('$this->lcRespuesta')";
+					$pcsql=$this->filtro($sql);
+					while($laRow=$this->proximo($pcsql))
+					{
+						$llHecho = true;
+					}
+			}
+
 			$this->desconectar();
 			return $llHecho;
 		}
 
-		function cambio_clave($pcClave)
+		function cambio_clave($pcClave,$pcRecuperador)
 		{
+			$lnHecho=false;
 			if($this->valida_clave($pcClave))
 			{
-				$this->conectar();
-				$sql="UPDATE tclave SET fechafincla=NOW(), estatuscla='0' WHERE tusuario_idusuario='$this->lcUsuario' AND estatuscla='1';  ";
-				
-				$lnHecho=$this->ejecutar($sql);			
-				
-				$sql="  INSERT INTO `tclave`(`clavecla`, `fechainiciocla`, `fechafincla`, `estatuscla`, `tusuario_idusuario`) VALUES (sha1('$pcClave'),now(), ADDDATE(NOW(), (SELECT tiempocaducida FROM tsistema)),'1','$this->lcUsuario');";
-				$lnHecho=$this->ejecutar($sql);			
-				
-				$this->desconectar();
+				if($this->valida_Recuperador($pcRecuperador))
+				{
+					$this->conectar();
+					$sql="UPDATE tclave SET fechafincla=NOW(), estatuscla='0' WHERE tusuario_idusuario='$this->lcIDTUsuario' AND estatuscla='1';  ";
+
+					$lnHecho=$this->ejecutar($sql);
+
+					$sql="INSERT INTO `tclave`(`clavecla`, `fechainiciocla`, `fechafincla`, `estatuscla`, `tusuario_idusuario`) VALUES (sha1('$pcClave'),now(), ADDDATE(NOW(), (SELECT tiempocaducida FROM tsistema)),'1','$this->lcIDTUsuario');";
+					$lnHecho=$this->ejecutar($sql);
+
+					$this->desconectar();
+				}
 			}
-			else
-			{
-				$lnHecho=false;
-			}
+
 			return $lnHecho;
 
 		}
 
 		function cambio_clave_interno($pcClave_vieja, $pcClave_Nueva)
 		{
+			$lnHecho=false;
 			if($this->valida_clave($pcClave_Nueva))
 			{
-				$this->conectar();
-				$sql="UPDATE tclave SET fechafincla=NOW(), estatuscla='0' WHERE tusuario_idusuario='$this->lcUsuario' AND estatuscla='1';  ";
-				
-				$lnHecho=$this->ejecutar($sql);			
-				
-				$sql="  INSERT INTO `tclave`(`clavecla`, `fechainiciocla`, `fechafincla`, `estatuscla`, `tusuario_idusuario`) VALUES (sha1('$pcClave_Nueva'),now(), ADDDATE(NOW(), (SELECT tiempocaducida FROM tsistema)),'1','$this->lcUsuario');";
-				$lnHecho=$this->ejecutar($sql);			
-				
-				$this->desconectar();
-			}
-			else
-			{
-				$lnHecho=false;
+				if($this->valida_clave_actual($pcClave_vieja))
+				{
+					$this->conectar();
+					$sql="UPDATE tclave SET fechafincla=NOW(), estatuscla='0' WHERE tusuario_idusuario='$this->lcIDTUsuario' AND estatuscla='1';  ";
+
+					$lnHecho=$this->ejecutar($sql);
+
+					$sql="INSERT INTO `tclave`(`clavecla`, `fechainiciocla`, `fechafincla`, `estatuscla`, `tusuario_idusuario`) VALUES (sha1('$pcClave_Nueva'),now(), ADDDATE(NOW(), (SELECT tiempocaducida FROM tsistema)),'1','$this->lcIDTUsuario');";
+					$lnHecho=$this->ejecutar($sql);
+
+					$this->desconectar();
+				}
 			}
 			return $lnHecho;
+		}
 
+		function valida_Recuperador($pcRecuperador)
+		{
+			$llHecho=false;
+			$this->conectar();
+			$sql="SELECT * FROM tusuario WHERE idTusuario='$this->lcIDTUsuario' AND Recuperador='$pcRecuperador';";
+			$pcsql=$this->filtro($sql);
+			if($laRow=$this->proximo($pcsql))
+			{
+				$llHecho = true;
+			}
+			$this->desconectar();
+			return $llHecho;
+		}
+
+		function valida_clave_actual($pcClave)
+		{
+			$llHecho = false;
+			$this->conectar();
+			$sql="SELECT * FROM tclave WHERE clavecla=sha1('$pcClave') AND tusuario_idusuario='$this->lcIDTUsuario' AND estatuscla='1';";
+			$pcsql=$this->filtro($sql);
+			if($laRow=$this->proximo($pcsql))
+			{
+				$llHecho=true;
+			}
+			$this->desconectar();
+			return $llHecho;
 		}
 
 		function valida_clave($pcClave)
 		{
 			$llHecho=true;
 			$this->conectar();
-			$sql="SELECT * FROM tclave WHERE clavecla=sha1('$pcClave') AND tusuario_idusuario='$this->lcUsuario';";
+			$sql="SELECT * FROM tclave WHERE clavecla=sha1('$pcClave') AND tusuario_idusuario='$this->lcIDTUsuario';";
 			$pcsql=$this->filtro($sql);
 				while($laRow=$this->proximo($pcsql))
 				{
 					$llHecho = false;
-				}		
+				}
 			$this->desconectar();
 			return $llHecho;
 		}

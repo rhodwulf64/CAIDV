@@ -66,7 +66,7 @@ function restaurar(id)
         <?php
         if($registrar)
         {
-            echo '<a id="btn_registrar" class="btn btn-success" href="?vista=archivo/registrar_localidad"><i class="icon-plus icon-white"></i> Registrar localidad</a>';
+            echo '<a id="btn_registrar" class="btn btn-success" href="?vista=archivo/registrar_localidad"><i class="icon-plus icon-white"></i> Registrar</a>';
         }
         ?>
         <table class="table table-striped table-hover table-bordered bootstrap-datatable datatable dataTable" id="filtro">

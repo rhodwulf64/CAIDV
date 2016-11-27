@@ -58,7 +58,7 @@ tinymce.init({
         </div>
         <div class="row-fluid">
             <div class="col-lg-6 span6">
-                <label>Nro Preguntas <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Nro de preguntas que los usuarios deben ingresar para recuperar su contraseña."><i class="fa fa-question" ></i></span></label>
+                <label>Nro Preguntas de seguridad <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Nro de preguntas que los usuarios deben ingresar para recuperar su contraseña."><i class="fa fa-question" ></i></span></label>
                 <select class="span12" name="nropreguntas" id="cam_nropreguntas" required>
                     <option value="">-</option>
                     <option <?php if($Datos_Configuracion['nropreguntas']==1){ print('SELECTED');}?> value="1">1</option>
@@ -67,7 +67,7 @@ tinymce.init({
                 </select>
             </div>
             <div class="col-lg-6 span6">
-                <label>Nro Intentos <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Nro de intentos permitidos para que los usuarios intenten acceder al sistema antes de que se les bloquee la cuenta."><i class="fa fa-question" ></i></span></label>
+                <label>Nro Intentos de inicio de sesión fallidos<span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Nro de intentos permitidos para que los usuarios intenten acceder al sistema antes de que se les bloquee la cuenta."><i class="fa fa-question" ></i></span></label>
                 <select class="span12" name="nrointentos" id="cam_nrointentos" required>
                     <option value="">-</option>
                     <option <?php if($Datos_Configuracion['nrointentos']==2){ print('SELECTED');}?> value="2">2</option>
@@ -97,7 +97,7 @@ tinymce.init({
         </div>
         <div class="row-fluid">
             <div class="col-lg-6 span6">
-                <label>Periodo Lapso <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Los lapsos no pueden ser mayores a 365 días."><i class="fa fa-question" ></i></span></label>
+                <label>Duración de Lapso <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Los lapsos no pueden ser mayores a 365 días."><i class="fa fa-question" ></i></span></label>
                 <select class="span12" name="tiempolapso" id="cam_tiempolapso" required>
                     <option value="">-</option>
                     <option <?php if($Datos_Configuracion['tiempolapso']==180){ print('SELECTED');}?> value="180">180 dias</option>
@@ -108,7 +108,7 @@ tinymce.init({
                 </select>
             </div>
             <div class="col-lg-6 span6">
-                <label>Tiempo de conexión <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Tiempo máximo sin actividad en la conexión."><i class="fa fa-question" ></i></span></label>
+                <label>Tiempo de desconexión por inactividad <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Tiempo máximo sin actividad en la conexión."><i class="fa fa-question" ></i></span></label>
                 <select class="span12" name="tiempoconexion" id="cam_tiempoconexion" required>
                     <option value="">-</option>
                     <option <?php if($Datos_Configuracion['tiempoconexion']==10){ print('SELECTED');}?> value="10">10 Minutos</option>

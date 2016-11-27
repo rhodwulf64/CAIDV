@@ -30,7 +30,7 @@ $Datos_Usuario = $lobjUsuario->consultar_usuarios();
 </script>
 <!--datatable-->  
 <div class="col-lg-8 span8 pull-left">
-    <h3>Bloquear / desbloquear usuario</h3>
+    <h3>Usuario</h3>
     <form class="formulario" action="../controlador/control_pregunta.php" method="POST" name="form_sistema">
         <input type="hidden" value="" name="operacion" id="operacion" />
         <input type="hidden" value="" name="tusuario_idusuario" id="tusuario_idusuario"/>

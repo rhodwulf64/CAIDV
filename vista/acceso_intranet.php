@@ -1,15 +1,16 @@
-<?php    
+<?php
     session_start(); //inicia la session, la cual permite trabajar con la variable $_SESSION
 
     $usuario=(isset($_SESSION['usuario']))?$_SESSION['usuario']:"";//toma el valor que se guarda en la variable usuario que está en la variable $_SESSION
 
     if($usuario)  //verifica si existe algún usuario logueado en el arreglo usuario de la variable $_SESSION
     {
-        echo '<script>Notifica_Error("Usted tiene una sesíón abierta!");window.location.href="intranet.php";</script>'; // Si no existe un usuario logeado entonces le mostraŕa un mensaje y lo sacará para el inicio! 
+        echo '<script>swal("Usted tiene una sesíón abierta!","","error");window.location.href="intranet.php";</script>'; // Si no existe un usuario logeado entonces le mostraŕa un mensaje y lo sacará para el inicio!
     }
     
 ?>
-
+<link rel="stylesheet" type="text/css" href="../libreria/sweetalert-master/dist/sweetalert.css">
+<script src="../libreria/sweetalert-master/dist/sweetalert.min.js"></script>
 <link rel="stylesheet" type="text/css" href="../libreria/jquery.realperson.package-2.0.1/jquery.realperson.css"> <!--CSS que da estilo al plugin del captcha-->
 <script type="text/javascript" src="../libreria/jquery.realperson.package-2.0.1/jquery.plugin.js"></script>		<!--js del plugin del captcha-->
 <script type="text/javascript" src="../libreria/jquery.realperson.package-2.0.1/jquery.realperson.js"></script> <!--js que implementa las funciones directas del captcha-->
@@ -50,4 +51,3 @@ $(function() {
   // $("#defaultReal").lemez_aceptar("texto_numero","btnentrar");// Valida que el código captcha sea obligatorio y que sea de tipo texto y numero
     });
 </script>
-		

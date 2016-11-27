@@ -12,12 +12,12 @@
             "bJQueryUI": true,
             "sPaginationType": "full_numbers",
              "aaSorting": [[ 0, "desc" ]],
-            "iDisplayLength": 10                    
+            "iDisplayLength": 10
         });
     } );
-</script>   
+</script>
 <div style="float: left" class="col-lg-10 span10 pull-left">
-    <h3>Auditoria de sistema</h3>
+    <h3>Auditoría de sistema</h3>
     <form action="../controlador/control_servicio.php" method="POST" name="form_servicio">
         <input type="hidden" value="eliminar_servicio" name="operacion" />
         <input type="hidden"  name="idservicio" id="cam_idservicio"/>

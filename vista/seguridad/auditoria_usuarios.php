@@ -1,9 +1,9 @@
 <?php
 $consultar= $registrar= $eliminar=false;
-for($i=0;$i<count($laModulos);$i++) 
+for($i=0;$i<count($laModulos);$i++)
     {
-         
-        $laServicios=$lobjRol->consultar_servicios_menu($laModulos[$i][0]); 
+
+        $laServicios=$lobjRol->consultar_servicios_menu($laModulos[$i][0]);
         for ($j=0; $j <count($laServicios) ; $j++) //Se recorre un ciclo para poder extraer los datos de cada uno de los servicios que tiene asignado el modulo para poder constuir el menú
         {
             if($laServicios[$j][2]=='seguridad/consultar_usuario')
@@ -26,12 +26,12 @@ for($i=0;$i<count($laModulos);$i++)
             "bJQueryUI": true,
             "sPaginationType": "full_numbers",
              "aaSorting": [[ 0, "desc" ]],
-            "iDisplayLength": 10                    
+            "iDisplayLength": 10
         });
     } );
-</script>  
+</script>
 <div style="float: left" class="col-lg-8 span8 pull-left">
-    <h3>Auditoria de Usuario</h3>
+    <h3>Auditoría de Usuario</h3>
     <form action="../controlador/control_servicio.php" method="POST" name="form_servicio">
         <input type="hidden" value="eliminar_servicio" name="operacion" />
         <input type="hidden"  name="idservicio" id="cam_idservicio"/>

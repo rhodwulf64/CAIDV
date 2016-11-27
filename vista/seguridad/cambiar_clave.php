@@ -1,15 +1,14 @@
 <?php
 $operacion='cambiar_clave';
 $titulo   ='Cambiar clave';
-?>       
+?>
 
 <div style="float: left" class="col-lg-8 span8 pull-left">
     <h3><?php print($titulo); ?></h3>
     <form class="formulario" action="../controlador/control_clave.php" method="POST" name="form_pregunta">
         <input type="hidden" value="<?php print($operacion);?>" name="operacion" />
-        <input type="hidden" value="<?php print($_SESSION['usuario']);?>" name="tusuario_idusuario" />
         <div class="alert alert -warning">
-        <p><i class="fa fa-exclamation-triangle"></i> Debe introducir una contraseña que contenga entre 8 a 20 caracteres y debe contener al menos 1 letra mayúscula, 1 letra minúscula, 1 número y 1 símbolo.</p>
+        <p><i class="fa fa-exclamation-triangle"></i> Debe introducir una clave que contenga entre 8 a 20 caracteres y debe contener al menos 1 letra mayúscula, 1 letra minúscula, 1 número y 1 símbolo.</p>
         </div>
         <div class="row-fluid">
             <div class="col-lg-6 span6">
@@ -23,7 +22,7 @@ $titulo   ='Cambiar clave';
                 <label>Clave nueva <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Clave nueva con la cual podrá acceder al sistema."><i class="fa fa-question" ></i></span></label>
 
                 <input type="password"  name="clave_nueva" id="cam_clave_nueva" value="" required/>
-                
+
             </div>
             <div class="col-lg-6 span6">
                 
@@ -41,26 +40,24 @@ $titulo   ='Cambiar clave';
 <script>
 function enviar()
 {
-
-    var clave_anterior =  <?php print($_SESSION['clave']);?>;
+    var result=false;
     var clave_actual = document.getElementById('cam_clave_actual').value;
     var clave_nueva = document.getElementById('cam_clave_nueva').value;
     var clave_nueva_repetir = document.getElementById('cam_repita_clave_nueva').value;
-
-    if(clave_actual!=clave_anterior)
+    if (clave_actual=="")
     {
-        Notifica_Error('La clave actual no coincide con su clave.');
-        return false;
+      Notifica_Error('Debe ingresar su clave actual para poder continuar.');
     }
     else if(clave_nueva!=clave_nueva_repetir)
     {
-        Notifica_Error('La nueva clave no coincide con su repetición');
-        return false;
+      Notifica_Error('Las claves ingresadas no coinciden.');
     }
     else
     {
-        return true;
+      result=true;
     }
+    return result;
+
 }
 </script>
 <script type="text/javascript">

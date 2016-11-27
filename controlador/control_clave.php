@@ -11,25 +11,26 @@
 	$Preguntas=$_POST['pregunta'];
 	$Respuestas=$_POST['respuesta'];
 	$NroPreguntas=$_POST['nropreguntas'];
-	$lobjPregunta->set_Usuario($_POST['tusuario_idusuario']);
+	$lobjPregunta->set_IDTUsuario($_SESSION["idTusuario"]);
 
 	$lcReal_ip=$lobjUtil->get_real_ip();
-    $ldFecha=date('Y-m-d h:m');
+  $ldFecha=date('Y-m-d h:m');
 	$operacion=$_POST['operacion'];
-
-	switch ($operacion) 
+	$lsClaveActual=addslashes($_POST['clave_actual']);
+	$lsClaveNueva=addslashes($_POST['clave_nueva']);
+	switch ($operacion)
 	{
 		case 'cambiar_clave':
-				$lobjPregunta->set_Usuario($_POST['tusuario_idusuario']);
-				$llHecho = $lobjPregunta->cambio_clave_interno($_POST['clave_actual'], $_POST['clave_nueva']);
-				
+				$llHecho = $lobjPregunta->cambio_clave_interno($lsClaveActual,$lsClaveNueva);
+
 				if($llHecho)
 				{
-					$_SESSION['msj']='Se ha modificado exitosamente';
+					$_SESSION['msj']='Su clave ha sido modificada exitosamente.';
 				}
 				else
 				{
-					$_SESSION['msj']='No se realizarón cambios';
+					$_SESSION['msj']='La clave ingresada no coincide con su clave actual.';
+					$_SESSION['msjModo']="E";
 				}
 			header('location: ../vista/intranet.php');
 

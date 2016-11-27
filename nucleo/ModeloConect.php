@@ -120,6 +120,9 @@ class ModeloConect
 			return false;
 		}
 	}
+
+
+
 	function TraerArreglo($rs){ // convierte un record set en un arreglo
 		return $rs->fetch_array(MYSQLI_ASSOC);
 	}
@@ -132,6 +135,12 @@ class ModeloConect
 	}
 	function deshacer_trans(){ // deshago la transaccion
 		$this->ejecuta("ROLLBACK");
+	}
+	function generaRecuperador($rango=30)
+	{
+		$recuperador=substr(str_shuffle("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, $rango);
+
+		return $recuperador;
 	}
 
 }

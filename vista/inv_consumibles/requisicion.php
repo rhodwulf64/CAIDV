@@ -99,7 +99,7 @@ function Mensaje(e){
         <?php
         if($registrar)
         {
-            echo '<a id="btn_registrar" class="btn btn-success" href="?vista=inv_consumibles/registrar_requisicion"><i class="icon-plus icon-white"></i> Solicitar Recepción</a>';
+            echo '<a id="btn_registrar" class="btn btn-success" href="?vista=inv_consumibles/registrar_requisicion"><i class="icon-plus icon-white"></i> Solicitar</a>';
         }
         ?>
         <table class="table table-striped table-hover table-bordered bootstrap-datatable datatable dataTable" id="filtro">

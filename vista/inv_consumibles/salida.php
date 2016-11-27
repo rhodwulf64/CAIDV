@@ -86,7 +86,7 @@ function restaurar(id)
         <?php
         if($registrar)
         {
-            echo '<a id="btn_registrar" class="btn btn-success" href="?vista=inv_consumibles/registrar_salida"><i class="icon-lock icon-white"></i> Solicitar Asignación</a>';
+            echo '<a id="btn_registrar" class="btn btn-success" href="?vista=inv_consumibles/registrar_salida"><i class="icon-lock icon-white"></i> Solicitar</a>';
         }
         ?>
         <table class="table table-striped table-hover table-bordered bootstrap-datatable datatable dataTable" id="filtro">

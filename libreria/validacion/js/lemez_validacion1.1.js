@@ -3,7 +3,6 @@
 //Nota: Es importante validar del lado servidor.
 	jQuery.fn.lemez_aceptar = function (a,z) {
 
-
 	  $(this).attr("autocomplete","off");var c=true;var d=false;var e="#CC0000";
 	  var f=$(this).css("border-top-color");
 	  var f2=$(this).css("border-bottom-color");
@@ -73,9 +72,7 @@ posicion=g.position();var j=document.createElement("div");j.id="div_msj"+g.attr(
 	    j.innerHTML=i;$("body").append(j);$(j).hide();$(this).keypress(function(a){if(d==false){c=h.test(String.fromCharCode(a.which));if(a.which==8||a.which==0)c=true;return c}});
 
 $(this).keyup(function(){j.innerHTML=i;if(d==false){if(c==false){$("#div_msj"+g.attr("id")).show().delay(3e3).fadeOut(2e3)}else{$("#div_msj"+g.attr("id")).hide()}}});
-
-$(this).blur(function(){if(z!=""&&g.val()){if(h.test(g.val())==false){$(g).css("border-color",e);$(g).focus();Notifica_Error(i);return false}else{$(g).css("border-color",f);$("#div_msj"+g.attr("id")).hide();return true}}});
-
+$(this).blur(function(){if(z!=""&&g.val()){if(h.test(g.val())==false){$(g).css("border-color",e);swal(i,"","error");return false}else{$(g).css("border-color",f);$("#div_msj"+g.attr("id")).hide();return true}}});
 		//if(!z) {z="form"; b="no"};
 	    $("button").click(function () {
 

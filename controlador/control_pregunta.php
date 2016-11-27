@@ -14,13 +14,13 @@
 	$Respuestas=$_POST['respuesta'];
 	$NroPreguntas=$_POST['nropreguntas'];
 	$lobjUsuario->set_Usuario($_POST['tusuario_idusuario']);
-	$lobjPregunta->set_Usuario($_POST['tusuario_idusuario']);
+	$lobjPregunta->set_IDTUsuario($_SESSION["idTusuario"]);
 
 	$lcReal_ip=$lobjUtil->get_real_ip();
     $ldFecha=date('Y-m-d h:m');
 	$operacion=$_POST['operacion'];
 
-	switch ($operacion) 
+	switch ($operacion)
 	{
 		case 'registrar_pregunta':
 			for($i=0;$i<$NroPreguntas;$i++)
@@ -35,8 +35,9 @@
 					$_SESSION['msj']='Se ha registrado exitosamente';
 				}
 				else
-				{	
+				{
 					$_SESSION['msj']='Error en el registro';
+					$_SESSION['msjModo']="E";
 				}
 			}
 		break;
@@ -54,7 +55,7 @@
 				if($hecho)
 				{
 					$cont=0;
-					foreach ($laLocalidadAnterior as $key2 => $value2) 
+					foreach ($laLocalidadAnterior as $key2 => $value2)
 					{
 						$value = $_POST[$key2];
 						if($value)
@@ -80,15 +81,14 @@
 					}
 				}
 				else
-				{	
+				{
 					$_SESSION['msj']='No se realizarón cambios';
 				}
 			}
 		break;
 		case 'cambiar_clave':
-				$lobjPregunta->set_Usuario($_POST['tusuario_idusuario']);
 				$llHecho = $lobjPregunta->cambio_clave_interno($_POST['clave_actual'], $_POST['clave_nueva']);
-				
+
 				if($llHecho)
 				{
 					$_SESSION['msj']='Se ha modificado exitosamente';
@@ -99,7 +99,6 @@
 				}
 		break;
 		case 'primera_vez':
-				$lobjPregunta->set_Usuario($_POST['tusuario_idusuario']);
 				$llHecho = $lobjPregunta->cambio_clave_interno($_POST['clave_actual'], $_POST['clave_nueva']);
 				if($llHecho)
 				{
@@ -115,7 +114,7 @@
 							$_SESSION['msj']='Registro exitoso';
 						}
 						else
-						{	
+						{
 							$_SESSION['msj']='Error en el registro';
 						}
 					}
@@ -128,7 +127,7 @@
 				{
 					$_SESSION['msj']='Error en el registro';
 				}
-				
+
 		break;
 		case 'eliminar_localidad':
 			$hecho=$lobjPregunta->eliminar_localidad();
@@ -137,7 +136,7 @@
 				$_SESSION['msj']='Se ha desactivado exitosamente';
 			}
 			else
-			{	
+			{
 				$_SESSION['msj']='Error al eliminar';
 			}
 		break;
@@ -148,7 +147,7 @@
 				$_SESSION['msj']='Se ha desbloqueado exitosamente';
 			}
 			else
-			{	
+			{
 				$_SESSION['msj']='Error al desbloquear';
 			}
 			header('location: ../vista/intranet.php?vista=seguridad/bloquear');
@@ -161,7 +160,7 @@
 				$_SESSION['msj']='Se ha bloqueado exitosamente';
 			}
 			else
-			{	
+			{
 				$_SESSION['msj']='Error al bloquear';
 			}
 			header('location: ../vista/intranet.php?vista=seguridad/bloquear');

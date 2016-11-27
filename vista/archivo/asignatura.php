@@ -70,7 +70,7 @@ for($i=0;$i<count($laModulos);$i++)
         <?php
         if($registrar)
         {
-            echo '<a id="btn_registrar" class="btn btn-success" href="?vista=archivo/registrar_asignatura"><i class="icon-plus icon-white"></i> Registrar asignatura</a>';
+            echo '<a id="btn_registrar" class="btn btn-success" href="?vista=archivo/registrar_asignatura"><i class="icon-plus icon-white"></i> Registrar</a>';
         }
         ?>
         <table class="table table-striped table-hover table-bordered bootstrap-datatable datatable dataTable" id="filtro">

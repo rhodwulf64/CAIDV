@@ -67,7 +67,7 @@ for($i=0;$i<count($laModulos);$i++)
         <?php
         if($registrar)
         {
-            echo '<a class="btn btn-success" id="btn_registrar" href="?vista=seguridad/registrar_rol"><i class="icon-plus icon-white"></i> Registrar rol</a>';
+            echo '<a class="btn btn-success" id="btn_registrar" href="?vista=seguridad/registrar_rol"><i class="icon-plus icon-white"></i> Registrar</a>';
         }
         ?>
         <table class="table table-striped table-hover table-bordered bootstrap-datatable datatable dataTable" id="filtro">

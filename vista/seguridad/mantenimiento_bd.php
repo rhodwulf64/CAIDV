@@ -1,5 +1,5 @@
 <div style="float: left;margin-bottom:50px;" class="col-lg-8 span8 pull-left">
-    <h3>Mantenimiento de Base de datos</h3>
+    <h3>Mantenimiento de la Base de datos</h3>
 	<div class="row-fluid formulario">
 		<div class="span4">
 			<a href="../libreria/exportar_bd.php" target="_blank" class="btn btn-success"><i class="fa fa-download"></i> Exportar Bd</a>

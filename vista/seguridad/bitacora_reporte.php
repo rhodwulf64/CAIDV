@@ -12,12 +12,12 @@
             "bJQueryUI": true,
             "sPaginationType": "full_numbers",
              "aaSorting": [[ 0, "desc" ]],
-            "iDisplayLength": 10                    
+            "iDisplayLength": 10
         });
     } );
-</script>   
+</script>
 <div style="float: left" class="col-lg-11 span11 pull-left">
-    <h3>Auditoria de reporte</h3>
+    <h3>Auditoría de reporte</h3>
     <form action="" method="POST" >
         <table class="table table-striped table-hover table-bordered bootstrap-datatable datatable dataTable" id="filtro">
             <thead>

@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 11-11-2016 a las 14:22:08
+-- Tiempo de generación: 21-11-2016 a las 04:18:03
 -- Versión del servidor: 10.1.16-MariaDB
--- Versión de PHP: 5.5.38
+-- Versión de PHP: 5.6.24
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -932,44 +932,71 @@ INSERT INTO `tacceso` (`idacceso`, `idusuario`, `exitoacc`, `fechaacc`, `fecha_s
 (341, 'administrador', '1', '2016-06-20 14:30:30', '2016-06-20 10:01:33', '2016-06-20 10:01:31', '::1', '0'),
 (342, 'administrador', '1', '2016-06-20 14:31:50', '2016-06-20 10:04:06', '2016-06-20 10:04:04', '::1', '0'),
 (343, 'administrador', '1', '2016-06-20 14:34:19', '2016-06-20 10:42:27', '2016-06-20 10:42:16', '::1', '0'),
-(344, 'administrador', '1', '2016-06-20 15:12:38', NULL, '2016-06-20 14:37:46', '::1', '0'),
-(345, 'administrador', '1', '2016-06-20 19:39:04', NULL, '2016-06-20 19:44:17', '::1', '0'),
-(346, 'administrador', '1', '2016-06-22 03:41:39', NULL, '2016-06-21 23:11:44', '::1', '0'),
+(344, 'administrador', '1', '2016-06-20 15:12:38', NULL, '2016-06-20 14:37:46', '::1', '1'),
+(345, 'administrador', '1', '2016-06-20 19:39:04', NULL, '2016-06-20 19:44:17', '::1', '1'),
+(346, 'administrador', '1', '2016-06-22 03:41:39', NULL, '2016-06-21 23:11:44', '::1', '1'),
 (347, 'administrador', '1', '2016-06-29 18:52:58', '2016-06-29 14:29:45', '2016-06-29 14:29:02', '192.168.0.103', '0'),
 (348, 'dfrearqrwr', '0', '2016-06-29 18:59:52', NULL, '0000-00-00 00:00:00', '192.168.0.103', '0'),
 (349, 'administrador', '1', '2016-06-29 19:00:27', '2016-06-29 14:30:38', '2016-06-29 14:30:27', '192.168.0.103', '0'),
-(350, 'administrador', '1', '2016-06-29 19:01:43', NULL, '2016-06-29 14:51:32', '192.168.0.103', '0'),
-(351, '18672728', '1', '2016-06-29 19:30:12', NULL, '2016-06-29 19:16:50', '::1', '0'),
-(352, 'administrador', '1', '2016-06-29 19:41:27', NULL, '2016-06-29 15:16:54', '192.168.0.103', '0'),
-(353, 'administrador', '1', '2016-06-29 19:47:59', NULL, '2016-06-29 15:26:23', '192.168.0.103', '0'),
-(354, 'administrador', '1', '2016-06-29 23:47:33', NULL, '2016-06-29 23:09:18', '::1', '0'),
-(355, 'administrador', '1', '2016-06-30 03:39:47', NULL, '2016-06-29 23:15:52', '::1', '0'),
+(350, 'administrador', '1', '2016-06-29 19:01:43', NULL, '2016-06-29 14:51:32', '192.168.0.103', '1'),
+(351, '18672728', '1', '2016-06-29 19:30:12', NULL, '2016-06-29 19:16:50', '::1', '1'),
+(352, 'administrador', '1', '2016-06-29 19:41:27', NULL, '2016-06-29 15:16:54', '192.168.0.103', '1'),
+(353, 'administrador', '1', '2016-06-29 19:47:59', NULL, '2016-06-29 15:26:23', '192.168.0.103', '1'),
+(354, 'administrador', '1', '2016-06-29 23:47:33', NULL, '2016-06-29 23:09:18', '::1', '1'),
+(355, 'administrador', '1', '2016-06-30 03:39:47', NULL, '2016-06-29 23:15:52', '::1', '1'),
 (356, 'administrador', '1', '2016-06-30 04:51:49', '2016-06-30 04:17:24', '2016-06-30 04:12:38', '::1', '0'),
-(357, 'administrador ', '1', '2016-07-02 16:48:26', NULL, '2016-07-02 12:31:56', '186.93.127.60', '0'),
-(358, 'administrador', '1', '2016-07-02 22:14:59', NULL, '2016-07-02 17:45:00', '::1', '0'),
+(357, 'administrador ', '1', '2016-07-02 16:48:26', NULL, '2016-07-02 12:31:56', '186.93.127.60', '1'),
+(358, 'administrador', '1', '2016-07-02 22:14:59', NULL, '2016-07-02 17:45:00', '::1', '1'),
 (359, 'administrador', '1', '2016-07-03 03:22:28', '2016-07-02 22:52:38', '2016-07-02 22:52:33', '::1', '0'),
 (360, 'administrador', '1', '2016-07-04 23:25:29', '2016-07-04 19:15:43', '2016-07-04 19:15:22', '190.207.248.185', '0'),
 (361, 'administrador', '0', '2016-07-05 00:09:07', NULL, '0000-00-00 00:00:00', '190.207.248.185', '0'),
 (362, 'administrador', '1', '2016-07-05 00:10:29', '2016-07-04 19:48:19', '2016-07-04 19:40:29', '190.207.248.185', '0'),
 (363, 'administrador', '1', '2016-07-05 00:41:10', '2016-07-04 20:55:06', '2016-07-04 20:55:01', '190.207.248.185', '0'),
-(364, 'administrador', '1', '2016-07-05 20:39:08', NULL, '2016-07-05 16:09:16', '::1', '0'),
+(364, 'administrador', '1', '2016-07-05 20:39:08', NULL, '2016-07-05 16:09:16', '::1', '1'),
 (365, 'administrador', '1', '2016-07-05 22:05:07', '2016-07-05 22:00:07', '2016-07-05 21:02:24', '190.207.248.185', '0'),
 (366, 'administrador', '1', '2016-07-06 16:52:39', '2016-07-06 12:36:30', '2016-07-06 12:35:08', '190.207.248.185', '0'),
-(367, 'administrador', '1', '2016-07-07 02:11:31', NULL, '2016-07-07 13:56:25', '::1', '0'),
-(368, 'administrador', '1', '2016-07-12 16:50:41', NULL, '2016-07-12 12:28:49', '::1', '0'),
+(367, 'administrador', '1', '2016-07-07 02:11:31', NULL, '2016-07-07 13:56:25', '::1', '1'),
+(368, 'administrador', '1', '2016-07-12 16:50:41', NULL, '2016-07-12 12:28:49', '::1', '1'),
 (369, 'administrador', '1', '2016-07-29 08:25:24', '2016-07-29 03:55:39', '2016-07-29 03:55:37', '::1', '0'),
 (370, 'administrador', '1', '2016-08-08 19:46:27', '2016-08-08 15:17:06', '2016-08-08 15:16:28', '::1', '0'),
-(371, 'administrador', '1', '2016-08-09 02:41:07', NULL, '2016-08-08 22:11:16', '::1', '0'),
-(372, 'administrador', '0', '2016-10-07 23:41:46', NULL, '0000-00-00 00:00:00', '::1', '0'),
-(373, 'administrador', '0', '2016-10-07 23:43:28', NULL, '0000-00-00 00:00:00', '::1', '0'),
-(374, 'administrador', '0', '2016-10-07 23:44:26', NULL, '0000-00-00 00:00:00', '::1', '0'),
-(375, 'administrador', '0', '2016-10-07 23:48:11', NULL, '0000-00-00 00:00:00', '::1', '0'),
-(376, 'administrador', '0', '2016-10-07 23:48:44', NULL, '0000-00-00 00:00:00', '::1', '0'),
-(377, 'administrador', '1', '2016-10-07 23:52:51', '2016-11-11 12:15:47', '2016-10-07 19:34:37', '::1', '0'),
-(378, 'administrador', '0', '2016-11-11 16:31:29', NULL, '0000-00-00 00:00:00', '::1', '0'),
-(379, 'administrador', '0', '2016-11-11 16:31:55', NULL, '0000-00-00 00:00:00', '::1', '0'),
-(380, 'administrador', '0', '2016-11-11 16:33:03', NULL, '0000-00-00 00:00:00', '::1', '0'),
-(381, 'administrador', '0', '2016-11-11 16:33:12', NULL, '0000-00-00 00:00:00', '::1', '0');
+(371, 'administrador', '1', '2016-08-09 02:41:07', NULL, '2016-08-08 22:11:16', '::1', '1'),
+(372, 'administrador', '1', '2016-10-18 03:52:36', NULL, '2016-10-19 09:15:01', '::1', '1'),
+(373, 'administrador', '1', '2016-11-01 14:05:13', NULL, '2016-11-01 09:35:14', '::1', '1'),
+(374, 'administrador', '1', '2016-11-01 14:05:14', NULL, '2016-11-01 19:27:26', '::1', '1'),
+(375, 'administrador', '1', '2016-11-16 00:57:38', NULL, '2016-11-15 21:49:31', '::1', '1'),
+(376, 'administrador', '1', '2016-11-16 03:29:15', NULL, '2016-11-16 00:12:04', '::1', '1'),
+(377, 'administrador', '1', '2016-11-16 04:45:53', '2016-11-16 00:19:02', '2016-11-16 00:18:06', '::1', '0'),
+(378, 'administrador', '1', '2016-11-16 04:49:17', '2016-11-16 00:31:00', '2016-11-16 00:30:40', '::1', '0'),
+(379, 'administrador', '1', '2016-11-16 05:01:12', '2016-11-16 00:38:52', '2016-11-16 00:35:57', '::1', '0'),
+(380, 'administrador', '1', '2016-11-16 05:09:17', '2016-11-16 00:45:32', '2016-11-16 00:45:29', '::1', '0'),
+(381, 'administrador', '1', '2016-11-16 05:15:49', NULL, '2016-11-16 00:53:50', '::1', '1'),
+(382, 'administrador', '1', '2016-11-16 06:21:15', '2016-11-16 01:51:26', '2016-11-16 01:51:16', '::1', '0'),
+(383, 'administrador', '1', '2016-11-16 05:41:40', '2016-11-16 01:58:46', '2016-11-16 01:58:35', '::1', '0'),
+(384, 'administrador', '1', '2016-11-16 04:34:00', '2016-11-16 02:06:28', '2016-11-16 02:06:28', '::1', '0'),
+(385, 'administrador', '1', '2016-11-16 06:36:42', '2016-11-16 02:07:48', '2016-11-16 02:07:36', '::1', '0'),
+(386, 'administrador', '0', '2016-11-20 03:40:07', NULL, '0000-00-00 00:00:00', '::1', '0'),
+(387, 'administrador', '1', '2016-11-20 03:40:27', '2016-11-19 23:10:32', '2016-11-19 23:10:27', '::1', '0'),
+(388, 'administrador', '1', '2016-11-20 18:59:50', '2016-11-20 14:40:35', '2016-11-20 14:40:22', '::1', '0'),
+(389, 'administrador', '0', '2016-11-20 19:11:09', NULL, '0000-00-00 00:00:00', '::1', '0'),
+(390, 'administrador', '0', '2016-11-20 19:11:23', NULL, '0000-00-00 00:00:00', '::1', '0'),
+(391, 'administrador', '1', '2016-11-20 19:11:34', '2016-11-20 14:42:31', '2016-11-20 14:42:26', '::1', '0'),
+(392, 'administrador', '1', '2016-11-20 19:18:38', '2016-11-20 15:43:15', '2016-11-20 15:43:04', '::1', '0'),
+(393, 'administrador', '1', '2016-11-20 20:13:48', '2016-11-20 15:45:15', '2016-11-20 15:44:59', '::1', '0'),
+(394, 'administrador', '1', '2016-11-20 20:15:27', '2016-11-20 15:45:29', '2016-11-20 15:45:27', '::1', '0'),
+(395, 'administrador', '1', '2016-11-20 20:40:16', '2016-11-20 16:22:33', '2016-11-20 16:22:33', '::1', '0'),
+(396, 'administrador', '1', '2016-11-20 20:52:43', '2016-11-20 16:26:15', '2016-11-20 16:26:12', '::1', '0'),
+(397, '20390749', '1', '2016-11-20 20:57:59', '2016-11-20 16:28:43', '2016-11-20 16:28:39', '::1', '0'),
+(398, '20390749', '1', '2016-11-20 20:59:35', '2016-11-20 16:30:00', '2016-11-20 16:29:58', '::1', '0'),
+(399, 'administrador', '1', '2016-11-20 21:00:26', '2016-11-20 16:45:15', '2016-11-20 16:45:14', '::1', '0'),
+(400, '20390749', '0', '2016-11-20 21:15:28', NULL, '0000-00-00 00:00:00', '::1', '0'),
+(401, '20390749', '0', '2016-11-20 21:16:12', NULL, '0000-00-00 00:00:00', '::1', '0'),
+(402, '20390749', '0', '2016-11-20 21:16:22', NULL, '0000-00-00 00:00:00', '::1', '0'),
+(403, '20390749', '1', '2016-11-20 21:26:02', '2016-11-20 16:58:30', '2016-11-20 16:58:22', '::1', '0'),
+(404, '20390749', '1', '2016-11-20 21:28:44', '2016-11-20 17:00:30', '2016-11-20 17:00:23', '::1', '0'),
+(405, '20390749', '1', '2016-11-20 21:41:30', '2016-11-20 17:11:46', '2016-11-20 17:11:42', '::1', '0'),
+(406, 'administrador', '0', '2016-11-21 02:45:32', NULL, '0000-00-00 00:00:00', '::1', '0'),
+(407, 'administrador', '1', '2016-11-21 02:45:41', '2016-11-20 22:15:56', '2016-11-20 22:15:51', '::1', '0'),
+(408, '20390749', '1', '2016-11-21 02:47:06', '2016-11-20 22:17:34', '2016-11-20 22:17:20', '::1', '0');
 
 -- --------------------------------------------------------
 
@@ -1169,13 +1196,6 @@ CREATE TABLE `tbitacora` (
   `serviciobit` varchar(50) NOT NULL DEFAULT 'Inicio'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Volcado de datos para la tabla `tbitacora`
---
-
-INSERT INTO `tbitacora` (`idbitacora`, `direccionbit`, `fechahorabit`, `valoranteriorbit`, `valornuevobit`, `ipbit`, `motivobit`, `operacionbit`, `campobit`, `tablabit`, `idusuario`, `serviciobit`) VALUES
-(1, '/caidv/vista/intranet.php', '2016-11-11 06:41:00', '', '', '::1', '-', 'Navegar', '-', '-', '', 'Panel_inicio');
-
 -- --------------------------------------------------------
 
 --
@@ -1188,7 +1208,7 @@ CREATE TABLE `tclave` (
   `fechainiciocla` date NOT NULL,
   `fechafincla` date NOT NULL,
   `estatuscla` tinyint(1) NOT NULL DEFAULT '1',
-  `tusuario_idusuario` varchar(20) NOT NULL
+  `tusuario_idusuario` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -1196,19 +1216,21 @@ CREATE TABLE `tclave` (
 --
 
 INSERT INTO `tclave` (`idclave`, `clavecla`, `fechainiciocla`, `fechafincla`, `estatuscla`, `tusuario_idusuario`) VALUES
-(1, '12345678', '2014-01-25', '2014-02-13', 1, 'administrador'),
-(3, 'f7c3bc1d808e04732adf679965ccc34ca7ae3441', '2014-02-13', '2014-10-15', 0, 'administrador'),
-(9, 'a1ea88131cd3c74cee8e3f0712bfb707abe0e761', '2014-10-15', '2015-02-22', 0, 'administrador'),
-(13, '7cc24b2198339d797e704bc53c6527dc6b400b59', '2015-10-02', '2016-03-19', 0, 'administrador'),
-(14, '7c222fb2927d828af22f592134e8932480637c0d', '2015-03-23', '2015-03-23', 1, '15491963'),
-(15, '47fa7fdd4db234bc01c34c85e5e0add77d4a1cc9', '2015-03-23', '2015-07-21', 0, '15491963'),
-(16, '7c222fb2927d828af22f592134e8932480637c0d', '2015-03-23', '2015-07-21', 1, '17960877'),
-(17, '7c222fb2927d828af22f592134e8932480637c0d', '2015-03-23', '2015-03-23', 0, '12526145'),
-(18, '085d79cf841505f3e79f043884f8875416324966', '2015-03-23', '2015-07-21', 1, '12526145'),
-(19, '7c222fb2927d828af22f592134e8932480637c0d', '2015-03-24', '2015-11-24', 0, '18672728'),
-(20, '2b1d5aeaa2c4cd26852acb5149737844447c56ca', '2015-11-24', '2016-03-23', 1, '18672728'),
-(21, '1f82ea75c5cc526729e2d581aeb3aeccfef4407e', '2016-03-19', '2016-07-17', 0, 'administrador'),
-(22, '12', '2016-06-30', '2016-10-28', 1, '20390749');
+(1, '96cab341bae5567148a5e5d9e636e13e', '2014-01-25', '2014-02-13', 0, 5),
+(3, 'f7c3bc1d808e04732adf679965ccc34ca7ae3441', '2014-02-13', '2014-10-15', 0, 5),
+(9, 'a1ea88131cd3c74cee8e3f0712bfb707abe0e761', '2014-10-15', '2015-02-22', 0, 5),
+(13, '7cc24b2198339d797e704bc53c6527dc6b400b59', '2015-10-02', '2016-03-19', 0, 5),
+(14, '7c222fb2927d828af22f592134e8932480637c0d', '2015-03-23', '2015-03-23', 1, 2),
+(15, '47fa7fdd4db234bc01c34c85e5e0add77d4a1cc9', '2015-03-23', '2015-07-21', 0, 2),
+(16, '7c222fb2927d828af22f592134e8932480637c0d', '2015-03-23', '2015-07-21', 1, 3),
+(17, '7c222fb2927d828af22f592134e8932480637c0d', '2015-03-23', '2015-03-23', 0, 1),
+(18, '085d79cf841505f3e79f043884f8875416324966', '2015-03-23', '2015-07-21', 1, 1),
+(19, '7c222fb2927d828af22f592134e8932480637c0d', '2015-03-24', '2015-11-24', 0, 4),
+(20, '2b1d5aeaa2c4cd26852acb5149737844447c56ca', '2015-11-24', '2016-03-23', 1, 4),
+(21, '2b1d5aeaa2c4cd26852acb5149737844447c56ca', '2016-03-19', '2016-11-20', 0, 5),
+(22, '2b1d5aeaa2c4cd26852acb5149737844447c56ca', '2016-06-30', '2016-11-20', 0, 15),
+(24, '6b8c920877fccdf91532a5a1e013d415f3013fe0', '2016-11-20', '2017-03-20', 1, 5),
+(25, '6b8c920877fccdf91532a5a1e013d415f3013fe0', '2016-11-20', '2017-03-20', 1, 15);
 
 -- --------------------------------------------------------
 
@@ -1264,7 +1286,12 @@ INSERT INTO `tcurso_tparticipante` (`idcurso_participante`, `tcurso_idcurso`, `t
 (2, 1, 3, '1', '2015-05-09', NULL, NULL, '10143804', NULL),
 (3, 1, 8, '1', '2015-05-09', NULL, NULL, '10143804', NULL),
 (4, 1, 9, '1', '2015-05-09', NULL, NULL, '10143804', NULL),
-(5, 1, 11, '1', '2015-05-09', NULL, NULL, '10143804', NULL);
+(5, 1, 11, '1', '2015-05-09', NULL, NULL, '10143804', NULL),
+(6, 2, 1, '1', '2016-11-16', NULL, NULL, '12265074', NULL),
+(7, 2, 2, '1', '2016-11-16', NULL, NULL, '12265074', NULL),
+(8, 2, 3, '1', '2016-11-16', NULL, NULL, '12265074', NULL),
+(9, 2, 5, '1', '2016-11-16', NULL, NULL, '10636038', NULL),
+(10, 2, 4, '1', '2016-11-16', NULL, NULL, '11544033', NULL);
 
 -- --------------------------------------------------------
 
@@ -2077,6 +2104,13 @@ CREATE TABLE `tnoticia` (
   `estatusnot` tinyint(4) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Volcado de datos para la tabla `tnoticia`
+--
+
+INSERT INTO `tnoticia` (`idnoticia`, `titulonot`, `textonot`, `imagennot`, `fechanot`, `estatusnot`) VALUES
+(1, 'OK ESTO', '<p>Bueno, como todos sabemos cadaBueno, como todos sabemos cadaBueno, como todos sabemos cadaBueno, como todos sabemos cadaBueno, como todos sabemos cadaBueno, como todos sabemos cadaBueno, como todos sabemos cadaBueno, como todos sabemos cadaBueno, como todos sabemos cadaBueno, como todos sabemos cadaBueno, como todos sabemos cadaBueno, como todos sabemos cadaBueno, como todos sabemos cadaBueno, como todos sabemos cadaBueno, como todos sabemos cadaBueno, como todos sabemos cadaBueno, como todos sabemos cadaBueno, como todos sabemos cadaBueno, como todos sabemos cadaBueno, como todos sabemos cadaBueno, como todos sabemos cadaBueno, como todos sabemos cadaBueno, como todos sabemos cadaBueno, como todos sabemos cadaBueno, como todos sabemos cadaBueno, como todos sabemos cadaBueno, como todos sabemos cadaBueno, como todos sabemos cadaBueno, como todos sabemos cadaBueno, como todos sabemos cadaBueno, como todos sabemos cadaBueno, como todos sabemos cadaBueno, como todos sabemos cadaBueno, como todos sabemos cadaBueno, como todos sabemos cadaBueno, como todos sabemos cadaBueno, como todos sabemos cadaBueno, como todos sabemos cadaBueno, como todos sabemos cadaBueno, como todos sabemos cada.</p>', 'face =v.png', '2016-11-16', 0);
+
 -- --------------------------------------------------------
 
 --
@@ -2246,12 +2280,16 @@ CREATE TABLE `tpregunta` (
 --
 
 INSERT INTO `tpregunta` (`idpregunta`, `pregunta`, `respuesta`, `tusuario_idusuario`) VALUES
-(1, 'QUIEN ERES?', 'ANTONIOSPADARO', '15491963'),
-(2, 'MASCOTA', 'PEPITO', '15491963'),
-(3, 'PERRO?', 'TOBI', '12526145'),
-(4, 'APELLIDO', 'TOVAR', '12526145'),
-(5, 'LUGAR DE NACIMIENTO DE LA MADR', 'ACARIGUA', '17960877'),
-(6, 'PROFESOR FAVORITO', 'AQUILES', '17960877');
+(1, 'QUIEN ERES?', 'ANTONIOSPADARO', '2'),
+(2, 'MASCOTA', 'PEPITO', '2'),
+(3, 'PERRO?', 'TOBI', '1'),
+(4, 'APELLIDO', 'TOVAR', '1'),
+(5, 'LUGAR DE NACIMIENTO DE LA MADR', 'ACARIGUA', '3'),
+(6, 'PROFESOR FAVORITO', 'AQUILES', '3'),
+(7, 'DIGA SU EDDAD?', '24', '5'),
+(8, 'TODO BIEN?', 'SI', '5'),
+(9, 'BIEN?', 'SI', '15'),
+(10, 'NO SE?', 'NADA', '15');
 
 -- --------------------------------------------------------
 
@@ -3227,7 +3265,7 @@ CREATE TABLE `tsistema` (
 --
 
 INSERT INTO `tsistema` (`idconfiguracion`, `introducion`, `mision`, `vision`, `historia`, `objetivos`, `direccion`, `nropreguntas`, `clavepredeterminada`, `nrointentos`, `tiempocaducida`, `tiempoconexion`, `tiempolapso`) VALUES
-(2, '<p>Bienvenidos al sistema..</p>', '<p>Administrar las polÃ­ticas de educaciÃ³n especial en el Ã¡rea de las deficiencias visuales a la poblaciÃ³n atendida</p>', '<p style="text-align: justify;">Alcanzar el mÃ¡ximo nivel de desarrollo de los participantes para su plena realizaciÃ³n personal, social, profesional y laboral.</p>', '<p style="text-align: justify;">AsÃ­ comenzÃ³ la educaciÃ³n de las personas con discapacidad visual del Estado Portuguesa, con un sueÃ±o compartido con otras personas, movidos por un sentimiento comÃºn, la pÃ©rdida del sentido de la vista. Un grupo de personas se reÃºne con la idea de formar una instituciÃ³n que le brindarÃ¡ atenciÃ³n educativa a todas las personas con discapacidad visual, y motivados por el seÃ±or Erasmo Conde quien dirigÃ­a la AsociaciÃ³n PortugueseÃ±a de Ciegos, quien contaba con todo el apoyo de sus miembros, se crea el Instituto de ciegos del estado Portuguesa que funcionÃ³ desde 1986 hasta 1991 con personal voluntario, en forma asistemÃ¡tica, su labor fue mÃ¡s de captaciÃ³n y preparaciÃ³n de recursos humanos y de informaciÃ³n a la comunidad, promociÃ³n y divulgaciÃ³n, que de una atenciÃ³n propiamente dicha. La capacitaciÃ³n del personal voluntario en el Ã¡rea de las deficiencias visuales, estuvo a cargo en un principio por profesionales del Centro de RehabilitaciÃ³n para el Discapacitado Visual adscrito al Ministerio de Sanidad de Caracas, dirigido por el Dr. Antonio Isea, mediante un gran programa de atenciÃ³n basado en la comunidad, con seis cursos intensivos a los cuales asistieron numerosas personas de toda la colectividad de Acarigua â€“ Araure, quedando solamente tres, comprometidos con la idea y con el objetivo claro por el cual se iba a luchar. El 15 de enero de 1992, el anterior Instituto se convierte en Centro de AtenciÃ³n Integral de Deficiencias Visuales, funcionando en un salÃ³n de un mÃ³dulo tipo R-2, sede de la AsociaciÃ³n PortugueseÃ±a de Personas con Discapacidad Visual, bajo la supervisiÃ³n del Departamento de EducaciÃ³n Especial y de la DirecciÃ³n de EducaciÃ³n del estado, recibiendo apoyo en la parte TÃ©cnico â€“Administrativo- Docente con dos lÃ­neas de mando lo cual creÃ³ una situaciÃ³n de ambigÃ¼edad, lo que trajo como consecuencia problemas para la consecuciÃ³n de recursos tanto econÃ³micos como de dotaciÃ³n de mobiliario, equipos, personal docente y tÃ©cnico (PsicÃ³logo, OftalmÃ³logo y Trabajador Social) El 21 de enero de ese mismo aÃ±o, el CAIDV inicia la educaciÃ³n integrada de niÃ±os y niÃ±as con discapacidad visual en el Ã¡mbito de preescolar, para ello se realiza un taller denominado â€œIntegraciÃ³n del niÃ±o Ciego al aula Regularâ€, auspiciado por los dos docentes que laboraban en ese momento, quienes estaban reciÃ©n nombrados oficialmente, uno por el Ministerio de EducaciÃ³n (el Sr. Erasmo Conde) y la otra por la DirecciÃ³n de EducaciÃ³n (la docente Blanca Torres) Es en 1997 cuando el Ministerio de EducaciÃ³n en una revisiÃ³n y reorientaciÃ³n del modelo educativo para las personas con discapacidad visual promueve unas jornadas con la nueva polÃ­tica y conceptualizaciÃ³n de atenciÃ³n educativa de las personas ciegas: y el documento presentado establece que todas las instituciones que imparten educaciÃ³n a personas ciegas desde ese momento se denominarÃ¡n â€œCentro de AtenciÃ³n Integralâ€ (CAI), lo que en principio se le cuestionaba a Portuguesa, en ese momento se le dio la razÃ³n.Es importante mencionar que este CAI es el primero en su gÃ©nero en el Ã¡mbito nacional, producto de la sinergia, sin embargo esto no fue suficiente para su codificaciÃ³n, porque el Ministerio de EducaciÃ³n alegaba que el personal del CAI era casi en su totalidad de la DirecciÃ³n de EducaciÃ³n y no le brindaba apoyo. Fue en el aÃ±o 2003, cuando la DirecciÃ³n de EducaciÃ³n del Estado Portuguesa, en el marco de la creaciÃ³n de la CoordinaciÃ³n de EducaciÃ³n Especial, le asigna al CAIDV Acarigua el CÃ³digo Educativo NÂ° 099000. Otro aspecto relevante es que para lograr el gran sueÃ±o, ha sido necesario un cÃºmulo de esfuerzos para conservarlo y hacerlo realidad, es necesario reforzar la imagen inicial de trabajo para lograr lo que queremos, cultivando la cultura del esfuerzo y la bÃºsqueda constante de nuevas formas de actuar, asÃ­ mismo se requiere desarrollar todo un programa mental que integre los planes tomando en cuenta nuestras fortalezas y oportunidades. En general se podrÃ­a decir que la experiencia de estos 20 aÃ±os, ha sido a grandes rasgos, la siguiente:</p>\r\n<ul style="text-align: justify;">\r\n<li>\r\n<p>Se crea la organizaciÃ³n en la cual se pone de manifiesto mayor interÃ©s en la integraciÃ³n a la vida diaria.</p>\r\n</li>\r\n</ul>\r\n<ul style="text-align: justify;">\r\n<li>\r\n<p>Se afronta la problemÃ¡tica de la persona con discapacidad visual desde una Ã³ptica mÃ¡s compleja, involucrando niÃ±os, niÃ±as, adolescentes, jÃ³venes y adultos en la preparaciÃ³n indispensable para desenvolverse en la vida.</p>\r\n</li>\r\n</ul>\r\n<ul style="text-align: justify;">\r\n<li>\r\n<p>&nbsp;Se crea otro CAI en la ciudad de Guanare con caracterÃ­sticas similares a Ã©ste para la atenciÃ³n de los municipios adyacentes.</p>\r\n</li>\r\n</ul>\r\n<ul style="text-align: justify;">\r\n<li>\r\n<p>Se logra la construcciÃ³n de otra R-2 ampliando asÃ­ el espacio fÃ­sico para la poblaciÃ³n del momento, e independizando el Ãrea Educativa del Ãrea gremial.</p>\r\n</li>\r\n</ul>\r\n<ul style="text-align: justify;">\r\n<li>\r\n<p>Se inicia la integraciÃ³n en niveles y modalidades del sistema educativo.</p>\r\n</li>\r\n</ul>\r\n<ul style="text-align: justify;">\r\n<li>\r\n<p>Se inicia la integraciÃ³n laboral de la persona con discapacidad.</p>\r\n</li>\r\n</ul>\r\n<ul>\r\n<li>\r\n<p>En el aÃ±o escolar 2005-2006, se inicia la aplicaciÃ³n del Proyecto de TecnologÃ­as Adaptativas para personas con discapacidad visual, mediante el Software Jaws, primero con la formaciÃ³n de un docente (TSU MarÃ­a JosÃ© Garantota) y actualmente con los participantes integrados en educaciÃ³n media, diversificada y universitaria. En otro orden de ideas la instituciÃ³n es tomada en cuenta actualmente como centro de pasantÃ­as de CEDUPORT, instituciÃ³n que forma auxiliares de educaciÃ³n Especial, y la Universidad Bolivariana en la cÃ¡tedra de formaciÃ³n de docentes, Colegio Universitario FermÃ­n Toro y Colegio Universitario MonseÃ±or de Talavera, ademÃ¡s en este centro se le ofrece atenciÃ³n formativa a estudiantes de diferentes universidades locales que asisten para investigar aspectos asociados al Ã¡rea de las deficiencias visuales. El CAIDV Acarigua es una unidad operativa que funciona como servicio de apoyo de la modalidad de EducaciÃ³n Especial, brinda atenciÃ³n educativa integral a la poblaciÃ³n de niÃ±os, niÃ±as, adolescentes, jÃ³venes y adultos con discapacidad visual, con o sin discapacidad asociada ubicados en los (7) siete municipios de la parte norte del estado Portuguesa, a travÃ©s de 2 alternativas de atenciÃ³n:</p>\r\n</li>\r\n</ul>\r\n<ol style="text-align: justify;">\r\n<li>\r\n<p>Directa: en el propio CAI, a la poblaciÃ³n con o sin discapacidad asociada, que aÃºn no ha sido integrada ni educativa ni laboralmente, o no puede ser integrada.</p>\r\n</li>\r\n<li>\r\n<p>Como unidad de Apoyo, a fin de garantizar:</p>\r\n</li>\r\n</ol>\r\n<ul style="padding-left: 30px; text-align: justify;">\r\n<li>\r\n<p>AtenciÃ³n integral temprana a niÃ±os, y niÃ±as con discapacidad visual con o sin discapacidad asociada, cuyas edades estÃ©n comprendidas entre 0 y 6 aÃ±os, atendidos en los Centros de Desarrollo Infantil, asÃ­ como garantizar la continuidad del proceso educativo de esta poblaciÃ³n.</p>\r\n</li>\r\n</ul>\r\n<ul style="padding-left: 30px;">\r\n<li>\r\n<p style="text-align: justify;">El proceso de integraciÃ³n escolar de esta poblaciÃ³n en los niveles de EducaciÃ³n Preescolar, BÃ¡sica, Media, Diversificada, Superior, Modalidades de EducaciÃ³n Especial y EducaciÃ³n de Adultos. Los CAI, por su condiciÃ³n de Unidad de apoyo, no estÃ¡n concebidos para brindar escolaridad a su poblaciÃ³n, pues esto es competencia de los planteles donde estÃ¡n integrados los educandos, razÃ³n por la cual se deben realizar acciones de manera cooperativa y coordinada con estas instancias educativas y con otros sectores (salud, social, entre otros).</p>\r\n</li>\r\n</ul>', '<ul>\r\n<li>\r\n<p>Brindar atenciÃ³n Integral a niÃ±os, niÃ±as, adolescentes, jÃ³venes y adultos con discapacidad visual, con o sin discapacidad asociada, a fin de desarrollar habilidades y destrezas que le permitan maximizar sus potencialidades y optimizar sus posibilidades para la integraciÃ³n familiar, educativa, comunitaria.</p>\r\n</li>\r\n</ul>\r\n<div>\r\n<ul>\r\n<li>\r\n<p>Aplicar estrategias que faciliten la formaciÃ³n y capacitaciÃ³n de jÃ³venes y adultos con discapacidad visual, con o sin discapacidades asociadas, mediante la articulaciÃ³n intrasectorial e intersectorial con la finalidad de lograr su IntegraciÃ³n Socio laboral.</p>\r\n</li>\r\n</ul>\r\n<ul>\r\n<li>\r\n<p>Orientar a la familia y comunidad en general para que participe activamente en el proceso de IntegraciÃ³n Social de niÃ±os, niÃ±as, adolescentes, jÃ³venes y adultos con discapacidad visual con o sin discapacidad asociada, mediante charlas, talleres, jornadas de difusiÃ³n, conferencias y otras actividades educativas, culturales, artÃ­sticas, recreativas, deportivas, cientÃ­ficas y tecnolÃ³gicas.</p>\r\n</li>\r\n</ul>\r\n<ul>\r\n<li style="text-align: justify;">\r\n<p>Ofrecer atenciÃ³n integral a la persona con discapacidad visual o baja visiÃ³n considerando tanto sus potencialidades como las condiciones que faciliten su integraciÃ³n social.</p>\r\n</li>\r\n</ul>\r\n<ul>\r\n<li>\r\n<p>Fomentar el respeto por los derechos de la persona con discapacidad visual.</p>\r\n</li>\r\n</ul>\r\n<ul>\r\n<li>\r\n<p>Promover atenciÃ³n preventiva e integral de la persona con discapacidad visual o con baja visiÃ³n desde su nacimiento, a fin de lograr el mÃ¡ximo aprovechamiento de sus potencialidades y su integraciÃ³n al nÃºcleo familiar, escolar y social.</p>\r\n</li>\r\n</ul>\r\n<ul>\r\n<li>\r\n<p>Incorporar la familia y la comunidad al proceso educativo de la persona con discapacidad visual y con baja visiÃ³n.</p>\r\n</li>\r\n</ul>\r\n<ul>\r\n<li>\r\n<p>Promover la capacitaciÃ³n de la persona con discapacidad visual para su incorporaciÃ³n en el campo laboral.</p>\r\n</li>\r\n</ul>\r\n</div>\r\n<div>&nbsp;</div>', '<p>Calle Luis Braille con Av. CircunvalaciÃ³n detrÃ¡s del Centro de Bellas Artes sector Los Cortijos.</p>', '2', '12345678', '4', '120', 60, 270);
+(2, '<p>Bienvenidos al sistema..</p>', '<p>Administrar las polÃ­ticas de educaciÃ³n especial en el Ã¡rea de las deficiencias visuales a la poblaciÃ³n atendida.</p>', '<p style="text-align: justify;">Alcanzar el mÃ¡ximo nivel de desarrollo de los participantes para su plena realizaciÃ³n personal, social, profesional y laboral.</p>', '<p style="text-align: justify;">AsÃ­ comenzÃ³ la educaciÃ³n de las personas con discapacidad visual del Estado Portuguesa, con un sueÃ±o compartido con otras personas, movidos por un sentimiento comÃºn, la pÃ©rdida del sentido de la vista. Un grupo de personas se reÃºne con la idea de formar una instituciÃ³n que le brindarÃ¡ atenciÃ³n educativa a todas las personas con discapacidad visual, y motivados por el seÃ±or Erasmo Conde quien dirigÃ­a la AsociaciÃ³n PortugueseÃ±a de Ciegos, quien contaba con todo el apoyo de sus miembros, se crea el Instituto de ciegos del estado Portuguesa que funcionÃ³ desde 1986 hasta 1991 con personal voluntario, en forma asistemÃ¡tica, su labor fue mÃ¡s de captaciÃ³n y preparaciÃ³n de recursos humanos y de informaciÃ³n a la comunidad, promociÃ³n y divulgaciÃ³n, que de una atenciÃ³n propiamente dicha. La capacitaciÃ³n del personal voluntario en el Ã¡rea de las deficiencias visuales, estuvo a cargo en un principio por profesionales del Centro de RehabilitaciÃ³n para el Discapacitado Visual adscrito al Ministerio de Sanidad de Caracas, dirigido por el Dr. Antonio Isea, mediante un gran programa de atenciÃ³n basado en la comunidad, con seis cursos intensivos a los cuales asistieron numerosas personas de toda la colectividad de Acarigua â€“ Araure, quedando solamente tres, comprometidos con la idea y con el objetivo claro por el cual se iba a luchar. El 15 de enero de 1992, el anterior Instituto se convierte en Centro de AtenciÃ³n Integral de Deficiencias Visuales, funcionando en un salÃ³n de un mÃ³dulo tipo R-2, sede de la AsociaciÃ³n PortugueseÃ±a de Personas con Discapacidad Visual, bajo la supervisiÃ³n del Departamento de EducaciÃ³n Especial y de la DirecciÃ³n de EducaciÃ³n del estado, recibiendo apoyo en la parte TÃ©cnico â€“Administrativo- Docente con dos lÃ­neas de mando lo cual creÃ³ una situaciÃ³n de ambigÃ¼edad, lo que trajo como consecuencia problemas para la consecuciÃ³n de recursos tanto econÃ³micos como de dotaciÃ³n de mobiliario, equipos, personal docente y tÃ©cnico (PsicÃ³logo, OftalmÃ³logo y Trabajador Social) El 21 de enero de ese mismo aÃ±o, el CAIDV inicia la educaciÃ³n integrada de niÃ±os y niÃ±as con discapacidad visual en el Ã¡mbito de preescolar, para ello se realiza un taller denominado â€œIntegraciÃ³n del niÃ±o Ciego al aula Regularâ€, auspiciado por los dos docentes que laboraban en ese momento, quienes estaban reciÃ©n nombrados oficialmente, uno por el Ministerio de EducaciÃ³n (el Sr. Erasmo Conde) y la otra por la DirecciÃ³n de EducaciÃ³n (la docente Blanca Torres) Es en 1997 cuando el Ministerio de EducaciÃ³n en una revisiÃ³n y reorientaciÃ³n del modelo educativo para las personas con discapacidad visual promueve unas jornadas con la nueva polÃ­tica y conceptualizaciÃ³n de atenciÃ³n educativa de las personas ciegas: y el documento presentado establece que todas las instituciones que imparten educaciÃ³n a personas ciegas desde ese momento se denominarÃ¡n â€œCentro de AtenciÃ³n Integralâ€ (CAI), lo que en principio se le cuestionaba a Portuguesa, en ese momento se le dio la razÃ³n.Es importante mencionar que este CAI es el primero en su gÃ©nero en el Ã¡mbito nacional, producto de la sinergia, sin embargo esto no fue suficiente para su codificaciÃ³n, porque el Ministerio de EducaciÃ³n alegaba que el personal del CAI era casi en su totalidad de la DirecciÃ³n de EducaciÃ³n y no le brindaba apoyo. Fue en el aÃ±o 2003, cuando la DirecciÃ³n de EducaciÃ³n del Estado Portuguesa, en el marco de la creaciÃ³n de la CoordinaciÃ³n de EducaciÃ³n Especial, le asigna al CAIDV Acarigua el CÃ³digo Educativo NÂ° 099000. Otro aspecto relevante es que para lograr el gran sueÃ±o, ha sido necesario un cÃºmulo de esfuerzos para conservarlo y hacerlo realidad, es necesario reforzar la imagen inicial de trabajo para lograr lo que queremos, cultivando la cultura del esfuerzo y la bÃºsqueda constante de nuevas formas de actuar, asÃ­ mismo se requiere desarrollar todo un programa mental que integre los planes tomando en cuenta nuestras fortalezas y oportunidades. En general se podrÃ­a decir que la experiencia de estos 20 aÃ±os, ha sido a grandes rasgos, la siguiente:</p>\r\n<ul style="text-align: justify;">\r\n<li>\r\n<p>Se crea la organizaciÃ³n en la cual se pone de manifiesto mayor interÃ©s en la integraciÃ³n a la vida diaria.</p>\r\n</li>\r\n</ul>\r\n<ul style="text-align: justify;">\r\n<li>\r\n<p>Se afronta la problemÃ¡tica de la persona con discapacidad visual desde una Ã³ptica mÃ¡s compleja, involucrando niÃ±os, niÃ±as, adolescentes, jÃ³venes y adultos en la preparaciÃ³n indispensable para desenvolverse en la vida.</p>\r\n</li>\r\n</ul>\r\n<ul style="text-align: justify;">\r\n<li>\r\n<p>&nbsp;Se crea otro CAI en la ciudad de Guanare con caracterÃ­sticas similares a Ã©ste para la atenciÃ³n de los municipios adyacentes.</p>\r\n</li>\r\n</ul>\r\n<ul style="text-align: justify;">\r\n<li>\r\n<p>Se logra la construcciÃ³n de otra R-2 ampliando asÃ­ el espacio fÃ­sico para la poblaciÃ³n del momento, e independizando el Ãrea Educativa del Ãrea gremial.</p>\r\n</li>\r\n</ul>\r\n<ul style="text-align: justify;">\r\n<li>\r\n<p>Se inicia la integraciÃ³n en niveles y modalidades del sistema educativo.</p>\r\n</li>\r\n</ul>\r\n<ul style="text-align: justify;">\r\n<li>\r\n<p>Se inicia la integraciÃ³n laboral de la persona con discapacidad.</p>\r\n</li>\r\n</ul>\r\n<ul>\r\n<li>\r\n<p>En el aÃ±o escolar 2005-2006, se inicia la aplicaciÃ³n del Proyecto de TecnologÃ­as Adaptativas para personas con discapacidad visual, mediante el Software Jaws, primero con la formaciÃ³n de un docente (TSU MarÃ­a JosÃ© Garantota) y actualmente con los participantes integrados en educaciÃ³n media, diversificada y universitaria. En otro orden de ideas la instituciÃ³n es tomada en cuenta actualmente como centro de pasantÃ­as de CEDUPORT, instituciÃ³n que forma auxiliares de educaciÃ³n Especial, y la Universidad Bolivariana en la cÃ¡tedra de formaciÃ³n de docentes, Colegio Universitario FermÃ­n Toro y Colegio Universitario MonseÃ±or de Talavera, ademÃ¡s en este centro se le ofrece atenciÃ³n formativa a estudiantes de diferentes universidades locales que asisten para investigar aspectos asociados al Ã¡rea de las deficiencias visuales. El CAIDV Acarigua es una unidad operativa que funciona como servicio de apoyo de la modalidad de EducaciÃ³n Especial, brinda atenciÃ³n educativa integral a la poblaciÃ³n de niÃ±os, niÃ±as, adolescentes, jÃ³venes y adultos con discapacidad visual, con o sin discapacidad asociada ubicados en los (7) siete municipios de la parte norte del estado Portuguesa, a travÃ©s de 2 alternativas de atenciÃ³n:</p>\r\n</li>\r\n</ul>\r\n<ol style="text-align: justify;">\r\n<li>\r\n<p>Directa: en el propio CAI, a la poblaciÃ³n con o sin discapacidad asociada, que aÃºn no ha sido integrada ni educativa ni laboralmente, o no puede ser integrada.</p>\r\n</li>\r\n<li>\r\n<p>Como unidad de Apoyo, a fin de garantizar:</p>\r\n</li>\r\n</ol>\r\n<ul style="padding-left: 30px; text-align: justify;">\r\n<li>\r\n<p>AtenciÃ³n integral temprana a niÃ±os, y niÃ±as con discapacidad visual con o sin discapacidad asociada, cuyas edades estÃ©n comprendidas entre 0 y 6 aÃ±os, atendidos en los Centros de Desarrollo Infantil, asÃ­ como garantizar la continuidad del proceso educativo de esta poblaciÃ³n.</p>\r\n</li>\r\n</ul>\r\n<ul style="padding-left: 30px;">\r\n<li>\r\n<p style="text-align: justify;">El proceso de integraciÃ³n escolar de esta poblaciÃ³n en los niveles de EducaciÃ³n Preescolar, BÃ¡sica, Media, Diversificada, Superior, Modalidades de EducaciÃ³n Especial y EducaciÃ³n de Adultos. Los CAI, por su condiciÃ³n de Unidad de apoyo, no estÃ¡n concebidos para brindar escolaridad a su poblaciÃ³n, pues esto es competencia de los planteles donde estÃ¡n integrados los educandos, razÃ³n por la cual se deben realizar acciones de manera cooperativa y coordinada con estas instancias educativas y con otros sectores (salud, social, entre otros).</p>\r\n</li>\r\n</ul>', '<ul>\r\n<li>\r\n<p>Brindar atenciÃ³n Integral a niÃ±os, niÃ±as, adolescentes, jÃ³venes y adultos con discapacidad visual, con o sin discapacidad asociada, a fin de desarrollar habilidades y destrezas que le permitan maximizar sus potencialidades y optimizar sus posibilidades para la integraciÃ³n familiar, educativa, comunitaria.</p>\r\n</li>\r\n</ul>\r\n<div>\r\n<ul>\r\n<li>\r\n<p>Aplicar estrategias que faciliten la formaciÃ³n y capacitaciÃ³n de jÃ³venes y adultos con discapacidad visual, con o sin discapacidades asociadas, mediante la articulaciÃ³n intrasectorial e intersectorial con la finalidad de lograr su IntegraciÃ³n Socio laboral.</p>\r\n</li>\r\n</ul>\r\n<ul>\r\n<li>\r\n<p>Orientar a la familia y comunidad en general para que participe activamente en el proceso de IntegraciÃ³n Social de niÃ±os, niÃ±as, adolescentes, jÃ³venes y adultos con discapacidad visual con o sin discapacidad asociada, mediante charlas, talleres, jornadas de difusiÃ³n, conferencias y otras actividades educativas, culturales, artÃ­sticas, recreativas, deportivas, cientÃ­ficas y tecnolÃ³gicas.</p>\r\n</li>\r\n</ul>\r\n<ul>\r\n<li style="text-align: justify;">\r\n<p>Ofrecer atenciÃ³n integral a la persona con discapacidad visual o baja visiÃ³n considerando tanto sus potencialidades como las condiciones que faciliten su integraciÃ³n social.</p>\r\n</li>\r\n</ul>\r\n<ul>\r\n<li>\r\n<p>Fomentar el respeto por los derechos de la persona con discapacidad visual.</p>\r\n</li>\r\n</ul>\r\n<ul>\r\n<li>\r\n<p>Promover atenciÃ³n preventiva e integral de la persona con discapacidad visual o con baja visiÃ³n desde su nacimiento, a fin de lograr el mÃ¡ximo aprovechamiento de sus potencialidades y su integraciÃ³n al nÃºcleo familiar, escolar y social.</p>\r\n</li>\r\n</ul>\r\n<ul>\r\n<li>\r\n<p>Incorporar la familia y la comunidad al proceso educativo de la persona con discapacidad visual y con baja visiÃ³n.</p>\r\n</li>\r\n</ul>\r\n<ul>\r\n<li>\r\n<p>Promover la capacitaciÃ³n de la persona con discapacidad visual para su incorporaciÃ³n en el campo laboral.</p>\r\n</li>\r\n</ul>\r\n</div>\r\n<div>&nbsp;</div>', '<p>Calle Luis Braille con Av. CircunvalaciÃ³n detrÃ¡s del Centro de Bellas Artes sector Los Cortijos.</p>', '3', '12345678', '4', '120', 10, 270);
 
 -- --------------------------------------------------------
 
@@ -3250,7 +3288,7 @@ CREATE TABLE `tslider` (
 INSERT INTO `tslider` (`idslider`, `titulosli`, `textosli`, `imagensli`, `estatussli`) VALUES
 (1, 'CAIDV AVANZA', 'PresentaciÃ³n a la Comunidad CAIDV del proyecto.', 'IMG00305-20120517-1004.jpg', '1'),
 (2, 'TRABAJO MANUAL', 'Una clase de manualidades', 'IMG_5163.JPG', '1'),
-(3, 'PROYECTO SISCAIDV', 'Implantando el proyecto en el Laboratorio CEBIT del CAIDV', 'IMG-20150206-WA0002.jpg', '1');
+(3, 'PROYECTO SIACAIDV', '', 'IMG-20150206-WA0002.jpg', '1');
 
 -- --------------------------------------------------------
 
@@ -3321,12 +3359,12 @@ CREATE TABLE `tusuario` (
 --
 
 INSERT INTO `tusuario` (`idTusuario`, `idusuario`, `idFpersonal`, `nombreusu`, `emailusu`, `estatususu`, `ultima_actividadusu`, `trol_idrol`, `cedula`, `intentos_fallidos`) VALUES
-(1, '12526145', 2, 'GONZALEZ LEIBI', 'LEIBIGON@GMAIL.COM', 0, '2015-05-01 17:47:44', 1, '12526145', 1),
+(1, '12526145', 2, 'GONZALEZ LEIBI', 'LEIBIGON@GMAIL.COM', 1, '2015-05-01 17:47:44', 1, '12526145', 1),
 (2, '15491963', 3, 'SPADARO ANTONIO', 'SPADARO.ANTO@GMAIL.COM', 1, '2016-01-23 21:46:54', 1, '15491963', 0),
 (3, '17960877', 4, 'DIAZ EFREN ', 'EDM_126@HOTMAIL.COM', 1, '2015-03-24 22:01:46', 1, '17960877', 0),
 (4, '18672728', 5, 'APONTE JORGE', 'COREO@SDD.COM', 1, '2016-06-29 19:16:50', 1, '18672728', 0),
-(5, 'administrador', 1, 'Web Master', 'webmaster@gmail.com', 1, '2016-10-07 19:34:37', 1, '0', 4),
-(15, '20390749', 9, 'ALFA PRUEBA', 'RODESCOBAR44@GMAIL.COM', 1, '0000-00-00 00:00:00', 1, '20390749', 0);
+(5, 'administrador', 1, 'Web Master', 'webmaster@gmail.com', 1, '2016-11-20 22:15:51', 1, '0', 0),
+(15, '20390749', 9, 'ALFA PRUEBA', 'RODESCOBAR44@GMAIL.COM', 1, '2016-11-20 22:17:20', 1, '20390749', 0);
 
 -- --------------------------------------------------------
 
@@ -3950,7 +3988,7 @@ ALTER TABLE `proveedores`
 -- AUTO_INCREMENT de la tabla `tacceso`
 --
 ALTER TABLE `tacceso`
-  MODIFY `idacceso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=382;
+  MODIFY `idacceso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=409;
 --
 -- AUTO_INCREMENT de la tabla `tarea_conocimiento`
 --
@@ -3980,12 +4018,12 @@ ALTER TABLE `taula`
 -- AUTO_INCREMENT de la tabla `tbitacora`
 --
 ALTER TABLE `tbitacora`
-  MODIFY `idbitacora` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18618;
+  MODIFY `idbitacora` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `tclave`
 --
 ALTER TABLE `tclave`
-  MODIFY `idclave` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `idclave` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 --
 -- AUTO_INCREMENT de la tabla `tcurso`
 --
@@ -3995,7 +4033,7 @@ ALTER TABLE `tcurso`
 -- AUTO_INCREMENT de la tabla `tcurso_tparticipante`
 --
 ALTER TABLE `tcurso_tparticipante`
-  MODIFY `idcurso_participante` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `idcurso_participante` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT de la tabla `tdiagnostico`
 --
@@ -4090,7 +4128,7 @@ ALTER TABLE `tmunicipio`
 -- AUTO_INCREMENT de la tabla `tnoticia`
 --
 ALTER TABLE `tnoticia`
-  MODIFY `idnoticia` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idnoticia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `tobjetivo`
 --
@@ -4115,7 +4153,7 @@ ALTER TABLE `tpersonal`
 -- AUTO_INCREMENT de la tabla `tpregunta`
 --
 ALTER TABLE `tpregunta`
-  MODIFY `idpregunta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `idpregunta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT de la tabla `tpresentacion`
 --
@@ -4281,7 +4319,7 @@ ALTER TABLE `tasistencia_unidad`
 -- Filtros para la tabla `tclave`
 --
 ALTER TABLE `tclave`
-  ADD CONSTRAINT `fk_tclave_tusuario1` FOREIGN KEY (`tusuario_idusuario`) REFERENCES `tusuario` (`idusuario`) ON DELETE CASCADE ON UPDATE NO ACTION;
+  ADD CONSTRAINT `idFusuario` FOREIGN KEY (`tusuario_idusuario`) REFERENCES `tusuario` (`idTusuario`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Filtros para la tabla `tcurso`
@@ -4387,12 +4425,6 @@ ALTER TABLE `tobjetivo`
 --
 ALTER TABLE `tparticipante`
   ADD CONSTRAINT `fk_tparticipante_tdiagnostico1` FOREIGN KEY (`tdiagnostico_iddiagnostico`) REFERENCES `tdiagnostico` (`iddiagnostico`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Filtros para la tabla `tpregunta`
---
-ALTER TABLE `tpregunta`
-  ADD CONSTRAINT `fk_tpregunta_tusuario1` FOREIGN KEY (`tusuario_idusuario`) REFERENCES `tusuario` (`idusuario`) ON DELETE CASCADE ON UPDATE NO ACTION;
 
 --
 -- Filtros para la tabla `tresponsableente`
