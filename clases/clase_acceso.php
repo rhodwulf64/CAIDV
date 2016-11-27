@@ -3,10 +3,12 @@
 	require_once('../nucleo/ModeloConect.php');
 	class clsAcceso extends ModeloConect
 	{
+
 		private $lcIdAcceso;
 		private $lcIp;
 		private $lcExito;
 		private $lcUsuario;
+		private $lcIDTUsuario;
 
 		function set_IdAcceso($pcIdAcceso)
 		{
@@ -22,6 +24,11 @@
 		function set_Ip($pcIp)
 		{
 			$this->lcIp=$pcIp;
+		}
+
+		function set_IDTUsuario($pcIDTUsuario)
+		{
+			$this->lcIDTUsuario=$pcIDTUsuario;
 		}
 
 		function set_Usuario($pcUsuario)

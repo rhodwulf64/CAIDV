@@ -4,7 +4,6 @@
 	require_once('../clases/clase_acceso.php');
 	require_once('../clases/clase_configuracion.php');
 	require_once('../libreria/utilidades.php');
-
 	$lobjUsuario= new clsUsuario;//Instancia la clase clsUsuario en $lobjUsuario, para poder usar sus metodos y atributos
 	$lobjAcceso= new clsAcceso;
 	$lobjConfiguracion= new clsConfiguracion;
@@ -22,6 +21,7 @@
 	//En esta serie de IF() se intenta determinar desde donde fue accionado o llamado este archivo, si desde el acceso_intranet con el botón ENTRAR o desde la intranet con el botón SALIR.
 	if($_POST['entrar'])//Sí el botón ENTRAR es accionado ingresa en la condición.
 	{
+
 		$datosUsuario=$lobjUsuario->login();//Como los datos ya fueron enviados a la clase, el solo tiene que ejecutar la funcion login() de la clase ClsUsuario, para verificar los datos del usuario.
 		$lobjAcceso->set_Usuario($usuario); //envia a la clase Acceso el usuario ingresado
 		if($datosUsuario[0])// sí los datos del usuario y clave son correctos entonces entra en la condición para verificar otras cosas
@@ -37,7 +37,6 @@
 						$lobjAcceso->registrar_acceso(); // registra el acceso del usuario en la tabla tacceso
 						$idacceso=$lobjAcceso->consultar_acceso(); // trae el id del acceso actual
 						$lobjUsuario->eliminar_accesos_fallidos(); // elimina los acceso fallidos anteriores.
-
 						$_SESSION['idTusuario']=$datosUsuario[8]; //Se guarda el id.
 						$_SESSION['usuario']=$datosUsuario[0]; //Se guarda el usuario con el cual ingresó.
 						$_SESSION['nombrerol']=$datosUsuario[1];//Se guarda el nombre del rol que tiene asignado ese usuario.
@@ -48,11 +47,12 @@
 						$_SESSION['estatususu']=$datosUsuario[5]; // se guarda el estatus del usuario
 						$_SESSION['ultimo_acceso']=$datosUsuario[6]; // se guarda la fecha del ultimo acceso del usuario
 						$_SESSION['Horaultimo_acceso']=$datosUsuario[9]; // se guarda la fecha del ultimo acceso del usuario
-						$_SESSION['tiempo']=$datosUsuario[7]; // se guarda cuanto tiempo estuvo conectado el usuario en su ultimo acceso
-						$_SESSION['prueba']=''; // se limpia el valor para la navegación en modo de prueba del sistema
-						$_SESSION['clave']=$clave; //Se guarda la clave actual del usuario para validarla en caso de que quiera hacer cambio de clave
 						$_SESSION['dias_restantes']=$datosUsuario[10];
 						$_SESSION['preinscrito']=$datosUsuario[11];
+						$_SESSION['tiempo']=$datosUsuario[7]; // se guarda cuanto tiempo estuvo conectado el usuario en su ultimo acceso
+						$_SESSION['prueba']=''; // se limpia el valor para la navegación en modo de prueba del sistema
+						// jaja!? $_SESSION['clave']=$clave; //Se guarda la clave actual del usuario para validarla en caso de que quiera hacer cambio de clave
+						$_SESSION['msjModo']="";
 	    				$lobjUsuario->actualizar_actividad($_SESSION['idacceso']); // se actualiza la actividad del usuario
 						$lobjUsuario->cerrar_accesos_activos(); // se cierran todos los accesos activos por el usuario
 						require_once('../controlador/start_lapso.php'); //chequea las fechas y estatus de los lapsos académicos actuales, los apertura y/o cierra de ser necesario
@@ -83,7 +83,6 @@
 							$lobjAcceso->registrar_acceso();
 							$idacceso=$lobjAcceso->consultar_acceso();
 							$lobjUsuario->eliminar_accesos_fallidos();
-
 							$_SESSION['idTusuario']=$datosUsuario[8];
 							$_SESSION['usuario']=$datosUsuario[0]; //Se guarda el nombre de usuario con el cual ingresó.
 							$_SESSION['nombrerol']=$datosUsuario[1];//Se guarda el nombre del rol que tiene asignado ese usuario.
@@ -94,11 +93,11 @@
 							$_SESSION['estatususu']=$datosUsuario[5];
 							$_SESSION['ultimo_acceso']=$datosUsuario[6];
 							$_SESSION['Horaultimo_acceso']=$datosUsuario[9];
+							$_SESSION['dias_restantes']=$datosUsuario[10];
+							$_SESSION['preinscrito']=$datosUsuario[11];
 							$_SESSION['tiempo']=$datosUsuario[7];
 							$_SESSION['prueba']='';
 							$_SESSION['clave']=$clave;
-							$_SESSION['dias_restantes']=$datosUsuario[10];
-							$_SESSION['preinscrito']=$datosUsuario[11];
 		    				$lobjUsuario->actualizar_actividad($_SESSION['idacceso']);
 							$lobjUsuario->cerrar_accesos_activos();
 							$_SESSION['msj']='Hemos detectado una sesión activa desde esta misma dirección IP.';
@@ -123,6 +122,7 @@
 		}
 		else//Si el usuario no existe o es incorrecto el usuario y/o clave este es sacado del sistema
 		{
+
 			$lobjAcceso->set_Exito('0');
 			$lobjAcceso->registrar_acceso(); //se registra un intento sin éxito de acceso al sistema
 			if($datosUsuario=$lobjUsuario->consultar_usuario()) //Sí el usuario ingresado para iniciar sesión existe en el sistema, entonces entra en la condición
@@ -146,6 +146,7 @@
 			}
 			header('location: ../vista/index.php?vista=acceso_intranet');//Y se redirecciona al archivo acceso_intranet.php
 		}
+
 	}
 	elseif($_POST['salir'])// Si el usuario ingresó aquí a traves de la intranet por medio del botón SALIR, entonces entrará en esta condicion.
 	{
