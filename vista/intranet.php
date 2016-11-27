@@ -38,11 +38,15 @@
         {
             if ($laServicios[$j][5]=="1")
             {
-                $colorFila="#97E1AA";
+                $colorFila="#70E2C6";
             }
             elseif ($laServicios[$j][5]=="2")
             {
-                $colorFila="#97BAE1";
+                $colorFila="#70E2C6";
+            }
+            elseif ($laServicios[$j][5]=="3")
+            {
+                $colorFila="#FF708D";
             }
             else
             {
