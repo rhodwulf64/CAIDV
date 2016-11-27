@@ -66,7 +66,7 @@
     </form>
     <div class="botonera">
         <a class="btn btn-success" href="?vista=seguridad/asignar_modulo"><i class="icon-plus icon-white"></i> Asignar módulos</a>
-        <a class="btn btn-success" href="?vista=seguridad/asignar_servicio"><i class="icon-plus icon-white"></i> Asignar servicio</a>
+        <a class="btn btn-success" href="?vista=seguridad/asignar_servicio"><i class="icon-plus icon-white"></i> Asignar servicios</a>
     </div>
 
 </div>
