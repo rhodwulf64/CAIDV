@@ -19,7 +19,7 @@ else
     $titulo   ='Registrar personal';
 }
 
-?> 
+?>
 <div style="float: left" class="col-lg-8 span8 pull-left">
     <h3><?php print($titulo); ?></h3>
     <div class="alert alert-info">
@@ -48,7 +48,7 @@ else
                 <label>Segundo Nombre </label>
                 <input type="text" class="span12"  name="nombredosper" id="cam_nombredosper" value="<?php print($Datos_Personal['nombredosper']);?>"/>
             </div>
-        </div> 
+        </div>
         <div class="row-fluid">
             <div class="col-lg-6 span6">
                 <label>Primer Apellido</label>
@@ -85,7 +85,7 @@ else
                 <label>Localidad </label>
                 <select class="span12" name="tlocalidad_idlocalidad" id="cam_tlocalidad_idlocalidad" required>
                     <option value="">-</option>
-                    <?php 
+                    <?php
                         require_once('../clases/clase_localidad.php');
                         $lobjLocalidad = new clsLocalidad;
                         $laLocalidades = $lobjLocalidad->consultar_localidades();
@@ -101,10 +101,8 @@ else
                                 $tmpvar=$laLocalidades[$i][4];
                                 print('<optgroup label="'.$laLocalidades[$i][4].'">');
                             }//Fin IF
-                            
                             ?><option value="<?php print($laLocalidades[$i][0])?>" <?php if($laLocalidades[$i][0]==$Datos_Personal['tlocalidad_idlocalidad']){print('SELECTED');}?>><?php print($laLocalidades[$i][1])?></option>
-                            ?><option value="<?php print($laLocalidades[$i][0])?>" <?php if($laLocalidades[$i][0]==$Datos_Participante['tlocalidad_idlocalidad']){print('SELECTED');}?>><?php print($laLocalidades[$i][1])?></option>
-                        <?php 
+                        <?php
                         } //Fin For?>
                 </select>
             </div>
@@ -128,7 +126,7 @@ else
                 <label>Condición Visual</label>
                 <select name="tdiagnostico_iddiagnostico" id="cam_tdiagnostico_iddiagnostico" class="span12" required>
                     <option value="">-</option>
-                    <?php 
+                    <?php
                         include_once('../clases/clase_diagnostico.php');
                         $ObjDiagnostico = new clsDiagnostico();
                         $DatosDiagnostico = $ObjDiagnostico->consultar_diagnosticos();
@@ -137,14 +135,14 @@ else
 
                         ?>
                     <option <?php if($Datos_Personal['tdiagnostico_iddiagnostico']==$DatosDiagnostico[$i][0]){print('SELECTED');}?> value="<?php print($DatosDiagnostico[$i][0]);?>"><?php print($DatosDiagnostico[$i][1]);?></option>
-                    <?php 
+                    <?php
                         }
                         ?>
                 </select>
             </div>
         </div>
         <div class="row-fluid">
-            
+
             <?php
                  include_once('../clases/clase_rol.php');
                  $ObjRol = new clsRol();
@@ -154,13 +152,13 @@ else
                 <label>Rol</label>
                 <select name="idrol" id="cam_idrol" class="span12" required>
                     <option value="">-</option>
-                    <?php 
+                    <?php
                         for($i=0;$i<count($DatosRoles);$i++)
                         {
 
                         ?>
                     <option <?php if($Datos_Usuario[2]==$DatosRoles[$i][0]){print('SELECTED');}?> value="<?php print($DatosRoles[$i][0]);?>"><?php print($DatosRoles[$i][1]);?></option>
-                    <?php 
+                    <?php
                         }
                         ?>
                 </select>
@@ -187,23 +185,23 @@ else
     $("#cam_correoper").lemez_aceptar("correo","btn_enviar");
     });
 
-    $("#cam_idpersonal").change(function() { 
+    $("#cam_idpersonal").change(function() {
 
     var valor = $("#cam_idpersonal").val();
 
             $("#status").html('<img src="../media/img/loader.gif" align="absmiddle">&nbsp;Analizando...');
 
-                $.ajax({  
-                    type: "POST",  
-                    url: "../controlador/control_personal.php",  
-                    data: {idpersonal:valor,operacion:"verificar"},  
+                $.ajax({
+                    type: "POST",
+                    url: "../controlador/control_personal.php",
+                    data: {idpersonal:valor,operacion:"verificar"},
                     success: function(msg){
                             if(msg == '1')
                             {
                                 $("#status").hide();
                                 $("#cam_idpersonal").val('');
                                 $("#btn_enviar").prop( "disabled", true );
-                                Notifica_Error('Ya existe una persona del personal con esta cedula.');                              
+                                Notifica_Error('Ya existe una persona del personal con esta cedula.');
                             }
                             else
                             {
@@ -211,7 +209,7 @@ else
                                 $("#btn_enviar").prop( "disabled", false );
                                 $(this).html(msg);
                             }
-                       
+
                     }
                 });
         });
