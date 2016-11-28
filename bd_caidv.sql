@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 28-11-2016 a las 01:58:59
+-- Tiempo de generación: 28-11-2016 a las 06:11:57
 -- Versión del servidor: 10.1.16-MariaDB
 -- Versión de PHP: 5.6.24
 
@@ -812,6 +812,55 @@ CREATE TABLE `tacceso` (
   `estatusacc` char(1) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Volcado de datos para la tabla `tacceso`
+--
+
+INSERT INTO `tacceso` (`idacceso`, `idusuario`, `exitoacc`, `fechaacc`, `fecha_salidaacc`, `ultima_actividadacc`, `ipacc`, `estatusacc`) VALUES
+(1, '20390749', '1', '2016-11-28 04:34:42', NULL, '2016-11-28 00:41:25', '::1', '1');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tactividad`
+--
+
+CREATE TABLE `tactividad` (
+  `codigoActividad` int(11) NOT NULL,
+  `nombreact` varchar(45) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `tipo_actividad` int(11) NOT NULL,
+  `estatusact` char(1) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL DEFAULT '1'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `tactividad`
+--
+
+INSERT INTO `tactividad` (`codigoActividad`, `nombreact`, `tipo_actividad`, `estatusact`) VALUES
+(1, 'INTEGRACION CAIDV', 1, '1');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tagenda`
+--
+
+CREATE TABLE `tagenda` (
+  `codigoagenda` int(11) NOT NULL,
+  `id_empresa` int(11) DEFAULT NULL,
+  `id_personaempresa` int(11) DEFAULT NULL,
+  `id_personacaidv` int(11) DEFAULT NULL,
+  `idFcodigo_actividad` int(11) NOT NULL,
+  `fecha_act_Inicio` date NOT NULL,
+  `hora_act_Inicio` time NOT NULL,
+  `fecha_act_Fin` date NOT NULL,
+  `hora_act_Fin` time NOT NULL,
+  `lugar` varchar(100) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `FechaRegistro` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `EstadoAgenda` char(1) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `Estatus` char(1) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 -- --------------------------------------------------------
 
 --
@@ -1009,6 +1058,15 @@ CREATE TABLE `tbitacora` (
   `idusuario` varchar(20) NOT NULL,
   `serviciobit` varchar(50) NOT NULL DEFAULT 'Inicio'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `tbitacora`
+--
+
+INSERT INTO `tbitacora` (`idbitacora`, `direccionbit`, `fechahorabit`, `valoranteriorbit`, `valornuevobit`, `ipbit`, `motivobit`, `operacionbit`, `campobit`, `tablabit`, `idusuario`, `serviciobit`) VALUES
+(1, '/caidv/vista/intranet.php?vista=donacion/donacion', '2016-11-28 10:41:00', '', '', '::1', '-', 'Navegar', '-', '-', '20390749', 'donacion/donacion'),
+(2, '/caidv/vista/intranet.php?vista=inv_bienesnacionales/ver_asignacion', '2016-11-28 10:41:00', '', '', '::1', '-', 'Navegar', '-', '-', '20390749', 'inv_bienesnacionales/ver_asignacion'),
+(3, '/caidv/vista/intranet.php?vista=archivo/tipodebien', '2016-11-28 10:41:00', '', '', '::1', '-', 'Navegar', '-', '-', '20390749', 'archivo/tipodebien');
 
 -- --------------------------------------------------------
 
@@ -1817,9 +1875,9 @@ INSERT INTO `tmodulo` (`idmodulo`, `nombremod`, `estatusmod`) VALUES
 (5, 'Seguridad', 1),
 (6, 'Reporte', 1),
 (7, 'Ayuda', 1),
-(8, 'InscripciÃ³n', 1),
 (9, 'Bienes Nacionales', 1),
-(10, 'Consumibles', 1);
+(10, 'Consumibles', 1),
+(11, 'Cronograma', 1);
 
 -- --------------------------------------------------------
 
@@ -1854,19 +1912,18 @@ INSERT INTO `tmodulo_trol` (`idmodulo`, `idrol`, `orden`) VALUES
 (4, 2, 6),
 (4, 3, 6),
 (4, 4, 6),
-(5, 1, 7),
+(5, 1, 8),
 (5, 2, 7),
 (5, 3, 7),
 (5, 4, 7),
-(6, 1, 8),
+(6, 1, 9),
 (6, 2, 8),
 (6, 3, 8),
 (6, 4, 8),
-(7, 1, 9),
+(7, 1, 10),
 (7, 2, 9),
 (7, 3, 9),
 (7, 4, 9),
-(8, 1, 5),
 (8, 2, 4),
 (8, 3, 4),
 (8, 4, 4),
@@ -1877,7 +1934,8 @@ INSERT INTO `tmodulo_trol` (`idmodulo`, `idrol`, `orden`) VALUES
 (10, 1, 4),
 (10, 2, 4),
 (10, 3, 4),
-(10, 4, 4);
+(10, 4, 4),
+(11, 1, 7);
 
 -- --------------------------------------------------------
 
@@ -2389,10 +2447,10 @@ INSERT INTO `tservicio` (`idservicio`, `nombreser`, `enlaceser`, `MarcaAgregacio
 (81, 'Slider', 'sistema/slider', '0', 1, 1, 1),
 (82, 'Consultar Slider', 'sistema/consultar_slider', '0', 0, 1, 1),
 (83, 'Eliminar Slider', 'sistema/eliminar_slider', '0', 0, 1, 1),
-(84, 'InscripciÃ³n masiva por curso', 'inscripcion/listado_cursos_inscribir', '0', 1, 1, 8),
-(85, 'InscripciÃ³n por participante', 'inscripcion/listado_participantes_inscribir', '0', 1, 1, 8),
-(86, 'InscripciÃ³n masiva', 'inscripcion/inscripcion_masiva', '0', 0, 1, 8),
-(87, 'InscripciÃ³n individual', 'inscripcion/inscripcion_individual', '0', 0, 1, 8),
+(84, 'InscripciÃ³n masiva por curso', 'inscripcion/listado_cursos_inscribir', '0', 1, 1, 3),
+(85, 'InscripciÃ³n por participante', 'inscripcion/listado_participantes_inscribir', '0', 1, 1, 3),
+(86, 'InscripciÃ³n masiva', 'inscripcion/inscripcion_masiva', '0', 0, 1, 3),
+(87, 'InscripciÃ³n individual', 'inscripcion/inscripcion_individual', '0', 0, 1, 3),
 (88, 'Hoja de vida del Participante', 'reporte/planilla_inscripcion', '0', 1, 1, 6),
 (89, 'Familiares', 'reporte/familiar_participante ', '0', 1, 0, 6),
 (90, 'Eliminar participante', 'persona/eliminar_participante', '0', 0, 1, 4),
@@ -2404,10 +2462,10 @@ INSERT INTO `tservicio` (`idservicio`, `nombreser`, `enlaceser`, `MarcaAgregacio
 (99, 'Consultar Lapso', 'curso/consultar_lapso', '0', 0, 1, 3),
 (100, 'Eliminar lapso', 'curso/eliminar_lapso', '0', 0, 1, 3),
 (101, 'Consultar Curso', 'curso/detalle_curso_activo', '0', 0, 1, 3),
-(102, 'Desincorporar por participante ', 'inscripcion/listado_participantes_desincorporar', '0', 1, 1, 8),
-(103, 'Desincorporar masivamente por curso', 'inscripcion/listado_cursos_desincorporar', '0', 1, 1, 8),
-(104, 'Desincorporar participante', 'inscripcion/desincorporar_participante', '0', 0, 1, 8),
-(105, 'Desincorporar participantes', 'inscripcion/desincorporar_participantes', '0', 0, 1, 8),
+(102, 'Desincorporar por participante ', 'inscripcion/listado_participantes_desincorporar', '0', 1, 1, 3),
+(103, 'Desincorporar masivamente por curso', 'inscripcion/listado_cursos_desincorporar', '0', 1, 1, 3),
+(104, 'Desincorporar participante', 'inscripcion/desincorporar_participante', '0', 0, 1, 3),
+(105, 'Desincorporar participantes', 'inscripcion/desincorporar_participantes', '0', 0, 1, 3),
 (107, 'historial de cursos por participante', 'persona/historial_participante_detalle', '0', 0, 1, 3),
 (108, 'Historial de lapso', 'reporte/historial_lapso', '0', 1, 1, 6),
 (109, 'Historial Lapso', 'historial_lapso', '0', 0, 1, 6),
@@ -2560,7 +2618,14 @@ INSERT INTO `tservicio` (`idservicio`, `nombreser`, `enlaceser`, `MarcaAgregacio
 (258, 'Eliminar asignacion', 'donacion/eliminar_asignacion', '3', 0, 1, 10),
 (259, 'Historial de asignaciÃ³n (no muy claro)', 'reporte/historial_asignacion_fecha', '3', 1, 1, 6),
 (260, 'Historial de donaciones', 'reporte/historial_donacion_fecha', '3', 1, 1, 6),
-(261, 'Historial de preinscripciÃ³n', 'reporte/consultar_preinscritos', '3', 1, 1, 6);
+(261, 'Historial de preinscripciÃ³n', 'reporte/consultar_preinscritos', '3', 1, 1, 6),
+(262, 'Tipo de Actividad', 'archivo/tactividad', '3', 1, 1, 11),
+(263, 'Consultar Tipo de Actividad', 'archivo/consultar_tactividad', '3', 0, 1, 11),
+(264, 'Registrar Tipo de Actividad', 'archivo/registrar_tactividad', '3', 0, 1, 11),
+(265, 'Tema de Actividad', 'archivo/actividad', '3', 1, 1, 11),
+(266, 'Consultar Tema de Actividad', 'archivo/consultar_actividad', '3', 0, 1, 11),
+(267, 'Registrar Tema de Actividad', 'archivo/registrar_actividad', '3', 0, 1, 11),
+(268, 'Cronograma CAIDV', 'cronograma/gestAgendaParroquial', '3', 1, 1, 11);
 
 -- --------------------------------------------------------
 
@@ -2675,8 +2740,8 @@ INSERT INTO `tservicio_trol` (`idservicio`, `idrol`, `orden`) VALUES
 (45, 1, 0),
 (45, 2, 0),
 (45, 4, 0),
-(46, 1, 7),
-(47, 1, 3),
+(46, 1, 6),
+(47, 1, 2),
 (47, 2, 3),
 (47, 3, 1),
 (47, 4, 3),
@@ -2779,11 +2844,11 @@ INSERT INTO `tservicio_trol` (`idservicio`, `idrol`, `orden`) VALUES
 (82, 2, 0),
 (83, 1, 0),
 (83, 2, 0),
-(84, 1, 1),
+(84, 1, 8),
 (84, 2, 1),
 (84, 3, 1),
 (84, 4, 1),
-(85, 1, 2),
+(85, 1, 9),
 (85, 2, 2),
 (85, 3, 2),
 (85, 4, 2),
@@ -2805,7 +2870,7 @@ INSERT INTO `tservicio_trol` (`idservicio`, `idrol`, `orden`) VALUES
 (91, 1, 0),
 (91, 2, 0),
 (91, 4, 0),
-(92, 1, 4),
+(92, 1, 3),
 (92, 2, 4),
 (92, 4, 4),
 (93, 1, 0),
@@ -2826,10 +2891,10 @@ INSERT INTO `tservicio_trol` (`idservicio`, `idrol`, `orden`) VALUES
 (101, 2, 0),
 (101, 3, 0),
 (101, 4, 0),
-(102, 1, 4),
+(102, 1, 11),
 (102, 2, 3),
 (102, 4, 4),
-(103, 1, 3),
+(103, 1, 10),
 (103, 2, 4),
 (103, 4, 3),
 (104, 1, 0),
@@ -2904,7 +2969,7 @@ INSERT INTO `tservicio_trol` (`idservicio`, `idrol`, `orden`) VALUES
 (130, 1, 19),
 (130, 2, 3),
 (130, 4, 3),
-(131, 1, 6),
+(131, 1, 5),
 (131, 2, 5),
 (131, 3, 2),
 (131, 4, 5),
@@ -2925,7 +2990,7 @@ INSERT INTO `tservicio_trol` (`idservicio`, `idrol`, `orden`) VALUES
 (136, 2, 0),
 (136, 3, 0),
 (136, 4, 0),
-(137, 1, 8),
+(137, 1, 7),
 (138, 1, 2),
 (139, 1, 0),
 (140, 1, 0),
@@ -2941,7 +3006,7 @@ INSERT INTO `tservicio_trol` (`idservicio`, `idrol`, `orden`) VALUES
 (146, 2, 4),
 (146, 3, 4),
 (146, 4, 4),
-(147, 1, 5),
+(147, 1, 4),
 (148, 1, 9),
 (149, 1, 0),
 (150, 1, 5),
@@ -3111,7 +3176,14 @@ INSERT INTO `tservicio_trol` (`idservicio`, `idrol`, `orden`) VALUES
 (258, 1, 0),
 (259, 1, 20),
 (260, 1, 19),
-(261, 1, 21);
+(261, 1, 21),
+(262, 1, 0),
+(263, 1, 0),
+(264, 1, 0),
+(265, 1, 0),
+(266, 1, 0),
+(267, 1, 0),
+(268, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -3242,7 +3314,7 @@ INSERT INTO `tusuario` (`idTusuario`, `idusuario`, `idFpersonal`, `nombreusu`, `
 (3, '17960877', 4, 'DIAZ EFREN ', 'EDM_126@HOTMAIL.COM', 1, '2015-03-24 22:01:46', 1, '17960877', NULL, 0),
 (4, '18672728', 5, 'APONTE JORGE', 'COREO@SDD.COM', 1, '2016-06-29 19:16:50', 1, '18672728', NULL, 0),
 (5, 'administrador', 1, 'Web Master', 'webmaster@gmail.com', 0, '2016-11-21 12:56:44', 1, '0', NULL, 6),
-(15, '20390749', 9, 'ALFA PRUEBA', 'RODESCOBAR44@GMAIL.COM', 1, '2016-11-27 20:15:24', 1, '20390749', 'R2TY10LJBTCHADXIGWKSZMUAFBMEJF', 0);
+(15, '20390749', 9, 'ALFA PRUEBA', 'RODESCOBAR44@GMAIL.COM', 1, '2016-11-28 00:41:25', 1, '20390749', 'R2TY10LJBTCHADXIGWKSZMUAFBMEJF', 0);
 
 -- --------------------------------------------------------
 
@@ -3307,6 +3379,25 @@ INSERT INTO `tvalor_item` (`idvalor_item`, `valorval`, `estatusval`, `titem_idit
 (49, 'NO', '1', 29),
 (50, 'SI', '1', 30),
 (51, 'NO', '1', 30);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `t_tipoactividad`
+--
+
+CREATE TABLE `t_tipoactividad` (
+  `idtipoactividad` int(11) NOT NULL,
+  `nombretipoa` varchar(45) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `estatustipoa` char(1) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL DEFAULT '1'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `t_tipoactividad`
+--
+
+INSERT INTO `t_tipoactividad` (`idtipoactividad`, `nombretipoa`, `estatustipoa`) VALUES
+(1, 'CHARLA', '1');
 
 --
 -- Índices para tablas volcadas
@@ -3470,6 +3561,23 @@ ALTER TABLE `tacceso`
   ADD PRIMARY KEY (`idacceso`),
   ADD KEY `fk_tacceso_tusuario1_idx` (`idusuario`),
   ADD KEY `fk_tacceso_tservicio1_idx` (`exitoacc`);
+
+--
+-- Indices de la tabla `tactividad`
+--
+ALTER TABLE `tactividad`
+  ADD PRIMARY KEY (`codigoActividad`),
+  ADD KEY `tipo_actividad` (`tipo_actividad`);
+
+--
+-- Indices de la tabla `tagenda`
+--
+ALTER TABLE `tagenda`
+  ADD PRIMARY KEY (`codigoagenda`),
+  ADD KEY `id_empresa` (`id_empresa`),
+  ADD KEY `idFcodigo_actividad` (`idFcodigo_actividad`),
+  ADD KEY `id_personaempresa` (`id_personaempresa`),
+  ADD KEY `id_personacaidv` (`id_personacaidv`);
 
 --
 -- Indices de la tabla `tarea_conocimiento`
@@ -3857,6 +3965,13 @@ ALTER TABLE `tvalor_item`
   ADD KEY `fk_tvalor_item_titem` (`titem_iditem`);
 
 --
+-- Indices de la tabla `t_tipoactividad`
+--
+ALTER TABLE `t_tipoactividad`
+  ADD PRIMARY KEY (`idtipoactividad`),
+  ADD UNIQUE KEY `nombretipoa` (`nombretipoa`);
+
+--
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
@@ -3959,7 +4074,17 @@ ALTER TABLE `proveedores`
 -- AUTO_INCREMENT de la tabla `tacceso`
 --
 ALTER TABLE `tacceso`
-  MODIFY `idacceso` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idacceso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT de la tabla `tactividad`
+--
+ALTER TABLE `tactividad`
+  MODIFY `codigoActividad` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT de la tabla `tagenda`
+--
+ALTER TABLE `tagenda`
+  MODIFY `codigoagenda` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `tarea_conocimiento`
 --
@@ -3989,7 +4114,7 @@ ALTER TABLE `taula`
 -- AUTO_INCREMENT de la tabla `tbitacora`
 --
 ALTER TABLE `tbitacora`
-  MODIFY `idbitacora` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idbitacora` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT de la tabla `tclave`
 --
@@ -4051,10 +4176,20 @@ ALTER TABLE `tinstrumento`
 ALTER TABLE `tipobn`
   MODIFY `id_tbien` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
+-- AUTO_INCREMENT de la tabla `tmodulo`
+--
+ALTER TABLE `tmodulo`
+  MODIFY `idmodulo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+--
 -- AUTO_INCREMENT de la tabla `tservicio`
 --
 ALTER TABLE `tservicio`
-  MODIFY `idservicio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=263;
+  MODIFY `idservicio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=269;
+--
+-- AUTO_INCREMENT de la tabla `t_tipoactividad`
+--
+ALTER TABLE `t_tipoactividad`
+  MODIFY `idtipoactividad` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
