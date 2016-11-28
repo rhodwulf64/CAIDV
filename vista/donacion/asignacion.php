@@ -51,11 +51,6 @@ for($i=0;$i<count($laModulos);$i++)
         });
     } );
 </script>
-<style>
-    body, input, textarea{
-        text-transform: uppercase;
-    }
-</style>
 <!--datatable-->  
 <div style="float: left" class="col-lg-8 span8 pull-left">
     <h3>Asignaciones</h3>

@@ -1,8 +1,8 @@
 <?php
 $consultar= $registrar= $eliminar=false;
-for($i=0;$i<count($laModulos);$i++) 
+for($i=0;$i<count($laModulos);$i++)
     {
-        $laServicios=$lobjRol->consultar_servicios_menu($laModulos[$i][0]); 
+        $laServicios=$lobjRol->consultar_servicios_menu($laModulos[$i][0]);
         for ($j=0; $j <count($laServicios) ; $j++) //Se recorre un ciclo para poder extraer los datos de cada uno de los servicios que tiene asignado el modulo para poder constuir el menú
         {
             if($laServicios[$j][2]=='donacion/consultar_empresa')
@@ -47,15 +47,10 @@ for($i=0;$i<count($laModulos);$i++)
         oTable = $('#filtro').dataTable({
             "bJQueryUI": true,
             "sPaginationType": "full_numbers",
-            "iDisplayLength": 5                    
+            "iDisplayLength": 5
         });
     } );
 </script>
-<style>
-    body, input, textarea{
-        text-transform: uppercase;
-    }
-</style>
 <!--datatable-->  
 <div style="float: left" class="col-lg-8 span8 pull-left">
     <h3>Empresas</h3>
@@ -92,7 +87,7 @@ for($i=0;$i<count($laModulos);$i++)
                         {
                             $laModulos[$i][7]='Activo';
                         }
-                        elseif(!$laModulos[$i][7]) 
+                        elseif(!$laModulos[$i][7])
                         {
                             $laModulos[$i][7]='Inactivo';
                         }

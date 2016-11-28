@@ -5,11 +5,6 @@
     $lobjModulo->idDonacion=$id;
     $Modulos=$lobjModulo->consultar_donacion();
 ?>
-<style>
-    body, input, textarea{
-        text-transform: uppercase;
-    }
-</style>
 <div style="float: left" class="col-lg-8 span8 pull-left">
     <h3>Registrar donaciones</h3>
      <div class="alert alert-info">

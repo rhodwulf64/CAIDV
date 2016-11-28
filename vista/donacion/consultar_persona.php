@@ -6,11 +6,6 @@
     $laModulo=$lobjModulo->consultar_persona_id();
     $Modulos=$lobjModulo->consultar_persona();
 ?>
-<style>
-    body, input, textarea{
-        text-transform: uppercase;
-    }
-</style>
 <div style="float: left" class="col-lg-8 span8 pull-left">
     <h3>Consultar persona</h3>
      <div class="alert alert-info">

@@ -5,11 +5,6 @@
     $lobjModulo->idEmpresa=$id;
     $Modulos=$lobjModulo->consultar_empresa();
 ?>
-<style>
-    body, input, textarea{
-        text-transform: uppercase;
-    }
-</style>
 <div style="float: left" class="col-lg-8 span8 pull-left">
     <h3>Registrar empresa</h3>
      <div class="alert alert-info">

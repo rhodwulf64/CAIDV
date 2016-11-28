@@ -5,11 +5,6 @@
     $lobjModulo->idDonacion=$id;*/
     //$Modulos=$lobjModulo->consultar_donacion();
 ?>*/
-<style>
-    body, input, textarea{
-        text-transform: uppercase;
-    }
-</style>
 <div style="float: left" class="col-lg-8 span8 pull-left">
     <h3>Consultar asignaciones</h3>
      <div class="alert alert-info">
@@ -22,11 +17,11 @@
         <div class="row-fluid">
             <div class="col-lg-6 span6">
                 <label>Fecha de inicio <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Seleccione la fecha de inicio para el reporte o deje en blanco si no require."><i class="fa fa-question" ></i></span></label>
-                <input type='date' name='fecha_i' id='fecha_i'> 
+                <input type='date' name='fecha_i' id='fecha_i'>
             </div>
             <div class="col-lg-6 span6">
                 <label>Fecha fin <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Seleccione la fecha fin para el reporte o deje en blanco para listar desde inicio hasta el dia de hoy."><i class="fa fa-question" ></i></span></label>
-               <input type='date' name='fecha_f' id='fecha_f'> 
+               <input type='date' name='fecha_f' id='fecha_f'>
             </div>
         </div>
         <div class="botonera">

@@ -5,11 +5,6 @@
     $lobjModulo->idAsignacion=$id;
     //$Modulos=$lobjModulo->consultar_asignacion();
 ?>
-<style>
-    body, input, textarea{
-        text-transform: uppercase;
-    }
-</style>
 <div style="float: left" class="col-lg-8 span8 pull-left">
     <h3>Registrar Asignaciones</h3>
      <div class="alert alert-info">

@@ -6,11 +6,6 @@
     $laModulo=$lobjModulo->consultar_articulo_id();
     $Modulos=$lobjModulo->consultar_articulo();
 ?>
-<style>
-    body, input, textarea{
-        text-transform: uppercase;
-    }
-</style>
 <div style="float: left" class="col-lg-8 span8 pull-left">
     <h3>Consultar articulo</h3>
      <div class="alert alert-info">

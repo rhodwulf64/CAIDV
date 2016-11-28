@@ -5,11 +5,6 @@
     $lobjModulo->idArticulo=$id;
     $Modulos=$lobjModulo->consultar_articulo();
 ?>
-<style>
-    body, input, textarea{
-        text-transform: uppercase;
-    }
-</style>
 <div style="float: left" class="col-lg-8 span8 pull-left">
     <h3>Registrar Tipos de articulos</h3>
      <div class="alert alert-info">
