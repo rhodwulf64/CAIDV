@@ -8,7 +8,7 @@
 		{
 			$this->asIDinsertado="";
 		}
-		
+
 		private function __destruct()
 		{
 		}
@@ -17,18 +17,18 @@
 		{
 			return $this->asIDinsertado;
 		}
-		
+
 		protected function fpConectar()
 		{
-			$lsServidor="localhost";
-			$lsUsuario="root";
-			$lsContrasena="iutep";
+			$lsServidor="127.0.0.1";
+			$lsUsuario="job";
+			$lsContrasena="1234";
 			$lsBaseDatos="bd_caidv";
 			$this->arCon=mysql_connect($lsServidor,$lsUsuario,$lsContrasena) or die('No se pudo conectar'. mysql_error()); //conectar con el servidor
 			mysql_select_db($lsBaseDatos,$this->arCon) or die('Selección invalida'. mysql_error());
 			mysql_query("SET NAMES utf8");
 		}
-		
+
 		protected function FilasRecibidas($matrix)
 		{
 			$numeroFilas = mysql_num_rows($matrix);
@@ -40,23 +40,23 @@
 			$lrTb=mysql_query($psSql,$this->arCon) or die('No se pudo hacer la busqueda'. mysql_error());
 			return $lrTb;
 		}
-		
+
 		protected function faProximo($prTb)
 		{
 			$laArreglo=mysql_fetch_array($prTb);
 			return $laArreglo;
-		}		
+		}
 
 		protected function fpCierraFiltro($prTb)
 		{
 			mysql_free_result($prTb);
 		}
-		
+
 		protected function fpDesconectar()
 		{
 			mysql_close($this->arCon);
 		}
-		
+
 		protected function fbEjecutar($psSql)
 		{
 			$lrTb=mysql_query($psSql,$this->arCon) or die('No se pudo hacer la ejecución -'. mysql_error());
@@ -90,17 +90,17 @@
 	    {
 	        mysql_query("BEGIN",$this->arCon);
 	    }
-	  
+
 	    protected function fpCommit()
 	    {
 	        mysql_query("COMMIT",$this->arCon);
 	    }
-	  
+
 	    protected function fpRollback()
 	    {
 	        mysql_query("ROLLBACK",$this->arCon);
 	    }
-		
+
 		protected function fsFecha_B($psFecha)
 		{
 			$lsHoy=date("Y-m-d");
@@ -126,6 +126,6 @@
 	  	 return $lcNow;
 	  }
 
-		
+
 	}
 ?>

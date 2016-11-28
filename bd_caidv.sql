@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 28-11-2016 a las 01:58:59
--- Versión del servidor: 10.1.16-MariaDB
--- Versión de PHP: 5.6.24
+-- Tiempo de generación: 28-11-2016 a las 05:54:32
+-- Versión del servidor: 10.1.13-MariaDB
+-- Versión de PHP: 5.6.20
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -812,6 +812,59 @@ CREATE TABLE `tacceso` (
   `estatusacc` char(1) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Volcado de datos para la tabla `tacceso`
+--
+
+INSERT INTO `tacceso` (`idacceso`, `idusuario`, `exitoacc`, `fechaacc`, `fecha_salidaacc`, `ultima_actividadacc`, `ipacc`, `estatusacc`) VALUES
+(1, 'administrador', '0', '2016-11-28 03:20:25', NULL, '0000-00-00 00:00:00', '::1', '0'),
+(2, 'administrador', '0', '2016-11-28 03:21:39', NULL, '0000-00-00 00:00:00', '::1', '0'),
+(3, '17960877', '1', '2016-11-28 03:30:12', NULL, '2016-11-27 23:32:19', '::1', '1'),
+(4, '17960877', '1', '2016-11-28 03:41:32', '2016-11-27 23:56:40', '2016-11-27 23:55:56', '::1', '0'),
+(5, 'administrador', '1', '2016-11-28 03:59:25', NULL, '2016-11-28 00:01:01', '::1', '1');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tactividad`
+--
+
+CREATE TABLE `tactividad` (
+  `codigoActividad` int(11) NOT NULL,
+  `nombreact` varchar(45) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `tipo_actividad` int(11) NOT NULL,
+  `estatusact` char(1) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL DEFAULT '1'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `tactividad`
+--
+
+INSERT INTO `tactividad` (`codigoActividad`, `nombreact`, `tipo_actividad`, `estatusact`) VALUES
+(1, 'INTEGRACION CAIDV', 1, '1');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tagenda`
+--
+
+CREATE TABLE `tagenda` (
+  `codigoagenda` int(11) NOT NULL,
+  `id_empresa` int(11) DEFAULT NULL,
+  `id_personaempresa` int(11) DEFAULT NULL,
+  `id_personacaidv` int(11) DEFAULT NULL,
+  `idFcodigo_actividad` int(11) NOT NULL,
+  `fecha_act_Inicio` date NOT NULL,
+  `hora_act_Inicio` time NOT NULL,
+  `fecha_act_Fin` date NOT NULL,
+  `hora_act_Fin` time NOT NULL,
+  `lugar` varchar(100) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `FechaRegistro` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `EstadoAgenda` char(1) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `Estatus` char(1) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 -- --------------------------------------------------------
 
 --
@@ -1010,6 +1063,140 @@ CREATE TABLE `tbitacora` (
   `serviciobit` varchar(50) NOT NULL DEFAULT 'Inicio'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Volcado de datos para la tabla `tbitacora`
+--
+
+INSERT INTO `tbitacora` (`idbitacora`, `direccionbit`, `fechahorabit`, `valoranteriorbit`, `valornuevobit`, `ipbit`, `motivobit`, `operacionbit`, `campobit`, `tablabit`, `idusuario`, `serviciobit`) VALUES
+(1, '/caidv/vista/intranet.php?vista=seguridad/primera_vez', '2016-11-28 08:11:00', '', '', '::1', '-', 'Navegar', '-', '-', '17960877', 'seguridad/primera_vez'),
+(2, '/caidv/vista/intranet.php?vista=sistema/configurar', '2016-11-28 08:11:00', '', '', '::1', '-', 'Navegar', '-', '-', '17960877', 'sistema/configurar'),
+(3, '/caidv/vista/intranet.php?vista=sistema/configurar', '2016-11-28 08:11:00', '', '', '::1', '-', 'Navegar', '-', '-', '17960877', 'sistema/configurar'),
+(4, '/caidv/vista/intranet.php', '2016-11-28 08:11:00', '', '', '::1', '-', 'Navegar', '-', '-', '17960877', 'Panel_inicio'),
+(5, '/caidv/vista/intranet.php?vista=seguridad/bloquear', '2016-11-28 08:11:00', '', '', '::1', '-', 'Navegar', '-', '-', '17960877', 'seguridad/bloquear'),
+(6, '/caidv/vista/intranet.php?vista=seguridad/bloquear', '2016-11-28 08:11:00', '', '', '::1', '-', 'Navegar', '-', '-', '17960877', 'seguridad/bloquear'),
+(7, '/caidv/vista/intranet.php?vista=seguridad/cambiar_clave', '2016-11-28 08:11:00', '', '', '::1', '-', 'Navegar', '-', '-', '17960877', 'seguridad/cambiar_clave'),
+(8, '/caidv/vista/intranet.php?vista=seguridad/registrar_pregunta', '2016-11-28 08:11:00', '', '', '::1', '-', 'Navegar', '-', '-', '17960877', 'seguridad/registrar_pregunta'),
+(9, '/caidv/vista/intranet.php?vista=persona/personal', '2016-11-28 08:11:00', '', '', '::1', '-', 'Navegar', '-', '-', '17960877', 'persona/personal'),
+(10, '/caidv/vista/intranet.php?vista=persona/registrar_personal', '2016-11-28 08:11:00', '', '', '::1', '-', 'Navegar', '-', '-', '17960877', 'persona/registrar_personal'),
+(11, '/caidv/vista/intranet.php', '2016-11-28 08:11:00', '', '', '::1', '-', 'Navegar', '-', '-', '17960877', 'Panel_inicio'),
+(12, '/caidv/vista/intranet.php?vista=persona/responsablereceptor', '2016-11-28 08:11:00', '', '', '::1', '-', 'Navegar', '-', '-', '17960877', 'persona/responsablereceptor'),
+(13, '/caidv/vista/intranet.php?vista=persona/responsablereceptor', '2016-11-28 08:11:00', '', '', '::1', '-', 'Navegar', '-', '-', '17960877', 'persona/responsablereceptor'),
+(14, '/caidv/vista/intranet.php?vista=persona/registrar_responsablereceptor', '2016-11-28 08:11:00', '', '', '::1', '-', 'Navegar', '-', '-', '17960877', 'persona/registrar_responsablereceptor'),
+(15, '/caidv/vista/intranet.php?vista=persona/personal', '2016-11-28 08:11:00', '', '', '::1', '-', 'Navegar', '-', '-', '17960877', 'persona/personal'),
+(16, '/caidv/vista/intranet.php?vista=persona/registrar_personal', '2016-11-28 08:11:00', '', '', '::1', '-', 'Navegar', '-', '-', '17960877', 'persona/registrar_personal'),
+(17, '/caidv/vista/intranet.php?vista=persona/registrar_personal', '2016-11-28 08:11:00', '', '', '::1', '-', 'Navegar', '-', '-', '17960877', 'persona/registrar_personal'),
+(18, '/caidv/vista/intranet.php', '2016-11-28 08:11:00', '', '', '::1', '-', 'Navegar', '-', '-', '17960877', 'Panel_inicio'),
+(19, '/caidv/vista/intranet.php?vista=persona/docente', '2016-11-28 08:11:00', '', '', '::1', '-', 'Navegar', '-', '-', '17960877', 'persona/docente'),
+(20, '/caidv/vista/intranet.php?vista=persona/registrar_docente', '2016-11-28 08:11:00', '', '', '::1', '-', 'Navegar', '-', '-', '17960877', 'persona/registrar_docente'),
+(21, '/caidv/vista/intranet.php?vista=persona/personal', '2016-11-28 08:11:00', '', '', '::1', '-', 'Navegar', '-', '-', '17960877', 'persona/personal'),
+(22, '/caidv/vista/intranet.php?vista=persona/registrar_personal', '2016-11-28 08:11:00', '', '', '::1', '-', 'Navegar', '-', '-', '17960877', 'persona/registrar_personal'),
+(23, '/caidv/vista/intranet.php?vista=persona/registrar_personal', '2016-11-28 08:11:00', '', '', '::1', '-', 'Navegar', '-', '-', '17960877', 'persona/registrar_personal'),
+(24, '/caidv/vista/intranet.php?vista=seguridad/bloquear', '2016-11-28 08:11:00', '', '', '::1', '-', 'Navegar', '-', '-', '17960877', 'seguridad/bloquear'),
+(25, '/caidv/vista/intranet.php?vista=persona/personal', '2016-11-28 08:11:00', '', '', '::1', '-', 'Navegar', '-', '-', '17960877', 'persona/personal'),
+(26, '/caidv/vista/intranet.php?vista=seguridad/bloquear', '2016-11-28 08:11:00', '', '', '::1', '-', 'Navegar', '-', '-', '17960877', 'seguridad/bloquear'),
+(27, '/caidv/vista/intranet.php?vista=seguridad/rol', '2016-11-28 08:11:00', '', '', '::1', '-', 'Navegar', '-', '-', '17960877', 'seguridad/rol'),
+(28, '/caidv/vista/intranet.php?vista=seguridad/bloquear', '2016-11-28 08:11:00', '', '', '::1', '-', 'Navegar', '-', '-', '17960877', 'seguridad/bloquear'),
+(29, '/caidv/vista/intranet.php', '2016-11-28 08:11:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'Panel_inicio'),
+(30, '/caidv/vista/intranet.php?vista=persona/personal', '2016-11-28 08:11:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'persona/personal'),
+(31, '/caidv/vista/intranet.php?vista=persona/registrar_personal', '2016-11-28 08:11:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'persona/registrar_personal'),
+(32, '/caidv/vista/intranet.php?vista=persona/registrar_personal', '2016-11-28 09:11:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'persona/registrar_personal'),
+(33, '/caidv/vista/intranet.php?vista=seguridad/bloquear', '2016-11-28 09:11:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'seguridad/bloquear'),
+(34, '/caidv/vista/intranet.php?vista=seguridad/asignar_modulo', '2016-11-28 09:11:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'seguridad/asignar_modulo'),
+(35, '/caidv/vista/intranet.php?vista=seguridad/asignar_modulo&id=1', '2016-11-28 09:11:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'seguridad/asignar_modulo'),
+(36, '/caidv/vista/intranet.php?vista=seguridad/asignar_modulo&id=1', '2016-11-28 09:11:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'seguridad/asignar_modulo'),
+(37, '/caidv/vista/intranet.php?vista=seguridad/modulo', '2016-11-28 09:11:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'seguridad/modulo'),
+(38, '/caidv/vista/intranet.php?vista=seguridad/registrar_modulo', '2016-11-28 09:11:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'seguridad/registrar_modulo'),
+(39, 'http://localhost/caidv/vista/intranet.php?vista=seguridad/registrar_modulo', '2016-11-28 09:11:00', '', '', '::1', 'Cargar datos', 'Registrar', '*', 'tmodulo', 'administrador', 'registrar_modulo'),
+(40, '/caidv/vista/intranet.php?vista=seguridad/modulo', '2016-11-28 09:11:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'seguridad/modulo'),
+(41, '/caidv/vista/intranet.php?vista=seguridad/consultar_modulo&o=Consultar&id=0', '2016-11-28 09:11:00', '', '', '::1', '-', 'Consultar', '-', '-', 'administrador', 'seguridad/consultar_modulo'),
+(42, '/caidv/vista/intranet.php?vista=seguridad/modulo', '2016-11-28 09:11:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'seguridad/modulo'),
+(43, '/caidv/vista/intranet.php?vista=seguridad/consultar_modulo&o=Consultar&id=1', '2016-11-28 09:11:00', '', '', '::1', '-', 'Consultar', '-', '-', 'administrador', 'seguridad/consultar_modulo'),
+(44, '/caidv/vista/intranet.php?vista=seguridad/modulo', '2016-11-28 09:11:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'seguridad/modulo'),
+(45, '/caidv/vista/intranet.php?vista=seguridad/registrar_modulo', '2016-11-28 09:11:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'seguridad/registrar_modulo'),
+(46, '/caidv/vista/intranet.php?vista=seguridad/modulo', '2016-11-28 09:11:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'seguridad/modulo'),
+(47, '/caidv/vista/intranet.php?vista=seguridad/modulo', '2016-11-28 09:11:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'seguridad/modulo'),
+(48, '/caidv/vista/intranet.php?vista=seguridad/rol', '2016-11-28 09:11:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'seguridad/rol'),
+(49, '/caidv/vista/intranet.php?vista=seguridad/registrar_rol', '2016-11-28 09:11:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'seguridad/registrar_rol'),
+(50, '/caidv/vista/intranet.php?vista=seguridad/rol', '2016-11-28 09:11:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'seguridad/rol'),
+(51, '/caidv/vista/intranet.php?vista=sistema/configurar', '2016-11-28 09:11:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'sistema/configurar'),
+(52, '/caidv/vista/intranet.php?vista=seguridad/servicio', '2016-11-28 09:11:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'seguridad/servicio'),
+(53, '/caidv/vista/intranet.php?vista=seguridad/modulo', '2016-11-28 09:11:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'seguridad/modulo'),
+(54, '/caidv/vista/intranet.php?vista=seguridad/modulo', '2016-11-28 09:11:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'seguridad/modulo'),
+(55, '/caidv/vista/intranet.php?vista=seguridad/servicio', '2016-11-28 09:11:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'seguridad/servicio'),
+(56, '/caidv/vista/intranet.php?vista=seguridad/asignar_modulo', '2016-11-28 09:11:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'seguridad/asignar_modulo'),
+(57, '/caidv/vista/intranet.php?vista=seguridad/asignar_modulo&id=1', '2016-11-28 09:11:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'seguridad/asignar_modulo'),
+(58, '/caidv/vista/intranet.php?vista=seguridad/asignar_modulo&id=1', '2016-11-28 09:11:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'seguridad/asignar_modulo'),
+(59, '/caidv/vista/intranet.php?vista=seguridad/asignar_modulo&id=1', '2016-11-28 09:11:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'seguridad/asignar_modulo'),
+(60, '/caidv/vista/intranet.php?vista=seguridad/asignar_modulo&id=1', '2016-11-28 09:11:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'seguridad/asignar_modulo'),
+(61, '/caidv/vista/intranet.php?vista=seguridad/asignar_modulo&id=1', '2016-11-28 09:11:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'seguridad/asignar_modulo'),
+(62, '/caidv/vista/intranet.php?vista=seguridad/asignar_modulo', '2016-11-28 09:11:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'seguridad/asignar_modulo'),
+(63, '/caidv/vista/intranet.php?vista=seguridad/asignar_servicio', '2016-11-28 09:11:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'seguridad/asignar_servicio'),
+(64, '/caidv/vista/intranet.php?vista=seguridad/asignar_servicio&id=1', '2016-11-28 09:11:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'seguridad/asignar_servicio'),
+(65, '/caidv/vista/intranet.php?vista=seguridad/servicio', '2016-11-28 09:11:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'seguridad/servicio'),
+(66, '/caidv/vista/intranet.php?vista=seguridad/registrar_servicio', '2016-11-28 09:11:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'seguridad/registrar_servicio'),
+(67, 'http://localhost/caidv/vista/intranet.php?vista=seguridad/registrar_servicio', '2016-11-28 09:11:00', '', '', '::1', 'Cargar datos', 'Registrar', '*', 'tservicio', 'administrador', 'registrar_servicio'),
+(68, '/caidv/vista/intranet.php?vista=seguridad/servicio', '2016-11-28 09:11:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'seguridad/servicio'),
+(69, '/caidv/vista/intranet.php?vista=seguridad/asignar_servicio', '2016-11-28 09:11:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'seguridad/asignar_servicio'),
+(70, '/caidv/vista/intranet.php?vista=seguridad/asignar_servicio&id=1', '2016-11-28 09:11:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'seguridad/asignar_servicio'),
+(71, '/caidv/vista/intranet.php?vista=seguridad/asignar_servicio', '2016-11-28 09:11:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'seguridad/asignar_servicio'),
+(72, '/caidv/vista/intranet.php?vista=cronograma/gestAgendaParroquial', '2016-11-28 09:11:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'cronograma/gestAgendaParroquial'),
+(73, '/caidv/vista/intranet.php', '2016-11-28 09:11:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'Panel_inicio'),
+(74, '/caidv/vista/intranet.php', '2016-11-28 09:11:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'Panel_inicio'),
+(75, '/caidv/vista/intranet.php?vista=cronograma/gestAgendaParroquial', '2016-11-28 09:11:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'cronograma/gestAgendaParroquial'),
+(76, '/caidv/vista/intranet.php?vista=sistema/configurar', '2016-11-28 09:11:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'sistema/configurar'),
+(77, '/caidv/vista/intranet.php', '2016-11-28 09:11:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'Panel_inicio'),
+(78, '/caidv/vista/intranet.php?vista=seguridad/servicio', '2016-11-28 09:11:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'seguridad/servicio'),
+(79, '/caidv/vista/intranet.php?vista=seguridad/registrar_servicio', '2016-11-28 09:11:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'seguridad/registrar_servicio'),
+(80, 'http://localhost/caidv/vista/intranet.php?vista=seguridad/registrar_servicio', '2016-11-28 09:11:00', '', '', '::1', 'Cargar datos', 'Registrar', '*', 'tservicio', 'administrador', 'registrar_servicio'),
+(81, '/caidv/vista/intranet.php?vista=seguridad/servicio', '2016-11-28 09:11:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'seguridad/servicio'),
+(82, '/caidv/vista/intranet.php?vista=seguridad/registrar_servicio', '2016-11-28 09:11:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'seguridad/registrar_servicio'),
+(83, 'http://localhost/caidv/vista/intranet.php?vista=seguridad/registrar_servicio', '2016-11-28 09:11:00', '', '', '::1', 'Cargar datos', 'Registrar', '*', 'tservicio', 'administrador', 'registrar_servicio'),
+(84, '/caidv/vista/intranet.php?vista=seguridad/servicio', '2016-11-28 09:11:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'seguridad/servicio'),
+(85, '/caidv/vista/intranet.php?vista=seguridad/registrar_servicio', '2016-11-28 09:11:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'seguridad/registrar_servicio'),
+(86, 'http://localhost/caidv/vista/intranet.php?vista=seguridad/registrar_servicio', '2016-11-28 09:11:00', '', '', '::1', 'Cargar datos', 'Registrar', '*', 'tservicio', 'administrador', 'registrar_servicio'),
+(87, '/caidv/vista/intranet.php?vista=seguridad/servicio', '2016-11-28 09:11:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'seguridad/servicio'),
+(88, '/caidv/vista/intranet.php?vista=seguridad/registrar_servicio', '2016-11-28 09:11:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'seguridad/registrar_servicio'),
+(89, 'http://localhost/caidv/vista/intranet.php?vista=seguridad/registrar_servicio', '2016-11-28 09:11:00', '', '', '::1', 'Cargar datos', 'Registrar', '*', 'tservicio', 'administrador', 'registrar_servicio'),
+(90, '/caidv/vista/intranet.php?vista=seguridad/servicio', '2016-11-28 09:11:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'seguridad/servicio'),
+(91, '/caidv/vista/intranet.php?vista=seguridad/registrar_servicio', '2016-11-28 09:11:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'seguridad/registrar_servicio'),
+(92, 'http://localhost/caidv/vista/intranet.php?vista=seguridad/registrar_servicio', '2016-11-28 09:11:00', '', '', '::1', 'Cargar datos', 'Registrar', '*', 'tservicio', 'administrador', 'registrar_servicio'),
+(93, '/caidv/vista/intranet.php?vista=seguridad/servicio', '2016-11-28 09:11:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'seguridad/servicio'),
+(94, '/caidv/vista/intranet.php?vista=seguridad/consultar_servicio&o=Consultar&id=268', '2016-11-28 09:11:00', '', '', '::1', '-', 'Consultar', '-', '-', 'administrador', 'seguridad/consultar_servicio'),
+(95, '/caidv/vista/intranet.php?vista=seguridad/servicio', '2016-11-28 09:11:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'seguridad/servicio'),
+(96, '/caidv/vista/intranet.php?vista=seguridad/consultar_servicio&o=Consultar&id=265', '2016-11-28 09:11:00', '', '', '::1', '-', 'Consultar', '-', '-', 'administrador', 'seguridad/consultar_servicio'),
+(97, '/caidv/vista/intranet.php?vista=seguridad/servicio', '2016-11-28 09:11:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'seguridad/servicio'),
+(98, '/caidv/vista/intranet.php?vista=seguridad/consultar_servicio&o=Consultar&id=266', '2016-11-28 09:11:00', '', '', '::1', '-', 'Consultar', '-', '-', 'administrador', 'seguridad/consultar_servicio'),
+(99, '/caidv/vista/intranet.php?vista=seguridad/servicio', '2016-11-28 09:11:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'seguridad/servicio'),
+(100, '/caidv/vista/intranet.php?vista=seguridad/consultar_servicio&o=Consultar&id=268', '2016-11-28 09:11:00', '', '', '::1', '-', 'Consultar', '-', '-', 'administrador', 'seguridad/consultar_servicio'),
+(101, '/caidv/vista/intranet.php?vista=seguridad/servicio', '2016-11-28 09:11:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'seguridad/servicio'),
+(102, '/caidv/vista/intranet.php?vista=seguridad/registrar_servicio', '2016-11-28 09:11:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'seguridad/registrar_servicio'),
+(103, 'http://localhost/caidv/vista/intranet.php?vista=seguridad/registrar_servicio', '2016-11-28 09:11:00', '', '', '::1', 'Cargar datos', 'Registrar', '*', 'tservicio', 'administrador', 'registrar_servicio'),
+(104, '/caidv/vista/intranet.php?vista=seguridad/servicio', '2016-11-28 09:11:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'seguridad/servicio'),
+(105, '/caidv/vista/intranet.php?vista=seguridad/asignar_servicio', '2016-11-28 09:11:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'seguridad/asignar_servicio'),
+(106, '/caidv/vista/intranet.php?vista=seguridad/asignar_servicio&id=1', '2016-11-28 09:11:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'seguridad/asignar_servicio'),
+(107, '/caidv/vista/intranet.php?vista=seguridad/asignar_modulo', '2016-11-28 09:11:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'seguridad/asignar_modulo'),
+(108, '/caidv/vista/intranet.php?vista=seguridad/asignar_modulo&id=1', '2016-11-28 09:11:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'seguridad/asignar_modulo'),
+(109, '/caidv/vista/intranet.php?vista=seguridad/asignar_servicio', '2016-11-28 09:11:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'seguridad/asignar_servicio'),
+(110, '/caidv/vista/intranet.php?vista=seguridad/asignar_servicio&id=1', '2016-11-28 09:11:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'seguridad/asignar_servicio'),
+(111, '/caidv/vista/intranet.php?vista=seguridad/asignar_servicio', '2016-11-28 09:11:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'seguridad/asignar_servicio'),
+(112, '/caidv/vista/intranet.php?vista=seguridad/asignar_servicio', '2016-11-28 09:11:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'seguridad/asignar_servicio'),
+(113, '/caidv/vista/intranet.php?vista=seguridad/asignar_servicio&id=1', '2016-11-28 09:11:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'seguridad/asignar_servicio'),
+(114, '/caidv/vista/intranet.php?vista=seguridad/asignar_servicio', '2016-11-28 09:11:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'seguridad/asignar_servicio'),
+(115, '/caidv/vista/intranet.php?vista=cronograma/gestAgendaParroquial', '2016-11-28 09:11:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'cronograma/gestAgendaParroquial'),
+(116, '/caidv/vista/intranet.php', '2016-11-28 09:11:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'Panel_inicio'),
+(117, '/caidv/vista/intranet.php?vista=archivo/modelo', '2016-11-28 09:11:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'archivo/modelo'),
+(118, '/caidv/vista/intranet.php?vista=archivo/tactividad', '2016-11-28 09:11:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'archivo/tactividad'),
+(119, '/caidv/vista/intranet.php?vista=archivo/registrar_tactividad', '2016-11-28 09:11:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'archivo/registrar_tactividad'),
+(120, '/caidv/vista/intranet.php?vista=archivo/tactividad', '2016-11-28 09:11:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'archivo/tactividad'),
+(121, '/caidv/vista/intranet.php?vista=archivo/consultar_tactividad&id=1', '2016-11-28 09:11:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'archivo/consultar_tactividad'),
+(122, '/caidv/vista/intranet.php?vista=archivo/tactividad', '2016-11-28 09:11:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'archivo/tactividad'),
+(123, '/caidv/vista/intranet.php?vista=archivo/consultar_tactividad&id=1', '2016-11-28 09:11:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'archivo/consultar_tactividad'),
+(124, 'http://localhost/caidv/vista/intranet.php?vista=archivo/consultar_tactividad&id=1', '2016-11-28 09:11:00', '', '', '::1', 'Error en los datos', 'Modificar', '', 't_tipoactividad', 'administrador', 'editar_tactividad'),
+(125, '/caidv/vista/intranet.php?vista=archivo/tactividad', '2016-11-28 09:11:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'archivo/tactividad'),
+(126, '/caidv/vista/intranet.php?vista=cronograma/gestAgendaParroquial', '2016-11-28 09:11:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'cronograma/gestAgendaParroquial'),
+(127, '/caidv/vista/intranet.php?vista=sistema/configurar', '2016-11-28 09:11:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'sistema/configurar'),
+(128, '/caidv/vista/intranet.php', '2016-11-28 09:11:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'Panel_inicio');
+
 -- --------------------------------------------------------
 
 --
@@ -1036,14 +1223,14 @@ INSERT INTO `tclave` (`idclave`, `clavecla`, `fechainiciocla`, `fechafincla`, `e
 (13, '7cc24b2198339d797e704bc53c6527dc6b400b59', '2015-10-02', '2016-03-19', 0, 5),
 (14, '7c222fb2927d828af22f592134e8932480637c0d', '2015-03-23', '2015-03-23', 1, 2),
 (15, '47fa7fdd4db234bc01c34c85e5e0add77d4a1cc9', '2015-03-23', '2015-07-21', 0, 2),
-(16, '7c222fb2927d828af22f592134e8932480637c0d', '2015-03-23', '2015-07-21', 1, 3),
+(16, '7c222fb2927d828af22f592134e8932480637c0d', '2015-03-23', '2016-11-27', 0, 3),
 (17, '7c222fb2927d828af22f592134e8932480637c0d', '2015-03-23', '2015-03-23', 0, 1),
 (18, '085d79cf841505f3e79f043884f8875416324966', '2015-03-23', '2015-07-21', 1, 1),
 (19, '7c222fb2927d828af22f592134e8932480637c0d', '2015-03-24', '2015-11-24', 0, 4),
 (20, '2b1d5aeaa2c4cd26852acb5149737844447c56ca', '2015-11-24', '2016-03-23', 1, 4),
 (21, '2b1d5aeaa2c4cd26852acb5149737844447c56ca', '2016-03-19', '2016-11-20', 0, 5),
 (22, '2b1d5aeaa2c4cd26852acb5149737844447c56ca', '2016-06-30', '2016-11-20', 0, 15),
-(24, '6b8c920877fccdf91532a5a1e013d415f3013fe0', '2016-11-20', '2017-03-20', 1, 5),
+(24, '6b8c920877fccdf91532a5a1e013d415f3013fe0', '2016-11-20', '2016-11-27', 0, 5),
 (25, '6b8c920877fccdf91532a5a1e013d415f3013fe0', '2016-11-20', '2016-11-21', 0, 15),
 (28, '8799e914d696af765cb33604694a4b076db6981a', '2016-11-21', '2016-11-21', 0, 0),
 (29, '5c014730a2cf023a9f538f484f553041dd1c443a', '2016-11-21', '2017-03-21', 1, 0),
@@ -1056,7 +1243,9 @@ INSERT INTO `tclave` (`idclave`, `clavecla`, `fechainiciocla`, `fechafincla`, `e
 (36, '43a7b8577a2183ce6ab401c67cf35c75fdf447f2', '2016-11-21', '2016-11-21', 0, 15),
 (37, '05f566af2582d01bfd226f39fbd4b136f66ab5a0', '2016-11-21', '2016-11-27', 0, 15),
 (38, '7c222fb2927d828af22f592134e8932480637c0d', '2016-11-21', '2017-03-21', 1, 0),
-(39, '83c7db856a45199b15ee00282fcd59a25c65b74f', '2016-11-27', '2017-03-27', 1, 15);
+(39, '83c7db856a45199b15ee00282fcd59a25c65b74f', '2016-11-27', '2017-03-27', 1, 15),
+(40, 'e1faa7ef78d20e74ec2ffcaa20c1a5a40b3c9151', '2016-11-27', '2017-03-27', 1, 3),
+(41, '4086a057920c1d43b4db0445d9ba53ab00ce127b', '2016-11-27', '2017-03-27', 1, 5);
 
 -- --------------------------------------------------------
 
@@ -1810,6 +1999,7 @@ CREATE TABLE `tmodulo` (
 --
 
 INSERT INTO `tmodulo` (`idmodulo`, `nombremod`, `estatusmod`) VALUES
+(0, 'Cronograma', 1),
 (1, 'AdministraciÃ³n', 1),
 (2, 'ConfiguraciÃ³n', 1),
 (3, 'Curso', 1),
@@ -1838,6 +2028,7 @@ CREATE TABLE `tmodulo_trol` (
 --
 
 INSERT INTO `tmodulo_trol` (`idmodulo`, `idrol`, `orden`) VALUES
+(0, 1, 3),
 (1, 1, 1),
 (1, 2, 1),
 (1, 3, 1),
@@ -1846,23 +2037,23 @@ INSERT INTO `tmodulo_trol` (`idmodulo`, `idrol`, `orden`) VALUES
 (2, 2, 2),
 (2, 3, 2),
 (2, 4, 2),
-(3, 1, 5),
+(3, 1, 6),
 (3, 2, 3),
 (3, 3, 3),
 (3, 4, 3),
-(4, 1, 6),
+(4, 1, 7),
 (4, 2, 6),
 (4, 3, 6),
 (4, 4, 6),
-(5, 1, 7),
+(5, 1, 8),
 (5, 2, 7),
 (5, 3, 7),
 (5, 4, 7),
-(6, 1, 8),
+(6, 1, 9),
 (6, 2, 8),
 (6, 3, 8),
 (6, 4, 8),
-(7, 1, 9),
+(7, 1, 10),
 (7, 2, 9),
 (7, 3, 9),
 (7, 4, 9),
@@ -1870,11 +2061,11 @@ INSERT INTO `tmodulo_trol` (`idmodulo`, `idrol`, `orden`) VALUES
 (8, 2, 4),
 (8, 3, 4),
 (8, 4, 4),
-(9, 1, 3),
+(9, 1, 4),
 (9, 2, 3),
 (9, 3, 3),
 (9, 4, 3),
-(10, 1, 4),
+(10, 1, 5),
 (10, 2, 4),
 (10, 3, 4),
 (10, 4, 4);
@@ -2560,7 +2751,14 @@ INSERT INTO `tservicio` (`idservicio`, `nombreser`, `enlaceser`, `MarcaAgregacio
 (258, 'Eliminar asignacion', 'donacion/eliminar_asignacion', '3', 0, 1, 10),
 (259, 'Historial de asignaciÃ³n (no muy claro)', 'reporte/historial_asignacion_fecha', '3', 1, 1, 6),
 (260, 'Historial de donaciones', 'reporte/historial_donacion_fecha', '3', 1, 1, 6),
-(261, 'Historial de preinscripciÃ³n', 'reporte/consultar_preinscritos', '3', 1, 1, 6);
+(261, 'Historial de preinscripciÃ³n', 'reporte/consultar_preinscritos', '3', 1, 1, 6),
+(263, 'Agenda', 'cronograma/gestAgendaParroquial', '1', 1, 1, 0),
+(264, 'Tipo de Actividad', 'archivo/tactividad', '1', 1, 1, 2),
+(265, 'Consultar Tipo de Actividad', 'archivo/consultar_tactividad', '1', 0, 1, 2),
+(266, 'Registrar Tipo de Actividad', 'archivo/registrar_tactividad', '1', 0, 1, 2),
+(267, 'Tema de Actividad', 'archivo/actividad', '1', 1, 1, 2),
+(268, 'Consultar Tema de Actividad', 'archivo/consultar_actividad', '1', 0, 1, 2),
+(269, 'Registrar Tema de Actividad', 'archivo/registrar_actividad', '1', 0, 1, 2);
 
 -- --------------------------------------------------------
 
@@ -2944,7 +3142,7 @@ INSERT INTO `tservicio_trol` (`idservicio`, `idrol`, `orden`) VALUES
 (147, 1, 5),
 (148, 1, 9),
 (149, 1, 0),
-(150, 1, 5),
+(150, 1, 21),
 (151, 1, 0),
 (152, 1, 0),
 (152, 2, 0),
@@ -3090,7 +3288,7 @@ INSERT INTO `tservicio_trol` (`idservicio`, `idrol`, `orden`) VALUES
 (236, 1, 0),
 (237, 1, 0),
 (238, 1, 0),
-(239, 1, 21),
+(239, 1, 23),
 (240, 1, 0),
 (241, 1, 0),
 (242, 1, 0),
@@ -3111,7 +3309,14 @@ INSERT INTO `tservicio_trol` (`idservicio`, `idrol`, `orden`) VALUES
 (258, 1, 0),
 (259, 1, 20),
 (260, 1, 19),
-(261, 1, 21);
+(261, 1, 5),
+(263, 1, 1),
+(264, 1, 21),
+(265, 1, 0),
+(266, 1, 0),
+(267, 1, 22),
+(268, 1, 0),
+(269, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -3239,9 +3444,9 @@ INSERT INTO `tusuario` (`idTusuario`, `idusuario`, `idFpersonal`, `nombreusu`, `
 (0, '7581523', 0, 'ASDASDAD OKASDASD', 'BARESCO_12@HOTMAIL.COM', 1, '0000-00-00 00:00:00', 2, '7581523', NULL, 0),
 (1, '12526145', 2, 'GONZALEZ LEIBI', 'LEIBIGON@GMAIL.COM', 1, '2015-05-01 17:47:44', 1, '12526145', NULL, 1),
 (2, '15491963', 3, 'SPADARO ANTONIO', 'SPADARO.ANTO@GMAIL.COM', 1, '2016-01-23 21:46:54', 1, '15491963', NULL, 0),
-(3, '17960877', 4, 'DIAZ EFREN ', 'EDM_126@HOTMAIL.COM', 1, '2015-03-24 22:01:46', 1, '17960877', NULL, 0),
+(3, '17960877', 4, 'DIAZ EFREN ', 'EDM_126@HOTMAIL.COM', 1, '2016-11-27 23:55:56', 1, '17960877', '8HVJWPJQBD0HKTTBNPUUE67QGXDAKV', 0),
 (4, '18672728', 5, 'APONTE JORGE', 'COREO@SDD.COM', 1, '2016-06-29 19:16:50', 1, '18672728', NULL, 0),
-(5, 'administrador', 1, 'Web Master', 'webmaster@gmail.com', 0, '2016-11-21 12:56:44', 1, '0', NULL, 6),
+(5, 'administrador', 1, 'Web Master', 'webmaster@gmail.com', 1, '2016-11-28 00:01:01', 1, '0', 'AT3FHBGNEP7H8KDI6YWFRZSMZ9LLXW', 0),
 (15, '20390749', 9, 'ALFA PRUEBA', 'RODESCOBAR44@GMAIL.COM', 1, '2016-11-27 20:15:24', 1, '20390749', 'R2TY10LJBTCHADXIGWKSZMUAFBMEJF', 0);
 
 -- --------------------------------------------------------
@@ -3307,6 +3512,25 @@ INSERT INTO `tvalor_item` (`idvalor_item`, `valorval`, `estatusval`, `titem_idit
 (49, 'NO', '1', 29),
 (50, 'SI', '1', 30),
 (51, 'NO', '1', 30);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `t_tipoactividad`
+--
+
+CREATE TABLE `t_tipoactividad` (
+  `idtipoactividad` int(11) NOT NULL,
+  `nombretipoa` varchar(45) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `estatustipoa` char(1) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL DEFAULT '1'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `t_tipoactividad`
+--
+
+INSERT INTO `t_tipoactividad` (`idtipoactividad`, `nombretipoa`, `estatustipoa`) VALUES
+(1, 'CHARLAS', '1');
 
 --
 -- Índices para tablas volcadas
@@ -3470,6 +3694,23 @@ ALTER TABLE `tacceso`
   ADD PRIMARY KEY (`idacceso`),
   ADD KEY `fk_tacceso_tusuario1_idx` (`idusuario`),
   ADD KEY `fk_tacceso_tservicio1_idx` (`exitoacc`);
+
+--
+-- Indices de la tabla `tactividad`
+--
+ALTER TABLE `tactividad`
+  ADD PRIMARY KEY (`codigoActividad`),
+  ADD KEY `tipo_actividad` (`tipo_actividad`);
+
+--
+-- Indices de la tabla `tagenda`
+--
+ALTER TABLE `tagenda`
+  ADD PRIMARY KEY (`codigoagenda`),
+  ADD KEY `id_empresa` (`id_empresa`),
+  ADD KEY `idFcodigo_actividad` (`idFcodigo_actividad`),
+  ADD KEY `id_personaempresa` (`id_personaempresa`),
+  ADD KEY `id_personacaidv` (`id_personacaidv`);
 
 --
 -- Indices de la tabla `tarea_conocimiento`
@@ -3857,6 +4098,13 @@ ALTER TABLE `tvalor_item`
   ADD KEY `fk_tvalor_item_titem` (`titem_iditem`);
 
 --
+-- Indices de la tabla `t_tipoactividad`
+--
+ALTER TABLE `t_tipoactividad`
+  ADD PRIMARY KEY (`idtipoactividad`),
+  ADD UNIQUE KEY `nombretipoa` (`nombretipoa`);
+
+--
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
@@ -3959,7 +4207,17 @@ ALTER TABLE `proveedores`
 -- AUTO_INCREMENT de la tabla `tacceso`
 --
 ALTER TABLE `tacceso`
-  MODIFY `idacceso` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idacceso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+--
+-- AUTO_INCREMENT de la tabla `tactividad`
+--
+ALTER TABLE `tactividad`
+  MODIFY `codigoActividad` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT de la tabla `tagenda`
+--
+ALTER TABLE `tagenda`
+  MODIFY `codigoagenda` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `tarea_conocimiento`
 --
@@ -3989,12 +4247,12 @@ ALTER TABLE `taula`
 -- AUTO_INCREMENT de la tabla `tbitacora`
 --
 ALTER TABLE `tbitacora`
-  MODIFY `idbitacora` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idbitacora` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=129;
 --
 -- AUTO_INCREMENT de la tabla `tclave`
 --
 ALTER TABLE `tclave`
-  MODIFY `idclave` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `idclave` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 --
 -- AUTO_INCREMENT de la tabla `tcurso`
 --
@@ -4054,7 +4312,22 @@ ALTER TABLE `tipobn`
 -- AUTO_INCREMENT de la tabla `tservicio`
 --
 ALTER TABLE `tservicio`
-  MODIFY `idservicio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=263;
+  MODIFY `idservicio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=270;
+--
+-- AUTO_INCREMENT de la tabla `t_tipoactividad`
+--
+ALTER TABLE `t_tipoactividad`
+  MODIFY `idtipoactividad` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- Restricciones para tablas volcadas
+--
+
+--
+-- Filtros para la tabla `tactividad`
+--
+ALTER TABLE `tactividad`
+  ADD CONSTRAINT `tactividad_ibfk_1` FOREIGN KEY (`tipo_actividad`) REFERENCES `t_tipoactividad` (`idtipoactividad`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
