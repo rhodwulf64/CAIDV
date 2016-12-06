@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 28-11-2016 a las 06:11:57
--- Versión del servidor: 10.1.16-MariaDB
--- Versión de PHP: 5.6.24
+-- Tiempo de generación: 06-12-2016 a las 07:30:45
+-- Versión del servidor: 10.1.13-MariaDB
+-- Versión de PHP: 5.6.20
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -4190,6 +4190,203 @@ ALTER TABLE `tservicio`
 --
 ALTER TABLE `t_tipoactividad`
   MODIFY `idtipoactividad` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- Restricciones para tablas volcadas
+--
+
+--
+-- Filtros para la tabla `am_tarticulo`
+--
+ALTER TABLE `am_tarticulo`
+  ADD CONSTRAINT `am_tarticulo_ibfk_1` FOREIGN KEY (`idTipo_articulo`) REFERENCES `am_ttipo_articulo` (`idTipo_articulo`) ON DELETE NO ACTION;
+
+--
+-- Filtros para la tabla `am_tddonacion`
+--
+ALTER TABLE `am_tddonacion`
+  ADD CONSTRAINT `am_tddonacion_ibfk_1` FOREIGN KEY (`idArticulo`) REFERENCES `am_tarticulo` (`idArticulo`) ON DELETE NO ACTION,
+  ADD CONSTRAINT `am_tddonacion_ibfk_2` FOREIGN KEY (`idDonacion`) REFERENCES `am_tdonacion` (`idDonacion`) ON DELETE NO ACTION;
+
+--
+-- Filtros para la tabla `am_tdonacion`
+--
+ALTER TABLE `am_tdonacion`
+  ADD CONSTRAINT `am_tdonacion_ibfk_1` FOREIGN KEY (`idEmpresa`) REFERENCES `am_tempresa` (`idEmpresa`) ON DELETE NO ACTION,
+  ADD CONSTRAINT `am_tdonacion_ibfk_2` FOREIGN KEY (`idPersona`) REFERENCES `am_tpersona` (`idPersona`) ON DELETE NO ACTION;
+
+--
+-- Filtros para la tabla `participante_familiar`
+--
+ALTER TABLE `participante_familiar`
+  ADD CONSTRAINT `participante_familiar_ibfk_1` FOREIGN KEY (`tfamiliar_idfamiliar`) REFERENCES `tfamiliar` (`idfamiliar`) ON DELETE NO ACTION,
+  ADD CONSTRAINT `participante_familiar_ibfk_2` FOREIGN KEY (`idparentesco`) REFERENCES `tparentesco` (`idparentesco`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `participante_familiar_ibfk_3` FOREIGN KEY (`tparticipante_idparticipante`) REFERENCES `tparticipante` (`idparticipante`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Filtros para la tabla `tactividad`
+--
+ALTER TABLE `tactividad`
+  ADD CONSTRAINT `tactividad_ibfk_1` FOREIGN KEY (`tipo_actividad`) REFERENCES `t_tipoactividad` (`idtipoactividad`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Filtros para la tabla `tagenda`
+--
+ALTER TABLE `tagenda`
+  ADD CONSTRAINT `tagenda_ibfk_1` FOREIGN KEY (`id_empresa`) REFERENCES `am_tempresa` (`idEmpresa`) ON DELETE NO ACTION,
+  ADD CONSTRAINT `tagenda_ibfk_2` FOREIGN KEY (`id_personaempresa`) REFERENCES `am_tpersona` (`idPersona`) ON DELETE NO ACTION,
+  ADD CONSTRAINT `tagenda_ibfk_3` FOREIGN KEY (`id_personacaidv`) REFERENCES `tpersonal` (`idTpersonal`) ON DELETE NO ACTION,
+  ADD CONSTRAINT `tagenda_ibfk_4` FOREIGN KEY (`idFcodigo_actividad`) REFERENCES `tactividad` (`codigoActividad`) ON DELETE NO ACTION;
+
+--
+-- Filtros para la tabla `tasignatura`
+--
+ALTER TABLE `tasignatura`
+  ADD CONSTRAINT `tasignatura_ibfk_1` FOREIGN KEY (`tarea_idarea_conocimiento`) REFERENCES `tarea_conocimiento` (`idarea_conocimiento`) ON DELETE NO ACTION;
+
+--
+-- Filtros para la tabla `tasistencia_objetivo`
+--
+ALTER TABLE `tasistencia_objetivo`
+  ADD CONSTRAINT `tasistencia_objetivo_ibfk_1` FOREIGN KEY (`tasistencia_idasistencia`) REFERENCES `tasistencia` (`idasistencia`) ON DELETE NO ACTION,
+  ADD CONSTRAINT `tasistencia_objetivo_ibfk_2` FOREIGN KEY (`tobjetivo_idobjetivo`) REFERENCES `tobjetivo` (`idobjetivo`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Filtros para la tabla `tasistencia_unidad`
+--
+ALTER TABLE `tasistencia_unidad`
+  ADD CONSTRAINT `tasistencia_unidad_ibfk_1` FOREIGN KEY (`tasistencia_idasistencia`) REFERENCES `tasistencia` (`idasistencia`) ON DELETE NO ACTION,
+  ADD CONSTRAINT `tasistencia_unidad_ibfk_2` FOREIGN KEY (`tunidad_idunidad`) REFERENCES `tunidad` (`idunidad`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Filtros para la tabla `tcurso`
+--
+ALTER TABLE `tcurso`
+  ADD CONSTRAINT `tcurso_ibfk_1` FOREIGN KEY (`taula_idaula`) REFERENCES `taula` (`idaula`) ON DELETE NO ACTION,
+  ADD CONSTRAINT `tcurso_ibfk_2` FOREIGN KEY (`tasignatura_idasignatura`) REFERENCES `tasignatura` (`idasignatura`) ON DELETE NO ACTION,
+  ADD CONSTRAINT `tcurso_ibfk_3` FOREIGN KEY (`idcurso`) REFERENCES `tasistencia` (`idcurso_idparticipante`) ON DELETE NO ACTION,
+  ADD CONSTRAINT `tcurso_ibfk_4` FOREIGN KEY (`tgrupo_idgrupo`) REFERENCES `tgrupo` (`idgrupo`) ON DELETE NO ACTION,
+  ADD CONSTRAINT `tcurso_ibfk_5` FOREIGN KEY (`tlapso_idlapso`) REFERENCES `tlapso` (`idlapso`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Filtros para la tabla `tcurso_tparticipante`
+--
+ALTER TABLE `tcurso_tparticipante`
+  ADD CONSTRAINT `tcurso_tparticipante_ibfk_1` FOREIGN KEY (`tcurso_idcurso`) REFERENCES `tcurso` (`idcurso`) ON DELETE NO ACTION,
+  ADD CONSTRAINT `tcurso_tparticipante_ibfk_2` FOREIGN KEY (`tparticipante_idparticipante`) REFERENCES `tparticipante` (`idparticipante`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Filtros para la tabla `tdocente`
+--
+ALTER TABLE `tdocente`
+  ADD CONSTRAINT `tdocente_ibfk_1` FOREIGN KEY (`tdiagnostico_iddiagnostico`) REFERENCES `tdiagnostico` (`iddiagnostico`) ON DELETE NO ACTION;
+
+--
+-- Filtros para la tabla `tevaluacion`
+--
+ALTER TABLE `tevaluacion`
+  ADD CONSTRAINT `tevaluacion_ibfk_1` FOREIGN KEY (`idcurso_idparticipante`) REFERENCES `tcurso_tparticipante` (`idcurso_participante`) ON DELETE NO ACTION,
+  ADD CONSTRAINT `tevaluacion_ibfk_2` FOREIGN KEY (`tinstrumento_idinstrumento`) REFERENCES `tinstrumento` (`idinstrumento`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Filtros para la tabla `tevaluacion_item`
+--
+ALTER TABLE `tevaluacion_item`
+  ADD CONSTRAINT `tevaluacion_item_ibfk_1` FOREIGN KEY (`tevaluacion_idevaluacion`) REFERENCES `tevaluacion` (`idevaluacion`) ON DELETE NO ACTION,
+  ADD CONSTRAINT `tevaluacion_item_ibfk_2` FOREIGN KEY (`titem_iditem`) REFERENCES `titem` (`iditem`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Filtros para la tabla `tfamiliar`
+--
+ALTER TABLE `tfamiliar`
+  ADD CONSTRAINT `tfamiliar_ibfk_1` FOREIGN KEY (`tdiagnostico_iddiagnostico`) REFERENCES `tdiagnostico` (`iddiagnostico`) ON DELETE NO ACTION;
+
+--
+-- Filtros para la tabla `tinscripcion`
+--
+ALTER TABLE `tinscripcion`
+  ADD CONSTRAINT `tinscripcion_ibfk_1` FOREIGN KEY (`idparticipante`) REFERENCES `tparticipante` (`idparticipante`) ON DELETE NO ACTION;
+
+--
+-- Filtros para la tabla `tinstitucion`
+--
+ALTER TABLE `tinstitucion`
+  ADD CONSTRAINT `tinstitucion_ibfk_1` FOREIGN KEY (`tlocalidad_idlocalidad`) REFERENCES `tlocalidad` (`idlocalidad`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Filtros para la tabla `tinstrumento`
+--
+ALTER TABLE `tinstrumento`
+  ADD CONSTRAINT `tinstrumento_ibfk_1` FOREIGN KEY (`tasignatura_idasignatura`) REFERENCES `tasignatura` (`idasignatura`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Filtros para la tabla `tinstrumento_item`
+--
+ALTER TABLE `tinstrumento_item`
+  ADD CONSTRAINT `tinstrumento_item_ibfk_1` FOREIGN KEY (`tinstrumento_idinstrumento`) REFERENCES `tinstrumento` (`idinstrumento`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `tinstrumento_item_ibfk_2` FOREIGN KEY (`titem_iditem`) REFERENCES `titem` (`iditem`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Filtros para la tabla `tlocalidad`
+--
+ALTER TABLE `tlocalidad`
+  ADD CONSTRAINT `tlocalidad_ibfk_1` FOREIGN KEY (`tmunicipio_municipio`) REFERENCES `tmunicipio` (`idmunicipio`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Filtros para la tabla `tmodulo`
+--
+ALTER TABLE `tmodulo`
+  ADD CONSTRAINT `tmodulo_ibfk_1` FOREIGN KEY (`idmodulo`) REFERENCES `tmodulo_trol` (`idmodulo`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Filtros para la tabla `tmodulo_trol`
+--
+ALTER TABLE `tmodulo_trol`
+  ADD CONSTRAINT `tmodulo_trol_ibfk_1` FOREIGN KEY (`idrol`) REFERENCES `trol` (`idrol`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Filtros para la tabla `tobjetivo`
+--
+ALTER TABLE `tobjetivo`
+  ADD CONSTRAINT `tobjetivo_ibfk_1` FOREIGN KEY (`tunidad_idunidad`) REFERENCES `tunidad` (`idunidad`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Filtros para la tabla `tparticipante`
+--
+ALTER TABLE `tparticipante`
+  ADD CONSTRAINT `tparticipante_ibfk_1` FOREIGN KEY (`tdiagnostico_iddiagnostico`) REFERENCES `tdiagnostico` (`iddiagnostico`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `tparticipante_ibfk_2` FOREIGN KEY (`tlocalidad_idlocalidad`) REFERENCES `tlocalidad` (`idlocalidad`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Filtros para la tabla `tpersonal`
+--
+ALTER TABLE `tpersonal`
+  ADD CONSTRAINT `tpersonal_ibfk_1` FOREIGN KEY (`tdiagnostico_iddiagnostico`) REFERENCES `tdiagnostico` (`iddiagnostico`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Filtros para la tabla `tservicio`
+--
+ALTER TABLE `tservicio`
+  ADD CONSTRAINT `tservicio_ibfk_1` FOREIGN KEY (`idmodulo`) REFERENCES `tmodulo` (`idmodulo`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Filtros para la tabla `tservicio_trol`
+--
+ALTER TABLE `tservicio_trol`
+  ADD CONSTRAINT `tservicio_trol_ibfk_1` FOREIGN KEY (`idservicio`) REFERENCES `tservicio` (`idservicio`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `tservicio_trol_ibfk_2` FOREIGN KEY (`idrol`) REFERENCES `trol` (`idrol`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Filtros para la tabla `tunidad`
+--
+ALTER TABLE `tunidad`
+  ADD CONSTRAINT `tunidad_ibfk_1` FOREIGN KEY (`tasignatura_idasignatura`) REFERENCES `tasignatura` (`idasignatura`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Filtros para la tabla `tvalor_item`
+--
+ALTER TABLE `tvalor_item`
+  ADD CONSTRAINT `tvalor_item_ibfk_1` FOREIGN KEY (`titem_iditem`) REFERENCES `titem` (`iditem`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
