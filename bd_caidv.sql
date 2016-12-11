@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 06-12-2016 a las 07:30:45
--- Versión del servidor: 10.1.13-MariaDB
--- Versión de PHP: 5.6.20
+-- Tiempo de generación: 11-12-2016 a las 02:38:04
+-- Versión del servidor: 10.1.16-MariaDB
+-- Versión de PHP: 5.6.24
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -817,7 +817,8 @@ CREATE TABLE `tacceso` (
 --
 
 INSERT INTO `tacceso` (`idacceso`, `idusuario`, `exitoacc`, `fechaacc`, `fecha_salidaacc`, `ultima_actividadacc`, `ipacc`, `estatusacc`) VALUES
-(1, '20390749', '1', '2016-11-28 04:34:42', NULL, '2016-11-28 00:41:25', '::1', '1');
+(1, '20390749', '1', '2016-11-28 04:34:42', NULL, '2016-11-28 00:41:25', '::1', '1'),
+(2, 'administrador', '1', '2016-12-11 01:37:45', '2016-12-10 21:07:49', '2016-12-10 21:07:46', '::1', '0');
 
 -- --------------------------------------------------------
 
@@ -1066,7 +1067,8 @@ CREATE TABLE `tbitacora` (
 INSERT INTO `tbitacora` (`idbitacora`, `direccionbit`, `fechahorabit`, `valoranteriorbit`, `valornuevobit`, `ipbit`, `motivobit`, `operacionbit`, `campobit`, `tablabit`, `idusuario`, `serviciobit`) VALUES
 (1, '/caidv/vista/intranet.php?vista=donacion/donacion', '2016-11-28 10:41:00', '', '', '::1', '-', 'Navegar', '-', '-', '20390749', 'donacion/donacion'),
 (2, '/caidv/vista/intranet.php?vista=inv_bienesnacionales/ver_asignacion', '2016-11-28 10:41:00', '', '', '::1', '-', 'Navegar', '-', '-', '20390749', 'inv_bienesnacionales/ver_asignacion'),
-(3, '/caidv/vista/intranet.php?vista=archivo/tipodebien', '2016-11-28 10:41:00', '', '', '::1', '-', 'Navegar', '-', '-', '20390749', 'archivo/tipodebien');
+(3, '/caidv/vista/intranet.php?vista=archivo/tipodebien', '2016-11-28 10:41:00', '', '', '::1', '-', 'Navegar', '-', '-', '20390749', 'archivo/tipodebien'),
+(4, '/caidv/vista/intranet.php?vista=seguridad/primera_vez', '2016-12-11 06:42:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'seguridad/primera_vez');
 
 -- --------------------------------------------------------
 
@@ -1101,7 +1103,7 @@ INSERT INTO `tclave` (`idclave`, `clavecla`, `fechainiciocla`, `fechafincla`, `e
 (20, '2b1d5aeaa2c4cd26852acb5149737844447c56ca', '2015-11-24', '2016-03-23', 1, 4),
 (21, '2b1d5aeaa2c4cd26852acb5149737844447c56ca', '2016-03-19', '2016-11-20', 0, 5),
 (22, '2b1d5aeaa2c4cd26852acb5149737844447c56ca', '2016-06-30', '2016-11-20', 0, 15),
-(24, '6b8c920877fccdf91532a5a1e013d415f3013fe0', '2016-11-20', '2017-03-20', 1, 5),
+(24, 'ca2b3a681c6cff002f7c848b6b1baf01b098e1b0', '2016-11-20', '2017-03-20', 1, 5),
 (25, '6b8c920877fccdf91532a5a1e013d415f3013fe0', '2016-11-20', '2016-11-21', 0, 15),
 (28, '8799e914d696af765cb33604694a4b076db6981a', '2016-11-21', '2016-11-21', 0, 0),
 (29, '5c014730a2cf023a9f538f484f553041dd1c443a', '2016-11-21', '2017-03-21', 1, 0),
@@ -1114,7 +1116,7 @@ INSERT INTO `tclave` (`idclave`, `clavecla`, `fechainiciocla`, `fechafincla`, `e
 (36, '43a7b8577a2183ce6ab401c67cf35c75fdf447f2', '2016-11-21', '2016-11-21', 0, 15),
 (37, '05f566af2582d01bfd226f39fbd4b136f66ab5a0', '2016-11-21', '2016-11-27', 0, 15),
 (38, '7c222fb2927d828af22f592134e8932480637c0d', '2016-11-21', '2017-03-21', 1, 0),
-(39, '83c7db856a45199b15ee00282fcd59a25c65b74f', '2016-11-27', '2017-03-27', 1, 15);
+(39, 'ca2b3a681c6cff002f7c848b6b1baf01b098e1b0', '2016-11-27', '2017-03-27', 1, 15);
 
 -- --------------------------------------------------------
 
@@ -3313,7 +3315,7 @@ INSERT INTO `tusuario` (`idTusuario`, `idusuario`, `idFpersonal`, `nombreusu`, `
 (2, '15491963', 3, 'SPADARO ANTONIO', 'SPADARO.ANTO@GMAIL.COM', 1, '2016-01-23 21:46:54', 1, '15491963', NULL, 0),
 (3, '17960877', 4, 'DIAZ EFREN ', 'EDM_126@HOTMAIL.COM', 1, '2015-03-24 22:01:46', 1, '17960877', NULL, 0),
 (4, '18672728', 5, 'APONTE JORGE', 'COREO@SDD.COM', 1, '2016-06-29 19:16:50', 1, '18672728', NULL, 0),
-(5, 'administrador', 1, 'Web Master', 'webmaster@gmail.com', 0, '2016-11-21 12:56:44', 1, '0', NULL, 6),
+(5, 'administrador', 1, 'Web Master', 'webmaster@gmail.com', 1, '2016-12-10 21:07:46', 1, '0', NULL, 0),
 (15, '20390749', 9, 'ALFA PRUEBA', 'RODESCOBAR44@GMAIL.COM', 1, '2016-11-28 00:41:25', 1, '20390749', 'R2TY10LJBTCHADXIGWKSZMUAFBMEJF', 0);
 
 -- --------------------------------------------------------
@@ -4074,7 +4076,7 @@ ALTER TABLE `proveedores`
 -- AUTO_INCREMENT de la tabla `tacceso`
 --
 ALTER TABLE `tacceso`
-  MODIFY `idacceso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `idacceso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `tactividad`
 --
@@ -4114,7 +4116,7 @@ ALTER TABLE `taula`
 -- AUTO_INCREMENT de la tabla `tbitacora`
 --
 ALTER TABLE `tbitacora`
-  MODIFY `idbitacora` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `idbitacora` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT de la tabla `tclave`
 --
