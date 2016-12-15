@@ -32,7 +32,7 @@
 			$hecho=$loObjetoPrincipal->registrar_responsablereceptor();
 			if($hecho)
 			{
-				$lobjBitacora->set_Datos($_SERVER['HTTP_REFERER'],$ldFecha,$lcReal_ip,'Registrar','Cargar datos','*','tinstrumento','','',$_SESSION['usuario'],$operacion); //envia los datos a la clase bitacora
+				$lobjBitacora->set_Datos($_SERVER['HTTP_REFERER'],$ldFecha,$lcReal_ip,'Registrar','Cargar datos','*','tresponsablereceptor','','',$_SESSION['usuario'],$operacion); //envia los datos a la clase bitacora
    				$lobjBitacora->registrar_bitacora();//registra los datos en la tabla tbitacora.
 				$_SESSION['msj']='Se ha registrado exitosamente';
 			}

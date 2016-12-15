@@ -212,11 +212,13 @@
 			return $Fila;
 		}
 
-		function registrar_responsablereceptor()
+		}
+		
+		function registrar_responsablereceptor ()
 		{
 			$this->conectar();
 
-			$sql="INSERT INTO tresponsableente (nacionalidadper,`cedula`,idFenteExterno,nombrefull,apellidofull,Estatus) 
+			$sql="INSERT INTO `tresponsableente `(`identeExterno`,`nacionalidadper`,`cedula`,`idFenteExterno`,`nombrefull`,`apellidofull`,Estatus) 
 			VALUES (UPPER('$this->Nacionalidad'),'$this->Cedula','$this->idFenteExterno',UPPER('$this->NombreFull'),UPPER('$this->ApellidoFull'),'1')";
 		
 			$lnHecho=$this->ejecutar($sql);
@@ -260,5 +262,5 @@
 			$this->desconectar();
 			return $lnHecho;
 		}
-	}
+	
 ?>
