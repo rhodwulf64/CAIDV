@@ -15,7 +15,7 @@
 		private $lcrifproveedor;
 		private $lcnombreproveedor;
 		private $lccontar;
-	
+
 		function set_Idrequisicion($pcIdrequisicion)
 		{
 			$this->lcIdrequisicion=$pcIdrequisicion;
@@ -41,7 +41,7 @@
 		{
 			$this->lccontar=$pccontar;
 		}
-		
+
 		function set_fecharecepcion($pcfecharecepcion)
 		{
 			$this->lcfecharecepcion=$pcfecharecepcion;
@@ -77,7 +77,7 @@
 		{
 			$this->conectar();
 			$sql="INSERT INTO tentrada (fecha)VALUES(STR_TO_DATE('$this->lcfecha', '%Y-%m-%d'))";
-			$lnHecho=$this->ejecutar($sql);	
+			$lnHecho=$this->ejecutar($sql);
 			$this->set_Idrequisicion($this->maxid());
 			$this->desconectar();
 			return $lnHecho;
@@ -87,7 +87,7 @@
 		{
 			$this->conectar();
 			$sql="INSERT INTO dentrada (identrada,idarticulo,cantidad)VALUES('$this->lcIdrequisicion',$this->lcIdarticulo,'$this->lccantidad')";
-			$lnHecho=$this->ejecutar($sql);			
+			$lnHecho=$this->ejecutar($sql);
 			$this->desconectar();
 			return $lnHecho;
 		}
@@ -96,7 +96,7 @@
 		{
 			$this->conectar();
 			$sql="UPDATE tentrada SET idproveedor='$this->lcidproveedor',idFpersonal='$this->lcresponsable', fecharecepcion=STR_TO_DATE('$this->lcfecharecepcion', '%Y-%m-%d'), estatusen='2' WHERE identrada='$this->lcIdrequisicion'";
-			$lnHecho=$this->ejecutar($sql);	
+			$lnHecho=$this->ejecutar($sql);
 			$this->set_Identrada($this->maxid());
 			$this->desconectar();
 			return $lnHecho;
@@ -106,9 +106,9 @@
 		{
 			$this->conectar();
 			$sql="UPDATE dentrada SET cantidadentregada='$this->lccantidadentregada' WHERE identrada='$this->lcIdrequisicion' and idarticulo='$this->lcIdarticulo'";
-			$lnHecho=$this->ejecutar($sql);	
+			$lnHecho=$this->ejecutar($sql);
 			$sql="UPDATE tarticulo SET existencia=existencia+'$this->lccantidadentregada' WHERE idarticulo='$this->lcIdarticulo'";
-			$lnHecho=$this->ejecutar($sql);		
+			$lnHecho=$this->ejecutar($sql);
 
 			$this->desconectar();
 			return $lnHecho;
@@ -117,7 +117,7 @@
 		{
 			$this->conectar();
 			$sql="UPDATE tentrada SET estatusen='0' WHERE identrada='$this->lcIdrequisicion'";
-			$lnHecho=$this->ejecutar($sql);	
+			$lnHecho=$this->ejecutar($sql);
 			$this->set_Identrada($this->maxid());
 			$this->desconectar();
 			return $lnHecho;
@@ -136,7 +136,7 @@
 					$this->set_Idarticulo($Fila[2]);
 					$this->set_cantidadentregada($Fila[0]);
 					$sql="UPDATE tarticulo SET existencia=existencia-'$this->lccantidadentregada' WHERE idarticulo='$this->lcIdarticulo'";
-					$lnHecho=$this->ejecutar($sql);	
+					$lnHecho=$this->ejecutar($sql);
 					$cont++;
 				}
 			$this->desconectar();
@@ -152,7 +152,7 @@
 				{
 					$Fila[0]=$laRow['contador'];
 					$cont++;
-				}	
+				}
 			$this->set_contar($Fila[0]);
 			$this->desconectar();
 			return $lnHecho;
@@ -197,7 +197,7 @@
 
 					$cont++;
 				}
-			
+
 			$this->desconectar();
 			return $Fila;
 
@@ -221,7 +221,7 @@
 
 					$cont++;
 				}
-			
+
 			$this->desconectar();
 			return $Fila;
 
@@ -230,7 +230,22 @@
 		{
 			$this->conectar();
 			$cont=0;
-				$sql="SELECT tentrada.identrada,date_format(tentrada.fecha,'%d/%m/%Y') as fecha,tentrada.estatusen,tarticulo.descripcionart,dentrada.cantidad,tpersonal.nombreunoper,tpersonal.apellidounoper,tpersonal.nacionalidadper,tpersonal.idpersonal,tarticulo.idarticulo,date_format(tentrada.fecharecepcion,'%d/%m/%Y') as fecharecepcion,proveedores.rif_prov,proveedores.des_prov  FROM tentrada,dentrada,tarticulo,proveedores,tpersonal WHERE proveedores.id_prov=tentrada.idproveedor and tpersonal.idpersonal=tentrada.idFpersonal and tentrada.identrada='$this->lcIdentrada' and dentrada.identrada=tentrada.identrada and tarticulo.idarticulo=dentrada.idarticulo";
+				$sql="SELECT
+				tentrada.identrada,
+				date_format(tentrada.fecha,'%d/%m/%Y') as fecha,
+				tentrada.estatusen,
+				tarticulo.descripcionart,
+				dentrada.cantidad,
+				tpersonal.nombreunoper,
+				tpersonal.apellidounoper,
+				tpersonal.nacionalidadper,
+				tpersonal.idpersonal,
+				tarticulo.idarticulo,
+				date_format(tentrada.fecharecepcion,'%d/%m/%Y') as fecharecepcion,
+				am_tempresa.rif AS rif_prov,
+				am_tempresa.nombre AS des_prov
+				FROM tentrada,dentrada,tarticulo,am_tempresa,tpersonal
+				WHERE am_tempresa.idEmpresa=tentrada.idproveedor and tpersonal.idpersonal=tentrada.idFpersonal and tentrada.identrada='$this->lcIdentrada' and dentrada.identrada=tentrada.identrada and tarticulo.idarticulo=dentrada.idarticulo";
 				$pcsql=$this->filtro($sql);
 				while($laRow=$this->proximo($pcsql))
 				{
@@ -278,7 +293,7 @@
 					$Fila[$cont][9]=$laRow['descripciongru'];
 					$cont++;
 				}
-			
+
 			$this->desconectar();
 			return $Fila;
 		}
@@ -300,7 +315,7 @@
 					$Fila[$cont][4]=$laRow['estatuscur'];
 					$cont++;
 				}
-			
+
 			$this->desconectar();
 			return $Fila;
 		}
@@ -322,12 +337,12 @@
 					$Fila[$cont][4]=$laRow['estatuscur'];
 					$cont++;
 				}
-			
+
 			$this->desconectar();
 			return $Fila;
 		}
 
-		
+
 
 		function consultar_requisicions_activos()
 		{
@@ -350,13 +365,13 @@
 					$Fila[$cont][7]=$laRow['nombrelap'];
 					$Fila[$cont][8]=$laRow['nombregru'];
 					$Fila[$cont][9]=$laRow['descripciongru'];
-					$Fila[$cont][10]=$laRow['inscritos'];					
+					$Fila[$cont][10]=$laRow['inscritos'];
 					$Fila[$cont][11]=$laRow['nombreunodoc'];
 					$Fila[$cont][12]=$laRow['apellidounodoc'];
 					$Fila[$cont][13]=$laRow['iddocente'];
 					$cont++;
 				}
-			
+
 			$this->desconectar();
 			return $Fila;
 		}
@@ -375,7 +390,7 @@
 					$Fila[$cont][4]=$laRow['fechaRecepcion'];
 					$cont++;
 				}
-			
+
 			$this->desconectar();
 			return $Fila;
 		}
@@ -392,7 +407,7 @@
 					$Fila[$cont][3]=$laRow['estatusen'];
 					$cont++;
 				}
-			
+
 			$this->desconectar();
 			return $Fila;
 		}
@@ -409,7 +424,7 @@
 					$Fila[$cont][3]=$laRow['estatusen'];
 					$cont++;
 				}
-			
+
 			$this->desconectar();
 			return $Fila;
 		}
@@ -434,13 +449,13 @@
 			return $Fila;
 		}
 
-		
+
 
 			function eliminar_requisicion()
 		{
 			$this->conectar();
 			$sql="UPDATE tentrada SET estatusen='0' WHERE identrada='$this->lcIdrequisicion' ";
-			$lnHecho=$this->ejecutar($sql);			
+			$lnHecho=$this->ejecutar($sql);
 			$this->desconectar();
 			return $lnHecho;
 		}
@@ -472,7 +487,7 @@
 			$sql="UPDATE `tentrada` SET `fecha`=UPPER('$this->lcfecha'),`desgripcioncur`=UPPER('$this->lcIdcompra')
 			,`Idarticulo`='$this->lcIdarticulo',`estatuscur`='$this->lcEstatuscur',`tcantidad_idcantidad`='$this->lccantidad'
 			,`tgrupo_idgrupo`='$this->lcGrupo' WHERE identrada='$this->lcIdrequisicion'";
-			$lnHecho=$this->ejecutar($sql);			
+			$lnHecho=$this->ejecutar($sql);
 			$this->desconectar();
 			return $lnHecho;
 		}
@@ -483,9 +498,9 @@
 			$cont=0;
 				$sql="SELECT `identrada`, `fecha`, `desgripcioncur`
 					, `Idarticulo`, `estatuscur`, `tcantidad_idcantidad`
-					, `tgrupo_idgrupo`, `nombrelap`, `nombregru`, `descripciongru`, nombreasi, 
-						(SELECT count(identrada_participante) 
-							FROM tentrada_tparticipante 
+					, `tgrupo_idgrupo`, `nombrelap`, `nombregru`, `descripciongru`, nombreasi,
+						(SELECT count(identrada_participante)
+							FROM tentrada_tparticipante
 							WHERE tentrada_identrada=identrada AND estatus='1') AS inscritos
 					FROM `tentrada`, `tcantidad`, `tgrupo`, tasignatura
 					WHERE idcantidad = tcantidad_idcantidad AND idgrupo = tgrupo_idgrupo
@@ -507,7 +522,7 @@
 					$Fila[$cont][11]=(isset($laRow['inscritos']))?$laRow['inscritos']:"0";
 					$cont++;
 				}
-			
+
 			$this->desconectar();
 			return $Fila;
 		}
@@ -518,9 +533,9 @@
 			$cont=0;
 				$sql="SELECT `idrequisicion`, `fecha`, `desgripcioncur`
 					, `Idarticulo`, `estatuscur`, `tcantidad_idcantidad`
-					, `tgrupo_idgrupo`, `nombrelap`, `nombregru`, `descripciongru`, nombreasi, 
-						(SELECT count(idrequisicion_participante) 
-							FROM tentrada_tparticipante 
+					, `tgrupo_idgrupo`, `nombrelap`, `nombregru`, `descripciongru`, nombreasi,
+						(SELECT count(idrequisicion_participante)
+							FROM tentrada_tparticipante
 							WHERE tentrada_idrequisicion=idrequisicion AND estatus='1') AS inscritos
 					FROM `tentrada`, `tcantidad`, `tgrupo`, tasignatura,tentrada_tparticipante
 					WHERE tentrada_idrequisicion=idrequisicion AND idcantidad = tcantidad_idcantidad AND idgrupo = tgrupo_idgrupo
@@ -542,7 +557,7 @@
 					$Fila[$cont][11]=(isset($laRow['inscritos']))?$laRow['inscritos']:"0";
 					$cont++;
 				}
-			
+
 			$this->desconectar();
 			return $Fila;
 		}
@@ -553,8 +568,8 @@
 			$cont=0;
 				$sql="SELECT `idrequisicion`, `fecha`, `desgripcioncur`
 					, `Idarticulo`, `estatuscur`, `tcantidad_idcantidad`
-					, `tgrupo_idgrupo`, `nombrelap`,fechainilap, `nombregru`, `descripciongru`, nombreasi, idasignatura, (SELECT count(idrequisicion_participante) 
-							FROM tentrada_tparticipante 
+					, `tgrupo_idgrupo`, `nombrelap`,fechainilap, `nombregru`, `descripciongru`, nombreasi, idasignatura, (SELECT count(idrequisicion_participante)
+							FROM tentrada_tparticipante
 							WHERE tentrada_idrequisicion=idrequisicion AND estatus='1') AS inscritos
 					FROM `tentrada`, `tcantidad`, `tgrupo`, tasignatura
 					WHERE idcantidad = tcantidad_idcantidad AND idgrupo = tgrupo_idgrupo
@@ -578,7 +593,7 @@
 					$Fila[13]=$laRow['fechainilap'];
 					$cont++;
 				}
-			
+
 			$this->desconectar();
 			return $Fila;
 		}
@@ -605,22 +620,22 @@
 					$Fila[$cont][8]=$laRow['idrequisicion_participante'];
 					$cont++;
 				}
-			
+
 			$this->desconectar();
 			return $Fila;
 		}
 
-		
+
 
 		function consultar_participantes_noinscritos()
 		{
 			$this->conectar();
 			$cont=0;
 
-					 $sql="SELECT  nombreunopar, nombredospar, apellidounopar, apellidodospar, cedulapar, tparticipante.idparticipante,fotoins,(YEAR(CURDATE())-YEAR(fechanacimientopar)) - (RIGHT(CURDATE(),5)<RIGHT(fechanacimientopar,5)) as edad 
+					 $sql="SELECT  nombreunopar, nombredospar, apellidounopar, apellidodospar, cedulapar, tparticipante.idparticipante,fotoins,(YEAR(CURDATE())-YEAR(fechanacimientopar)) - (RIGHT(CURDATE(),5)<RIGHT(fechanacimientopar,5)) as edad
 					FROM  tparticipante,tinscripcion
-					WHERE  estatuspar='1' AND tparticipante.idparticipante=tinscripcion.idparticipante AND cedulapar IN 
-					(select tp.cedulapar FROM tparticipante AS tp , tentrada, tgrupo  
+					WHERE  estatuspar='1' AND tparticipante.idparticipante=tinscripcion.idparticipante AND cedulapar IN
+					(select tp.cedulapar FROM tparticipante AS tp , tentrada, tgrupo
 						WHERE (YEAR(CURDATE())-YEAR(tp.fechanacimientopar)) - (RIGHT(CURDATE(),5)<RIGHT(tp.fechanacimientopar,5))  BETWEEN edadmin AND edadmax
 						AND idgrupo = tgrupo_idgrupo AND tentrada.idrequisicion='$this->lcIdrequisicion')
 					AND tparticipante.idparticipante NOT IN (SELECT tparticipante_idparticipante FROM tentrada_tparticipante,tentrada,tasignatura WHERE tentrada_idrequisicion='$this->lcIdrequisicion' AND tparticipante_idparticipante=tparticipante.idparticipante AND tasignatura_idasignatura=idasignatura AND estatus='1')
@@ -639,7 +654,7 @@
 					$Fila[$cont][7]=$laRow['edad'];
 					$cont++;
 				}
-			
+
 			$this->desconectar();
 			return $Fila;
 		}
@@ -666,7 +681,7 @@
 					$Fila[$cont][6]=$laRow['fotoins'];
 					$cont++;
 				}
-			
+
 			$this->desconectar();
 			return $Fila;
 		}
@@ -675,7 +690,7 @@
 		{
 			$this->conectar();
 			$cont=0;
-			$sql="SELECT  nombreunopar, nombredospar, apellidounopar, apellidodospar, cedulapar, idparticipante  
+			$sql="SELECT  nombreunopar, nombredospar, apellidounopar, apellidodospar, cedulapar, idparticipante
 				FROM  tparticipante
 				WHERE idparticipante  IN (SELECT p.idparticipante FROM tparticipante AS p, tentrada AS c, tentrada_tparticipante, tasignatura
 				WHERE idasignatura = tasignatura_idasignatura
@@ -721,7 +736,7 @@
 					$Fila[$cont][11]=$laRow['nombreasi'];
 					$cont++;
 				}
-			
+
 			$this->desconectar();
 			return $Fila;
 		}
@@ -751,7 +766,7 @@
 					$Fila[$cont][11]=$laRow['nombreasi'];
 					$cont++;
 				}
-			
+
 			$this->desconectar();
 			return $Fila;
 		}
@@ -760,10 +775,10 @@
 		{
 			$this->conectar();
 			$cont=0;
-				$sql="SELECT fecha, nombrelap, nombreasi, nombreaul, nombregru 
-				FROM tentrada, tcantidad, tasignatura, taula,tgrupo 
-				WHERE 
-				tcantidad.idcantidad=tcantidad_idcantidad AND tgrupo.idgrupo = tgrupo_idgrupo 
+				$sql="SELECT fecha, nombrelap, nombreasi, nombreaul, nombregru
+				FROM tentrada, tcantidad, tasignatura, taula,tgrupo
+				WHERE
+				tcantidad.idcantidad=tcantidad_idcantidad AND tgrupo.idgrupo = tgrupo_idgrupo
 				AND idasignatura = tasignatura_idasignatura AND idaula = taula_idaula AND idrequisicion IN
 				 (SELECT c.tentrada_idrequisicion FROM tentrada_tparticipante AS c WHERE tparticipante_idparticipante='$Participante') ORDER BY tcantidad_idcantidad;";
 				$pcsql=$this->filtro($sql);
@@ -776,7 +791,7 @@
 					$Fila[$cont][4]=$laRow['nombregru'];
 					$cont++;
 				}
-			
+
 			$this->desconectar();
 			return $Fila;
 		}
@@ -795,7 +810,7 @@
 					$Fila[$cont][3]=$laRow['estatusins'];
 					$cont++;
 				}
-			
+
 			$this->desconectar();
 			return $Fila;
 		}
@@ -804,14 +819,14 @@
 		{
 			$this->conectar();
 			$cont=0;
-				$sql="SELECT fecha, nombrelap, nombreasi, nombreaul, nombregru 
-				, 
+				$sql="SELECT fecha, nombrelap, nombreasi, nombreaul, nombregru
+				,
 				(SELECT count(*) FROM tentrada_tparticipante WHERE tentrada_idrequisicion=idrequisicion AND estatus='1') AS cantidad_participantes
 				,
 				(SELECT count(*) FROM tentrada_tparticipante WHERE tentrada_idrequisicion=idrequisicion AND estatus='2') AS cantidad_retirados
-				FROM tentrada, tcantidad, tasignatura, taula,tgrupo 
-				WHERE 
-				tcantidad.idcantidad=tcantidad_idcantidad AND tgrupo.idgrupo = tgrupo_idgrupo 
+				FROM tentrada, tcantidad, tasignatura, taula,tgrupo
+				WHERE
+				tcantidad.idcantidad=tcantidad_idcantidad AND tgrupo.idgrupo = tgrupo_idgrupo
 				AND idasignatura = tasignatura_idasignatura AND idaula = taula_idaula AND idrequisicion IN
 				 (SELECT tc.idrequisicion FROM tentrada AS tc WHERE tc.tcantidad_idcantidad='$this->lccantidad' );";
 				$pcsql=$this->filtro($sql);
@@ -826,7 +841,7 @@
 					$Fila[$cont][6]=$laRow['cantidad_retirados'];
 					$cont++;
 				}
-			
+
 			$this->desconectar();
 			return $Fila;
 		}
@@ -835,14 +850,14 @@
 		{
 			$this->conectar();
 			$cont=0;
-				$sql="SELECT fecha, nombrelap, nombreasi, nombreaul, nombregru 
-				, 
+				$sql="SELECT fecha, nombrelap, nombreasi, nombreaul, nombregru
+				,
 				(SELECT count(*) FROM tentrada_tparticipante WHERE tentrada_idrequisicion=idrequisicion AND estatus='1') AS cantidad_participantes
 				,
 				(SELECT count(*) FROM tentrada_tparticipante WHERE tentrada_idrequisicion=idrequisicion AND estatus='2') AS cantidad_retirados
-				FROM tentrada, tcantidad, tasignatura, taula,tgrupo 
-				WHERE 
-				tcantidad.idcantidad=tcantidad_idcantidad AND tgrupo.idgrupo = tgrupo_idgrupo 
+				FROM tentrada, tcantidad, tasignatura, taula,tgrupo
+				WHERE
+				tcantidad.idcantidad=tcantidad_idcantidad AND tgrupo.idgrupo = tgrupo_idgrupo
 				AND idasignatura = tasignatura_idasignatura AND idaula = taula_idaula AND idrequisicion IN
 				 ('$this->lcIdrequisicion');";
 				$pcsql=$this->filtro($sql);
@@ -857,7 +872,7 @@
 					$Fila['cantidad_retirados']=$laRow['cantidad_retirados'];
 					$cont++;
 				}
-			
+
 			$this->desconectar();
 			return $Fila;
 		}

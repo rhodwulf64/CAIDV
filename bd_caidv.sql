@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 11-12-2016 a las 02:38:04
+-- Tiempo de generación: 24-02-2017 a las 07:51:57
 -- Versión del servidor: 10.1.16-MariaDB
 -- Versión de PHP: 5.6.24
 
@@ -19,6 +19,32 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `bd_caidv`
 --
+
+DELIMITER $$
+--
+-- Funciones
+--
+CREATE DEFINER=`root`@`localhost` FUNCTION `IsNumeric` (`sIn` VARCHAR(1024)) RETURNS TINYINT(4) RETURN sIn REGEXP '^(-|\\+){0,1}([0-9]+\\.[0-9]*|[0-9]*\\.[0-9]+|[0-9]+)$'$$
+
+CREATE DEFINER=`root`@`localhost` FUNCTION `NULORD` (`val` VARCHAR(255)) RETURNS VARCHAR(255) CHARSET latin1 BEGIN
+DECLARE idx INT DEFAULT 0;
+
+IF ISNULL(val) THEN RETURN NULL; END IF;
+
+IF LENGTH(val) = 0 THEN RETURN ""; END IF;
+
+SET idx = LENGTH(val);
+WHILE idx > 0 DO
+IF IsNumeric(SUBSTRING(val,idx,1)) = 0 THEN
+ SET val = REPLACE(val,SUBSTRING(val,idx,1),"");
+ SET idx = LENGTH(val)+1;
+END IF;
+SET idx = idx - 1;
+END WHILE;
+RETURN val;
+END$$
+
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -179,7 +205,7 @@ INSERT INTO `am_tempresa` (`idEmpresa`, `rif`, `nombre`, `direccion`, `tlf_uno`,
 (1, 'NO APLICA', 'NO APLICA', '', '', '', '', '1'),
 (2, 'J15465564', 'CAMAC.A.', 'AV 30 ENTRE CALLES 35 y 36', '00000000000', '00000000000', 'CAMACA@GMAIL.COM', '1'),
 (3, 'J45415156165', 'ASDAS', 'ASDAS', '1231231', '12312312312', '12312A@HOTMAIL.COM', '1'),
-(4, 'J1564156156', 'CLIPCENTER', 'ARAURE', '02555555555', '02424789845', 'CLIP@CENTER.COM', '1'),
+(4, 'J1564156156', 'AAAAAAAAA', 'ARAURE', '02555555555', '02424789845', 'CLIP@CENTER.COM', '1'),
 (5, 'J12312321', 'ASDSADASDASD', 'SADSADA', '12312321222', '', '213123@HOTMAIL.COM', '1');
 
 -- --------------------------------------------------------
@@ -289,7 +315,8 @@ INSERT INTO `articulobn` (`id_bien`, `cod_bien`, `LlavePrestado`, `id_tbien`, `s
 (224, 'WER24', '0', 4, 'WERWER234234', 4, 2, 'werwer234', 2, NULL, '2016-05-01', '2016-05-31 23:17:32', '1', 'werwerwer'),
 (239, '45345E', '0', 3, 'WERWER', NULL, 1, 'WERWER', 1, NULL, '2016-06-20', '2016-06-20 10:32:32', '1', 'WERWERWER'),
 (240, NULL, '0', 2, '78787878787878787', 3, 2, 'JHKKH', 1, NULL, '2016-06-01', '2016-06-29 20:39:10', '1', 'UYIUY'),
-(241, '7656767', '0', 2, NULL, 3, 2, 'JHKKH', 2, NULL, '2016-06-01', '2016-06-29 20:39:10', '1', 'UYIUY');
+(241, '7656767', '0', 2, NULL, 3, 2, 'JHKKH', 2, NULL, '2016-06-01', '2016-06-29 20:39:10', '1', 'UYIUY'),
+(242, '23141', '0', 4, '213123', 4, 1, '', 1, NULL, '2017-03-20', '2017-02-24 06:43:35', '1', '');
 
 -- --------------------------------------------------------
 
@@ -380,7 +407,10 @@ INSERT INTO `dentrada` (`iddentrada`, `identrada`, `idarticulo`, `cantidad`, `ca
 (21, 23, 1, 100, 100, '1'),
 (22, 24, 6, 234, 200, '1'),
 (23, 25, 1, 345, 300, '1'),
-(24, 26, 2, 200, 0, '1');
+(24, 26, 2, 200, 12, '1'),
+(25, 27, 6, 12, 12, '1'),
+(26, 28, 1, 233, 100, '1'),
+(27, 29, 1, 111, 0, '1');
 
 -- --------------------------------------------------------
 
@@ -487,7 +517,8 @@ INSERT INTO `dmovimientobn` (`id_detalle_mov`, `id_mov`, `id_bien`, `status`) VA
 (338, 340, 241, '1'),
 (339, 341, 241, '1'),
 (340, 341, 217, '1'),
-(341, 342, 207, '1');
+(341, 342, 207, '1'),
+(342, 343, 242, '1');
 
 -- --------------------------------------------------------
 
@@ -715,7 +746,8 @@ INSERT INTO `movimientobn` (`id_mov`, `nro_document`, `fecha_reg`, `hora_reg`, `
 (339, 'R56456', '2016-06-20', '04:32:56', '2016-06-20', NULL, NULL, NULL, NULL, NULL, 1, 6, 4, 5, 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1'),
 (340, 'RD321.-', '2016-06-29', '14:39:34', '2016-06-01', NULL, NULL, NULL, NULL, NULL, 1, 7, 1, 5, 23, NULL, NULL, NULL, 'JHHU', NULL, NULL, NULL, '1'),
 (341, 'RT5345345', '2016-06-30', '04:12:26', '2016-06-30', NULL, NULL, NULL, NULL, NULL, 2, NULL, 3, 5, 12, NULL, 3, 4, 'qrqwrqwr', NULL, NULL, NULL, '1'),
-(342, '43534RE', '2016-07-06', '22:29:45', '2016-07-01', NULL, NULL, NULL, NULL, NULL, 3, NULL, 1, 5, 11, NULL, 1, 3, 'werwerwer', NULL, NULL, NULL, '1');
+(342, '43534RE', '2016-07-06', '22:29:45', '2016-07-01', NULL, NULL, NULL, NULL, NULL, 3, NULL, 1, 5, 11, NULL, 1, 3, 'werwerwer', NULL, NULL, NULL, '1'),
+(343, 'DADASD', '2017-02-24', '02:13:35', '2017-03-20', NULL, NULL, NULL, NULL, NULL, 1, 2, 2, 5, 2, NULL, NULL, NULL, '', NULL, NULL, NULL, '1');
 
 -- --------------------------------------------------------
 
@@ -818,7 +850,14 @@ CREATE TABLE `tacceso` (
 
 INSERT INTO `tacceso` (`idacceso`, `idusuario`, `exitoacc`, `fechaacc`, `fecha_salidaacc`, `ultima_actividadacc`, `ipacc`, `estatusacc`) VALUES
 (1, '20390749', '1', '2016-11-28 04:34:42', NULL, '2016-11-28 00:41:25', '::1', '1'),
-(2, 'administrador', '1', '2016-12-11 01:37:45', '2016-12-10 21:07:49', '2016-12-10 21:07:46', '::1', '0');
+(2, 'administrador', '1', '2016-12-11 01:37:45', '2016-12-10 21:07:49', '2016-12-10 21:07:46', '::1', '0'),
+(3, 'administrador', '1', '2017-02-20 20:41:08', '2017-02-22 10:52:23', '2017-02-22 10:52:18', '::1', '0'),
+(4, 'administrador', '0', '2017-02-23 16:16:37', NULL, '0000-00-00 00:00:00', '::1', '0'),
+(5, 'administrador', '0', '2017-02-23 16:16:55', NULL, '0000-00-00 00:00:00', '::1', '0'),
+(6, 'administrador', '0', '2017-02-23 16:17:07', NULL, '0000-00-00 00:00:00', '::1', '0'),
+(7, 'administrador', '0', '2017-02-23 16:18:08', NULL, '0000-00-00 00:00:00', '::1', '0'),
+(8, 'administrador', '1', '2017-02-23 16:23:06', '2017-02-23 23:41:28', '2017-02-23 23:41:21', '::1', '0'),
+(9, 'administrador', '1', '2017-02-24 04:11:44', '2017-02-24 02:20:33', '2017-02-24 02:20:30', '::1', '0');
 
 -- --------------------------------------------------------
 
@@ -909,12 +948,13 @@ CREATE TABLE `tarticulo` (
 --
 
 INSERT INTO `tarticulo` (`idarticulo`, `descripcionart`, `idunidadmedida`, `idpresentacion`, `idgrupo`, `existencia`, `stockminimo`, `estatusart`) VALUES
-(1, 'CARTUCHO NRO 15', 4, 5, 1, 92, 3, '1'),
-(2, 'SDFSDFASDA', 3, 2, 2, 40, 120, '1'),
+(1, 'CARTUCHO NRO 15', 4, 5, 1, 192, 3, '1'),
+(2, 'SDFSDFASDA', 3, 2, 2, 52, 120, '1'),
 (3, 'DSF', 3, 2, 2, 0, 120, '1'),
 (4, 'ERTERT', 1, 2, 3, 182, 45, '1'),
 (5, 'ASDASDA', 2, 1, 3, 234, 34, '1'),
-(6, 'QWE342', 2, 2, 2, 200, 54, '1');
+(6, 'QWE342', 2, 2, 2, 212, 54, '1'),
+(7, 'QEDQWEQWE', 3, 1, 2, 0, 12, '1');
 
 -- --------------------------------------------------------
 
@@ -1065,10 +1105,10 @@ CREATE TABLE `tbitacora` (
 --
 
 INSERT INTO `tbitacora` (`idbitacora`, `direccionbit`, `fechahorabit`, `valoranteriorbit`, `valornuevobit`, `ipbit`, `motivobit`, `operacionbit`, `campobit`, `tablabit`, `idusuario`, `serviciobit`) VALUES
-(1, '/caidv/vista/intranet.php?vista=donacion/donacion', '2016-11-28 10:41:00', '', '', '::1', '-', 'Navegar', '-', '-', '20390749', 'donacion/donacion'),
-(2, '/caidv/vista/intranet.php?vista=inv_bienesnacionales/ver_asignacion', '2016-11-28 10:41:00', '', '', '::1', '-', 'Navegar', '-', '-', '20390749', 'inv_bienesnacionales/ver_asignacion'),
-(3, '/caidv/vista/intranet.php?vista=archivo/tipodebien', '2016-11-28 10:41:00', '', '', '::1', '-', 'Navegar', '-', '-', '20390749', 'archivo/tipodebien'),
-(4, '/caidv/vista/intranet.php?vista=seguridad/primera_vez', '2016-12-11 06:42:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'seguridad/primera_vez');
+(1, '/caidv/vista/intranet.php?vista=donacion/persona', '2017-02-24 11:32:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'donacion/persona'),
+(2, '/caidv/vista/intranet.php?vista=donacion/persona', '2017-02-24 11:32:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'donacion/persona'),
+(3, '/caidv/vista/intranet.php', '2017-02-24 11:32:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'Panel_inicio'),
+(4, '/caidv/vista/intranet.php', '2017-02-24 11:32:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'Panel_inicio');
 
 -- --------------------------------------------------------
 
@@ -1308,7 +1348,10 @@ INSERT INTO `tentrada` (`identrada`, `idproveedor`, `idFpersonal`, `fecha`, `fec
 (23, 9, '15491963', '2001-01-20', '2001-06-20', '2'),
 (24, 11, '18672728', '2001-01-20', '2001-07-20', '2'),
 (25, 9, '20390749', '2001-07-20', '2016-08-01', '2'),
-(26, NULL, NULL, '2016-07-14', NULL, '1');
+(26, 2, '17960877', '2016-07-14', '2001-07-20', '2'),
+(27, 9, '12526145', '2001-03-20', '2001-03-20', '2'),
+(28, 2, '15491963', '2015-02-20', '2001-03-20', '2'),
+(29, NULL, NULL, '2001-03-20', NULL, '1');
 
 -- --------------------------------------------------------
 
@@ -2614,7 +2657,6 @@ INSERT INTO `tservicio` (`idservicio`, `nombreser`, `enlaceser`, `MarcaAgregacio
 (252, 'Registrar donacion', 'donacion/registrar_donacion', '3', 0, 1, 10),
 (253, 'Consultar donacion', 'donacion/consultar_donacion', '3', 0, 1, 10),
 (254, 'Eliminar donacion', 'donacion/eliminar_donacion', '3', 0, 1, 10),
-(255, 'AsignaciÃ³n (no muy claro)', 'donacion/asignacion', '3', 1, 1, 10),
 (256, 'Registrar asignacion', 'donacion/registrar_asignacion', '3', 0, 1, 10),
 (257, 'Consultar asignacion', 'donacion/consultar_asignacion', '3', 0, 1, 10),
 (258, 'Eliminar asignacion', 'donacion/eliminar_asignacion', '3', 0, 1, 10),
@@ -3161,18 +3203,15 @@ INSERT INTO `tservicio_trol` (`idservicio`, `idrol`, `orden`) VALUES
 (240, 1, 0),
 (241, 1, 0),
 (242, 1, 0),
-(243, 1, 6),
 (244, 1, 0),
 (245, 1, 0),
 (246, 1, 0),
 (248, 1, 0),
 (249, 1, 0),
 (250, 1, 0),
-(251, 1, 6),
 (252, 1, 0),
 (253, 1, 0),
 (254, 1, 0),
-(255, 1, 7),
 (256, 1, 0),
 (257, 1, 0),
 (258, 1, 0),
@@ -3315,7 +3354,7 @@ INSERT INTO `tusuario` (`idTusuario`, `idusuario`, `idFpersonal`, `nombreusu`, `
 (2, '15491963', 3, 'SPADARO ANTONIO', 'SPADARO.ANTO@GMAIL.COM', 1, '2016-01-23 21:46:54', 1, '15491963', NULL, 0),
 (3, '17960877', 4, 'DIAZ EFREN ', 'EDM_126@HOTMAIL.COM', 1, '2015-03-24 22:01:46', 1, '17960877', NULL, 0),
 (4, '18672728', 5, 'APONTE JORGE', 'COREO@SDD.COM', 1, '2016-06-29 19:16:50', 1, '18672728', NULL, 0),
-(5, 'administrador', 1, 'Web Master', 'webmaster@gmail.com', 1, '2016-12-10 21:07:46', 1, '0', NULL, 0),
+(5, 'administrador', 1, 'Web Master', 'webmaster@gmail.com', 1, '2017-02-24 02:20:30', 1, '0', NULL, 0),
 (15, '20390749', 9, 'ALFA PRUEBA', 'RODESCOBAR44@GMAIL.COM', 1, '2016-11-28 00:41:25', 1, '20390749', 'R2TY10LJBTCHADXIGWKSZMUAFBMEJF', 0);
 
 -- --------------------------------------------------------
@@ -4021,7 +4060,7 @@ ALTER TABLE `am_ttipo_articulo`
 -- AUTO_INCREMENT de la tabla `articulobn`
 --
 ALTER TABLE `articulobn`
-  MODIFY `id_bien` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=242;
+  MODIFY `id_bien` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=243;
 --
 -- AUTO_INCREMENT de la tabla `categoriabn`
 --
@@ -4036,12 +4075,12 @@ ALTER TABLE `condicionbn`
 -- AUTO_INCREMENT de la tabla `dentrada`
 --
 ALTER TABLE `dentrada`
-  MODIFY `iddentrada` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `iddentrada` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 --
 -- AUTO_INCREMENT de la tabla `dmovimientobn`
 --
 ALTER TABLE `dmovimientobn`
-  MODIFY `id_detalle_mov` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=342;
+  MODIFY `id_detalle_mov` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=343;
 --
 -- AUTO_INCREMENT de la tabla `dsalida`
 --
@@ -4066,7 +4105,7 @@ ALTER TABLE `motivobn`
 -- AUTO_INCREMENT de la tabla `movimientobn`
 --
 ALTER TABLE `movimientobn`
-  MODIFY `id_mov` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=343;
+  MODIFY `id_mov` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=344;
 --
 -- AUTO_INCREMENT de la tabla `proveedores`
 --
@@ -4076,7 +4115,7 @@ ALTER TABLE `proveedores`
 -- AUTO_INCREMENT de la tabla `tacceso`
 --
 ALTER TABLE `tacceso`
-  MODIFY `idacceso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `idacceso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT de la tabla `tactividad`
 --
@@ -4096,7 +4135,7 @@ ALTER TABLE `tarea_conocimiento`
 -- AUTO_INCREMENT de la tabla `tarticulo`
 --
 ALTER TABLE `tarticulo`
-  MODIFY `idarticulo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `idarticulo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT de la tabla `tasignatura`
 --
@@ -4146,7 +4185,7 @@ ALTER TABLE `tentesexternos`
 -- AUTO_INCREMENT de la tabla `tentrada`
 --
 ALTER TABLE `tentrada`
-  MODIFY `identrada` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `identrada` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 --
 -- AUTO_INCREMENT de la tabla `tevaluacion`
 --

@@ -56,7 +56,7 @@ else
                 <label>Proveedor<span class="asterisco">*</span>  <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Nombre del proveedor"><i class="fa fa-question" ></i></span></label>
                 <select name="txtProveedor" id="txtProveedor" class="span12" required>
                     <option value="0">SELECCIONE UN PROVEEDOR</option>
-                    <?php print $loFuncGenerales->fnCombosGeneralesActivos("proveedores","id_prov","des_prov","rif_prov","status",$selectedTipoBN); ?>
+                    <?php print $loFuncGenerales->fnCombosGeneralesActivos("am_tempresa","idEmpresa","nombre","rif","estatus",$selectedProveedor); ?>
                 </select>
             </div>
             <div class="col-lg-6 span6">
@@ -72,7 +72,7 @@ else
                 <label>Motivo<span class="asterisco">*</span>  <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Motivo de la operación."><i class="fa fa-question" ></i></span></label>
                 <select name="txtMotivo" id="txtMotivo" class="span12" required>
                     <option value="0">SELECCIONE UN MOTIVO</option>
-                    <?php 
+                    <?php
                     print $loFuncGenerales->fnComboMotivosGeneral($selectMotivo,"1");
                     ?>
                 </select>
@@ -82,7 +82,7 @@ else
                 <textarea class="span12" maxlength="120"  name="txtObservacion" id="txtObservacion" ></textarea>
             </div>
         </div>
-    <div> 
+    <div>
 
          <legend class="label label-info" >
           <button type="button" class="btn btn-default" mame="REFmodoDetalle" id="REFmodoDetalle" data-ModoAejecutar="muestra" onclick="despliegaDetalleBN(this);"><i id="REFmodoDetalleIcon" class="icon-plus icon-black"></i></button>
@@ -101,13 +101,13 @@ else
                         <option value="0">SELECCIONE UN TIPO</option>
                         <?php
 
-                            print $loFuncGenerales->fnCombosGeneralesActivos("tipobn","id_tbien","des_tbien","cod_tbien","status",$selectedTipoBN); 
+                            print $loFuncGenerales->fnCombosGeneralesActivos("tipobn","id_tbien","des_tbien","cod_tbien","status",$selectedTipoBN);
 
-                        ?> 
+                        ?>
                     </select>
                 </div>
             </div>
-            <div class="row-fluid" id="datos-entrada-bien5">       
+            <div class="row-fluid" id="datos-entrada-bien5">
                 <div class="col-lg-6 span6">
                     <label>Serial <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Serial del bien nacional"><i class="fa fa-question" ></i></span></label>
                     <input type="text" class="span12" maxlength="50"  name="txtSerialBN" id="txtSerialBN" onblur="this.value=this.value.toUpperCase();"  <?php print($OnKey); ?> value="<?php print($Datos_Consultados['iddocente']);?>"/>
@@ -121,14 +121,14 @@ else
                     </select>
                 </div>
             </div>
-            <div class="row-fluid" id="datos-entrada-bien6">        
+            <div class="row-fluid" id="datos-entrada-bien6">
                 <div class="col-lg-6 span6">
                     <label>Modelo <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Modelo del bien nacional"><i class="fa fa-question" ></i></span></label>
                     <select name="txtModeloBN" id="txtModeloBN" class="span12">
                         <option value="0">SELECCIONE UN MODELO</option>
                         <?php print $loFuncGenerales->fnComboDependiente("modelobn","id_modelo","nom_modelo",$selectedModelo,"Mo","idFmarca","status"); ?>
 
-                       
+
                     </select>
                 </div>
                <div class="col-lg-6 span6">
@@ -149,7 +149,7 @@ else
             </div>
             <br>
         </div>
-            <div id="detalle_bn" class="row-fluid" border="2" class="label label-info">       
+            <div id="detalle_bn" class="row-fluid" border="2" class="label label-info">
                 <legend class="label label-info">
                     <h4>Bienes nacionales seleccionados</h4>
                 </legend>
@@ -185,7 +185,7 @@ else
                     <span id="n10"><?php if(isset($_SESSION["GlobalDetalleDesin"])) echo "Condición"; else echo "Observación"; ?></span>
                     <span id="n"></span>
             </div>-->
-        
+
 <!-- ******************************************* Detalle del bien nacional *************************************************-->
     <input type="hidden" id="validarCaberaLlena" name="validarCaberaLlena"> <!-- variable para validar la cabecera -->
     <tr>
@@ -195,7 +195,7 @@ else
                     <!-- pintar detalle dinamico -->
                         <?php if(isset($_SESSION["GlobalDetalleDesin"])) echo $_SESSION["GlobalDetalleDesin"]; ?>
                 </table>
-            </div> 
+            </div>
         </td>
     </tr><br>
         <div class="botonera">
@@ -255,16 +255,16 @@ else
                         var Confi=data['Master'];
                         if(Confi.lsExito==1)
                         {
-                            Notifica_Error("El Número de Documento '"+document.getElementById("txtNroDocumento").value+"' ya se encuentra registrado.");   
-                            document.getElementById("txtNroDocumento").value="";                      
-                            document.getElementById("txtNroDocumento").focus();                      
-                            document.getElementById("txtNroDocumento").style="border:1px solid red;"; 
+                            Notifica_Error("El Número de Documento '"+document.getElementById("txtNroDocumento").value+"' ya se encuentra registrado.");
+                            document.getElementById("txtNroDocumento").value="";
+                            document.getElementById("txtNroDocumento").focus();
+                            document.getElementById("txtNroDocumento").style="border:1px solid red;";
                         }
                         else
                         {
-                           document.getElementById("txtNroDocumento").style="border:1px solid green;"; 
+                           document.getElementById("txtNroDocumento").style="border:1px solid green;";
 
-                        }               
+                        }
                     }
                 });
             }
@@ -272,9 +272,9 @@ else
         }
         else
         {
-            document.getElementById("txtNroDocumento").style="border:1px solid red;"; 
-            Notifica_Error("No ha ingresado Número de Documento válido.");   
-           
+            document.getElementById("txtNroDocumento").style="border:1px solid red;";
+            Notifica_Error("No ha ingresado Número de Documento válido.");
+
         }
 
     }
@@ -285,7 +285,7 @@ else
         if (Objeto.id=='REFmodoDetalle')
         {
             if (modoAejecutar=='muestra')
-            {   
+            {
 
                 $('#REFmodoDetalleIcon').attr('class','icon-minus icon-black');
                 $(Objeto).attr('data-ModoAejecutar','oculta');
@@ -322,25 +322,25 @@ else
                     var Confi=data['Master'];
                     if(Confi.lsExito==1)
                     {
-                        Notifica_Error("Este Bien Nacional ya se encuentra registrado.");   
-                        document.getElementById("txtCodBN").value="";                      
-                        document.getElementById("txtCodBN").focus();                      
-                        document.getElementById("txtCodBN").style="border:1px solid red;"; 
+                        Notifica_Error("Este Bien Nacional ya se encuentra registrado.");
+                        document.getElementById("txtCodBN").value="";
+                        document.getElementById("txtCodBN").focus();
+                        document.getElementById("txtCodBN").style="border:1px solid red;";
                     }
                     else
                     {
-                       document.getElementById("txtCodBN").style="border:1px solid green;"; 
+                       document.getElementById("txtCodBN").style="border:1px solid green;";
                     }
-                   
-                    
+
+
                 }
             });
 
         }
         else
         {
-            document.getElementById("txtCodBN").style="border:1px solid orange;"; 
-            Notifica_Alerta("No ha ingresado un codigo de BN válido. Este bien se gestionará con su codigo intitucional");     
+            document.getElementById("txtCodBN").style="border:1px solid orange;";
+            Notifica_Alerta("No ha ingresado un codigo de BN válido. Este bien se gestionará con su codigo intitucional");
         }
 
     }
@@ -353,7 +353,7 @@ else
         }
     }
 
-    function fpAgregar() 
+    function fpAgregar()
     {
         var loF=document.f_recepcion;
             var liFila=Number(loF.txtFila.value);
@@ -414,7 +414,7 @@ else
             lotxtSerialBN.setAttribute('cols',"1");
             lotxtSerialBN.setAttribute('rows',"1");
             lotxtSerialBN.setAttribute('disabled',"true");
-           
+
             var lotxtTipoBN = document.getElementById("txtTipoBN").cloneNode(true);
             lotxtTipoBN.setAttribute('name',"txtTipoBN"+liFila);
             lotxtTipoBN.setAttribute('id',"txtTipoBN"+liFila);
@@ -472,7 +472,7 @@ else
 
             var lobtnMinus = document.createElement("i");
             lobtnMinus.setAttribute('class',"fa fa-minus");
-            
+
              // CON EL METODO appendChild(); LOS AGREGO A LA CELDA QUE QUIERO
 
             loCelda1.appendChild(lotxtNumeFila).appendChild(lotxtIDBN);
@@ -495,7 +495,7 @@ else
             var clModeloBN=evalCampoBN(loF.txtModeloBN.value);
             var clDescripcionBN=evalCampoBN(loF.txtDescripcionBN.value);
             var clObservacionBN=evalCampoBN(loF.txtObservacionBN.value);
-        
+
             document.getElementById("txtCodBN"+liFila).value=clCodBN;
             document.getElementById("txtCodeInsti"+liFila).value=clCodeInsti;
             document.getElementById("txtSerialBN"+liFila).value=clSerialBN;
@@ -557,14 +557,14 @@ else
 
     function limpiarCamposBN()
     {
-       loF.txtCodBN.value=""; 
-       loF.txtCodeInsti.value=""; 
-       loF.txtSerialBN.value=""; 
-       loF.txtTipoBN.value=""; 
-       loF.txtMarcaBN.value=""; 
-       loF.txtModeloBN.value=""; 
-       loF.txtDescripcionBN.value=""; 
-       loF.txtObservacionBN.value=""; 
+       loF.txtCodBN.value="";
+       loF.txtCodeInsti.value="";
+       loF.txtSerialBN.value="";
+       loF.txtTipoBN.value="";
+       loF.txtMarcaBN.value="";
+       loF.txtModeloBN.value="";
+       loF.txtDescripcionBN.value="";
+       loF.txtObservacionBN.value="";
     }
 
 
@@ -588,17 +588,17 @@ else
         var resultado=false;
         var eValidacion=0;
 
-        document.getElementById("txtTipoBN").style="border:1px solid green;"; 
+        document.getElementById("txtTipoBN").style="border:1px solid green;";
 
         if(document.getElementById("txtTipoBN").value == "0")
         {
             eValidacion=1;
             document.getElementById("txtTipoBN").style="border:1px solid red;";
-            Notifica_Alerta("Seleccione una opción válida"); 
-            document.getElementById("txtTipoBN").focus(); 
+            Notifica_Alerta("Seleccione una opción válida");
+            document.getElementById("txtTipoBN").focus();
 
         }
-      
+
         if (eValidacion==0)
         {
             resultado=true;
@@ -643,10 +643,10 @@ else
                 var Confi=data['Master'];
                 if(Confi.lsExito==1)
                 {
-                    
-                    
+
+
                     Notifica_Logro("Esta Recepción fue guardada con éxito.");
-                   
+
 
                     for(liY=1;liY<=liFila;liY++)
                     {
@@ -675,14 +675,14 @@ else
                     }, 2000);
 
 
-                   
+
                 }
                 else
                 {
-                    Notifica_Error("Esta Recepción no se pudo guardar, verifique los datos ingresados.");  
+                    Notifica_Error("Esta Recepción no se pudo guardar, verifique los datos ingresados.");
                 }
-               
-                
+
+
             }
         });
 
@@ -723,7 +723,7 @@ else
             limpiarCamposBN();
 
             var liFila=Number(loF.txtFila.value);
-           
+
             document.getElementById("tabBienNacional").deleteRow(0);
             document.getElementById("txtFila").value="";
 
@@ -807,7 +807,7 @@ else
             vResult=true;
         }
         return vResult;
-       
+
     }
 </script>
 <script>
@@ -825,5 +825,5 @@ var loF=document.f_recepcion;
     }
 
 
-    
+
 </script>

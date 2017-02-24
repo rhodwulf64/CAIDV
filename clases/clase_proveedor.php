@@ -10,7 +10,7 @@
 		private $lcparticular;
 		private $lccorreo;
 		private $lcdomicilio;
-		
+
 
 		function set_proveedor($pcid_prov)
 		{
@@ -41,11 +41,15 @@
 		{
 			$this->lcdomicilio=$pcdomicilio;
 		}
-	
+
 		function consultar_proveedor_bitacora()
 		{
 			$this->conectar();
-				$sql="SELECT id_prov,des_prov,rif_prov,telefono,status FROM proveedores";
+				$sql="SELECT idEmpresa AS id_prov,
+				rif AS rif_prov,
+				nombre AS des_prov,
+				tlf_uno AS telefono,
+				estatus AS status FROM am_tempresa";
 				$pcsql=$this->filtro($sql);
 				$cont=0;
 				while($laRow=$this->proximo($pcsql))
@@ -64,7 +68,14 @@
 		{
 			$this->conectar();
 			$cont=0;
-				$sql="SELECT id_prov,des_prov,rif_prov,telefono,status FROM proveedores";
+				$sql="SELECT idEmpresa AS id_prov,
+				rif AS rif_prov,
+				nombre AS des_prov,
+				direccion AS domicilio,
+				tlf_uno AS telefono,
+				tlf_dos AS particular,
+				correo,
+				estatus AS status FROM am_tempresa";
 				$pcsql=$this->filtro($sql);
 				while($laRow=$this->proximo($pcsql))
 				{
@@ -79,7 +90,7 @@
 
 					$cont++;
 				}
-			
+
 			$this->desconectar();
 			return $Fila;
 		}
@@ -88,7 +99,15 @@
 		{
 			$this->conectar();
 			$cont=0;
-				$sql="SELECT id_prov,des_prov,rif_prov,telefono,status FROM proveedores WHERE status='1'";
+				$sql="SELECT idEmpresa AS id_prov,
+				rif AS rif_prov,
+				nombre AS des_prov,
+				direccion AS domicilio,
+				tlf_uno AS telefono,
+				tlf_dos AS particular,
+				correo,
+				estatus AS status FROM am_tempresa
+				WHERE estatus='1'";
 				$pcsql=$this->filtro($sql);
 				while($laRow=$this->proximo($pcsql))
 				{
@@ -102,7 +121,7 @@
 					$Fila[$cont][7]=$laRow['status'];
 					$cont++;
 				}
-			
+
 			$this->desconectar();
 			return $Fila;
 		}
@@ -110,7 +129,15 @@
 		function consultar_proveedor()
 		{
 			$this->conectar();
-				$sql="SELECT id_prov,des_prov,rif_prov,telefono FROM proveedores WHERE id_prov='$this->lcid_prov'";
+				$sql="SELECT idEmpresa AS id_prov,
+				rif AS rif_prov,
+				nombre AS des_prov,
+				direccion AS domicilio,
+				tlf_uno AS telefono,
+				tlf_dos AS particular,
+				correo,
+				estatus AS status FROM am_tempresa
+				WHERE idEmpresa='$this->lcid_prov'";
 				$pcsql=$this->filtro($sql);
 				if($laRow=$this->proximo($pcsql))
 				{
@@ -122,7 +149,7 @@
 					$Fila[5]=$laRow['correo'];
 					$Fila[6]=$laRow['domicilio'];
 				}
-			
+
 			$this->desconectar();
 			return $Fila;
 		}
@@ -130,14 +157,14 @@
 		function consultar_dependencia()
 		{
 			$this->conectar();
-			$dependencia=false;			
+			$dependencia=false;
 				$sql="SELECT * FROM tentrada WHERE id_prov='$this->lcid_prov' ";
 				$pcsql=$this->filtro($sql);
 				if($laRow=$this->proximo($pcsql))
 				{
 					$dependencia=true;
 				}
-			
+
 			$this->desconectar();
 			return $dependencia;
 		}
@@ -145,8 +172,8 @@
 		function registrar_proveedor()
 		{
 			$this->conectar();
-			$sql="INSERT INTO proveedores (des_prov,rif_prov,telefono)VALUES(UPPER('$this->lcdes_prov'),UPPER('$this->lcrif_prov'),UPPER('$this->lctelefono'))";
-			$lnHecho=$this->ejecutar($sql);			
+			$sql="INSERT INTO am_tempresa (nombre,rif,tlf_uno)VALUES(UPPER('$this->lcdes_prov'),UPPER('$this->lcrif_prov'),UPPER('$this->lctelefono'))";
+			$lnHecho=$this->ejecutar($sql);
 			$this->desconectar();
 			return $lnHecho;
 		}
@@ -154,8 +181,8 @@
 		function eliminar_proveedor()
 		{
 			$this->conectar();
-			$sql="UPDATE proveedores SET status='0' WHERE id_prov='$this->lcid_prov' ";
-			$lnHecho=$this->ejecutar($sql);			
+			$sql="UPDATE am_tempresa SET estatus='0' WHERE idEmpresa='$this->lcid_prov' ";
+			$lnHecho=$this->ejecutar($sql);
 			$this->desconectar();
 			return $lnHecho;
 		}
@@ -163,17 +190,17 @@
 		function restaurar_proveedor()
 		{
 			$this->conectar();
-			$sql="UPDATE proveedores SET status='1' WHERE id_prov='$this->lcid_prov' ";
-			$lnHecho=$this->ejecutar($sql);			
+			$sql="UPDATE am_tempresa SET estatus='1' WHERE idEmpresa='$this->lcid_prov' ";
+			$lnHecho=$this->ejecutar($sql);
 			$this->desconectar();
 			return $lnHecho;
 		}
-		
+
 		function editar_proveedor()
 		{
 			$this->conectar();
-			$sql="UPDATE proveedores SET des_prov=UPPER('$this->lcdes_prov'), rif_prov=UPPER('$this->lcrif_prov'), telefono=UPPER('$this->lctelefono')  WHERE id_prov='$this->lcid_prov' ";
-			$lnHecho=$this->ejecutar($sql);			
+			$sql="UPDATE am_tempresa SET nombre=UPPER('$this->lcdes_prov'), rif=UPPER('$this->lcrif_prov'), tlf_uno=UPPER('$this->lctelefono')  WHERE idEmpresa='$this->lcid_prov' ";
+			$lnHecho=$this->ejecutar($sql);
 			$this->desconectar();
 			return $lnHecho;
 		}

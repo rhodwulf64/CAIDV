@@ -28,7 +28,7 @@ for($i=0;$i<count($laModulos);$i++)
  }
   function eliminar(id)
   {
-     if(confirm("¿Esta seguro que desea desactivar la empresa seleccionado?"))
+     if(confirm("¿Esta seguro que desea desactivar el proveedor seleccionado?"))
     {
       document.getElementById("cam_idEmpresa").value=id;
       document.form_modulo.submit();
@@ -36,7 +36,7 @@ for($i=0;$i<count($laModulos);$i++)
   }
     function restaurar(id)
   {
-     if(confirm("¿Esta seguro que desea restaurar la empresa seleccionado?"))
+     if(confirm("¿Esta seguro que desea restaurar el proveedor seleccionado?"))
     {
       document.getElementById("cam_idEmpresa").value=id;
       document.getElementById("cam_operacion").value='restaurar_empresa';
@@ -51,12 +51,12 @@ for($i=0;$i<count($laModulos);$i++)
         });
     } );
 </script>
-<!--datatable-->  
+<!--datatable-->
 <div style="float: left" class="col-lg-8 span8 pull-left">
-    <h3>Empresas</h3>
+    <h3>Proveedores Jurídicos</h3>
     <div class="alert alert-info">
         <ul>
-            En este módulo podrá registrar, consultar, editar, desactivar y activar los tipos de articulo del sistema.
+            En este módulo podrá registrar, consultar, editar, desactivar y activar los proveedores jurídicos.
         </ul>
     </div>
     <form action="../controlador/control_empresa.php" method="POST" name="form_modulo">
@@ -65,7 +65,7 @@ for($i=0;$i<count($laModulos);$i++)
         <?php
         if($registrar)
         {
-            echo '<a class="btn btn-success" id="btn_registrar" href="?vista=donacion/registrar_empresa"><i class="icon-plus icon-white"></i> Registrar Empresas</a>';
+            echo '<a class="btn btn-success" id="btn_registrar" href="?vista=donacion/registrar_empresa"><i class="icon-plus icon-white"></i> Registrar Proveedores</a>';
         }
         ?>
         <table class="table table-striped table-hover table-bordered bootstrap-datatable datatable dataTable" id="filtro">
