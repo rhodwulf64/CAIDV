@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 24-02-2017 a las 07:51:57
+-- Tiempo de generación: 26-02-2017 a las 04:48:17
 -- Versión del servidor: 10.1.16-MariaDB
 -- Versión de PHP: 5.6.24
 
@@ -857,7 +857,8 @@ INSERT INTO `tacceso` (`idacceso`, `idusuario`, `exitoacc`, `fechaacc`, `fecha_s
 (6, 'administrador', '0', '2017-02-23 16:17:07', NULL, '0000-00-00 00:00:00', '::1', '0'),
 (7, 'administrador', '0', '2017-02-23 16:18:08', NULL, '0000-00-00 00:00:00', '::1', '0'),
 (8, 'administrador', '1', '2017-02-23 16:23:06', '2017-02-23 23:41:28', '2017-02-23 23:41:21', '::1', '0'),
-(9, 'administrador', '1', '2017-02-24 04:11:44', '2017-02-24 02:20:33', '2017-02-24 02:20:30', '::1', '0');
+(9, 'administrador', '1', '2017-02-24 04:11:44', '2017-02-24 02:20:33', '2017-02-24 02:20:30', '::1', '0'),
+(10, 'administrador', '1', '2017-02-26 00:36:29', NULL, '2017-02-25 20:07:28', '::1', '1');
 
 -- --------------------------------------------------------
 
@@ -1108,7 +1109,11 @@ INSERT INTO `tbitacora` (`idbitacora`, `direccionbit`, `fechahorabit`, `valorant
 (1, '/caidv/vista/intranet.php?vista=donacion/persona', '2017-02-24 11:32:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'donacion/persona'),
 (2, '/caidv/vista/intranet.php?vista=donacion/persona', '2017-02-24 11:32:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'donacion/persona'),
 (3, '/caidv/vista/intranet.php', '2017-02-24 11:32:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'Panel_inicio'),
-(4, '/caidv/vista/intranet.php', '2017-02-24 11:32:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'Panel_inicio');
+(4, '/caidv/vista/intranet.php', '2017-02-24 11:32:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'Panel_inicio'),
+(5, '/caidv/vista/intranet.php', '2017-02-26 05:32:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'Panel_inicio'),
+(6, '/caidv/vista/intranet.php?vista=seguridad/asignar_servicio', '2017-02-26 05:32:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'seguridad/asignar_servicio'),
+(7, '/caidv/vista/intranet.php?vista=seguridad/asignar_servicio&id=1', '2017-02-26 05:32:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'seguridad/asignar_servicio'),
+(8, '/caidv/vista/intranet.php?vista=seguridad/asignar_servicio', '2017-02-26 05:32:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'seguridad/asignar_servicio');
 
 -- --------------------------------------------------------
 
@@ -3053,7 +3058,7 @@ INSERT INTO `tservicio_trol` (`idservicio`, `idrol`, `orden`) VALUES
 (147, 1, 4),
 (148, 1, 9),
 (149, 1, 0),
-(150, 1, 5),
+(150, 1, 21),
 (151, 1, 0),
 (152, 1, 0),
 (152, 2, 0),
@@ -3126,7 +3131,7 @@ INSERT INTO `tservicio_trol` (`idservicio`, `idrol`, `orden`) VALUES
 (199, 2, 3),
 (200, 1, 0),
 (200, 2, 0),
-(201, 1, 5),
+(201, 1, 0),
 (201, 2, 19),
 (202, 1, 0),
 (202, 2, 0),
@@ -3203,12 +3208,14 @@ INSERT INTO `tservicio_trol` (`idservicio`, `idrol`, `orden`) VALUES
 (240, 1, 0),
 (241, 1, 0),
 (242, 1, 0),
+(243, 1, 5),
 (244, 1, 0),
 (245, 1, 0),
 (246, 1, 0),
 (248, 1, 0),
 (249, 1, 0),
 (250, 1, 0),
+(251, 1, 4),
 (252, 1, 0),
 (253, 1, 0),
 (254, 1, 0),
@@ -3217,7 +3224,7 @@ INSERT INTO `tservicio_trol` (`idservicio`, `idrol`, `orden`) VALUES
 (258, 1, 0),
 (259, 1, 20),
 (260, 1, 19),
-(261, 1, 21),
+(261, 1, 5),
 (262, 1, 0),
 (263, 1, 0),
 (264, 1, 0),
@@ -3354,7 +3361,7 @@ INSERT INTO `tusuario` (`idTusuario`, `idusuario`, `idFpersonal`, `nombreusu`, `
 (2, '15491963', 3, 'SPADARO ANTONIO', 'SPADARO.ANTO@GMAIL.COM', 1, '2016-01-23 21:46:54', 1, '15491963', NULL, 0),
 (3, '17960877', 4, 'DIAZ EFREN ', 'EDM_126@HOTMAIL.COM', 1, '2015-03-24 22:01:46', 1, '17960877', NULL, 0),
 (4, '18672728', 5, 'APONTE JORGE', 'COREO@SDD.COM', 1, '2016-06-29 19:16:50', 1, '18672728', NULL, 0),
-(5, 'administrador', 1, 'Web Master', 'webmaster@gmail.com', 1, '2017-02-24 02:20:30', 1, '0', NULL, 0),
+(5, 'administrador', 1, 'Web Master', 'webmaster@gmail.com', 1, '2017-02-25 20:07:28', 1, '0', NULL, 0),
 (15, '20390749', 9, 'ALFA PRUEBA', 'RODESCOBAR44@GMAIL.COM', 1, '2016-11-28 00:41:25', 1, '20390749', 'R2TY10LJBTCHADXIGWKSZMUAFBMEJF', 0);
 
 -- --------------------------------------------------------
@@ -4115,7 +4122,7 @@ ALTER TABLE `proveedores`
 -- AUTO_INCREMENT de la tabla `tacceso`
 --
 ALTER TABLE `tacceso`
-  MODIFY `idacceso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `idacceso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT de la tabla `tactividad`
 --
@@ -4155,7 +4162,7 @@ ALTER TABLE `taula`
 -- AUTO_INCREMENT de la tabla `tbitacora`
 --
 ALTER TABLE `tbitacora`
-  MODIFY `idbitacora` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `idbitacora` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT de la tabla `tclave`
 --
