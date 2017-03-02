@@ -3,11 +3,7 @@
     session_start(); //inicia la session, la cual permite trabajar con la variable $_SESSION
     $msj=(isset($_SESSION['msj']))?$_SESSION['msj']:"";
     $vista=(isset($_GET['vista']))?$_GET['vista']:"";//toma el valor que se guarda en la variable vista que está en la URL.
-    if($msj) //verifica si existe algún texto en el arreglo msj de la variable $_SESSION
-    {
-        echo '<script>Notifica_Logro("'.$msj.'");</script>'; // si existia un mensaje este lo imprime mediante un alert!
-        unset($_SESSION['msj']); //borra lo que habia en la variable.
-    }
+    
     include('../clases/clase_configuracion.php');
     $lobjConfiguracion = new clsConfiguracion();
     $DatosConfiguracion = $lobjConfiguracion->consultar_configuracion_bitacora();
@@ -30,6 +26,10 @@
     <script type="text/javascript" src="../media/js/jquery.js"></script>
 	<script type="text/javascript" src="../media/js/scripts.js"></script>
     <script type="text/javascript" src="../libreria/validacion/js/lemez_validacion1.1.js"></script>
+    <link rel="stylesheet" type="text/css" href="../libreria/sweetalert-master/dist/sweetalert.css">
+	<script src="../libreria/sweetalert-master/dist/sweetalert.min.js"></script>
+
+	
 	<!--[if lt IE 9]>
 		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 		<link href="style-ie.css" rel="stylesheet" type="text/css" media="screen">
@@ -154,5 +154,13 @@
 		<script type="text/javascript" src="js/ie.js"></script>
 	<![endif]-->
 </body>
-
+<?php
+	if($msj) //verifica si existe algún texto en el arreglo msj de la variable $_SESSION
+    {
+    
+    	//Notifica_Logro("'.$msj.'");
+        echo '<script> swal("'.$msj.'"); </script>'; // si existia un mensaje este lo imprime mediante un alert!
+        unset($_SESSION['msj']); //borra lo que habia en la variable.
+    }
+?>
 </html>

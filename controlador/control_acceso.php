@@ -122,22 +122,36 @@
 		}
 		else//Si el usuario no existe o es incorrecto el usuario y/o clave este es sacado del sistema
 		{
+			//echo 'entro '; exit(); 
+			
 
 			$lobjAcceso->set_Exito('0');
 			$lobjAcceso->registrar_acceso(); //se registra un intento sin éxito de acceso al sistema
 			if($datosUsuario=$lobjUsuario->consultar_usuario()) //Sí el usuario ingresado para iniciar sesión existe en el sistema, entonces entra en la condición
 			{
-					$lobjUsuario->cantidad_intentos(); //actualiza la cantidad de intentos fallidos
-					$cantidad_intentos=$lobjUsuario->consultar_accesos_fallidos(); //consulta la cantidad de accesos fallidos del usuario
-					$laConfiguracion=$lobjConfiguracion->consultar_configuracion_bitacora(); //consulta la cantidad máxima de accesos fallidos en el sistema
+
+				
+					 $lobjUsuario->cantidad_intentos(); //actualiza la cantidad de intentos fallidos
+					
+					 $cantidad_intentos=$lobjUsuario->consultar_accesos_fallidos(); //consulta la cantidad de accesos fallidos del usuario
+
+					echo $laConfiguracion=$lobjConfiguracion->consultar_configuracion_bitacora(); //consulta la cantidad máxima de accesos fallidos en el sistema
+					
 					if($cantidad_intentos<=$laConfiguracion['nrointentos']) // Sí la cantidad de accesos fallidos es menor a las intentos máximos entonces mostrará un mensaje indicando la situación y la cantidad de intentos realizados
 					{
+						
 						$_SESSION['msj']='El usuario y/o clave que ingresó son incorrectos.\n Intentos '.$cantidad_intentos.'/'.$laConfiguracion['nrointentos'].' .'; //Se guarda un mensaje, que posterior mente será borrado.
 					}
-					elseif ($cantidad_intentos>$laConfiguracion['nrointentos']) // Sí la cantidad de accesos fallidos es mayor a las intentos máximos entonces mostrará un mensaje indicando la situación
+					elseif($cantidad_intentos>$laConfiguracion['nrointentos']) // Sí la cantidad de accesos fallidos es mayor a las intentos máximos entonces mostrará un mensaje indicando la situación
 					{
+
 						$lobjUsuario->bloquear_usuario(); // se bloquea el usuario
-						$_SESSION['msj']='El usuario y/o clave que ingresó son incorrectos.\n Su cuenta ha sido bloqueada, ya que ha excedido el número de intentos maximos permitidos por el sistema. \n Debe comunicarse con el administrador del sistema para que procesa a desbloquear su cuenta.';
+
+						 $_SESSION['msj']='El usuario y/o clave que ingresó son incorrectos.\n Su cuenta ha sido bloqueada, ya que ha excedido el número de intentos maximos permitidos por el sistema. \n Debe comunicarse con el administrador del sistema para que procesa a desbloquear su cuenta.';
+
+						// $_SESSION['msj']='El usuario y/o clave que ingresó son incorrectos.\n Su cuenta ha sido bloqueada, ya que ha excedido el número de intentos maximos permitidos por el sistema. \n Debe comunicarse con el administrador del sistema para que procesa a desbloquear su cuenta.';
+
+						//echo '####'; exit();
 					}
 			}
 			else //sí el usuario y la clave ingresadas son incorrectas entonces mostrará un mensaje indicandolo
