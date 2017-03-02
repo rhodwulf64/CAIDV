@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 02-03-2017 a las 16:41:14
--- Versión del servidor: 10.1.13-MariaDB
--- Versión de PHP: 5.6.20
+-- Tiempo de generación: 26-02-2017 a las 04:48:17
+-- Versión del servidor: 10.1.16-MariaDB
+-- Versión de PHP: 5.6.24
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -622,7 +622,7 @@ CREATE TABLE `motivobn` (
 --
 
 INSERT INTO `motivobn` (`id_motivo_mov`, `des_motivo_mov`, `tipo_motivo`, `status`) VALUES
-(1, 'DONACIÃ“N', 1, '1'),
+(1, 'DONACIÃ“N', 1, '0'),
 (2, 'COMPRA', 1, '1'),
 (3, 'ERROR DE TRANSCRIPCIÃ“N', 2, '1'),
 (4, 'ME FALTO UN BIEN', 2, '1'),
@@ -858,10 +858,7 @@ INSERT INTO `tacceso` (`idacceso`, `idusuario`, `exitoacc`, `fechaacc`, `fecha_s
 (7, 'administrador', '0', '2017-02-23 16:18:08', NULL, '0000-00-00 00:00:00', '::1', '0'),
 (8, 'administrador', '1', '2017-02-23 16:23:06', '2017-02-23 23:41:28', '2017-02-23 23:41:21', '::1', '0'),
 (9, 'administrador', '1', '2017-02-24 04:11:44', '2017-02-24 02:20:33', '2017-02-24 02:20:30', '::1', '0'),
-(10, 'administrador', '1', '2017-02-26 00:36:29', NULL, '2017-02-25 20:07:28', '::1', '1'),
-(11, 'administrador', '1', '2017-03-02 11:08:51', '2017-03-02 08:11:59', '2017-03-02 08:11:59', '::1', '0'),
-(12, 'administrador', '1', '2017-03-02 12:42:03', '2017-03-02 08:12:05', '2017-03-02 08:12:03', '::1', '0'),
-(13, 'administrador', '1', '2017-03-02 12:42:19', NULL, '2017-03-02 08:49:50', '::1', '1');
+(10, 'administrador', '1', '2017-02-26 00:36:29', NULL, '2017-02-25 20:07:28', '::1', '1');
 
 -- --------------------------------------------------------
 
@@ -904,14 +901,6 @@ CREATE TABLE `tagenda` (
   `EstadoAgenda` char(1) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
   `Estatus` char(1) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Volcado de datos para la tabla `tagenda`
---
-
-INSERT INTO `tagenda` (`codigoagenda`, `id_empresa`, `id_personaempresa`, `id_personacaidv`, `idFcodigo_actividad`, `fecha_act_Inicio`, `hora_act_Inicio`, `fecha_act_Fin`, `hora_act_Fin`, `lugar`, `FechaRegistro`, `EstadoAgenda`, `Estatus`) VALUES
-(1, 2, 1, 12526145, 1, '2017-03-07', '12:59:00', '2017-03-23', '17:04:00', 'gg', '2017-03-02 11:12:06', '2', 'P'),
-(2, 2, 1, 12526145, 1, '2017-03-07', '12:59:00', '2017-03-23', '17:04:00', 'gg', '2017-03-02 11:12:08', '2', 'P');
 
 -- --------------------------------------------------------
 
@@ -1124,121 +1113,7 @@ INSERT INTO `tbitacora` (`idbitacora`, `direccionbit`, `fechahorabit`, `valorant
 (5, '/caidv/vista/intranet.php', '2017-02-26 05:32:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'Panel_inicio'),
 (6, '/caidv/vista/intranet.php?vista=seguridad/asignar_servicio', '2017-02-26 05:32:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'seguridad/asignar_servicio'),
 (7, '/caidv/vista/intranet.php?vista=seguridad/asignar_servicio&id=1', '2017-02-26 05:32:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'seguridad/asignar_servicio'),
-(8, '/caidv/vista/intranet.php?vista=seguridad/asignar_servicio', '2017-02-26 05:32:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'seguridad/asignar_servicio'),
-(9, 'http://localhost:8080/caidv/vista/index.php?vista=preinscripcion/preinscripcion', '0000-00-00 00:00:00', '', '', '', 'Cargar datos', 'Registrar', '*', 'tarticulo', '', 'registrar_preinscripcion'),
-(10, '/caidv/vista/intranet.php', '2017-03-02 16:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'Panel_inicio'),
-(11, '/caidv/vista/intranet.php?vista=persona/participante', '2017-03-02 16:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'persona/participante'),
-(12, '/caidv/vista/intranet.php?vista=persona/consultar_participante&id=24', '2017-03-02 16:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'persona/consultar_participante'),
-(13, '/caidv/vista/intranet.php?vista=persona/participante', '2017-03-02 16:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'persona/participante'),
-(14, '/caidv/vista/intranet.php?vista=cronograma/gestAgendaParroquial', '2017-03-02 16:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'cronograma/gestAgendaParroquial'),
-(15, '/caidv/vista/intranet.php?vista=cronograma/gestAgendaParroquial', '2017-03-02 16:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'cronograma/gestAgendaParroquial'),
-(16, '/caidv/vista/intranet.php', '2017-03-02 16:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'Panel_inicio'),
-(17, '/caidv/vista/intranet.php?vista=donacion/donacion', '2017-03-02 16:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'donacion/donacion'),
-(18, '/caidv/vista/intranet.php?vista=donacion/registrar_donacion', '2017-03-02 16:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'donacion/registrar_donacion'),
-(19, '/caidv/vista/intranet.php?vista=donacion/donacion', '2017-03-02 16:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'donacion/donacion'),
-(20, '/caidv/vista/intranet.php?vista=donacion/registrar_donacion', '2017-03-02 16:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'donacion/registrar_donacion'),
-(21, '/caidv/vista/intranet.php?vista=donacion/donacion', '2017-03-02 16:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'donacion/donacion'),
-(22, '/caidv/vista/intranet.php?vista=donacion/donacion', '2017-03-02 16:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'donacion/donacion'),
-(23, '/caidv/vista/intranet.php?vista=inv_bienesnacionales/ver_inventario', '2017-03-02 16:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'inv_bienesnacionales/ver_inventario'),
-(24, '/caidv/vista/intranet.php?vista=inv_bienesnacionales/ver_asignacion', '2017-03-02 16:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'inv_bienesnacionales/ver_asignacion'),
-(25, '/caidv/vista/intranet.php?vista=inv_bienesnacionales/ver_prestamo', '2017-03-02 16:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'inv_bienesnacionales/ver_prestamo'),
-(26, '/caidv/vista/intranet.php?vista=inv_bienesnacionales/ver_restitucion', '2017-03-02 16:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'inv_bienesnacionales/ver_restitucion'),
-(27, '/caidv/vista/intranet.php?vista=archivo/actividad', '2017-03-02 16:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'archivo/actividad'),
-(28, '/caidv/vista/intranet.php?vista=donacion/donacion', '2017-03-02 05:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'donacion/donacion'),
-(29, '/caidv/vista/intranet.php', '2017-03-02 05:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'Panel_inicio'),
-(30, '/caidv/vista/intranet.php', '2017-03-02 05:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'Panel_inicio'),
-(31, '/caidv/vista/intranet.php?vista=archivo/actividad', '2017-03-02 05:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'archivo/actividad'),
-(32, '/caidv/vista/intranet.php?vista=inv_consumibles/articulo', '2017-03-02 05:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'inv_consumibles/articulo'),
-(33, '/caidv/vista/intranet.php?vista=donacion/donacion', '2017-03-02 05:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'donacion/donacion'),
-(34, '/caidv/vista/intranet.php?vista=inv_consumibles/articulo', '2017-03-02 05:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'inv_consumibles/articulo'),
-(35, '/caidv/vista/intranet.php?vista=inv_consumibles/requisicion', '2017-03-02 05:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'inv_consumibles/requisicion'),
-(36, '/caidv/vista/intranet.php?vista=inv_consumibles/registrar_requisicion', '2017-03-02 05:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'inv_consumibles/registrar_requisicion'),
-(37, '/caidv/vista/intranet.php?vista=inv_consumibles/salida', '2017-03-02 05:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'inv_consumibles/salida'),
-(38, '/caidv/vista/intranet.php?vista=inv_consumibles/registrar_salida', '2017-03-02 05:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'inv_consumibles/registrar_salida'),
-(39, '/caidv/vista/intranet.php?vista=donacion/donacion', '2017-03-02 05:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'donacion/donacion'),
-(40, '/caidv/vista/intranet.php?vista=donacion/registrar_donacion', '2017-03-02 05:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'donacion/registrar_donacion'),
-(41, '/caidv/vista/intranet.php?vista=inv_bienesnacionales/ver_inventario', '2017-03-02 05:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'inv_bienesnacionales/ver_inventario'),
-(42, '/caidv/vista/intranet.php?vista=inv_bienesnacionales/recepcion_articulobn', '2017-03-02 05:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'inv_bienesnacionales/recepcion_articulobn'),
-(43, '/caidv/vista/intranet.php?vista=inv_bienesnacionales/ver_prestamo', '2017-03-02 05:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'inv_bienesnacionales/ver_prestamo'),
-(44, '/caidv/vista/intranet.php?vista=inv_bienesnacionales/ver_inventario', '2017-03-02 05:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'inv_bienesnacionales/ver_inventario'),
-(45, '/caidv/vista/intranet.php?vista=inv_bienesnacionales/ver_asignacion', '2017-03-02 05:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'inv_bienesnacionales/ver_asignacion'),
-(46, '/caidv/vista/intranet.php?vista=inv_bienesnacionales/ver_prestamo', '2017-03-02 05:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'inv_bienesnacionales/ver_prestamo'),
-(47, '/caidv/vista/intranet.php?vista=inv_bienesnacionales/prestamo_articulobn', '2017-03-02 05:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'inv_bienesnacionales/prestamo_articulobn'),
-(48, '/caidv/vista/intranet.php?vista=inv_bienesnacionales/ver_restitucion', '2017-03-02 05:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'inv_bienesnacionales/ver_restitucion'),
-(49, '/caidv/vista/intranet.php?vista=donacion/donacion', '2017-03-02 05:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'donacion/donacion'),
-(50, '/caidv/vista/intranet.php?vista=donacion/donacion', '2017-03-02 05:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'donacion/donacion'),
-(51, '/caidv/vista/intranet.php?vista=donacion/registrar_donacion', '2017-03-02 05:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'donacion/registrar_donacion'),
-(52, '/caidv/vista/intranet.php?vista=donacion/donacion', '2017-03-02 05:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'donacion/donacion'),
-(53, '/caidv/vista/intranet.php?vista=donacion/donacion', '2017-03-02 05:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'donacion/donacion'),
-(54, '/caidv/vista/intranet.php?vista=inv_consumibles/salida', '2017-03-02 05:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'inv_consumibles/salida'),
-(55, '/caidv/vista/intranet.php?vista=inv_bienesnacionales/ver_inventario', '2017-03-02 05:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'inv_bienesnacionales/ver_inventario'),
-(56, '/caidv/vista/intranet.php?vista=inv_bienesnacionales/ver_asignacion', '2017-03-02 05:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'inv_bienesnacionales/ver_asignacion'),
-(57, '/caidv/vista/intranet.php?vista=inv_bienesnacionales/ver_desincorporacion', '2017-03-02 05:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'inv_bienesnacionales/ver_desincorporacion'),
-(58, '/caidv/vista/intranet.php?vista=inv_bienesnacionales/ver_restitucion', '2017-03-02 05:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'inv_bienesnacionales/ver_restitucion'),
-(59, '/caidv/vista/intranet.php?vista=inv_bienesnacionales/registrar_restitucion', '2017-03-02 05:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'inv_bienesnacionales/registrar_restitucion'),
-(60, '/caidv/vista/intranet.php?vista=inv_consumibles/articulo', '2017-03-02 05:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'inv_consumibles/articulo'),
-(61, '/caidv/vista/intranet.php?vista=inv_consumibles/requisicion', '2017-03-02 05:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'inv_consumibles/requisicion'),
-(62, '/caidv/vista/intranet.php?vista=inv_consumibles/registrar_requisicion', '2017-03-02 05:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'inv_consumibles/registrar_requisicion'),
-(63, '/caidv/vista/intranet.php?vista=inv_consumibles/salida', '2017-03-02 05:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'inv_consumibles/salida'),
-(64, '/caidv/vista/intranet.php?vista=donacion/donacion', '2017-03-02 05:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'donacion/donacion'),
-(65, '/caidv/vista/intranet.php?vista=donacion/registrar_donacion', '2017-03-02 05:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'donacion/registrar_donacion'),
-(66, '/caidv/vista/intranet.php?vista=donacion/donacion', '2017-03-02 05:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'donacion/donacion'),
-(67, '/caidv/vista/intranet.php?vista=donacion/consultar_donacion&o=Consultar&id=17', '2017-03-02 05:33:00', '', '', '::1', '-', 'Consultar', '-', '-', 'administrador', 'donacion/consultar_donacion'),
-(68, '/caidv/vista/intranet.php?vista=donacion/donacion', '2017-03-02 05:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'donacion/donacion'),
-(69, '/caidv/vista/intranet.php?vista=donacion/consultar_donacion&o=Consultar&id=18', '2017-03-02 05:33:00', '', '', '::1', '-', 'Consultar', '-', '-', 'administrador', 'donacion/consultar_donacion'),
-(70, '/caidv/vista/intranet.php?vista=donacion/donacion', '2017-03-02 05:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'donacion/donacion'),
-(71, '/caidv/vista/intranet.php?vista=donacion/donacion', '2017-03-02 05:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'donacion/donacion'),
-(72, '/caidv/vista/intranet.php?vista=donacion/registrar_donacion', '2017-03-02 05:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'donacion/registrar_donacion'),
-(73, '/caidv/vista/intranet.php?vista=donacion/donacion', '2017-03-02 05:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'donacion/donacion'),
-(74, '/caidv/vista/intranet.php?vista=inv_bienesnacionales/ver_inventario', '2017-03-02 05:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'inv_bienesnacionales/ver_inventario'),
-(75, '/caidv/vista/intranet.php?vista=inv_bienesnacionales/recepcion_articulobn', '2017-03-02 05:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'inv_bienesnacionales/recepcion_articulobn'),
-(76, '/caidv/vista/intranet.php?vista=inv_consumibles/requisicion', '2017-03-02 05:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'inv_consumibles/requisicion'),
-(77, '/caidv/vista/intranet.php?vista=inv_bienesnacionales/ver_inventario', '2017-03-02 05:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'inv_bienesnacionales/ver_inventario'),
-(78, '/caidv/vista/intranet.php?vista=inv_bienesnacionales/consultar_recepcion&id=319', '2017-03-02 05:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'inv_bienesnacionales/consultar_recepcion'),
-(79, '/caidv/vista/intranet.php?vista=inv_bienesnacionales/ver_inventario', '2017-03-02 05:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'inv_bienesnacionales/ver_inventario'),
-(80, '/caidv/vista/intranet.php?vista=inv_bienesnacionales/ver_asignacion', '2017-03-02 05:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'inv_bienesnacionales/ver_asignacion'),
-(81, '/caidv/vista/intranet.php?vista=inv_bienesnacionales/ver_devolucion', '2017-03-02 05:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'inv_bienesnacionales/ver_devolucion'),
-(82, '/caidv/vista/intranet.php?vista=inv_bienesnacionales/ver_desincorporacion', '2017-03-02 05:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'inv_bienesnacionales/ver_desincorporacion'),
-(83, '/caidv/vista/intranet.php?vista=inv_bienesnacionales/ver_prestamo', '2017-03-02 05:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'inv_bienesnacionales/ver_prestamo'),
-(84, '/caidv/vista/intranet.php?vista=inv_bienesnacionales/consultar_prestamo&id=310', '2017-03-02 05:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'inv_bienesnacionales/consultar_prestamo'),
-(85, '/caidv/vista/intranet.php?vista=inv_bienesnacionales/ver_restitucion', '2017-03-02 05:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'inv_bienesnacionales/ver_restitucion'),
-(86, '/caidv/vista/intranet.php?vista=inv_consumibles/articulo', '2017-03-02 05:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'inv_consumibles/articulo'),
-(87, '/caidv/vista/intranet.php?vista=inv_consumibles/requisicion', '2017-03-02 05:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'inv_consumibles/requisicion'),
-(88, '/caidv/vista/intranet.php?vista=inv_consumibles/salida', '2017-03-02 05:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'inv_consumibles/salida'),
-(89, 'http://localhost:8080/caidv/vista/intranet.php?vista=inv_consumibles/salida', '2017-03-02 12:33:00', '8524f2bd-ef78-48fd-bee1-237a769c100c', '1', '::1', '-', 'Reporte', 'id', '-', 'administrador', 'imprimir_salida'),
-(90, '/caidv/vista/intranet.php?vista=inv_consumibles/salida', '2017-03-02 06:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'inv_consumibles/salida'),
-(91, '/caidv/vista/intranet.php?vista=inv_bienesnacionales/ver_inventario', '2017-03-02 06:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'inv_bienesnacionales/ver_inventario'),
-(92, '/caidv/vista/intranet.php?vista=inv_bienesnacionales/recepcion_articulobn', '2017-03-02 06:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'inv_bienesnacionales/recepcion_articulobn'),
-(93, '/caidv/vista/intranet.php?vista=archivo/motivo', '2017-03-02 06:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'archivo/motivo'),
-(94, 'http://localhost:8080/caidv/vista/intranet.php?vista=archivo/motivo', '2017-03-02 06:33:00', '0', '1', '::1', 'No sÃ© utiliza', 'Restaurar', 'estatusasi', 'tinstrumento', 'administrador', 'restaurar_motivo'),
-(95, '/caidv/vista/intranet.php?vista=archivo/motivo', '2017-03-02 06:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'archivo/motivo'),
-(96, '/caidv/vista/intranet.php?vista=inv_bienesnacionales/ver_inventario', '2017-03-02 06:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'inv_bienesnacionales/ver_inventario'),
-(97, '/caidv/vista/intranet.php?vista=inv_bienesnacionales/recepcion_articulobn', '2017-03-02 06:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'inv_bienesnacionales/recepcion_articulobn'),
-(98, '/caidv/vista/intranet.php?vista=donacion/donacion', '2017-03-02 06:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'donacion/donacion'),
-(99, '/caidv/vista/intranet.php?vista=donacion/registrar_donacion', '2017-03-02 06:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'donacion/registrar_donacion'),
-(100, '/caidv/vista/intranet.php?vista=inv_bienesnacionales/ver_inventario', '2017-03-02 06:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'inv_bienesnacionales/ver_inventario'),
-(101, '/caidv/vista/intranet.php?vista=inv_bienesnacionales/recepcion_articulobn', '2017-03-02 06:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'inv_bienesnacionales/recepcion_articulobn'),
-(102, '/caidv/vista/intranet.php?vista=inv_consumibles/requisicion', '2017-03-02 06:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'inv_consumibles/requisicion'),
-(103, '/caidv/vista/intranet.php?vista=inv_consumibles/salida', '2017-03-02 06:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'inv_consumibles/salida'),
-(104, '/caidv/vista/intranet.php?vista=inv_consumibles/articulo', '2017-03-02 06:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'inv_consumibles/articulo'),
-(105, '/caidv/vista/intranet.php?vista=archivo/registrar_articulo', '2017-03-02 06:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'archivo/registrar_articulo'),
-(106, '/caidv/vista/intranet.php?vista=donacion/donacion', '2017-03-02 06:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'donacion/donacion'),
-(107, '/caidv/vista/intranet.php', '2017-03-02 06:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'Panel_inicio'),
-(108, '/caidv/vista/intranet.php?vista=donacion/registrar_donacion', '2017-03-02 06:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'donacion/registrar_donacion'),
-(109, '/caidv/vista/intranet.php?vista=inv_bienesnacionales/ver_inventario', '2017-03-02 06:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'inv_bienesnacionales/ver_inventario'),
-(110, '/caidv/vista/intranet.php?vista=inv_bienesnacionales/recepcion_articulobn', '2017-03-02 06:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'inv_bienesnacionales/recepcion_articulobn'),
-(111, '/caidv/vista/intranet.php?vista=reporte/historial_donacion_fecha', '2017-03-02 06:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'reporte/historial_donacion_fecha'),
-(112, '/caidv/vista/intranet.php?vista=reporte/historial_donacion_fecha', '2017-03-02 06:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'reporte/historial_donacion_fecha'),
-(113, '/caidv/vista/intranet.php?vista=donacion/donacion', '2017-03-02 06:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'donacion/donacion'),
-(114, '/caidv/vista/intranet.php?vista=donacion/consultar_donacion&o=Consultar&id=18', '2017-03-02 06:33:00', '', '', '::1', '-', 'Consultar', '-', '-', 'administrador', 'donacion/consultar_donacion'),
-(115, '/caidv/vista/intranet.php?vista=donacion/donacion', '2017-03-02 06:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'donacion/donacion'),
-(116, '/caidv/vista/intranet.php?vista=seguridad/modulo', '2017-03-02 06:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'seguridad/modulo'),
-(117, '/caidv/vista/intranet.php?vista=seguridad/asignar_servicio', '2017-03-02 06:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'seguridad/asignar_servicio'),
-(118, '/caidv/vista/intranet.php?vista=seguridad/asignar_servicio&id=1', '2017-03-02 06:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'seguridad/asignar_servicio'),
-(119, '/caidv/vista/intranet.php?vista=seguridad/asignar_servicio', '2017-03-02 06:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'seguridad/asignar_servicio'),
-(120, '/caidv/vista/intranet.php?vista=seguridad/modulo', '2017-03-02 06:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'seguridad/modulo'),
-(121, '/caidv/vista/intranet.php?vista=seguridad/servicio', '2017-03-02 06:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'seguridad/servicio'),
-(122, '/caidv/vista/intranet.php?vista=inv_consumibles/articulo', '2017-03-02 06:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'inv_consumibles/articulo');
+(8, '/caidv/vista/intranet.php?vista=seguridad/asignar_servicio', '2017-02-26 05:32:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'seguridad/asignar_servicio');
 
 -- --------------------------------------------------------
 
@@ -1286,8 +1161,7 @@ INSERT INTO `tclave` (`idclave`, `clavecla`, `fechainiciocla`, `fechafincla`, `e
 (36, '43a7b8577a2183ce6ab401c67cf35c75fdf447f2', '2016-11-21', '2016-11-21', 0, 15),
 (37, '05f566af2582d01bfd226f39fbd4b136f66ab5a0', '2016-11-21', '2016-11-27', 0, 15),
 (38, '7c222fb2927d828af22f592134e8932480637c0d', '2016-11-21', '2017-03-21', 1, 0),
-(39, 'ca2b3a681c6cff002f7c848b6b1baf01b098e1b0', '2016-11-27', '2017-03-27', 1, 15),
-(40, '7c222fb2927d828af22f592134e8932480637c0d', '2017-03-02', '2017-06-30', 1, 10124585);
+(39, 'ca2b3a681c6cff002f7c848b6b1baf01b098e1b0', '2016-11-27', '2017-03-27', 1, 15);
 
 -- --------------------------------------------------------
 
@@ -2284,9 +2158,7 @@ INSERT INTO `tparticipante` (`idparticipante`, `nacionalidadpar`, `cedulapar`, `
 (17, 'V', '15070543', 'ROMMY', '', 'CASTAÃ±EDA', '', 'M', '04145593057', '', 'URB. EL BOSQUE AV. PRINCIPAL #51 SECTOR VILLA ARAURE I\r\n', '1981-02-16', 1, 'URBANO', 'PROPIA', 'INAVI', '0', '0', 3, 2, 0, '1', 1, 2, '', '0000-00-00'),
 (18, 'V', '16041804', 'YUSLEIDDY', '', 'MÃ¡RQUEZ', '', 'F', '02556156996', '', 'AV. 5 DE DICIEMBRE C/A 29 C/C 23 EDIF. VERCHONI # 08 \r\n', '1979-06-16', 1, 'URBANO', 'PROPIA', 'INAVI', '0', '0', 4, 2, 0, '1', 1, 2, '', '0000-00-00'),
 (19, 'V', '12446689', 'MARIÃ¡NGEL', '', 'SÃ¡NCHEZ', '', 'F', '04167547627', '', 'URB. LA GOAJIRA CALLE F VDA 10  CASA # 01\r\n', '1971-12-15', 1, 'URBANO', 'PROPIA', 'INAVI', '0', '0', 4, 2, 0, '1', 1, 2, '', '0000-00-00'),
-(20, 'V', '11847413', 'MINERVA', '', 'GALLARDO', '', 'F', '04167547627', '', 'URB. TRICENTENARIA MANZANA L-2 CASA #12\r\n', '1971-09-25', 1, 'URBANO', 'PROPIA', 'INAVI', '0', '0', 2, 2, 0, '1', 1, 2, '', '0000-00-00'),
-(23, 'V', '18291994', 'MAIRA', '', 'FERNANDEZ', '', 'F', '04261533014', 'MAIRA@HOTMAIL.COM', 'XXXXXXXXXXXXXXXXXXXXX', '1991-06-12', 1, 'RURAL', 'PROPIA', 'ADOBE', '0', '0', 3, 6, 0, '1', 2, 1, '1', '2017-03-02'),
-(24, 'V', '10124585', 'LEO', '', 'JOSE', '', 'M', '01012525456', 'HOLA@GMAIL.COM', 'BB', '1993-02-02', 4, 'RURAL', 'ALQUILADA', 'BAHAREQUE', '1', '0', 2, 9, 0, '1', 4, 1, '1', '2017-03-02');
+(20, 'V', '11847413', 'MINERVA', '', 'GALLARDO', '', 'F', '04167547627', '', 'URB. TRICENTENARIA MANZANA L-2 CASA #12\r\n', '1971-09-25', 1, 'URBANO', 'PROPIA', 'INAVI', '0', '0', 2, 2, 0, '1', 1, 2, '', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -2319,6 +2191,7 @@ CREATE TABLE `tpersonal` (
 --
 
 INSERT INTO `tpersonal` (`idTpersonal`, `nacionalidadper`, `idpersonal`, `nombreunoper`, `nombredosper`, `apellidounoper`, `apellidodosper`, `sexoper`, `fechanacimientoper`, `correoper`, `direccionper`, `telefonoper`, `cargoper`, `estatusper`, `tdiagnostico_iddiagnostico`, `tlocalidad_idlocalidad`, `estatus`) VALUES
+(0, 'V', '7581523', 'OKASDASD', 'SEEEE', 'ASDASDAD', 'ASDQWEQWE', 'M', '1991-01-01', 'baresco_12@hotmail.com', 'QWEQWE QWE QWE QWE QWE', '04121232141', 'NO PUEDE SER CAMPO ABIERTO', '1', 1, 1, '1'),
 (1, 'V', 'ADMINISTR', 'ADMINISTRADOR', 'ADMINISTRADOR', 'ADMINISTRADOR', 'ADMINISTRADOR', 'M', '2012-02-01', '', 'CAIDV 2014', '02556616161', 'WebMaster', '1', 1, 0, '1'),
 (2, 'V', '12526145', 'LEIBI', '', 'GONZALEZ', '', 'M', '1975-08-12', 'leibigon@gmail.com', 'VILLAS DEL PILAR', '04125278606', 'WEB MASTER', '1', 1, 2, '1'),
 (3, '', '15491963', 'GABRIELED', 'VICENTE', 'ESCALONA', 'BONIFACIO', 'M', '1981-07-30', 'SPADARO.ANTO@GMAIL.COM', 'LLANO ALTO', '04145591333', 'WEB MASTER', '1', 1, 1, '1'),
@@ -3483,13 +3356,13 @@ CREATE TABLE `tusuario` (
 --
 
 INSERT INTO `tusuario` (`idTusuario`, `idusuario`, `idFpersonal`, `nombreusu`, `emailusu`, `estatususu`, `ultima_actividadusu`, `trol_idrol`, `cedula`, `Recuperador`, `intentos_fallidos`) VALUES
+(0, '7581523', 0, 'ASDASDAD OKASDASD', 'BARESCO_12@HOTMAIL.COM', 1, '0000-00-00 00:00:00', 2, '7581523', NULL, 0),
 (1, '12526145', 2, 'GONZALEZ LEIBI', 'LEIBIGON@GMAIL.COM', 1, '2015-05-01 17:47:44', 1, '12526145', NULL, 1),
 (2, '15491963', 3, 'SPADARO ANTONIO', 'SPADARO.ANTO@GMAIL.COM', 1, '2016-01-23 21:46:54', 1, '15491963', NULL, 0),
 (3, '17960877', 4, 'DIAZ EFREN ', 'EDM_126@HOTMAIL.COM', 1, '2015-03-24 22:01:46', 1, '17960877', NULL, 0),
 (4, '18672728', 5, 'APONTE JORGE', 'COREO@SDD.COM', 1, '2016-06-29 19:16:50', 1, '18672728', NULL, 0),
-(5, 'administrador', 1, 'Web Master', 'webmaster@gmail.com', 1, '2017-03-02 08:49:50', 1, '0', NULL, 0),
-(15, '20390749', 9, 'ALFA PRUEBA', 'RODESCOBAR44@GMAIL.COM', 1, '2016-11-28 00:41:25', 1, '20390749', 'R2TY10LJBTCHADXIGWKSZMUAFBMEJF', 0),
-(16, '10124585', 0, 'LEO JOSE', 'HOLA@GMAIL.COM', 1, '0000-00-00 00:00:00', 6, '10124585', NULL, 0);
+(5, 'administrador', 1, 'Web Master', 'webmaster@gmail.com', 1, '2017-02-25 20:07:28', 1, '0', NULL, 0),
+(15, '20390749', 9, 'ALFA PRUEBA', 'RODESCOBAR44@GMAIL.COM', 1, '2016-11-28 00:41:25', 1, '20390749', 'R2TY10LJBTCHADXIGWKSZMUAFBMEJF', 0);
 
 -- --------------------------------------------------------
 
@@ -4241,11 +4114,6 @@ ALTER TABLE `motivobn`
 ALTER TABLE `movimientobn`
   MODIFY `id_mov` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=344;
 --
--- AUTO_INCREMENT de la tabla `participante_familiar`
---
-ALTER TABLE `participante_familiar`
-  MODIFY `tparticipante_idparticipante` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
---
 -- AUTO_INCREMENT de la tabla `proveedores`
 --
 ALTER TABLE `proveedores`
@@ -4254,7 +4122,7 @@ ALTER TABLE `proveedores`
 -- AUTO_INCREMENT de la tabla `tacceso`
 --
 ALTER TABLE `tacceso`
-  MODIFY `idacceso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `idacceso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT de la tabla `tactividad`
 --
@@ -4264,7 +4132,7 @@ ALTER TABLE `tactividad`
 -- AUTO_INCREMENT de la tabla `tagenda`
 --
 ALTER TABLE `tagenda`
-  MODIFY `codigoagenda` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `codigoagenda` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `tarea_conocimiento`
 --
@@ -4286,16 +4154,6 @@ ALTER TABLE `tasignatura`
 ALTER TABLE `tasistencia`
   MODIFY `idasistencia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
--- AUTO_INCREMENT de la tabla `tasistencia_objetivo`
---
-ALTER TABLE `tasistencia_objetivo`
-  MODIFY `tasistencia_idasistencia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
---
--- AUTO_INCREMENT de la tabla `tasistencia_unidad`
---
-ALTER TABLE `tasistencia_unidad`
-  MODIFY `tasistencia_idasistencia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
---
 -- AUTO_INCREMENT de la tabla `taula`
 --
 ALTER TABLE `taula`
@@ -4304,12 +4162,12 @@ ALTER TABLE `taula`
 -- AUTO_INCREMENT de la tabla `tbitacora`
 --
 ALTER TABLE `tbitacora`
-  MODIFY `idbitacora` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=123;
+  MODIFY `idbitacora` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT de la tabla `tclave`
 --
 ALTER TABLE `tclave`
-  MODIFY `idclave` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `idclave` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 --
 -- AUTO_INCREMENT de la tabla `tcurso`
 --
@@ -4341,11 +4199,6 @@ ALTER TABLE `tentrada`
 ALTER TABLE `tevaluacion`
   MODIFY `idevaluacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
--- AUTO_INCREMENT de la tabla `tevaluacion_item`
---
-ALTER TABLE `tevaluacion_item`
-  MODIFY `tevaluacion_idevaluacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
---
 -- AUTO_INCREMENT de la tabla `tgrupo`
 --
 ALTER TABLE `tgrupo`
@@ -4366,165 +4219,20 @@ ALTER TABLE `tinstitucion`
 ALTER TABLE `tinstrumento`
   MODIFY `idinstrumento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
--- AUTO_INCREMENT de la tabla `tinstrumento_item`
---
-ALTER TABLE `tinstrumento_item`
-  MODIFY `tinstrumento_idinstrumento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
---
 -- AUTO_INCREMENT de la tabla `tipobn`
 --
 ALTER TABLE `tipobn`
   MODIFY `id_tbien` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
---
--- AUTO_INCREMENT de la tabla `tipomotivo`
---
-ALTER TABLE `tipomotivo`
-  MODIFY `idTipoMotivo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
---
--- AUTO_INCREMENT de la tabla `tipomovibn`
---
-ALTER TABLE `tipomovibn`
-  MODIFY `id_tipo_mov` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
---
--- AUTO_INCREMENT de la tabla `titem`
---
-ALTER TABLE `titem`
-  MODIFY `iditem` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
---
--- AUTO_INCREMENT de la tabla `tlapso`
---
-ALTER TABLE `tlapso`
-  MODIFY `idlapso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
---
--- AUTO_INCREMENT de la tabla `tlocalidad`
---
-ALTER TABLE `tlocalidad`
-  MODIFY `idlocalidad` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
---
--- AUTO_INCREMENT de la tabla `tmarcas`
---
-ALTER TABLE `tmarcas`
-  MODIFY `idTmarca` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT de la tabla `tmodelobn`
---
-ALTER TABLE `tmodelobn`
-  MODIFY `idTmodelo` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `tmodulo`
 --
 ALTER TABLE `tmodulo`
   MODIFY `idmodulo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
--- AUTO_INCREMENT de la tabla `tmodulo_trol`
---
-ALTER TABLE `tmodulo_trol`
-  MODIFY `idmodulo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
---
--- AUTO_INCREMENT de la tabla `tmunicipio`
---
-ALTER TABLE `tmunicipio`
-  MODIFY `idmunicipio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
---
--- AUTO_INCREMENT de la tabla `tnoticia`
---
-ALTER TABLE `tnoticia`
-  MODIFY `idnoticia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
---
--- AUTO_INCREMENT de la tabla `tobjetivo`
---
-ALTER TABLE `tobjetivo`
-  MODIFY `idobjetivo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
---
--- AUTO_INCREMENT de la tabla `tparentesco`
---
-ALTER TABLE `tparentesco`
-  MODIFY `idparentesco` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
---
--- AUTO_INCREMENT de la tabla `tparticipante`
---
-ALTER TABLE `tparticipante`
-  MODIFY `idparticipante` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
---
--- AUTO_INCREMENT de la tabla `tpersonal`
---
-ALTER TABLE `tpersonal`
-  MODIFY `idTpersonal` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
---
--- AUTO_INCREMENT de la tabla `tpregunta`
---
-ALTER TABLE `tpregunta`
-  MODIFY `idpregunta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
---
--- AUTO_INCREMENT de la tabla `tpresentacion`
---
-ALTER TABLE `tpresentacion`
-  MODIFY `idpresentacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
---
--- AUTO_INCREMENT de la tabla `tres`
---
-ALTER TABLE `tres`
-  MODIFY `idTpersonal` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
---
--- AUTO_INCREMENT de la tabla `tresponsableente`
---
-ALTER TABLE `tresponsableente`
-  MODIFY `idTresponsableente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
---
--- AUTO_INCREMENT de la tabla `trol`
---
-ALTER TABLE `trol`
-  MODIFY `idrol` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
---
--- AUTO_INCREMENT de la tabla `trubro`
---
-ALTER TABLE `trubro`
-  MODIFY `idgrupo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
---
--- AUTO_INCREMENT de la tabla `tsalida`
---
-ALTER TABLE `tsalida`
-  MODIFY `idsalida` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
---
 -- AUTO_INCREMENT de la tabla `tservicio`
 --
 ALTER TABLE `tservicio`
   MODIFY `idservicio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=269;
---
--- AUTO_INCREMENT de la tabla `tservicio_trol`
---
-ALTER TABLE `tservicio_trol`
-  MODIFY `idservicio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=269;
---
--- AUTO_INCREMENT de la tabla `tsistema`
---
-ALTER TABLE `tsistema`
-  MODIFY `idconfiguracion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
---
--- AUTO_INCREMENT de la tabla `tslider`
---
-ALTER TABLE `tslider`
-  MODIFY `idslider` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
---
--- AUTO_INCREMENT de la tabla `tunidad`
---
-ALTER TABLE `tunidad`
-  MODIFY `idunidad` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
---
--- AUTO_INCREMENT de la tabla `tunidadmedida`
---
-ALTER TABLE `tunidadmedida`
-  MODIFY `idunidadmedida` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
---
--- AUTO_INCREMENT de la tabla `tusuario`
---
-ALTER TABLE `tusuario`
-  MODIFY `idTusuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
---
--- AUTO_INCREMENT de la tabla `tvalor_item`
---
-ALTER TABLE `tvalor_item`
-  MODIFY `idvalor_item` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 --
 -- AUTO_INCREMENT de la tabla `t_tipoactividad`
 --
@@ -4555,10 +4263,27 @@ ALTER TABLE `am_tdonacion`
   ADD CONSTRAINT `am_tdonacion_ibfk_2` FOREIGN KEY (`idPersona`) REFERENCES `am_tpersona` (`idPersona`) ON DELETE NO ACTION;
 
 --
+-- Filtros para la tabla `participante_familiar`
+--
+ALTER TABLE `participante_familiar`
+  ADD CONSTRAINT `participante_familiar_ibfk_1` FOREIGN KEY (`tfamiliar_idfamiliar`) REFERENCES `tfamiliar` (`idfamiliar`) ON DELETE NO ACTION,
+  ADD CONSTRAINT `participante_familiar_ibfk_2` FOREIGN KEY (`idparentesco`) REFERENCES `tparentesco` (`idparentesco`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `participante_familiar_ibfk_3` FOREIGN KEY (`tparticipante_idparticipante`) REFERENCES `tparticipante` (`idparticipante`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
 -- Filtros para la tabla `tactividad`
 --
 ALTER TABLE `tactividad`
   ADD CONSTRAINT `tactividad_ibfk_1` FOREIGN KEY (`tipo_actividad`) REFERENCES `t_tipoactividad` (`idtipoactividad`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Filtros para la tabla `tagenda`
+--
+ALTER TABLE `tagenda`
+  ADD CONSTRAINT `tagenda_ibfk_1` FOREIGN KEY (`id_empresa`) REFERENCES `am_tempresa` (`idEmpresa`) ON DELETE NO ACTION,
+  ADD CONSTRAINT `tagenda_ibfk_2` FOREIGN KEY (`id_personaempresa`) REFERENCES `am_tpersona` (`idPersona`) ON DELETE NO ACTION,
+  ADD CONSTRAINT `tagenda_ibfk_3` FOREIGN KEY (`id_personacaidv`) REFERENCES `tpersonal` (`idTpersonal`) ON DELETE NO ACTION,
+  ADD CONSTRAINT `tagenda_ibfk_4` FOREIGN KEY (`idFcodigo_actividad`) REFERENCES `tactividad` (`codigoActividad`) ON DELETE NO ACTION;
 
 --
 -- Filtros para la tabla `tasignatura`
@@ -4567,10 +4292,41 @@ ALTER TABLE `tasignatura`
   ADD CONSTRAINT `tasignatura_ibfk_1` FOREIGN KEY (`tarea_idarea_conocimiento`) REFERENCES `tarea_conocimiento` (`idarea_conocimiento`) ON DELETE NO ACTION;
 
 --
+-- Filtros para la tabla `tasistencia_objetivo`
+--
+ALTER TABLE `tasistencia_objetivo`
+  ADD CONSTRAINT `tasistencia_objetivo_ibfk_1` FOREIGN KEY (`tasistencia_idasistencia`) REFERENCES `tasistencia` (`idasistencia`) ON DELETE NO ACTION,
+  ADD CONSTRAINT `tasistencia_objetivo_ibfk_2` FOREIGN KEY (`tobjetivo_idobjetivo`) REFERENCES `tobjetivo` (`idobjetivo`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Filtros para la tabla `tasistencia_unidad`
+--
+ALTER TABLE `tasistencia_unidad`
+  ADD CONSTRAINT `tasistencia_unidad_ibfk_1` FOREIGN KEY (`tasistencia_idasistencia`) REFERENCES `tasistencia` (`idasistencia`) ON DELETE NO ACTION,
+  ADD CONSTRAINT `tasistencia_unidad_ibfk_2` FOREIGN KEY (`tunidad_idunidad`) REFERENCES `tunidad` (`idunidad`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Filtros para la tabla `tcurso`
+--
+ALTER TABLE `tcurso`
+  ADD CONSTRAINT `tcurso_ibfk_1` FOREIGN KEY (`taula_idaula`) REFERENCES `taula` (`idaula`) ON DELETE NO ACTION,
+  ADD CONSTRAINT `tcurso_ibfk_2` FOREIGN KEY (`tasignatura_idasignatura`) REFERENCES `tasignatura` (`idasignatura`) ON DELETE NO ACTION,
+  ADD CONSTRAINT `tcurso_ibfk_3` FOREIGN KEY (`idcurso`) REFERENCES `tasistencia` (`idcurso_idparticipante`) ON DELETE NO ACTION,
+  ADD CONSTRAINT `tcurso_ibfk_4` FOREIGN KEY (`tgrupo_idgrupo`) REFERENCES `tgrupo` (`idgrupo`) ON DELETE NO ACTION,
+  ADD CONSTRAINT `tcurso_ibfk_5` FOREIGN KEY (`tlapso_idlapso`) REFERENCES `tlapso` (`idlapso`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
 -- Filtros para la tabla `tcurso_tparticipante`
 --
 ALTER TABLE `tcurso_tparticipante`
-  ADD CONSTRAINT `tcurso_tparticipante_ibfk_1` FOREIGN KEY (`tcurso_idcurso`) REFERENCES `tcurso` (`idcurso`) ON DELETE NO ACTION;
+  ADD CONSTRAINT `tcurso_tparticipante_ibfk_1` FOREIGN KEY (`tcurso_idcurso`) REFERENCES `tcurso` (`idcurso`) ON DELETE NO ACTION,
+  ADD CONSTRAINT `tcurso_tparticipante_ibfk_2` FOREIGN KEY (`tparticipante_idparticipante`) REFERENCES `tparticipante` (`idparticipante`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Filtros para la tabla `tdocente`
+--
+ALTER TABLE `tdocente`
+  ADD CONSTRAINT `tdocente_ibfk_1` FOREIGN KEY (`tdiagnostico_iddiagnostico`) REFERENCES `tdiagnostico` (`iddiagnostico`) ON DELETE NO ACTION;
 
 --
 -- Filtros para la tabla `tevaluacion`
@@ -4580,16 +4336,104 @@ ALTER TABLE `tevaluacion`
   ADD CONSTRAINT `tevaluacion_ibfk_2` FOREIGN KEY (`tinstrumento_idinstrumento`) REFERENCES `tinstrumento` (`idinstrumento`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
+-- Filtros para la tabla `tevaluacion_item`
+--
+ALTER TABLE `tevaluacion_item`
+  ADD CONSTRAINT `tevaluacion_item_ibfk_1` FOREIGN KEY (`tevaluacion_idevaluacion`) REFERENCES `tevaluacion` (`idevaluacion`) ON DELETE NO ACTION,
+  ADD CONSTRAINT `tevaluacion_item_ibfk_2` FOREIGN KEY (`titem_iditem`) REFERENCES `titem` (`iditem`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Filtros para la tabla `tfamiliar`
+--
+ALTER TABLE `tfamiliar`
+  ADD CONSTRAINT `tfamiliar_ibfk_1` FOREIGN KEY (`tdiagnostico_iddiagnostico`) REFERENCES `tdiagnostico` (`iddiagnostico`) ON DELETE NO ACTION;
+
+--
+-- Filtros para la tabla `tinscripcion`
+--
+ALTER TABLE `tinscripcion`
+  ADD CONSTRAINT `tinscripcion_ibfk_1` FOREIGN KEY (`idparticipante`) REFERENCES `tparticipante` (`idparticipante`) ON DELETE NO ACTION;
+
+--
+-- Filtros para la tabla `tinstitucion`
+--
+ALTER TABLE `tinstitucion`
+  ADD CONSTRAINT `tinstitucion_ibfk_1` FOREIGN KEY (`tlocalidad_idlocalidad`) REFERENCES `tlocalidad` (`idlocalidad`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
 -- Filtros para la tabla `tinstrumento`
 --
 ALTER TABLE `tinstrumento`
   ADD CONSTRAINT `tinstrumento_ibfk_1` FOREIGN KEY (`tasignatura_idasignatura`) REFERENCES `tasignatura` (`idasignatura`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
+-- Filtros para la tabla `tinstrumento_item`
+--
+ALTER TABLE `tinstrumento_item`
+  ADD CONSTRAINT `tinstrumento_item_ibfk_1` FOREIGN KEY (`tinstrumento_idinstrumento`) REFERENCES `tinstrumento` (`idinstrumento`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `tinstrumento_item_ibfk_2` FOREIGN KEY (`titem_iditem`) REFERENCES `titem` (`iditem`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Filtros para la tabla `tlocalidad`
+--
+ALTER TABLE `tlocalidad`
+  ADD CONSTRAINT `tlocalidad_ibfk_1` FOREIGN KEY (`tmunicipio_municipio`) REFERENCES `tmunicipio` (`idmunicipio`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Filtros para la tabla `tmodulo`
+--
+ALTER TABLE `tmodulo`
+  ADD CONSTRAINT `tmodulo_ibfk_1` FOREIGN KEY (`idmodulo`) REFERENCES `tmodulo_trol` (`idmodulo`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Filtros para la tabla `tmodulo_trol`
+--
+ALTER TABLE `tmodulo_trol`
+  ADD CONSTRAINT `tmodulo_trol_ibfk_1` FOREIGN KEY (`idrol`) REFERENCES `trol` (`idrol`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Filtros para la tabla `tobjetivo`
+--
+ALTER TABLE `tobjetivo`
+  ADD CONSTRAINT `tobjetivo_ibfk_1` FOREIGN KEY (`tunidad_idunidad`) REFERENCES `tunidad` (`idunidad`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Filtros para la tabla `tparticipante`
+--
+ALTER TABLE `tparticipante`
+  ADD CONSTRAINT `tparticipante_ibfk_1` FOREIGN KEY (`tdiagnostico_iddiagnostico`) REFERENCES `tdiagnostico` (`iddiagnostico`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `tparticipante_ibfk_2` FOREIGN KEY (`tlocalidad_idlocalidad`) REFERENCES `tlocalidad` (`idlocalidad`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Filtros para la tabla `tpersonal`
+--
+ALTER TABLE `tpersonal`
+  ADD CONSTRAINT `tpersonal_ibfk_1` FOREIGN KEY (`tdiagnostico_iddiagnostico`) REFERENCES `tdiagnostico` (`iddiagnostico`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
 -- Filtros para la tabla `tservicio`
 --
 ALTER TABLE `tservicio`
   ADD CONSTRAINT `tservicio_ibfk_1` FOREIGN KEY (`idmodulo`) REFERENCES `tmodulo` (`idmodulo`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Filtros para la tabla `tservicio_trol`
+--
+ALTER TABLE `tservicio_trol`
+  ADD CONSTRAINT `tservicio_trol_ibfk_1` FOREIGN KEY (`idservicio`) REFERENCES `tservicio` (`idservicio`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `tservicio_trol_ibfk_2` FOREIGN KEY (`idrol`) REFERENCES `trol` (`idrol`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Filtros para la tabla `tunidad`
+--
+ALTER TABLE `tunidad`
+  ADD CONSTRAINT `tunidad_ibfk_1` FOREIGN KEY (`tasignatura_idasignatura`) REFERENCES `tasignatura` (`idasignatura`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Filtros para la tabla `tvalor_item`
+--
+ALTER TABLE `tvalor_item`
+  ADD CONSTRAINT `tvalor_item_ibfk_1` FOREIGN KEY (`titem_iditem`) REFERENCES `titem` (`iditem`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
