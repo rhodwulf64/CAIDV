@@ -38,7 +38,10 @@ $(function() {
 				<p><label for="email">Clave <i class="fa fa-lock"></i></label><input name="clave" id="cam_clave" type="password"></p>
 				<!--<p><input type="text" style="display: inline-block;width: 150px;float: left;margin-left: 20px;" id="defaultReal" name="defaultReal"></p>
 				<p><input type="text" style="text-transform:uppercase"id="defaultReal" name="defaultReal"></p> <!-- Campo que implementa el código captcha-->
-				<p><button class="color-green" style="color:#fff;font-weight:bold;width:47%;display:inline" name="entrar" id="btnentrar" type="submit" value="Iniciar sesión">Iniciar sesión</button><button  style="color:#fff;font-weight:bold;background:#e94141;border-color:#e94141;width:47%;display:inline" name="cancelar" id="btncancelar" type="reset" value="Cancelar">Cancelar</button></p>
+				<p><button class="color-green" style="color:#fff;font-weight:bold;width:47%;display:inline" name="entrar" id="btnentrar" type="submit" value="Iniciar sesión">Iniciar sesión</button>
+
+
+				<button  style="color:#fff;font-weight:bold;background:#e94141;border-color:#e94141;width:47%;display:inline" name="cancelar" id="btncancelar" type="reset" value="Cancelar">Cancelar</button></p>
 				<p style="text-align: center;"><b><a onclick="window.open('recuperar_cuenta.php', 'window', 'width=700,height=500');" class="text-white">¿No puede acceder a tu cuenta?</a></b></p>
 			</form>
 		</section>
