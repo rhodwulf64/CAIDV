@@ -53,7 +53,7 @@ for($i=0;$i<count($laModulos);$i++)
 </script>
 <!--datatable-->  
 <div style="float: left" class="col-lg-8 span8 pull-left">
-    <h3>Personas</h3>
+    <h3>Proveedor Natural</h3>
     <div class="alert alert-info">
         <ul>
             En este módulo podrá registrar, consultar, editar, desactivar y activar las personas donantes del sistema.
@@ -65,7 +65,7 @@ for($i=0;$i<count($laModulos);$i++)
         <?php
         if($registrar)
         {
-            echo '<a class="btn btn-success" id="btn_registrar" href="?vista=donacion/registrar_persona"><i class="icon-plus icon-white"></i> Registrar Personas</a>';
+            echo '<a class="btn btn-success" id="btn_registrar" href="?vista=donacion/registrar_persona"><i class="icon-plus icon-white"></i> Registrar Proveedor</a>';
         }
         ?>
         <table class="table table-striped table-hover table-bordered bootstrap-datatable datatable dataTable" id="filtro">
