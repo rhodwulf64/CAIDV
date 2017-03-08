@@ -13,7 +13,7 @@
            <!--<li>Sí necesitas ayuda para usar este formulario haz clic en el botón <button class="btn btn-warning" type="button" onclick="javascript:introJs().start();"><i class="fa fa-question-circle"></i> Ayuda</button>.</li>-->
         </ul>
     </div>
-    <form class="formulario" style='width:100%;' action="../controlador/control_donacion.php" method="POST" name="form_modulo">
+    <form class="formulario" style='width:100%;' action="../controlador/control_donacion.php" method="POST" id="form_modulo" name="form_modulo">
         <input type="hidden" value="registrar_donacion" name="operacion" />
         <input type="hidden"  name="idDonacion" id="cam_idDonacion"/>
         <div class="row-fluid">
@@ -27,7 +27,7 @@
                             echo "<option value='".$fila["idPersona"]."'>".$fila["cedula"]." ".$fila["primer_nombre"]." ".$fila["primer_apellido"]."</option>";
                         }
                     ?>
-                </select>   
+                </select>
             </div>
             <div class="col-lg-6 span6">
                 <label>Empresa <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Seleccione la empresa que representa la persona."><i class="fa fa-question" ></i></span></label>
@@ -43,17 +43,15 @@
         <div class="row-fluid">
             <table class='table table-striped table-hover table-bordered bootstrap-datatable datatable dataTable'>
                 <thead>
-                    <th>Articulo</th><th>Serial/Factura</th><th>Cantidad</th><th>agregar</th>
+                    <th>Artículo</th><th>Serial/Factura</th><th>Cantidad</th><th>agregar</th>
                 </thead>
                 <tbody id='tbody_contenido'>
                     <tr>
                         <td>
-                            <select id='articulo' required/>
+                            <select id="articulo" required="">
+                            <option value="0">SELECCIONE UN ARTÍCULO</option>
                                 <?php
-                                    $filas = $lobjModulo->consultar_articulo();
-                                    foreach($filas as $fila){
-                                        echo "<option value='".$fila["idArticulo"]."'>".$fila["nombre"]."</option>";
-                                    }
+                                    print $loFuncGenerales->fnCombosGeneralesActivos("tarticulo","idarticulo","descripcionart","","estatusart",$selectedCatalogo);
                                 ?>
                             </select>
                         </td>
@@ -71,7 +69,7 @@
             </table>
         </div>
         <div class="botonera">
-            <input type="submit" class="btn btn-success" name="btn_enviar" id="btn_enviar" value="Aceptar">
+            <input type="button" onclick="vValidar($(this));" class="btn btn-success" name="btn_enviar" id="btn_enviar" value="Aceptar">
             <input type="button" class="btn btn-danger" name="btn_regresar" id="btn_regresar" value="Regresar" onclick="window.location.href='?vista=donacion/donacion';">
         </div>
     </form>
@@ -96,7 +94,7 @@ document.getElementById("agregar").onclick = function()
 
     var idTabla = "tbody_contenido";
     var campos = {
-        //ETIQUETAS     
+        //ETIQUETAS
         tag : ["input","input","input","input"],
         //NOMBRES DE LAS ETIQUETAS
         name : ["","idArticulo[]","serial_factura[]","cantidad[]"],
@@ -107,7 +105,7 @@ document.getElementById("agregar").onclick = function()
         //VALORES PARA LAS ETIQUETAS
         value : [articulo_option,articulo_value,serial_factura_value,cantidad_value],
         //CLASES PARA LAS ETIQUETAS
-        clases: ["form-control","form-control","form-control","form-control"],
+        clases: ["form-control campua","form-control campub","form-control campuc","form-control campud"],
         //VALIDACIONES DE LA LIBRERIA PARA LAS ETIQUETAS
         /*libAA: ["",["forzar","obligatorio","numeros"],"",""],*/
         //ATRIBUTOS PARA LAS ETIQUETAS
@@ -123,5 +121,22 @@ document.getElementById("agregar").onclick = function()
         Notifica_Error("Debe agregar una cantidad mayor o igual a 1");
     }
 };
+
+function vValidar()
+{
+  var conti=0;
+  $( ".form-control.campua" ).each(function(){
+    conti++;
+  });
+  if (conti<1)
+  {
+    Notifica_Error("Debe agregar al menos un artículo para ser donado.");
+  }
+  else
+  {
+    $("#form_modulo").submit();
+  }
+
+}
 
 </script>

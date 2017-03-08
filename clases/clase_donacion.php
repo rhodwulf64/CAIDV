@@ -7,11 +7,11 @@
 		private $idArticulo,$serial_factura,$cantidad;
 		function __set($var,$val){
 			$this->$var=strtoupper($val);
-		}		
+		}
 		function __get($var){
 			return $this->$var;
 		}
-		
+
 
 		function consultar_donacion()
 		{
@@ -31,7 +31,7 @@
 					$Fila[$cont][7]=$laRow['nombre'];
 					$cont++;
 				}
-			
+
 			$this->desconectar();
 			return $Fila;
 		}
@@ -49,7 +49,7 @@
 					$Fila[4]=$laRow['fecha_a'];
 					$Fila[5]=$laRow['estatus_d'];
 				}
-			
+
 			$this->desconectar();
 			return $Fila;
 		}
@@ -57,7 +57,14 @@
 		{
 			$this->conectar();
 			$cont=0;
-				$sql="SELECT *,dd.cantidad AS cantidad_dd FROM am_tddonacion dd INNER JOIN am_tarticulo a ON dd.idArticulo=a.idArticulo WHERE dd.idDonacion='$this->idDonacion' ";
+				$sql="SELECT
+				a.idarticulo AS idArticulo,
+				a.descripcionart AS nombre,
+				dd.serial_factura,
+				dd.cantidad AS cantidad_dd
+				FROM am_tddonacion AS dd
+				INNER JOIN tarticulo AS a ON dd.idArticulo=a.idarticulo
+				WHERE dd.idDonacion='$this->idDonacion' ";
 				$pcsql=$this->filtro($sql);
 				while($laRow=$this->proximo($pcsql))
 				{
@@ -67,34 +74,43 @@
 					$Fila[$cont][3]=$laRow['cantidad_dd'];
 					$cont++;
 				}
-			
+
 			$this->desconectar();
 			return $Fila;
 		}
+
 		function registrar_donacion()
 		{
 			$this->conectar();
+			//Inicio de verificación de existencia anterior
 			$query=$this->filtro("SELECT cantidad,idArticulo FROM am_tddonacion WHERE idDonacion='$this->idDonacion'");
 			while($a=$this->proximo($query)){
-				$this->ejecutar("UPDATE am_tarticulo SET cantidad=cantidad-".$a["cantidad"]." WHERE idArticulo='".$a["idArticulo"]."'; "); 
+				$lSqlUpdate="UPDATE tarticulo SET existencia=existencia-".$a["cantidad"]." WHERE idarticulo='".$a["idArticulo"]."'";
+				$this->ejecutar($lSqlUpdate);
 			}
+			//Fin de verificación de existencia anterior
 			$this->ejecutar("DELETE FROM am_tdonacion WHERE idDonacion='$this->idDonacion'");
 			$sql="INSERT INTO am_tdonacion (idPersona,idEmpresa,fecha_donacion,estatus) VALUES ('$this->idPersona','$this->idEmpresa',NOW(),'1')";
-			$lnHecho=$this->ejecutar($sql);			
+			$lnHecho=$this->ejecutar($sql);
+
 			$query=$this->filtro("SELECT MAX(idDonacion) AS id FROM am_tdonacion");
-			if($a=$this->proximo($query)){
+			if($a=$this->proximo($query))
+			{
 				$this->idDonacion = $a["id"];
 			}
+
 
 			$this->desconectar();
 			return $this->idDonacion;
 		}
+
 		function registrar_donacion_detalle()
 		{
 			$this->conectar();
 			$sql="INSERT INTO am_tddonacion (idDonacion,idArticulo,serial_factura,cantidad) VALUES ('$this->idDonacion','$this->idArticulo','$this->serial_factura','$this->cantidad')";
 			$lnHecho=$this->ejecutar($sql);
-			$this->ejecutar("UPDATE am_tarticulo SET cantidad=cantidad+$this->cantidad WHERE idArticulo='$this->idArticulo' ");			
+			$lSqlupdate="UPDATE tarticulo SET existencia=existencia+$this->cantidad WHERE idarticulo='$this->idArticulo' ";
+			$this->ejecutar($lSqlupdate);
 			$this->desconectar();
 			return $lnHecho;
 		}
@@ -104,9 +120,9 @@
 			$sql="UPDATE am_tdonacion SET estatus='0' WHERE idDonacion='$this->idDonacion' ";
 			$query=$this->filtro("SELECT cantidad,idArticulo FROM am_tddonacion WHERE idDonacion='$this->idDonacion'");
 			while($a=$this->proximo($query)){
-				$this->ejecutar("UPDATE am_tarticulo SET cantidad=cantidad-".$a["cantidad"]." WHERE idArticulo='".$a["idArticulo"]."'; "); 
+				$this->ejecutar("UPDATE tarticulo SET existencia=existencia-".$a["cantidad"]." WHERE idarticulo='".$a["idArticulo"]."'; ");
 			}
-			$lnHecho=$this->ejecutar($sql);			
+			$lnHecho=$this->ejecutar($sql);
 			$this->desconectar();
 			return $lnHecho;
 		}
@@ -117,9 +133,9 @@
 			$sql="UPDATE am_tdonacion SET estatus='1' WHERE idDonacion='$this->idDonacion' ";
 			$query=$this->filtro("SELECT cantidad,idArticulo FROM am_tddonacion WHERE idDonacion='$this->idDonacion'");
 			while($a=$this->proximo($query)){
-				$this->ejecutar("UPDATE am_tarticulo SET cantidad=cantidad+".$a["cantidad"]." WHERE idArticulo='".$a["idArticulo"]."'; "); 
+				$this->ejecutar("UPDATE tarticulo SET existencia=existencia+".$a["cantidad"]." WHERE idarticulo='".$a["idArticulo"]."'; ");
 			}
-			$lnHecho=$this->ejecutar($sql);			
+			$lnHecho=$this->ejecutar($sql);
 			$this->desconectar();
 			return $lnHecho;
 		}
@@ -132,7 +148,7 @@
 				{
 					$Fila[]=$laRow;
 				}
-			
+
 			$this->desconectar();
 			return $Fila;
 		}
@@ -145,7 +161,7 @@
 				{
 					$Fila[]=$laRow;
 				}
-			
+
 			$this->desconectar();
 			return $Fila;
 		}
@@ -158,7 +174,7 @@
 				{
 					$Fila[]=$laRow;
 				}
-			
+
 			$this->desconectar();
 			return $Fila;
 		}
@@ -171,27 +187,27 @@
 				{
 					$Fila[]=$laRow;
 				}
-			
+
 			$this->desconectar();
 			return $Fila;
 		}
 		function consultar_articulo()
 		{
 			$this->conectar();
-				$sql="SELECT * FROM am_tarticulo WHERE estatus='1';";
+				$sql="SELECT * FROM tarticulo WHERE estatusart='1';";
 				$pcsql=$this->filtro($sql);
 				while($laRow=$this->proximo($pcsql))
 				{
 					$Fila[]=$laRow;
 				}
-			
+
 			$this->desconectar();
 			return $Fila;
 		}
 		function consultar_reporte()
 		{
 			$this->conectar();
-				$sql="SELECT *,DATE_FORMAT(d.fecha_donacion,'%d-%m-%Y') AS fecha_a, CASE d.estatus WHEN '1' THEN 'ACTIVO' ELSE 'INACTIVO' END AS estatus_d FROM am_tdonacion d 
+				$sql="SELECT *,DATE_FORMAT(d.fecha_donacion,'%d-%m-%Y') AS fecha_a, CASE d.estatus WHEN '1' THEN 'ACTIVO' ELSE 'INACTIVO' END AS estatus_d FROM am_tdonacion d
 				INNER JOIN am_tpersona p ON d.idPersona=p.idPersona
 				INNER JOIN am_tempresa e ON d.idEmpresa=e.idEmpresa";
 				if($this->idPersona!="0" || $this->idEmpresa!="0"){
@@ -202,7 +218,7 @@
 					}else{
 						$sql.=" WHERE d.idPersona='".$this->idPersona."' OR d.idEmpresa='".$this->idEmpresa."' ";
 					}
-					
+
 				}else{
 					if($this->fecha_donacion!="" && $this->fecha_fin!="" ){
 						$sql.=" WHERE d.fecha_donacion BETWEEN '".$this->fecha_donacion."' AND '".$this->fecha_fin."' ";
@@ -225,14 +241,14 @@
 					$Fila[$i]["estatus_d"]=$laRow['estatus_d'];
 					$i++;
 				}
-			
+
 			$this->desconectar();
 			return $Fila;
 		}
 		function consultar_reporte_id()
 		{
 			$this->conectar();
-				$sql="SELECT *,DATE_FORMAT(d.fecha_donacion,'%d-%m-%Y') AS fecha_a, CASE d.estatus WHEN '1' THEN 'ACTIVO' ELSE 'INACTIVO' END AS estatus_d FROM am_tdonacion d 
+				$sql="SELECT *,DATE_FORMAT(d.fecha_donacion,'%d-%m-%Y') AS fecha_a, CASE d.estatus WHEN '1' THEN 'ACTIVO' ELSE 'INACTIVO' END AS estatus_d FROM am_tdonacion d
 				INNER JOIN am_tpersona p ON d.idPersona=p.idPersona
 				INNER JOIN am_tempresa e ON d.idEmpresa=e.idEmpresa WHERE d.idDonacion='$this->idDonacion'";
 				$pcsql=$this->filtro($sql);
@@ -247,7 +263,7 @@
 					$Fila["fecha_a"]=$laRow['fecha_a'];
 					$Fila["estatus_d"]=$laRow['estatus_d'];
 				}
-			
+
 			$this->desconectar();
 			return $Fila;
 		}
@@ -255,17 +271,17 @@
 		{
 			$this->conectar();
 			$cont=0;
-				$sql="SELECT *,dd.cantidad AS cantidad_dd FROM am_tddonacion dd INNER JOIN am_tarticulo a ON dd.idArticulo=a.idArticulo WHERE dd.idDonacion='$this->idDonacion' ";
+				$sql="SELECT *,dd.cantidad AS cantidad_dd FROM am_tddonacion dd INNER JOIN tarticulo a ON dd.idArticulo=a.idarticulo WHERE dd.idDonacion='$this->idDonacion' ";
 				$pcsql=$this->filtro($sql);
 				while($laRow=$this->proximo($pcsql))
 				{
-					$Fila[$cont][0]=$laRow['idArticulo'];
-					$Fila[$cont]["nombre"]=$laRow['nombre'];
+					$Fila[$cont][0]=$laRow['idarticulo'];
+					$Fila[$cont]["nombre"]=$laRow['descripcionart'];
 					$Fila[$cont]["serial_factura"]=$laRow['serial_factura'];
 					$Fila[$cont]["cantidad"]=$laRow['cantidad_dd'];
 					$cont++;
 				}
-			
+
 			$this->desconectar();
 			return $Fila;
 		}

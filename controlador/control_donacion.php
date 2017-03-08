@@ -12,33 +12,43 @@
 	$donacion->idEmpresa=$_POST["idEmpresa"];
 	$donacion->fecha_asignacion=$_POST["fecha_asignacion"];
 	$donacion->estatus=$_POST["estatus"];
-	
-	
+
+
 
 	$lcReal_ip=$lobjUtil->get_real_ip();
     $ldFecha=date('Y-m-d h:m');
 	$operacion=$_POST['operacion'];
 
-	switch ($operacion) 
+	switch ($operacion)
 	{
 		case 'registrar_donacion':
-			$id=$donacion->registrar_donacion();
-			if($id !="" && $id != null)
-			{	
-				$donacion->idDonacion=$id;
-   				$serial_factura = $_POST["serial_factura"];
-   				$cantidad = $_POST["cantidad"];
-   				foreach ($_POST["idArticulo"] as $i => $value) {
-   					$donacion->idArticulo = $value;
-   					$donacion->serial_factura = $serial_factura[$i];
-   					$donacion->cantidad = $cantidad[$i];
-   					$donacion->registrar_donacion_detalle();
-   				}
-				$_SESSION['msj']='Se ha registrado exitosamente';
+			if (is_array($_POST["idArticulo"]))
+			{
+				$id=$donacion->registrar_donacion();
+				if($id !="" && !is_null($id))
+				{
+					$donacion->idDonacion=$id;
+	 				$serial_factura = $_POST["serial_factura"];
+	 				$cantidad = $_POST["cantidad"];
+
+					foreach ($_POST["idArticulo"] as $i => $value)
+					{
+	 					$donacion->idArticulo = $value;
+	 					$donacion->serial_factura = $serial_factura[$i];
+	 					$donacion->cantidad = $cantidad[$i];
+	 					$donacion->registrar_donacion_detalle();
+	 				}
+
+					$_SESSION['msj']='Se ha registrado exitosamente';
+				}
+				else
+				{
+					$_SESSION['msj']='Error en el registro';
+				}
 			}
 			else
-			{	
-				$_SESSION['msj']='Error en el registro';
+			{
+				$_SESSION['msj']='No seleccionó ningún artículo para la donación.';
 			}
 			header('location: ../vista/intranet.php?vista=donacion/donacion');
 		break;
@@ -54,10 +64,10 @@
 				{
 					$_SESSION['msj']='Se ha modificado exitosamente';
 				}
-				
+
 			}
 			else
-			{	
+			{
 				$_SESSION['msj']='No se realizarón cambios';
 			}
 		break;
@@ -70,7 +80,7 @@
 				$_SESSION['msj']='Se ha desactivado exitosamente';
 			}
 			else
-			{	
+			{
 				$_SESSION['msj']='Error al eliminar';
 			}
 		break;
@@ -83,7 +93,7 @@
 				$_SESSION['msj']='Se ha restaurado exitosamente';
 			}
 			else
-			{	
+			{
 				$_SESSION['msj']='No se pudo restaurar el servicio';
 			}
 		break;
