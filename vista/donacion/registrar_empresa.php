@@ -25,15 +25,15 @@
             <input type="text" name="nombre" id="cam_nombremod" class='span12' required/>
         </div>
         <div class='row-fluid'>
-            <label>Direccion <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Direccion de la empresa."><i class="fa fa-question" ></i></span></label>
+            <label>Dirección <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Dirección de la empresa."><i class="fa fa-question" ></i></span></label>
             <textarea name='direccion' id='direccion' required style='resize:none;' class='span12' rows='5'></textarea>
         </div>
         <div class='row-fluid'>
-            <label>Primer Telefono: <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Primer telefono de la empresa."><i class="fa fa-question" ></i></span></label>
+            <label>Primer teléfono: <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Primer teléfono de la empresa."><i class="fa fa-question" ></i></span></label>
             <input type="text" name="tlf_uno" id="cam_tlf_unomod" forzar='numeros' class='span12' maxlength='11' required/>
         </div>
         <div class='row-fluid'>
-            <label>Segundo Telefono: <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Segundo telefono de la empresa."><i class="fa fa-question" ></i></span></label>
+            <label>Segundo teléfono: <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Segundo teléfono de la empresa."><i class="fa fa-question" ></i></span></label>
             <input type="text" name="tlf_dos" id="cam_tlf_dosmod" forzar='numeros' class='span12' maxlength='11' />
         </div>
         <div class='row-fluid'>

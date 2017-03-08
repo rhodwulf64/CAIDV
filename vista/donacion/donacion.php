@@ -65,12 +65,12 @@ for($i=0;$i<count($laModulos);$i++)
         <?php
         if($registrar)
         {
-            echo '<a class="btn btn-success" id="btn_registrar" href="?vista=donacion/registrar_donacion"><i class="icon-plus icon-white"></i> Registrar donacion</a>';
+            echo '<a class="btn btn-success" id="btn_registrar" href="?vista=donacion/registrar_donacion"><i class="icon-plus icon-white"></i> Registrar donación</a>';
         }
         ?>
         <table class="table table-striped table-hover table-bordered bootstrap-datatable datatable dataTable" id="filtro">
             <thead>
-                <th>Código</th><th>Cedula</th><th>Rif</th><th>Nombres</th><th>Apellidos</th><th>Fecha de donacion</th><th>ESTATUS</th><?php if($consultar || $eliminar)
+                <th>Código</th><th>Cedula</th><th>Rif</th><th>Nombres</th><th>Apellidos</th><th>Fecha de donación</th><th>ESTATUS</th><?php if($consultar || $eliminar)
                         { echo '<th>Acción</th>';}?>
             </thead>
             <tbody>

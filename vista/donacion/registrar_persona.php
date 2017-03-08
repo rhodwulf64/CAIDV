@@ -37,7 +37,7 @@
             <input type="text" name="segundo_apellido" id="cam_segundo_apellidomod" forzar='letras' class='span12' />
         </div>
         <div class='row-fluid'>
-            <label>Direccion <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Direccion de la persona."><i class="fa fa-question" ></i></span></label>
+            <label>Dirección <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Dirección de la persona."><i class="fa fa-question" ></i></span></label>
             <textarea name='direccion' id='direccion' required style='resize:none;' rows='5' class='span12' ></textarea>
         </div>
         <div class='row-fluid'>
@@ -48,11 +48,11 @@
             </select>
         </div>
         <div class='row-fluid'>
-            <label>Primer Telefono: <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Primer telefono de la persona."><i class="fa fa-question" ></i></span></label>
+            <label>Primer teléfono: <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Primer teléfono de la persona."><i class="fa fa-question" ></i></span></label>
             <input type="text" name="tlf_uno" id="cam_tlf_unomod" forzar='numeros' maxlength='11' required class='span12' />
         </div>
         <div class='row-fluid'>
-            <label>Segundo Telefono: <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Segundo telefono de la persona."><i class="fa fa-question" ></i></span></label>
+            <label>Segundo teléfono: <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Segundo teléfono de la persona."><i class="fa fa-question" ></i></span></label>
             <input type="text" name="tlf_dos" id="cam_tlf_dosmod" forzar='numeros' maxlength='11'  class='span12' />
         </div>
         <div class='row-fluid'>
