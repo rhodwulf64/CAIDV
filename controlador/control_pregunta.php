@@ -141,7 +141,7 @@
 			}
 		break;
 		case 'desbloquear_usuario':
-			$hecho=$lobjPregunta->desbloquear();
+			$hecho=$lobjUsuario->desbloquear_usuario();
 			if($hecho)
 			{
 				$_SESSION['msj']='Se ha desbloqueado exitosamente';

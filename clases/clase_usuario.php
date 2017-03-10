@@ -279,6 +279,16 @@
 			return $lnHecho;
 		}
 
+		function desbloquear_usuario()
+		{
+			$this->conectar();
+			$sql="UPDATE `tusuario` SET
+				`estatususu`='1' WHERE idusuario='$this->lcUsuario'";
+			$lnHecho=$this->ejecutar($sql);
+			$this->desconectar();
+			return $lnHecho;
+		}
+
 		function cantidad_intentos()
 		{
 			$this->conectar();
