@@ -8,7 +8,15 @@
 		private $lcClave;
 		private $lnIdRol;
 		private $lnIdPersona;
+		private $lcIDTUsuario;
 		private $lcNombre;
+
+
+	
+		function clsUsuario(){
+			$this->clsConexion();
+			$this->G = "";
+		}
 
 
 		function set_Usuario($pcUsuario)
@@ -216,23 +224,39 @@
 
 		function registrar_usuario($IDpersonal)
 		{
-			$this->conectar();
 			$sql="INSERT INTO `tusuario`(`idusuario`,`idFpersonal`, `nombreusu`, `emailusu`, `estatususu`, `trol_idrol`, `cedula`)
 			 VALUES ('$this->lcUsuario','$IDpersonal',UPPER('$this->lcNombre'),UPPER('$this->lcEmail'),'1','$this->lnIdRol','$this->lnIdPersona')";
-			$lnHecho=$this->ejecutar($sql);
-			$this->desconectar();
-			$this->insertar_clave();
-			return $lnHecho;
+			$lnHecho=$this->ejecuta($sql);
+			if ( $this->como_va() )
+			{
+				$this->lcIDTUsuario=$this->fpGetIDinsertado();
+			}
+
+			$lnHechoFinal=$this->insertar_clave($lnHecho);
+			return $lnHechoFinal;
 		}
 
-		function insertar_clave()
+		function insertar_clave($lnHechoAnterior)
 		{
-			$this->conectar();
+			$lnHecho=false;
+			$lnHechoFinal=false;
+
 			$sql=" INSERT INTO `tclave`(`clavecla`, `fechainiciocla`, `fechafincla`, `estatuscla`, `tusuario_idusuario`)
 			VALUES (sha1((SELECT clavepredeterminada FROM tsistema)),now(), ADDDATE(NOW(), (SELECT tiempocaducida FROM tsistema)),'1','$this->lcIDTUsuario');";
-			$lnHecho=$this->ejecutar($sql);
-			$this->desconectar();
-			return $lnHecho;
+			$lnHecho=$this->ejecuta($sql);
+
+			if($lnHechoAnterior&&$lnHecho)
+			{
+				$lnHechoFinal=true;
+			 	$this->fin_trans(); // finalizo la transacción con exito
+			 	//$this->deshacer_trans(); // finalizo la transaccion fallida 
+			}
+			else
+			{
+			 	$this->deshacer_trans(); // finalizo la transacción fallida 
+			}
+
+			return $lnHechoFinal;
 		}
 
 		function editar_usuario()

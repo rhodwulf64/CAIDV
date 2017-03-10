@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 02-03-2017 a las 16:41:14
--- Versión del servidor: 10.1.13-MariaDB
--- Versión de PHP: 5.6.20
+-- Tiempo de generación: 10-03-2017 a las 03:56:54
+-- Versión del servidor: 10.1.16-MariaDB
+-- Versión de PHP: 5.6.24
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -290,7 +290,7 @@ INSERT INTO `articulobn` (`id_bien`, `cod_bien`, `LlavePrestado`, `id_tbien`, `s
 (72, '111', '0', 1, '14521ASD', 3, 1, 'PROCESADOR DUAL CORE', 4, 250000, '2015-05-13', '0000-00-00 00:00:00', '1', 'Buen Estado'),
 (73, '112', '0', 2, 'N/A', 2, 1, 'PROCESADOR DUAL CORE', 2, 250000, '2015-05-13', '0000-00-00 00:00:00', '1', ''),
 (74, '113', '0', 1, 'N/A', 3, 1, 'PROCESADOR DUAL CORE', 2, 250000, '2015-05-13', '0000-00-00 00:00:00', '1', 'qwe123123wq'),
-(75, '114', '0', 1, 'N/A', 3, 1, 'PROCESADOR DUAL CORE', 2, 250000, '2015-05-13', '0000-00-00 00:00:00', '1', '12312qweqwe'),
+(75, '114', '0', 1, 'N/A', 3, 1, 'PROCESADOR DUAL CORE', 1, 250000, '2015-05-13', '0000-00-00 00:00:00', '1', '12312qweqwe'),
 (202, '342234', '0', 2, '23626723626233333333', 4, 1, 'jdjkytu456sadaq', 2, NULL, '1990-01-01', '2016-04-25 17:00:58', '1', 'wqehdasdavxvx'),
 (203, 'r2352', '0', 1, '5235erq', 4, 1, 'jdjkytu456sadaq', 4, NULL, '1990-01-01', '2016-04-25 17:00:58', '1', 'wqehdasdavxvx'),
 (205, '234234', '0', 2, '324234', 3, 1, 'qweqweq', 1, NULL, '2016-04-28', '2016-04-29 01:57:24', '1', 'qweqweq'),
@@ -518,7 +518,8 @@ INSERT INTO `dmovimientobn` (`id_detalle_mov`, `id_mov`, `id_bien`, `status`) VA
 (339, 341, 241, '1'),
 (340, 341, 217, '1'),
 (341, 342, 207, '1'),
-(342, 343, 242, '1');
+(342, 343, 242, '1'),
+(343, 344, 75, '1');
 
 -- --------------------------------------------------------
 
@@ -692,7 +693,7 @@ INSERT INTO `movimientobn` (`id_mov`, `nro_document`, `fecha_reg`, `hora_reg`, `
 (120, 'DEV1', '2015-05-23', '01:42:11', '2015-05-22', NULL, NULL, NULL, NULL, NULL, 3, NULL, 2, 1, 11, 6, 1, 1, 'OBSER DEV 1', 0, '0000-00-00', 0, '1'),
 (121, 'ASIG3', '2015-05-23', '01:43:05', '2015-05-21', NULL, NULL, NULL, NULL, NULL, 2, NULL, 5, 1, 5, 6, 1, 2, 'OBSER ASIG 3', 0, '0000-00-00', 0, '1'),
 (122, 'DESIN1', '2015-05-23', '01:45:09', '2015-05-22', NULL, NULL, NULL, NULL, NULL, 4, NULL, 3, 1, 8, 6, NULL, NULL, 'OBSER DESIN 1', 1, '2015-05-23', 16, '1'),
-(123, 'PREST1', '2015-05-23', '01:45:09', '2015-05-22', NULL, '2016-04-11', 4, NULL, 1, 5, NULL, 3, 1, 8, 6, NULL, NULL, 'OBSER DESIN 1', 1, '2015-05-23', 16, '1'),
+(123, 'PREST1', '2015-05-23', '01:45:09', '2015-05-22', NULL, '2016-04-11', 4, '1995-03-01', 1, 5, NULL, 3, 1, 8, 6, NULL, NULL, 'OBSER DESIN 1', 1, '2015-05-23', 16, '1'),
 (217, 'ytuy', '2016-04-25', '11:01:22', '1990-01-01', NULL, NULL, NULL, NULL, NULL, 1, 2, 4, 5, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1'),
 (219, 'QWEQ234', '2016-04-28', '19:57:48', '2016-04-28', NULL, NULL, NULL, NULL, NULL, 1, 4, 3, 5, 1, NULL, NULL, NULL, 'NULL', NULL, NULL, NULL, '1'),
 (220, '45345', '2016-04-28', '20:03:35', '2016-04-09', NULL, NULL, NULL, NULL, NULL, 1, 3, 3, 5, 2, NULL, NULL, NULL, 'NULL', NULL, NULL, NULL, '1'),
@@ -747,7 +748,8 @@ INSERT INTO `movimientobn` (`id_mov`, `nro_document`, `fecha_reg`, `hora_reg`, `
 (340, 'RD321.-', '2016-06-29', '14:39:34', '2016-06-01', NULL, NULL, NULL, NULL, NULL, 1, 7, 1, 5, 23, NULL, NULL, NULL, 'JHHU', NULL, NULL, NULL, '1'),
 (341, 'RT5345345', '2016-06-30', '04:12:26', '2016-06-30', NULL, NULL, NULL, NULL, NULL, 2, NULL, 3, 5, 12, NULL, 3, 4, 'qrqwrqwr', NULL, NULL, NULL, '1'),
 (342, '43534RE', '2016-07-06', '22:29:45', '2016-07-01', NULL, NULL, NULL, NULL, NULL, 3, NULL, 1, 5, 11, NULL, 1, 3, 'werwerwer', NULL, NULL, NULL, '1'),
-(343, 'DADASD', '2017-02-24', '02:13:35', '2017-03-20', NULL, NULL, NULL, NULL, NULL, 1, 2, 2, 5, 2, NULL, NULL, NULL, '', NULL, NULL, NULL, '1');
+(343, 'DADASD', '2017-02-24', '02:13:35', '2017-03-20', NULL, NULL, NULL, NULL, NULL, 1, 2, 2, 5, 2, NULL, NULL, NULL, '', NULL, NULL, NULL, '1'),
+(344, '233423423', '2017-03-09', '22:11:33', '1995-03-01', 123, '2016-04-11', 9, '1995-03-01', 1, 6, NULL, 3, 18, 20, NULL, NULL, NULL, '', NULL, NULL, NULL, '1');
 
 -- --------------------------------------------------------
 
@@ -843,25 +845,6 @@ CREATE TABLE `tacceso` (
   `ipacc` varchar(15) NOT NULL,
   `estatusacc` char(1) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Volcado de datos para la tabla `tacceso`
---
-
-INSERT INTO `tacceso` (`idacceso`, `idusuario`, `exitoacc`, `fechaacc`, `fecha_salidaacc`, `ultima_actividadacc`, `ipacc`, `estatusacc`) VALUES
-(1, '20390749', '1', '2016-11-28 04:34:42', NULL, '2016-11-28 00:41:25', '::1', '1'),
-(2, 'administrador', '1', '2016-12-11 01:37:45', '2016-12-10 21:07:49', '2016-12-10 21:07:46', '::1', '0'),
-(3, 'administrador', '1', '2017-02-20 20:41:08', '2017-02-22 10:52:23', '2017-02-22 10:52:18', '::1', '0'),
-(4, 'administrador', '0', '2017-02-23 16:16:37', NULL, '0000-00-00 00:00:00', '::1', '0'),
-(5, 'administrador', '0', '2017-02-23 16:16:55', NULL, '0000-00-00 00:00:00', '::1', '0'),
-(6, 'administrador', '0', '2017-02-23 16:17:07', NULL, '0000-00-00 00:00:00', '::1', '0'),
-(7, 'administrador', '0', '2017-02-23 16:18:08', NULL, '0000-00-00 00:00:00', '::1', '0'),
-(8, 'administrador', '1', '2017-02-23 16:23:06', '2017-02-23 23:41:28', '2017-02-23 23:41:21', '::1', '0'),
-(9, 'administrador', '1', '2017-02-24 04:11:44', '2017-02-24 02:20:33', '2017-02-24 02:20:30', '::1', '0'),
-(10, 'administrador', '1', '2017-02-26 00:36:29', NULL, '2017-02-25 20:07:28', '::1', '1'),
-(11, 'administrador', '1', '2017-03-02 11:08:51', '2017-03-02 08:11:59', '2017-03-02 08:11:59', '::1', '0'),
-(12, 'administrador', '1', '2017-03-02 12:42:03', '2017-03-02 08:12:05', '2017-03-02 08:12:03', '::1', '0'),
-(13, 'administrador', '1', '2017-03-02 12:42:19', NULL, '2017-03-02 08:49:50', '::1', '1');
 
 -- --------------------------------------------------------
 
@@ -1112,134 +1095,6 @@ CREATE TABLE `tbitacora` (
   `serviciobit` varchar(50) NOT NULL DEFAULT 'Inicio'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Volcado de datos para la tabla `tbitacora`
---
-
-INSERT INTO `tbitacora` (`idbitacora`, `direccionbit`, `fechahorabit`, `valoranteriorbit`, `valornuevobit`, `ipbit`, `motivobit`, `operacionbit`, `campobit`, `tablabit`, `idusuario`, `serviciobit`) VALUES
-(1, '/caidv/vista/intranet.php?vista=donacion/persona', '2017-02-24 11:32:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'donacion/persona'),
-(2, '/caidv/vista/intranet.php?vista=donacion/persona', '2017-02-24 11:32:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'donacion/persona'),
-(3, '/caidv/vista/intranet.php', '2017-02-24 11:32:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'Panel_inicio'),
-(4, '/caidv/vista/intranet.php', '2017-02-24 11:32:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'Panel_inicio'),
-(5, '/caidv/vista/intranet.php', '2017-02-26 05:32:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'Panel_inicio'),
-(6, '/caidv/vista/intranet.php?vista=seguridad/asignar_servicio', '2017-02-26 05:32:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'seguridad/asignar_servicio'),
-(7, '/caidv/vista/intranet.php?vista=seguridad/asignar_servicio&id=1', '2017-02-26 05:32:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'seguridad/asignar_servicio'),
-(8, '/caidv/vista/intranet.php?vista=seguridad/asignar_servicio', '2017-02-26 05:32:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'seguridad/asignar_servicio'),
-(9, 'http://localhost:8080/caidv/vista/index.php?vista=preinscripcion/preinscripcion', '0000-00-00 00:00:00', '', '', '', 'Cargar datos', 'Registrar', '*', 'tarticulo', '', 'registrar_preinscripcion'),
-(10, '/caidv/vista/intranet.php', '2017-03-02 16:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'Panel_inicio'),
-(11, '/caidv/vista/intranet.php?vista=persona/participante', '2017-03-02 16:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'persona/participante'),
-(12, '/caidv/vista/intranet.php?vista=persona/consultar_participante&id=24', '2017-03-02 16:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'persona/consultar_participante'),
-(13, '/caidv/vista/intranet.php?vista=persona/participante', '2017-03-02 16:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'persona/participante'),
-(14, '/caidv/vista/intranet.php?vista=cronograma/gestAgendaParroquial', '2017-03-02 16:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'cronograma/gestAgendaParroquial'),
-(15, '/caidv/vista/intranet.php?vista=cronograma/gestAgendaParroquial', '2017-03-02 16:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'cronograma/gestAgendaParroquial'),
-(16, '/caidv/vista/intranet.php', '2017-03-02 16:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'Panel_inicio'),
-(17, '/caidv/vista/intranet.php?vista=donacion/donacion', '2017-03-02 16:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'donacion/donacion'),
-(18, '/caidv/vista/intranet.php?vista=donacion/registrar_donacion', '2017-03-02 16:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'donacion/registrar_donacion'),
-(19, '/caidv/vista/intranet.php?vista=donacion/donacion', '2017-03-02 16:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'donacion/donacion'),
-(20, '/caidv/vista/intranet.php?vista=donacion/registrar_donacion', '2017-03-02 16:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'donacion/registrar_donacion'),
-(21, '/caidv/vista/intranet.php?vista=donacion/donacion', '2017-03-02 16:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'donacion/donacion'),
-(22, '/caidv/vista/intranet.php?vista=donacion/donacion', '2017-03-02 16:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'donacion/donacion'),
-(23, '/caidv/vista/intranet.php?vista=inv_bienesnacionales/ver_inventario', '2017-03-02 16:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'inv_bienesnacionales/ver_inventario'),
-(24, '/caidv/vista/intranet.php?vista=inv_bienesnacionales/ver_asignacion', '2017-03-02 16:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'inv_bienesnacionales/ver_asignacion'),
-(25, '/caidv/vista/intranet.php?vista=inv_bienesnacionales/ver_prestamo', '2017-03-02 16:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'inv_bienesnacionales/ver_prestamo'),
-(26, '/caidv/vista/intranet.php?vista=inv_bienesnacionales/ver_restitucion', '2017-03-02 16:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'inv_bienesnacionales/ver_restitucion'),
-(27, '/caidv/vista/intranet.php?vista=archivo/actividad', '2017-03-02 16:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'archivo/actividad'),
-(28, '/caidv/vista/intranet.php?vista=donacion/donacion', '2017-03-02 05:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'donacion/donacion'),
-(29, '/caidv/vista/intranet.php', '2017-03-02 05:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'Panel_inicio'),
-(30, '/caidv/vista/intranet.php', '2017-03-02 05:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'Panel_inicio'),
-(31, '/caidv/vista/intranet.php?vista=archivo/actividad', '2017-03-02 05:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'archivo/actividad'),
-(32, '/caidv/vista/intranet.php?vista=inv_consumibles/articulo', '2017-03-02 05:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'inv_consumibles/articulo'),
-(33, '/caidv/vista/intranet.php?vista=donacion/donacion', '2017-03-02 05:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'donacion/donacion'),
-(34, '/caidv/vista/intranet.php?vista=inv_consumibles/articulo', '2017-03-02 05:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'inv_consumibles/articulo'),
-(35, '/caidv/vista/intranet.php?vista=inv_consumibles/requisicion', '2017-03-02 05:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'inv_consumibles/requisicion'),
-(36, '/caidv/vista/intranet.php?vista=inv_consumibles/registrar_requisicion', '2017-03-02 05:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'inv_consumibles/registrar_requisicion'),
-(37, '/caidv/vista/intranet.php?vista=inv_consumibles/salida', '2017-03-02 05:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'inv_consumibles/salida'),
-(38, '/caidv/vista/intranet.php?vista=inv_consumibles/registrar_salida', '2017-03-02 05:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'inv_consumibles/registrar_salida'),
-(39, '/caidv/vista/intranet.php?vista=donacion/donacion', '2017-03-02 05:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'donacion/donacion'),
-(40, '/caidv/vista/intranet.php?vista=donacion/registrar_donacion', '2017-03-02 05:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'donacion/registrar_donacion'),
-(41, '/caidv/vista/intranet.php?vista=inv_bienesnacionales/ver_inventario', '2017-03-02 05:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'inv_bienesnacionales/ver_inventario'),
-(42, '/caidv/vista/intranet.php?vista=inv_bienesnacionales/recepcion_articulobn', '2017-03-02 05:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'inv_bienesnacionales/recepcion_articulobn'),
-(43, '/caidv/vista/intranet.php?vista=inv_bienesnacionales/ver_prestamo', '2017-03-02 05:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'inv_bienesnacionales/ver_prestamo'),
-(44, '/caidv/vista/intranet.php?vista=inv_bienesnacionales/ver_inventario', '2017-03-02 05:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'inv_bienesnacionales/ver_inventario'),
-(45, '/caidv/vista/intranet.php?vista=inv_bienesnacionales/ver_asignacion', '2017-03-02 05:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'inv_bienesnacionales/ver_asignacion'),
-(46, '/caidv/vista/intranet.php?vista=inv_bienesnacionales/ver_prestamo', '2017-03-02 05:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'inv_bienesnacionales/ver_prestamo'),
-(47, '/caidv/vista/intranet.php?vista=inv_bienesnacionales/prestamo_articulobn', '2017-03-02 05:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'inv_bienesnacionales/prestamo_articulobn'),
-(48, '/caidv/vista/intranet.php?vista=inv_bienesnacionales/ver_restitucion', '2017-03-02 05:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'inv_bienesnacionales/ver_restitucion'),
-(49, '/caidv/vista/intranet.php?vista=donacion/donacion', '2017-03-02 05:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'donacion/donacion'),
-(50, '/caidv/vista/intranet.php?vista=donacion/donacion', '2017-03-02 05:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'donacion/donacion'),
-(51, '/caidv/vista/intranet.php?vista=donacion/registrar_donacion', '2017-03-02 05:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'donacion/registrar_donacion'),
-(52, '/caidv/vista/intranet.php?vista=donacion/donacion', '2017-03-02 05:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'donacion/donacion'),
-(53, '/caidv/vista/intranet.php?vista=donacion/donacion', '2017-03-02 05:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'donacion/donacion'),
-(54, '/caidv/vista/intranet.php?vista=inv_consumibles/salida', '2017-03-02 05:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'inv_consumibles/salida'),
-(55, '/caidv/vista/intranet.php?vista=inv_bienesnacionales/ver_inventario', '2017-03-02 05:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'inv_bienesnacionales/ver_inventario'),
-(56, '/caidv/vista/intranet.php?vista=inv_bienesnacionales/ver_asignacion', '2017-03-02 05:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'inv_bienesnacionales/ver_asignacion'),
-(57, '/caidv/vista/intranet.php?vista=inv_bienesnacionales/ver_desincorporacion', '2017-03-02 05:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'inv_bienesnacionales/ver_desincorporacion'),
-(58, '/caidv/vista/intranet.php?vista=inv_bienesnacionales/ver_restitucion', '2017-03-02 05:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'inv_bienesnacionales/ver_restitucion'),
-(59, '/caidv/vista/intranet.php?vista=inv_bienesnacionales/registrar_restitucion', '2017-03-02 05:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'inv_bienesnacionales/registrar_restitucion'),
-(60, '/caidv/vista/intranet.php?vista=inv_consumibles/articulo', '2017-03-02 05:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'inv_consumibles/articulo'),
-(61, '/caidv/vista/intranet.php?vista=inv_consumibles/requisicion', '2017-03-02 05:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'inv_consumibles/requisicion'),
-(62, '/caidv/vista/intranet.php?vista=inv_consumibles/registrar_requisicion', '2017-03-02 05:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'inv_consumibles/registrar_requisicion'),
-(63, '/caidv/vista/intranet.php?vista=inv_consumibles/salida', '2017-03-02 05:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'inv_consumibles/salida'),
-(64, '/caidv/vista/intranet.php?vista=donacion/donacion', '2017-03-02 05:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'donacion/donacion'),
-(65, '/caidv/vista/intranet.php?vista=donacion/registrar_donacion', '2017-03-02 05:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'donacion/registrar_donacion'),
-(66, '/caidv/vista/intranet.php?vista=donacion/donacion', '2017-03-02 05:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'donacion/donacion'),
-(67, '/caidv/vista/intranet.php?vista=donacion/consultar_donacion&o=Consultar&id=17', '2017-03-02 05:33:00', '', '', '::1', '-', 'Consultar', '-', '-', 'administrador', 'donacion/consultar_donacion'),
-(68, '/caidv/vista/intranet.php?vista=donacion/donacion', '2017-03-02 05:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'donacion/donacion'),
-(69, '/caidv/vista/intranet.php?vista=donacion/consultar_donacion&o=Consultar&id=18', '2017-03-02 05:33:00', '', '', '::1', '-', 'Consultar', '-', '-', 'administrador', 'donacion/consultar_donacion'),
-(70, '/caidv/vista/intranet.php?vista=donacion/donacion', '2017-03-02 05:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'donacion/donacion'),
-(71, '/caidv/vista/intranet.php?vista=donacion/donacion', '2017-03-02 05:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'donacion/donacion'),
-(72, '/caidv/vista/intranet.php?vista=donacion/registrar_donacion', '2017-03-02 05:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'donacion/registrar_donacion'),
-(73, '/caidv/vista/intranet.php?vista=donacion/donacion', '2017-03-02 05:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'donacion/donacion'),
-(74, '/caidv/vista/intranet.php?vista=inv_bienesnacionales/ver_inventario', '2017-03-02 05:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'inv_bienesnacionales/ver_inventario'),
-(75, '/caidv/vista/intranet.php?vista=inv_bienesnacionales/recepcion_articulobn', '2017-03-02 05:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'inv_bienesnacionales/recepcion_articulobn'),
-(76, '/caidv/vista/intranet.php?vista=inv_consumibles/requisicion', '2017-03-02 05:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'inv_consumibles/requisicion'),
-(77, '/caidv/vista/intranet.php?vista=inv_bienesnacionales/ver_inventario', '2017-03-02 05:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'inv_bienesnacionales/ver_inventario'),
-(78, '/caidv/vista/intranet.php?vista=inv_bienesnacionales/consultar_recepcion&id=319', '2017-03-02 05:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'inv_bienesnacionales/consultar_recepcion'),
-(79, '/caidv/vista/intranet.php?vista=inv_bienesnacionales/ver_inventario', '2017-03-02 05:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'inv_bienesnacionales/ver_inventario'),
-(80, '/caidv/vista/intranet.php?vista=inv_bienesnacionales/ver_asignacion', '2017-03-02 05:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'inv_bienesnacionales/ver_asignacion'),
-(81, '/caidv/vista/intranet.php?vista=inv_bienesnacionales/ver_devolucion', '2017-03-02 05:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'inv_bienesnacionales/ver_devolucion'),
-(82, '/caidv/vista/intranet.php?vista=inv_bienesnacionales/ver_desincorporacion', '2017-03-02 05:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'inv_bienesnacionales/ver_desincorporacion'),
-(83, '/caidv/vista/intranet.php?vista=inv_bienesnacionales/ver_prestamo', '2017-03-02 05:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'inv_bienesnacionales/ver_prestamo'),
-(84, '/caidv/vista/intranet.php?vista=inv_bienesnacionales/consultar_prestamo&id=310', '2017-03-02 05:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'inv_bienesnacionales/consultar_prestamo'),
-(85, '/caidv/vista/intranet.php?vista=inv_bienesnacionales/ver_restitucion', '2017-03-02 05:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'inv_bienesnacionales/ver_restitucion'),
-(86, '/caidv/vista/intranet.php?vista=inv_consumibles/articulo', '2017-03-02 05:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'inv_consumibles/articulo'),
-(87, '/caidv/vista/intranet.php?vista=inv_consumibles/requisicion', '2017-03-02 05:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'inv_consumibles/requisicion'),
-(88, '/caidv/vista/intranet.php?vista=inv_consumibles/salida', '2017-03-02 05:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'inv_consumibles/salida'),
-(89, 'http://localhost:8080/caidv/vista/intranet.php?vista=inv_consumibles/salida', '2017-03-02 12:33:00', '8524f2bd-ef78-48fd-bee1-237a769c100c', '1', '::1', '-', 'Reporte', 'id', '-', 'administrador', 'imprimir_salida'),
-(90, '/caidv/vista/intranet.php?vista=inv_consumibles/salida', '2017-03-02 06:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'inv_consumibles/salida'),
-(91, '/caidv/vista/intranet.php?vista=inv_bienesnacionales/ver_inventario', '2017-03-02 06:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'inv_bienesnacionales/ver_inventario'),
-(92, '/caidv/vista/intranet.php?vista=inv_bienesnacionales/recepcion_articulobn', '2017-03-02 06:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'inv_bienesnacionales/recepcion_articulobn'),
-(93, '/caidv/vista/intranet.php?vista=archivo/motivo', '2017-03-02 06:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'archivo/motivo'),
-(94, 'http://localhost:8080/caidv/vista/intranet.php?vista=archivo/motivo', '2017-03-02 06:33:00', '0', '1', '::1', 'No sÃ© utiliza', 'Restaurar', 'estatusasi', 'tinstrumento', 'administrador', 'restaurar_motivo'),
-(95, '/caidv/vista/intranet.php?vista=archivo/motivo', '2017-03-02 06:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'archivo/motivo'),
-(96, '/caidv/vista/intranet.php?vista=inv_bienesnacionales/ver_inventario', '2017-03-02 06:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'inv_bienesnacionales/ver_inventario'),
-(97, '/caidv/vista/intranet.php?vista=inv_bienesnacionales/recepcion_articulobn', '2017-03-02 06:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'inv_bienesnacionales/recepcion_articulobn'),
-(98, '/caidv/vista/intranet.php?vista=donacion/donacion', '2017-03-02 06:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'donacion/donacion'),
-(99, '/caidv/vista/intranet.php?vista=donacion/registrar_donacion', '2017-03-02 06:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'donacion/registrar_donacion'),
-(100, '/caidv/vista/intranet.php?vista=inv_bienesnacionales/ver_inventario', '2017-03-02 06:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'inv_bienesnacionales/ver_inventario'),
-(101, '/caidv/vista/intranet.php?vista=inv_bienesnacionales/recepcion_articulobn', '2017-03-02 06:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'inv_bienesnacionales/recepcion_articulobn'),
-(102, '/caidv/vista/intranet.php?vista=inv_consumibles/requisicion', '2017-03-02 06:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'inv_consumibles/requisicion'),
-(103, '/caidv/vista/intranet.php?vista=inv_consumibles/salida', '2017-03-02 06:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'inv_consumibles/salida'),
-(104, '/caidv/vista/intranet.php?vista=inv_consumibles/articulo', '2017-03-02 06:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'inv_consumibles/articulo'),
-(105, '/caidv/vista/intranet.php?vista=archivo/registrar_articulo', '2017-03-02 06:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'archivo/registrar_articulo'),
-(106, '/caidv/vista/intranet.php?vista=donacion/donacion', '2017-03-02 06:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'donacion/donacion'),
-(107, '/caidv/vista/intranet.php', '2017-03-02 06:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'Panel_inicio'),
-(108, '/caidv/vista/intranet.php?vista=donacion/registrar_donacion', '2017-03-02 06:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'donacion/registrar_donacion'),
-(109, '/caidv/vista/intranet.php?vista=inv_bienesnacionales/ver_inventario', '2017-03-02 06:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'inv_bienesnacionales/ver_inventario'),
-(110, '/caidv/vista/intranet.php?vista=inv_bienesnacionales/recepcion_articulobn', '2017-03-02 06:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'inv_bienesnacionales/recepcion_articulobn'),
-(111, '/caidv/vista/intranet.php?vista=reporte/historial_donacion_fecha', '2017-03-02 06:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'reporte/historial_donacion_fecha'),
-(112, '/caidv/vista/intranet.php?vista=reporte/historial_donacion_fecha', '2017-03-02 06:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'reporte/historial_donacion_fecha'),
-(113, '/caidv/vista/intranet.php?vista=donacion/donacion', '2017-03-02 06:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'donacion/donacion'),
-(114, '/caidv/vista/intranet.php?vista=donacion/consultar_donacion&o=Consultar&id=18', '2017-03-02 06:33:00', '', '', '::1', '-', 'Consultar', '-', '-', 'administrador', 'donacion/consultar_donacion'),
-(115, '/caidv/vista/intranet.php?vista=donacion/donacion', '2017-03-02 06:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'donacion/donacion'),
-(116, '/caidv/vista/intranet.php?vista=seguridad/modulo', '2017-03-02 06:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'seguridad/modulo'),
-(117, '/caidv/vista/intranet.php?vista=seguridad/asignar_servicio', '2017-03-02 06:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'seguridad/asignar_servicio'),
-(118, '/caidv/vista/intranet.php?vista=seguridad/asignar_servicio&id=1', '2017-03-02 06:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'seguridad/asignar_servicio'),
-(119, '/caidv/vista/intranet.php?vista=seguridad/asignar_servicio', '2017-03-02 06:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'seguridad/asignar_servicio'),
-(120, '/caidv/vista/intranet.php?vista=seguridad/modulo', '2017-03-02 06:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'seguridad/modulo'),
-(121, '/caidv/vista/intranet.php?vista=seguridad/servicio', '2017-03-02 06:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'seguridad/servicio'),
-(122, '/caidv/vista/intranet.php?vista=inv_consumibles/articulo', '2017-03-02 06:33:00', '', '', '::1', '-', 'Navegar', '-', '-', 'administrador', 'inv_consumibles/articulo');
-
 -- --------------------------------------------------------
 
 --
@@ -1287,7 +1142,10 @@ INSERT INTO `tclave` (`idclave`, `clavecla`, `fechainiciocla`, `fechafincla`, `e
 (37, '05f566af2582d01bfd226f39fbd4b136f66ab5a0', '2016-11-21', '2016-11-27', 0, 15),
 (38, '7c222fb2927d828af22f592134e8932480637c0d', '2016-11-21', '2017-03-21', 1, 0),
 (39, 'ca2b3a681c6cff002f7c848b6b1baf01b098e1b0', '2016-11-27', '2017-03-27', 1, 15),
-(40, '7c222fb2927d828af22f592134e8932480637c0d', '2017-03-02', '2017-06-30', 1, 10124585);
+(40, '7c222fb2927d828af22f592134e8932480637c0d', '2017-03-02', '2017-06-30', 1, 10124585),
+(41, 'ca2b3a681c6cff002f7c848b6b1baf01b098e1b0', '2017-03-09', '2017-07-07', 1, 17),
+(42, 'ca2b3a681c6cff002f7c848b6b1baf01b098e1b0', '2017-03-09', '2017-03-09', 0, 18),
+(43, '1016a9b844e53500bc4522d1915fef797199d7a1', '2017-03-09', '2017-07-07', 1, 18);
 
 -- --------------------------------------------------------
 
@@ -1441,7 +1299,8 @@ INSERT INTO `tentesexternos` (`idTentesexternos`, `RazonSocial`, `Rif`, `Telefon
 (3, 'SAN JUDAS', 'G-12342345-3', '123455667788', '1'),
 (4, 'INDER PAEZ', 'G-12345678-0', '0414-5052122', '1'),
 (5, 'INQWE EQ', 'G-12354334-0', '0412-4322224', '1'),
-(6, 'SAN JUAN 21', 'G-23456789-9', '0426-1234567', '1');
+(6, 'SAN JUAN 21', 'G-23456789-9', '0426-1234567', '1'),
+(7, 'ERQWEQWE', 'G-12312431-4', '3422-3423423', '1');
 
 -- --------------------------------------------------------
 
@@ -1936,7 +1795,7 @@ CREATE TABLE `tlapso` (
 INSERT INTO `tlapso` (`idlapso`, `nombrelap`, `fechainilap`, `fechafinlap`, `estadolap`, `estatuslap`) VALUES
 (2, 'LAPSO 2014-2015', '2014-09-15', '2015-06-11', 'CERRADO', '1'),
 (3, 'LAPSO 2015-2016', '2015-09-14', '2016-06-09', 'CERRADO', '1'),
-(4, 'QQWEQE', '2016-06-10', '2017-03-06', 'APERTURADO', '1');
+(4, 'QQWEQE', '2016-06-10', '2017-03-06', 'CERRADO', '1');
 
 -- --------------------------------------------------------
 
@@ -2325,7 +2184,8 @@ INSERT INTO `tpersonal` (`idTpersonal`, `nacionalidadper`, `idpersonal`, `nombre
 (4, '', '17960877', 'EFREN ', 'DA', 'DIAZ', 'MARTINEZ', 'M', '1988-05-05', 'EDM_126@HOTMAIL.COM', 'VILLA ARAURE 2', '04121516744', 'WEB MASTER', '1', 1, 8, '1'),
 (5, 'V', '18672728', 'JORGE', '', 'APONTE', '', 'M', '1987-12-17', 'coreo@sdd.com', 'ARAURE', '04125351857', 'ASISTENTE', '1', 1, 2, '1'),
 (6, 'V', '21394280', 'GREGORIO', 'ALEXANDER', 'COLMENAREZ', 'MAQUEZ', 'M', '1994-07-01', 'alejandro@hotmail.com', 'URB LA VIRGINIA', '04145218273', 'DOCENTE', '1', 1, 1, '1'),
-(9, '', '20390749', 'PRUEBA', 'WQEQEQ', 'ALFA', 'EQWQE', 'M', '1991-12-01', 'rodescobar44@gmail.com', 'QWEQWEQWE', '04125279313', 'QE', '1', 1, 9, '1');
+(9, '', '20390749', 'PRUEBA', 'WQEQEQ', 'ALFA', 'EQWQE', 'M', '1991-12-01', 'rodescobar44@gmail.com', 'QWEQWEQWE', '04125279313', 'QE', '1', 1, 9, '1'),
+(10, 'V', '7581523', 'YAOOO', 'MING', 'ASDA', 'QWEQWE', 'M', '1991-12-01', 'baresco_12@hotmail.com', 'QEQWEQ', '04145656666', 'WEBMASTER', '1', 1, 1, '1');
 
 -- --------------------------------------------------------
 
@@ -2354,7 +2214,9 @@ INSERT INTO `tpregunta` (`idpregunta`, `pregunta`, `respuesta`, `tusuario_idusua
 (7, 'DIGA SU EDDAD?', '24', '5'),
 (8, 'TODO BIEN?', 'SI', '5'),
 (9, 'BIEN?', 'SI', '15'),
-(10, 'OK?', 'SI', '15');
+(10, 'OK?', 'SI', '15'),
+(11, 'SDASD', 'ASDASD', '18'),
+(12, 'ASDAS', 'DASDAS', '18');
 
 -- --------------------------------------------------------
 
@@ -2443,7 +2305,10 @@ INSERT INTO `tresponsableente` (`idTresponsableente`, `nacionalidadper`, `cedula
 (5, 'V', '18672728', 2, 'JORGE', 'APONTE', '1'),
 (6, 'E', '213123123', 1, 'QEWQWEQWE', 'QWEQWEQWEQ', '1'),
 (7, 'V', '324234', 2, 'QWEQWE', 'EQWEQW', '1'),
-(8, 'V', '21394280', 2, 'GREGORIO ALEXANDER', 'COLMENAREZ MARQUEZ', '1');
+(8, 'V', '21394280', 2, 'GREGORIO ALEXANDER', 'COLMENAREZ MARQUEZ', '1'),
+(9, 'V', '3423452', 2, 'QWEQWEQ', 'WEQWEQW', '1'),
+(10, 'V', '4322222', 2, 'QWQQQQQ', 'EEEEE', '1'),
+(11, 'V', '5555555', 4, 'JULIO', 'CORSA', '1');
 
 -- --------------------------------------------------------
 
@@ -2563,9 +2428,9 @@ INSERT INTO `tservicio` (`idservicio`, `nombreser`, `enlaceser`, `MarcaAgregacio
 (20, 'Municipio', 'archivo/municipio', '0', 1, 1, 2),
 (21, 'Registrar municipio', 'archivo/registrar_municipio', '0', 0, 1, 2),
 (22, 'Consultar municipio', 'archivo/consultar_municipio', '0', 0, 1, 2),
-(23, 'Parentesco', 'archivo/parentesco', '0', 1, 1, 2),
-(24, 'Registrar parentesco', 'archivo/registrar_parentesco', '0', 0, 1, 2),
-(25, 'Consultar parentesco', 'archivo/consultar_parentesco', '0', 0, 1, 2),
+(23, 'Parentesco', 'archivo/parentesco', '0', 1, 1, 4),
+(24, 'Registrar parentesco', 'archivo/registrar_parentesco', '0', 0, 1, 4),
+(25, 'Consultar parentesco', 'archivo/consultar_parentesco', '0', 0, 1, 4),
 (26, 'CondiciÃ³n visual', 'archivo/diagnostico', '0', 1, 1, 2),
 (27, 'Registrar diagnostico', 'archivo/registrar_diagnostico', '0', 0, 1, 2),
 (28, 'Consultar diagnostico', 'archivo/consultar_diagnostico', '0', 0, 1, 2),
@@ -2691,9 +2556,9 @@ INSERT INTO `tservicio` (`idservicio`, `nombreser`, `enlaceser`, `MarcaAgregacio
 (153, 'Consumibles', 'inv_consumibles/ver_inventario', '0', 0, 1, 9),
 (154, 'Registrar consumible', 'inv_consumibles/registrar_articulocmb', '0', 0, 1, 9),
 (155, 'Registrar nacional', 'inv_bienesnacionales/recepcion_articulobn', '0', 0, 1, 9),
-(157, 'Proveedor (desactivado)', 'archivo/proveedor', '1', 1, 1, 2),
-(158, 'Registrar Proveedor', 'archivo/registrar_proveedor', '1', 0, 1, 2),
-(159, 'Consultar Proveedor', 'archivo/consultar_proveedor', '1', 0, 1, 2),
+(157, 'Proveedor (desactivado)', 'archivo/proveedor', '1', 1, 1, 4),
+(158, 'Registrar Proveedor', 'archivo/registrar_proveedor', '1', 0, 1, 4),
+(159, 'Consultar Proveedor', 'archivo/consultar_proveedor', '1', 0, 1, 4),
 (160, 'Motivo', 'archivo/motivo', '1', 1, 1, 2),
 (161, 'Registrar Motivo', 'archivo/registrar_motivo', '1', 0, 1, 2),
 (162, 'Consultar Motivo', 'archivo/consultar_motivo', '1', 0, 1, 2),
@@ -2709,8 +2574,8 @@ INSERT INTO `tservicio` (`idservicio`, `nombreser`, `enlaceser`, `MarcaAgregacio
 (172, 'CategorÃ­a de bien', 'archivo/categoriadebien', '1', 1, 1, 2),
 (173, 'Registrar Categoria de Bien', 'archivo/registrar_categoriadebien', '1', 0, 1, 2),
 (174, 'Consultar Categoria de Bien', 'archivo/consultar_categoriadebien', '1', 0, 1, 2),
-(175, 'Ente externo', 'archivo/entereceptor', '1', 1, 1, 2),
-(176, 'Registrar Ente Externo', 'archivo/registrar_entereceptor', '1', 0, 1, 2),
+(175, 'Ente externo', 'archivo/entereceptor', '1', 1, 1, 4),
+(176, 'Registrar Ente Externo', 'archivo/registrar_entereceptor', '1', 0, 1, 4),
 (177, 'Consultar Ente Externo', 'archivo/consultar_entereceptor', '1', 0, 1, 2),
 (178, 'Asignar ArtÃculo', 'inv_bienesnacionales/asignacion_articulobn', '0', 0, 1, 9),
 (179, 'DesincorporaciÃ³n', 'inv_bienesnacionales/ver_desincorporacion', '1', 1, 1, 9),
@@ -2725,7 +2590,7 @@ INSERT INTO `tservicio` (`idservicio`, `nombreser`, `enlaceser`, `MarcaAgregacio
 (188, 'Consultar DevoluciÃ³n', 'inv_bienesnacionales/consultar_devolucion', '0', 0, 1, 9),
 (189, 'Consultar DesincorporaciÃ³n', 'inv_bienesnacionales/consultar_desincorporacion', '0', 0, 1, 9),
 (190, 'Consultar Prestamo', 'inv_bienesnacionales/consultar_prestamo', '0', 0, 1, 9),
-(191, 'Eliminar Proveedor', 'archivo/eliminar_proveedor', '1', 0, 1, 2),
+(191, 'Eliminar Proveedor', 'archivo/eliminar_proveedor', '1', 0, 1, 4),
 (192, 'Eliminar Motivo', 'archivo/eliminar_motivo', '1', 0, 1, 2),
 (193, 'Eliminar Tipo de Bien', 'archivo/eliminar_tipodebien', '1', 0, 1, 2),
 (194, 'Eliminar Marca', 'archivo/eliminar_marca', '1', 0, 1, 2),
@@ -2773,7 +2638,7 @@ INSERT INTO `tservicio` (`idservicio`, `nombreser`, `enlaceser`, `MarcaAgregacio
 (236, 'Registrar tipo de articulo', 'donacion/registrar_tipo_articulo', '3', 0, 1, 10),
 (237, 'Consultar tipo de articulo', 'donacion/consultar_tipo_articulo', '3', 0, 1, 10),
 (238, 'Eliminar tipo de articulo', 'donacion/eliminar_tipo_articulo', '3', 0, 1, 10),
-(239, 'Proveedor jurÃ­dico', 'donacion/empresa', '3', 1, 1, 2),
+(239, 'Proveedor jurÃ­dico', 'donacion/empresa', '3', 1, 1, 4),
 (240, 'Registrar empresa', 'donacion/registrar_empresa', '3', 0, 1, 10),
 (241, 'Consultar empresa', 'donacion/consultar_empresa', '3', 0, 1, 10),
 (242, 'Eliminar empresa', 'donacion/eliminar_empresa', '3', 0, 1, 10),
@@ -2902,7 +2767,7 @@ INSERT INTO `tservicio_trol` (`idservicio`, `idrol`, `orden`) VALUES
 (41, 1, 0),
 (41, 2, 0),
 (41, 4, 0),
-(42, 1, 3),
+(42, 1, 4),
 (42, 2, 2),
 (42, 3, 0),
 (42, 4, 2),
@@ -2921,7 +2786,7 @@ INSERT INTO `tservicio_trol` (`idservicio`, `idrol`, `orden`) VALUES
 (47, 2, 3),
 (47, 3, 1),
 (47, 4, 3),
-(48, 1, 4),
+(48, 1, 3),
 (48, 2, 3),
 (48, 4, 3),
 (49, 1, 0),
@@ -3209,7 +3074,7 @@ INSERT INTO `tservicio_trol` (`idservicio`, `idrol`, `orden`) VALUES
 (172, 1, 14),
 (173, 1, 0),
 (174, 1, 0),
-(175, 1, 18),
+(175, 1, 6),
 (176, 1, 0),
 (177, 1, 0),
 (178, 1, 0),
@@ -3258,7 +3123,7 @@ INSERT INTO `tservicio_trol` (`idservicio`, `idrol`, `orden`) VALUES
 (199, 2, 3),
 (200, 1, 0),
 (200, 2, 0),
-(201, 1, 0),
+(201, 1, 7),
 (201, 2, 19),
 (202, 1, 0),
 (202, 2, 0),
@@ -3331,11 +3196,11 @@ INSERT INTO `tservicio_trol` (`idservicio`, `idrol`, `orden`) VALUES
 (236, 1, 0),
 (237, 1, 0),
 (238, 1, 0),
-(239, 1, 21),
+(239, 1, 9),
 (240, 1, 0),
 (241, 1, 0),
 (242, 1, 0),
-(243, 1, 5),
+(243, 1, 8),
 (244, 1, 0),
 (245, 1, 0),
 (246, 1, 0),
@@ -3388,7 +3253,7 @@ CREATE TABLE `tsistema` (
 --
 
 INSERT INTO `tsistema` (`idconfiguracion`, `introducion`, `mision`, `vision`, `historia`, `objetivos`, `direccion`, `nropreguntas`, `clavepredeterminada`, `nrointentos`, `tiempocaducida`, `tiempoconexion`, `tiempolapso`, `cant_dias_preinscrito`) VALUES
-(2, '<p>Bienvenidos al sistema..</p>', '<p>Administrar las polÃ­ticas de educaciÃ³n especial en el Ã¡rea de las deficiencias visuales a la poblaciÃ³n atendida.</p>', '<p style="text-align: justify;">Alcanzar el mÃ¡ximo nivel de desarrollo de los participantes para su plena realizaciÃ³n personal, social, profesional y laboral.</p>', '<p style="text-align: justify;">AsÃ­ comenzÃ³ la educaciÃ³n de las personas con discapacidad visual del Estado Portuguesa, con un sueÃ±o compartido con otras personas, movidos por un sentimiento comÃºn, la pÃ©rdida del sentido de la vista. Un grupo de personas se reÃºne con la idea de formar una instituciÃ³n que le brindarÃ¡ atenciÃ³n educativa a todas las personas con discapacidad visual, y motivados por el seÃ±or Erasmo Conde quien dirigÃ­a la AsociaciÃ³n PortugueseÃ±a de Ciegos, quien contaba con todo el apoyo de sus miembros, se crea el Instituto de ciegos del estado Portuguesa que funcionÃ³ desde 1986 hasta 1991 con personal voluntario, en forma asistemÃ¡tica, su labor fue mÃ¡s de captaciÃ³n y preparaciÃ³n de recursos humanos y de informaciÃ³n a la comunidad, promociÃ³n y divulgaciÃ³n, que de una atenciÃ³n propiamente dicha. La capacitaciÃ³n del personal voluntario en el Ã¡rea de las deficiencias visuales, estuvo a cargo en un principio por profesionales del Centro de RehabilitaciÃ³n para el Discapacitado Visual adscrito al Ministerio de Sanidad de Caracas, dirigido por el Dr. Antonio Isea, mediante un gran programa de atenciÃ³n basado en la comunidad, con seis cursos intensivos a los cuales asistieron numerosas personas de toda la colectividad de Acarigua â€“ Araure, quedando solamente tres, comprometidos con la idea y con el objetivo claro por el cual se iba a luchar. El 15 de enero de 1992, el anterior Instituto se convierte en Centro de AtenciÃ³n Integral de Deficiencias Visuales, funcionando en un salÃ³n de un mÃ³dulo tipo R-2, sede de la AsociaciÃ³n PortugueseÃ±a de Personas con Discapacidad Visual, bajo la supervisiÃ³n del Departamento de EducaciÃ³n Especial y de la DirecciÃ³n de EducaciÃ³n del estado, recibiendo apoyo en la parte TÃ©cnico â€“Administrativo- Docente con dos lÃ­neas de mando lo cual creÃ³ una situaciÃ³n de ambigÃ¼edad, lo que trajo como consecuencia problemas para la consecuciÃ³n de recursos tanto econÃ³micos como de dotaciÃ³n de mobiliario, equipos, personal docente y tÃ©cnico (PsicÃ³logo, OftalmÃ³logo y Trabajador Social) El 21 de enero de ese mismo aÃ±o, el CAIDV inicia la educaciÃ³n integrada de niÃ±os y niÃ±as con discapacidad visual en el Ã¡mbito de preescolar, para ello se realiza un taller denominado â€œIntegraciÃ³n del niÃ±o Ciego al aula Regularâ€, auspiciado por los dos docentes que laboraban en ese momento, quienes estaban reciÃ©n nombrados oficialmente, uno por el Ministerio de EducaciÃ³n (el Sr. Erasmo Conde) y la otra por la DirecciÃ³n de EducaciÃ³n (la docente Blanca Torres) Es en 1997 cuando el Ministerio de EducaciÃ³n en una revisiÃ³n y reorientaciÃ³n del modelo educativo para las personas con discapacidad visual promueve unas jornadas con la nueva polÃ­tica y conceptualizaciÃ³n de atenciÃ³n educativa de las personas ciegas: y el documento presentado establece que todas las instituciones que imparten educaciÃ³n a personas ciegas desde ese momento se denominarÃ¡n â€œCentro de AtenciÃ³n Integralâ€ (CAI), lo que en principio se le cuestionaba a Portuguesa, en ese momento se le dio la razÃ³n.Es importante mencionar que este CAI es el primero en su gÃ©nero en el Ã¡mbito nacional, producto de la sinergia, sin embargo esto no fue suficiente para su codificaciÃ³n, porque el Ministerio de EducaciÃ³n alegaba que el personal del CAI era casi en su totalidad de la DirecciÃ³n de EducaciÃ³n y no le brindaba apoyo. Fue en el aÃ±o 2003, cuando la DirecciÃ³n de EducaciÃ³n del Estado Portuguesa, en el marco de la creaciÃ³n de la CoordinaciÃ³n de EducaciÃ³n Especial, le asigna al CAIDV Acarigua el CÃ³digo Educativo NÂ° 099000. Otro aspecto relevante es que para lograr el gran sueÃ±o, ha sido necesario un cÃºmulo de esfuerzos para conservarlo y hacerlo realidad, es necesario reforzar la imagen inicial de trabajo para lograr lo que queremos, cultivando la cultura del esfuerzo y la bÃºsqueda constante de nuevas formas de actuar, asÃ­ mismo se requiere desarrollar todo un programa mental que integre los planes tomando en cuenta nuestras fortalezas y oportunidades. En general se podrÃ­a decir que la experiencia de estos 20 aÃ±os, ha sido a grandes rasgos, la siguiente:</p>\r\n<ul style="text-align: justify;">\r\n<li>\r\n<p>Se crea la organizaciÃ³n en la cual se pone de manifiesto mayor interÃ©s en la integraciÃ³n a la vida diaria.</p>\r\n</li>\r\n</ul>\r\n<ul style="text-align: justify;">\r\n<li>\r\n<p>Se afronta la problemÃ¡tica de la persona con discapacidad visual desde una Ã³ptica mÃ¡s compleja, involucrando niÃ±os, niÃ±as, adolescentes, jÃ³venes y adultos en la preparaciÃ³n indispensable para desenvolverse en la vida.</p>\r\n</li>\r\n</ul>\r\n<ul style="text-align: justify;">\r\n<li>\r\n<p>&nbsp;Se crea otro CAI en la ciudad de Guanare con caracterÃ­sticas similares a Ã©ste para la atenciÃ³n de los municipios adyacentes.</p>\r\n</li>\r\n</ul>\r\n<ul style="text-align: justify;">\r\n<li>\r\n<p>Se logra la construcciÃ³n de otra R-2 ampliando asÃ­ el espacio fÃ­sico para la poblaciÃ³n del momento, e independizando el Ãrea Educativa del Ãrea gremial.</p>\r\n</li>\r\n</ul>\r\n<ul style="text-align: justify;">\r\n<li>\r\n<p>Se inicia la integraciÃ³n en niveles y modalidades del sistema educativo.</p>\r\n</li>\r\n</ul>\r\n<ul style="text-align: justify;">\r\n<li>\r\n<p>Se inicia la integraciÃ³n laboral de la persona con discapacidad.</p>\r\n</li>\r\n</ul>\r\n<ul>\r\n<li>\r\n<p>En el aÃ±o escolar 2005-2006, se inicia la aplicaciÃ³n del Proyecto de TecnologÃ­as Adaptativas para personas con discapacidad visual, mediante el Software Jaws, primero con la formaciÃ³n de un docente (TSU MarÃ­a JosÃ© Garantota) y actualmente con los participantes integrados en educaciÃ³n media, diversificada y universitaria. En otro orden de ideas la instituciÃ³n es tomada en cuenta actualmente como centro de pasantÃ­as de CEDUPORT, instituciÃ³n que forma auxiliares de educaciÃ³n Especial, y la Universidad Bolivariana en la cÃ¡tedra de formaciÃ³n de docentes, Colegio Universitario FermÃ­n Toro y Colegio Universitario MonseÃ±or de Talavera, ademÃ¡s en este centro se le ofrece atenciÃ³n formativa a estudiantes de diferentes universidades locales que asisten para investigar aspectos asociados al Ã¡rea de las deficiencias visuales. El CAIDV Acarigua es una unidad operativa que funciona como servicio de apoyo de la modalidad de EducaciÃ³n Especial, brinda atenciÃ³n educativa integral a la poblaciÃ³n de niÃ±os, niÃ±as, adolescentes, jÃ³venes y adultos con discapacidad visual, con o sin discapacidad asociada ubicados en los (7) siete municipios de la parte norte del estado Portuguesa, a travÃ©s de 2 alternativas de atenciÃ³n:</p>\r\n</li>\r\n</ul>\r\n<ol style="text-align: justify;">\r\n<li>\r\n<p>Directa: en el propio CAI, a la poblaciÃ³n con o sin discapacidad asociada, que aÃºn no ha sido integrada ni educativa ni laboralmente, o no puede ser integrada.</p>\r\n</li>\r\n<li>\r\n<p>Como unidad de Apoyo, a fin de garantizar:</p>\r\n</li>\r\n</ol>\r\n<ul style="padding-left: 30px; text-align: justify;">\r\n<li>\r\n<p>AtenciÃ³n integral temprana a niÃ±os, y niÃ±as con discapacidad visual con o sin discapacidad asociada, cuyas edades estÃ©n comprendidas entre 0 y 6 aÃ±os, atendidos en los Centros de Desarrollo Infantil, asÃ­ como garantizar la continuidad del proceso educativo de esta poblaciÃ³n.</p>\r\n</li>\r\n</ul>\r\n<ul style="padding-left: 30px;">\r\n<li>\r\n<p style="text-align: justify;">El proceso de integraciÃ³n escolar de esta poblaciÃ³n en los niveles de EducaciÃ³n Preescolar, BÃ¡sica, Media, Diversificada, Superior, Modalidades de EducaciÃ³n Especial y EducaciÃ³n de Adultos. Los CAI, por su condiciÃ³n de Unidad de apoyo, no estÃ¡n concebidos para brindar escolaridad a su poblaciÃ³n, pues esto es competencia de los planteles donde estÃ¡n integrados los educandos, razÃ³n por la cual se deben realizar acciones de manera cooperativa y coordinada con estas instancias educativas y con otros sectores (salud, social, entre otros).</p>\r\n</li>\r\n</ul>', '<ul>\r\n<li>\r\n<p>Brindar atenciÃ³n Integral a niÃ±os, niÃ±as, adolescentes, jÃ³venes y adultos con discapacidad visual, con o sin discapacidad asociada, a fin de desarrollar habilidades y destrezas que le permitan maximizar sus potencialidades y optimizar sus posibilidades para la integraciÃ³n familiar, educativa, comunitaria.</p>\r\n</li>\r\n</ul>\r\n<div>\r\n<ul>\r\n<li>\r\n<p>Aplicar estrategias que faciliten la formaciÃ³n y capacitaciÃ³n de jÃ³venes y adultos con discapacidad visual, con o sin discapacidades asociadas, mediante la articulaciÃ³n intrasectorial e intersectorial con la finalidad de lograr su IntegraciÃ³n Socio laboral.</p>\r\n</li>\r\n</ul>\r\n<ul>\r\n<li>\r\n<p>Orientar a la familia y comunidad en general para que participe activamente en el proceso de IntegraciÃ³n Social de niÃ±os, niÃ±as, adolescentes, jÃ³venes y adultos con discapacidad visual con o sin discapacidad asociada, mediante charlas, talleres, jornadas de difusiÃ³n, conferencias y otras actividades educativas, culturales, artÃ­sticas, recreativas, deportivas, cientÃ­ficas y tecnolÃ³gicas.</p>\r\n</li>\r\n</ul>\r\n<ul>\r\n<li style="text-align: justify;">\r\n<p>Ofrecer atenciÃ³n integral a la persona con discapacidad visual o baja visiÃ³n considerando tanto sus potencialidades como las condiciones que faciliten su integraciÃ³n social.</p>\r\n</li>\r\n</ul>\r\n<ul>\r\n<li>\r\n<p>Fomentar el respeto por los derechos de la persona con discapacidad visual.</p>\r\n</li>\r\n</ul>\r\n<ul>\r\n<li>\r\n<p>Promover atenciÃ³n preventiva e integral de la persona con discapacidad visual o con baja visiÃ³n desde su nacimiento, a fin de lograr el mÃ¡ximo aprovechamiento de sus potencialidades y su integraciÃ³n al nÃºcleo familiar, escolar y social.</p>\r\n</li>\r\n</ul>\r\n<ul>\r\n<li>\r\n<p>Incorporar la familia y la comunidad al proceso educativo de la persona con discapacidad visual y con baja visiÃ³n.</p>\r\n</li>\r\n</ul>\r\n<ul>\r\n<li>\r\n<p>Promover la capacitaciÃ³n de la persona con discapacidad visual para su incorporaciÃ³n en el campo laboral.</p>\r\n</li>\r\n</ul>\r\n</div>\r\n<div>&nbsp;</div>', '<p>Calle Luis Braille con Av. CircunvalaciÃ³n detrÃ¡s del Centro de Bellas Artes sector Los Cortijos.</p>', '2', '12345678', '4', '120', 60, 270, '');
+(2, '<p>Bienvenidos al sistema..</p>', '<p>Administrar las polÃ­ticas de educaciÃ³n especial en el Ã¡rea de las deficiencias visuales a la poblaciÃ³n atendida.</p>', '<p style="text-align: justify;">Alcanzar el mÃ¡ximo nivel de desarrollo de los participantes para su plena realizaciÃ³n personal, social, profesional y laboral.</p>', '<p style="text-align: justify;">AsÃ­ comenzÃ³ la educaciÃ³n de las personas con discapacidad visual del Estado Portuguesa, con un sueÃ±o compartido con otras personas, movidos por un sentimiento comÃºn, la pÃ©rdida del sentido de la vista. Un grupo de personas se reÃºne con la idea de formar una instituciÃ³n que le brindarÃ¡ atenciÃ³n educativa a todas las personas con discapacidad visual, y motivados por el seÃ±or Erasmo Conde quien dirigÃ­a la AsociaciÃ³n PortugueseÃ±a de Ciegos, quien contaba con todo el apoyo de sus miembros, se crea el Instituto de ciegos del estado Portuguesa que funcionÃ³ desde 1986 hasta 1991 con personal voluntario, en forma asistemÃ¡tica, su labor fue mÃ¡s de captaciÃ³n y preparaciÃ³n de recursos humanos y de informaciÃ³n a la comunidad, promociÃ³n y divulgaciÃ³n, que de una atenciÃ³n propiamente dicha. La capacitaciÃ³n del personal voluntario en el Ã¡rea de las deficiencias visuales, estuvo a cargo en un principio por profesionales del Centro de RehabilitaciÃ³n para el Discapacitado Visual adscrito al Ministerio de Sanidad de Caracas, dirigido por el Dr. Antonio Isea, mediante un gran programa de atenciÃ³n basado en la comunidad, con seis cursos intensivos a los cuales asistieron numerosas personas de toda la colectividad de Acarigua â€“ Araure, quedando solamente tres, comprometidos con la idea y con el objetivo claro por el cual se iba a luchar. El 15 de enero de 1992, el anterior Instituto se convierte en Centro de AtenciÃ³n Integral de Deficiencias Visuales, funcionando en un salÃ³n de un mÃ³dulo tipo R-2, sede de la AsociaciÃ³n PortugueseÃ±a de Personas con Discapacidad Visual, bajo la supervisiÃ³n del Departamento de EducaciÃ³n Especial y de la DirecciÃ³n de EducaciÃ³n del estado, recibiendo apoyo en la parte TÃ©cnico â€“Administrativo- Docente con dos lÃ­neas de mando lo cual creÃ³ una situaciÃ³n de ambigÃ¼edad, lo que trajo como consecuencia problemas para la consecuciÃ³n de recursos tanto econÃ³micos como de dotaciÃ³n de mobiliario, equipos, personal docente y tÃ©cnico (PsicÃ³logo, OftalmÃ³logo y Trabajador Social) El 21 de enero de ese mismo aÃ±o, el CAIDV inicia la educaciÃ³n integrada de niÃ±os y niÃ±as con discapacidad visual en el Ã¡mbito de preescolar, para ello se realiza un taller denominado â€œIntegraciÃ³n del niÃ±o Ciego al aula Regularâ€, auspiciado por los dos docentes que laboraban en ese momento, quienes estaban reciÃ©n nombrados oficialmente, uno por el Ministerio de EducaciÃ³n (el Sr. Erasmo Conde) y la otra por la DirecciÃ³n de EducaciÃ³n (la docente Blanca Torres) Es en 1997 cuando el Ministerio de EducaciÃ³n en una revisiÃ³n y reorientaciÃ³n del modelo educativo para las personas con discapacidad visual promueve unas jornadas con la nueva polÃ­tica y conceptualizaciÃ³n de atenciÃ³n educativa de las personas ciegas: y el documento presentado establece que todas las instituciones que imparten educaciÃ³n a personas ciegas desde ese momento se denominarÃ¡n â€œCentro de AtenciÃ³n Integralâ€ (CAI), lo que en principio se le cuestionaba a Portuguesa, en ese momento se le dio la razÃ³n.Es importante mencionar que este CAI es el primero en su gÃ©nero en el Ã¡mbito nacional, producto de la sinergia, sin embargo esto no fue suficiente para su codificaciÃ³n, porque el Ministerio de EducaciÃ³n alegaba que el personal del CAI era casi en su totalidad de la DirecciÃ³n de EducaciÃ³n y no le brindaba apoyo. Fue en el aÃ±o 2003, cuando la DirecciÃ³n de EducaciÃ³n del Estado Portuguesa, en el marco de la creaciÃ³n de la CoordinaciÃ³n de EducaciÃ³n Especial, le asigna al CAIDV Acarigua el CÃ³digo Educativo NÂ° 099000. Otro aspecto relevante es que para lograr el gran sueÃ±o, ha sido necesario un cÃºmulo de esfuerzos para conservarlo y hacerlo realidad, es necesario reforzar la imagen inicial de trabajo para lograr lo que queremos, cultivando la cultura del esfuerzo y la bÃºsqueda constante de nuevas formas de actuar, asÃ­ mismo se requiere desarrollar todo un programa mental que integre los planes tomando en cuenta nuestras fortalezas y oportunidades. En general se podrÃ­a decir que la experiencia de estos 20 aÃ±os, ha sido a grandes rasgos, la siguiente:</p>\r\n<ul style="text-align: justify;">\r\n<li>\r\n<p>Se crea la organizaciÃ³n en la cual se pone de manifiesto mayor interÃ©s en la integraciÃ³n a la vida diaria.</p>\r\n</li>\r\n</ul>\r\n<ul style="text-align: justify;">\r\n<li>\r\n<p>Se afronta la problemÃ¡tica de la persona con discapacidad visual desde una Ã³ptica mÃ¡s compleja, involucrando niÃ±os, niÃ±as, adolescentes, jÃ³venes y adultos en la preparaciÃ³n indispensable para desenvolverse en la vida.</p>\r\n</li>\r\n</ul>\r\n<ul style="text-align: justify;">\r\n<li>\r\n<p>&nbsp;Se crea otro CAI en la ciudad de Guanare con caracterÃ­sticas similares a Ã©ste para la atenciÃ³n de los municipios adyacentes.</p>\r\n</li>\r\n</ul>\r\n<ul style="text-align: justify;">\r\n<li>\r\n<p>Se logra la construcciÃ³n de otra R-2 ampliando asÃ­ el espacio fÃ­sico para la poblaciÃ³n del momento, e independizando el Ãrea Educativa del Ãrea gremial.</p>\r\n</li>\r\n</ul>\r\n<ul style="text-align: justify;">\r\n<li>\r\n<p>Se inicia la integraciÃ³n en niveles y modalidades del sistema educativo.</p>\r\n</li>\r\n</ul>\r\n<ul style="text-align: justify;">\r\n<li>\r\n<p>Se inicia la integraciÃ³n laboral de la persona con discapacidad.</p>\r\n</li>\r\n</ul>\r\n<ul>\r\n<li>\r\n<p>En el aÃ±o escolar 2005-2006, se inicia la aplicaciÃ³n del Proyecto de TecnologÃ­as Adaptativas para personas con discapacidad visual, mediante el Software Jaws, primero con la formaciÃ³n de un docente (TSU MarÃ­a JosÃ© Garantota) y actualmente con los participantes integrados en educaciÃ³n media, diversificada y universitaria. En otro orden de ideas la instituciÃ³n es tomada en cuenta actualmente como centro de pasantÃ­as de CEDUPORT, instituciÃ³n que forma auxiliares de educaciÃ³n Especial, y la Universidad Bolivariana en la cÃ¡tedra de formaciÃ³n de docentes, Colegio Universitario FermÃ­n Toro y Colegio Universitario MonseÃ±or de Talavera, ademÃ¡s en este centro se le ofrece atenciÃ³n formativa a estudiantes de diferentes universidades locales que asisten para investigar aspectos asociados al Ã¡rea de las deficiencias visuales. El CAIDV Acarigua es una unidad operativa que funciona como servicio de apoyo de la modalidad de EducaciÃ³n Especial, brinda atenciÃ³n educativa integral a la poblaciÃ³n de niÃ±os, niÃ±as, adolescentes, jÃ³venes y adultos con discapacidad visual, con o sin discapacidad asociada ubicados en los (7) siete municipios de la parte norte del estado Portuguesa, a travÃ©s de 2 alternativas de atenciÃ³n:</p>\r\n</li>\r\n</ul>\r\n<ol style="text-align: justify;">\r\n<li>\r\n<p>Directa: en el propio CAI, a la poblaciÃ³n con o sin discapacidad asociada, que aÃºn no ha sido integrada ni educativa ni laboralmente, o no puede ser integrada.</p>\r\n</li>\r\n<li>\r\n<p>Como unidad de Apoyo, a fin de garantizar:</p>\r\n</li>\r\n</ol>\r\n<ul style="padding-left: 30px; text-align: justify;">\r\n<li>\r\n<p>AtenciÃ³n integral temprana a niÃ±os, y niÃ±as con discapacidad visual con o sin discapacidad asociada, cuyas edades estÃ©n comprendidas entre 0 y 6 aÃ±os, atendidos en los Centros de Desarrollo Infantil, asÃ­ como garantizar la continuidad del proceso educativo de esta poblaciÃ³n.</p>\r\n</li>\r\n</ul>\r\n<ul style="padding-left: 30px;">\r\n<li>\r\n<p style="text-align: justify;">El proceso de integraciÃ³n escolar de esta poblaciÃ³n en los niveles de EducaciÃ³n Preescolar, BÃ¡sica, Media, Diversificada, Superior, Modalidades de EducaciÃ³n Especial y EducaciÃ³n de Adultos. Los CAI, por su condiciÃ³n de Unidad de apoyo, no estÃ¡n concebidos para brindar escolaridad a su poblaciÃ³n, pues esto es competencia de los planteles donde estÃ¡n integrados los educandos, razÃ³n por la cual se deben realizar acciones de manera cooperativa y coordinada con estas instancias educativas y con otros sectores (salud, social, entre otros).</p>\r\n</li>\r\n</ul>', '<ul>\r\n<li>\r\n<p>Brindar atenciÃ³n Integral a niÃ±os, niÃ±as, adolescentes, jÃ³venes y adultos con discapacidad visual, con o sin discapacidad asociada, a fin de desarrollar habilidades y destrezas que le permitan maximizar sus potencialidades y optimizar sus posibilidades para la integraciÃ³n familiar, educativa, comunitaria.</p>\r\n</li>\r\n</ul>\r\n<div>\r\n<ul>\r\n<li>\r\n<p>Aplicar estrategias que faciliten la formaciÃ³n y capacitaciÃ³n de jÃ³venes y adultos con discapacidad visual, con o sin discapacidades asociadas, mediante la articulaciÃ³n intrasectorial e intersectorial con la finalidad de lograr su IntegraciÃ³n Socio laboral.</p>\r\n</li>\r\n</ul>\r\n<ul>\r\n<li>\r\n<p>Orientar a la familia y comunidad en general para que participe activamente en el proceso de IntegraciÃ³n Social de niÃ±os, niÃ±as, adolescentes, jÃ³venes y adultos con discapacidad visual con o sin discapacidad asociada, mediante charlas, talleres, jornadas de difusiÃ³n, conferencias y otras actividades educativas, culturales, artÃ­sticas, recreativas, deportivas, cientÃ­ficas y tecnolÃ³gicas.</p>\r\n</li>\r\n</ul>\r\n<ul>\r\n<li style="text-align: justify;">\r\n<p>Ofrecer atenciÃ³n integral a la persona con discapacidad visual o baja visiÃ³n considerando tanto sus potencialidades como las condiciones que faciliten su integraciÃ³n social.</p>\r\n</li>\r\n</ul>\r\n<ul>\r\n<li>\r\n<p>Fomentar el respeto por los derechos de la persona con discapacidad visual.</p>\r\n</li>\r\n</ul>\r\n<ul>\r\n<li>\r\n<p>Promover atenciÃ³n preventiva e integral de la persona con discapacidad visual o con baja visiÃ³n desde su nacimiento, a fin de lograr el mÃ¡ximo aprovechamiento de sus potencialidades y su integraciÃ³n al nÃºcleo familiar, escolar y social.</p>\r\n</li>\r\n</ul>\r\n<ul>\r\n<li>\r\n<p>Incorporar la familia y la comunidad al proceso educativo de la persona con discapacidad visual y con baja visiÃ³n.</p>\r\n</li>\r\n</ul>\r\n<ul>\r\n<li>\r\n<p>Promover la capacitaciÃ³n de la persona con discapacidad visual para su incorporaciÃ³n en el campo laboral.</p>\r\n</li>\r\n</ul>\r\n</div>\r\n<div>&nbsp;</div>', '<p>Calle Luis Braille con Av. CircunvalaciÃ³n detrÃ¡s del Centro de Bellas Artes sector Los Cortijos.</p>', '2', 'Caidv13*', '4', '120', 10, 270, '');
 
 -- --------------------------------------------------------
 
@@ -3487,9 +3352,11 @@ INSERT INTO `tusuario` (`idTusuario`, `idusuario`, `idFpersonal`, `nombreusu`, `
 (2, '15491963', 3, 'SPADARO ANTONIO', 'SPADARO.ANTO@GMAIL.COM', 1, '2016-01-23 21:46:54', 1, '15491963', NULL, 0),
 (3, '17960877', 4, 'DIAZ EFREN ', 'EDM_126@HOTMAIL.COM', 1, '2015-03-24 22:01:46', 1, '17960877', NULL, 0),
 (4, '18672728', 5, 'APONTE JORGE', 'COREO@SDD.COM', 1, '2016-06-29 19:16:50', 1, '18672728', NULL, 0),
-(5, 'administrador', 1, 'Web Master', 'webmaster@gmail.com', 1, '2017-03-02 08:49:50', 1, '0', NULL, 0),
+(5, 'administrador', 1, 'Web Master', 'webmaster@gmail.com', 1, '2017-03-09 22:24:39', 1, '0', NULL, 0),
 (15, '20390749', 9, 'ALFA PRUEBA', 'RODESCOBAR44@GMAIL.COM', 1, '2016-11-28 00:41:25', 1, '20390749', 'R2TY10LJBTCHADXIGWKSZMUAFBMEJF', 0),
-(16, '10124585', 0, 'LEO JOSE', 'HOLA@GMAIL.COM', 1, '0000-00-00 00:00:00', 6, '10124585', NULL, 0);
+(16, '10124585', 0, 'LEO JOSE', 'HOLA@GMAIL.COM', 1, '0000-00-00 00:00:00', 6, '10124585', NULL, 0),
+(17, '7581523', 10, 'ASDA YAOOO', 'BARESCO_12@HOTMAIL.COM', 0, '2017-03-09 21:19:08', 1, '7581523', NULL, 2),
+(18, '123456', 13, 'QWEQWEQWE ASDASDA', 'QWEQW@GMAIL.COM', 1, '2017-03-09 22:14:07', 1, '123456', NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -4056,7 +3923,7 @@ ALTER TABLE `tres`
 -- Indices de la tabla `tresponsableente`
 --
 ALTER TABLE `tresponsableente`
-  ADD KEY `idTpersonal` (`idTresponsableente`),
+  ADD PRIMARY KEY (`idTresponsableente`),
   ADD KEY `idFenteExterno` (`idFenteExterno`);
 
 --
@@ -4214,7 +4081,7 @@ ALTER TABLE `dentrada`
 -- AUTO_INCREMENT de la tabla `dmovimientobn`
 --
 ALTER TABLE `dmovimientobn`
-  MODIFY `id_detalle_mov` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=343;
+  MODIFY `id_detalle_mov` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=344;
 --
 -- AUTO_INCREMENT de la tabla `dsalida`
 --
@@ -4239,7 +4106,7 @@ ALTER TABLE `motivobn`
 -- AUTO_INCREMENT de la tabla `movimientobn`
 --
 ALTER TABLE `movimientobn`
-  MODIFY `id_mov` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=344;
+  MODIFY `id_mov` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=345;
 --
 -- AUTO_INCREMENT de la tabla `participante_familiar`
 --
@@ -4254,7 +4121,7 @@ ALTER TABLE `proveedores`
 -- AUTO_INCREMENT de la tabla `tacceso`
 --
 ALTER TABLE `tacceso`
-  MODIFY `idacceso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `idacceso` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `tactividad`
 --
@@ -4304,12 +4171,12 @@ ALTER TABLE `taula`
 -- AUTO_INCREMENT de la tabla `tbitacora`
 --
 ALTER TABLE `tbitacora`
-  MODIFY `idbitacora` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=123;
+  MODIFY `idbitacora` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `tclave`
 --
 ALTER TABLE `tclave`
-  MODIFY `idclave` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `idclave` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 --
 -- AUTO_INCREMENT de la tabla `tcurso`
 --
@@ -4329,7 +4196,7 @@ ALTER TABLE `tdiagnostico`
 -- AUTO_INCREMENT de la tabla `tentesexternos`
 --
 ALTER TABLE `tentesexternos`
-  MODIFY `idTentesexternos` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `idTentesexternos` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT de la tabla `tentrada`
 --
@@ -4449,12 +4316,12 @@ ALTER TABLE `tparticipante`
 -- AUTO_INCREMENT de la tabla `tpersonal`
 --
 ALTER TABLE `tpersonal`
-  MODIFY `idTpersonal` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `idTpersonal` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 --
 -- AUTO_INCREMENT de la tabla `tpregunta`
 --
 ALTER TABLE `tpregunta`
-  MODIFY `idpregunta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `idpregunta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT de la tabla `tpresentacion`
 --
@@ -4469,7 +4336,7 @@ ALTER TABLE `tres`
 -- AUTO_INCREMENT de la tabla `tresponsableente`
 --
 ALTER TABLE `tresponsableente`
-  MODIFY `idTresponsableente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `idTresponsableente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT de la tabla `trol`
 --
@@ -4519,7 +4386,7 @@ ALTER TABLE `tunidadmedida`
 -- AUTO_INCREMENT de la tabla `tusuario`
 --
 ALTER TABLE `tusuario`
-  MODIFY `idTusuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `idTusuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 --
 -- AUTO_INCREMENT de la tabla `tvalor_item`
 --

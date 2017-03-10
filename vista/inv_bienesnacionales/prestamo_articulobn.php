@@ -106,7 +106,7 @@ else
                 </select>
             </div>
             <div class="col-lg-6 span6">
-                <label>Personal responsable<span class="asterisco">*</span>  <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Responsable del ente externo."><i class="fa fa-question" ></i></span></label>
+                <label>Responsable del ente externo<span class="asterisco">*</span>  <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Responsable del ente externo."><i class="fa fa-question" ></i></span></label>
                 <select name="txtResponsableEnte" id="txtResponsableEnte" class="span12" required>
                     <option value="0">SELECCIONE UN PERSONAL</option>
                     <?php print $loFuncGenerales->fnCombosResponsablesEnte($selectedResponsaEnte); ?>
@@ -212,7 +212,7 @@ else
                     </div>
                 </div>
             </div>
-             <center><button type="button" class="btn btn-warning" data-dismiss="modal" aria-label="Close">Cerrar Modal</button></center>
+             <center><button type="button" class="btn btn-warning" data-dismiss="modal" aria-label="Close">Aceptar</button></center>
         </div>
     </form>
 </div>

@@ -216,7 +216,7 @@
 		function registrar_personal()
 		{
 			$lnHecho=false;		
-			$this->inicio_trans(); // inicializo la trasaccion
+			$this->inicio_trans(); // inicializo la transacción
 
 			$sql="INSERT INTO 
 					`tpersonal`(nacionalidadper, `idpersonal`, `nombreunoper`, `nombredosper`, `apellidounoper`, `apellidodosper`, 
@@ -234,12 +234,7 @@
 				$lnHecho=true;
 			}
 
-			if( $lnHecho)
-			{
-			 	$this->fin_trans(); // finalizo la transaccion con exito
-			 	//$this->deshacer_trans(); // finalizo la transaccion fallida 
-			}
-			else
+			if( !$lnHecho)
 			{
 			 	$this->deshacer_trans(); // finalizo la transaccion fallida 
 			}

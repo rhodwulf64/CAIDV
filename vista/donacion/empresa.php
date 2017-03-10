@@ -53,7 +53,7 @@ for($i=0;$i<count($laModulos);$i++)
 </script>
 <!--datatable-->
 <div style="float: left" class="col-lg-8 span8 pull-left">
-    <h3>Proveedores Jurídicos</h3>
+    <h3>Proveedor Jurídico</h3>
     <div class="alert alert-info">
         <ul>
             En este módulo podrá registrar, consultar, editar, desactivar y activar los proveedores jurídicos.
@@ -65,7 +65,7 @@ for($i=0;$i<count($laModulos);$i++)
         <?php
         if($registrar)
         {
-            echo '<a class="btn btn-success" id="btn_registrar" href="?vista=donacion/registrar_empresa"><i class="icon-plus icon-white"></i> Registrar Proveedores</a>';
+            echo '<a class="btn btn-success" id="btn_registrar" href="?vista=donacion/registrar_empresa"><i class="icon-plus icon-white"></i> Registrar</a>';
         }
         ?>
         <table class="table table-striped table-hover table-bordered bootstrap-datatable datatable dataTable" id="filtro">

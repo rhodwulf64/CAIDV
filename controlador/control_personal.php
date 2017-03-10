@@ -46,13 +46,16 @@
 		break;
 		case 'registrar_personal':
 			$hecho=$lobjPersonal->registrar_personal();
-			$IDenvi=$lobjPersonal->get_IDagregado();
-			$hecho=$lobjUsuario->registrar_usuario($IDenvi);
 			if($hecho)
 			{
-				$lobjBitacora->set_Datos($_SERVER['HTTP_REFERER'],$ldFecha,$lcReal_ip,'Registrar','Cargar datos','*','tpersonal','','',$_SESSION['usuario'],$operacion); //envia los datos a la clase bitacora
-   				$lobjBitacora->registrar_bitacora();//registra los datos en la tabla tbitacora.
-				$_SESSION['msj']='Se ha registrado exitosamente';
+				$IDenvi=$lobjPersonal->get_IDagregado();
+				$hecho=$lobjUsuario->registrar_usuario($IDenvi);
+				if ($hecho)
+				{
+					$lobjBitacora->set_Datos($_SERVER['HTTP_REFERER'],$ldFecha,$lcReal_ip,'Registrar','Cargar datos','*','tpersonal','','',$_SESSION['usuario'],$operacion); //envia los datos a la clase bitacora
+	   				$lobjBitacora->registrar_bitacora();//registra los datos en la tabla tbitacora.
+					$_SESSION['msj']='Se ha registrado exitosamente';
+				}
 			}
 			else
 			{	

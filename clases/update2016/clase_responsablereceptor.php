@@ -67,7 +67,7 @@
 		{
 			$this->conectar();
 			$dependencia=false;			
-				$sql="SELECT * FROM tresponsableente  WHERE idTresponsableente='$this->lcIDprincipal'";
+				$sql="SELECT * FROM tresponsableente WHERE idTresponsableente='$this->lcIDprincipal'";
 				$pcsql=$this->filtro($sql);
 				if($laRow=$this->proximo($pcsql))
 				{
@@ -211,14 +211,12 @@
 			$this->desconectar();
 			return $Fila;
 		}
-
-		}
-		
-		function registrar_responsablereceptor ()
+	
+		function registrar_responsablereceptor()
 		{
 			$this->conectar();
 
-			$sql="INSERT INTO `tresponsableente `(`identeExterno`,`nacionalidadper`,`cedula`,`idFenteExterno`,`nombrefull`,`apellidofull`,Estatus) 
+			$sql="INSERT INTO `tresponsableente`(`nacionalidadper`,`cedula`,`idFenteExterno`,`nombrefull`,`apellidofull`,Estatus) 
 			VALUES (UPPER('$this->Nacionalidad'),'$this->Cedula','$this->idFenteExterno',UPPER('$this->NombreFull'),UPPER('$this->ApellidoFull'),'1')";
 		
 			$lnHecho=$this->ejecutar($sql);
@@ -262,5 +260,5 @@
 			$this->desconectar();
 			return $lnHecho;
 		}
-	
+}
 ?>

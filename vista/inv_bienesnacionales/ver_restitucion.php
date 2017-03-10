@@ -153,7 +153,7 @@ for($i=0;$i<count($laModulos);$i++)
         ?>
         <table class="table table-striped table-hover table-bordered bootstrap-datatable datatable dataTable" id="filtro">
             <thead>
-                <th>N° Prest.</th><th>Fecha Prest.</th><th>Fecha de Registro</th><th>ENTE Beneficiado</th><th>Resp. ENTE</th><th>Resp. CAIDV</th><th>Fecha Acordada</th><th>Fecha Restituido</th><th>Usuario</th><th>Motivo</th><th>Observación</th><th>Acción</th>
+                <th>N° Prest.</th><th>Fecha Prest.</th><th>Fecha de Registro</th><th>Ente Externo</th><th>Resp. Ente</th><th>Resp. CAIDV</th><th>Fecha Acordada</th><th>Fecha Restituido</th><th>Usuario</th><th>Motivo</th><th>Observación</th><th>Acción</th>
             </thead>
             <tbody>
             <?php

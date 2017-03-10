@@ -207,7 +207,7 @@ else
                     </div>
                 </div>
             </div>
-             <center><button type="button" class="btn btn-warning" data-dismiss="modal" aria-label="Close">Cerrar Modal</button></center>
+             <center><button type="button" class="btn btn-warning" data-dismiss="modal" aria-label="Close">Aceptar</button></center>
         </div>
     </form>
 </div>

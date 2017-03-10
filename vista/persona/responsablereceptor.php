@@ -35,7 +35,7 @@ for($i=0;$i<count($laModulos);$i++)
   {
     if (document.getElementById("cam_razondesactiva").value!="")
     {
-        if(confirm("¿Esta seguro que desea desactivar el Ente Receptor seleccionado?"))
+        if(confirm("¿Esta seguro que desea desactivar el Responsable seleccionado?"))
         {
           document.form_responsablereceptor.submit();
         }      
@@ -50,7 +50,7 @@ for($i=0;$i<count($laModulos);$i++)
   
   function restaurar(id)
   {
-     if(confirm("¿Esta seguro que desea restaurar el Ente Receptor seleccionado?"))
+     if(confirm("¿Esta seguro que desea restaurar el Responsable seleccionado?"))
     {
       document.getElementById("cam_idinstrumento").value=id;
       document.getElementById("cam_operacion").value='restaurar_responsablereceptor';
@@ -68,10 +68,10 @@ for($i=0;$i<count($laModulos);$i++)
     } );
 </script>  
 <div style="float: left" class="col-lg-8 span8 pull-left">
-    <h3>Responsable Receptor</h3>
+    <h3>Responsable del ente externo</h3>
     <div class="alert alert-info">
         <ul>
-            En este módulo podrá registrar, consultar, editar, desactivar y activar el Responsable Receptor que utilizará el sistema.
+            En este módulo podrá registrar, consultar, editar, desactivar y activar el Responsable del ente externo que utilizará el sistema.
         </ul>
     </div>
     <form action="../controlador/control_responsablereceptor.php" method="POST" name="form_responsablereceptor">
@@ -86,7 +86,7 @@ for($i=0;$i<count($laModulos);$i++)
         ?>
         <table class="table table-striped table-hover table-bordered bootstrap-datatable datatable dataTable" id="filtro">
             <thead>
-                <th>Cédula</th><th>Nombre Y Apellido</th><th>Ente Receptor</th><th>Telefono del Ente</th><th>Estatus</th><?php if($consultar || $eliminar)
+                <th>Cédula</th><th>Nombre Y Apellido</th><th>Ente Externo</th><th>Telefono del Ente</th><th>Estatus</th><?php if($consultar || $eliminar)
                         { echo '<th>Acción</th>';}?>
             </thead>
             <tbody>
@@ -142,7 +142,7 @@ for($i=0;$i<count($laModulos);$i++)
             <div class="modal-content">
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">Desactivar Responsable Receptor</h4>
+                <h4 class="modal-title" id="myModalLabel">Desactivar Responsable del ente externo</h4>
               </div>
               <div class="modal-body">
                    <div class="row">

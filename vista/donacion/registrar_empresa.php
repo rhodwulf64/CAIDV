@@ -6,7 +6,7 @@
     $Modulos=$lobjModulo->consultar_empresa();
 ?>
 <div style="float: left" class="col-lg-8 span8 pull-left">
-    <h3>Registrar empresa</h3>
+    <h3>Registrar proveedor jurídico</h3>
      <div class="alert alert-info">
         <ul>
             <li>En este formulario podrá registrar las empresas del sistema.</li>

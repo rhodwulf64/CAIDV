@@ -6,7 +6,7 @@
     $Modulos=$lobjModulo->consultar_persona();
 ?>
 <div style="float: left" class="col-lg-8 span8 pull-left">
-    <h3>Registrar donante</h3>
+    <h3>Registrar Proveedor</h3>
      <div class="alert alert-info">
         <ul>
             <li>En este formulario podrá registrar los donantes del sistema.</li>
