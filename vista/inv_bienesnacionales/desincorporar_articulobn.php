@@ -1,9 +1,9 @@
 <?php
 $consultar= $registrar= $eliminar=false;
-for($i=0;$i<count($laModulos);$i++) 
+for($i=0;$i<count($laModulos);$i++)
     {
-         
-        $laServicios=$lobjRol->consultar_servicios_menu($laModulos[$i][0]); 
+
+        $laServicios=$lobjRol->consultar_servicios_menu($laModulos[$i][0]);
         for ($j=0; $j <count($laServicios) ; $j++) //Se recorre un ciclo para poder extraer los datos de cada uno de los servicios que tiene asignado el modulo para poder constuir el menú
         {
             if($laServicios[$j][2]=='persona/consultar_docente')
@@ -46,8 +46,8 @@ else
 ?>
 
 <script type="text/javascript" charset="utf-8">
-    
-</script>  
+
+</script>
 <div style="float: left" class="col-lg-8 span8 pull-left">
     <h3><?php print($titulo); ?></h3>
     <div class="alert alert-info">
@@ -66,11 +66,6 @@ else
         <input type="hidden"  name="txtMoviObjeto" id="txtMoviObjeto"/>
         <input type="hidden"  name="txtFila" id="txtFila"/>
         <div class="row-fluid">
-            <div class="col-lg-6 span6">
-                <label>Número de desincorporación<span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Número de referencia que identifica la desincorporación"><i class="fa fa-question" ></i></span></label>
-                <input type="text" class="span12" maxlength="9"  name="txtNroDocumento" id="txtNroDocumento" onblur="BuscarDesincorporacionporCodigo(this.value)" <?php print($OnKey); ?> value="<?php print($Datos_Docente['iddocente']);?>" required/>
-
-            </div>
 
             <div class="col-lg-6 span6">
                 <label>Fecha de la desincorporación<span class="asterisco">*</span><span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Fecha en la que se realiza la desincorporación"><i class="fa fa-question" ></i></span></label>
@@ -83,20 +78,10 @@ else
         </div>
         <div class="row-fluid">
             <div class="col-lg-6 span6">
-                <label>Personal responsable<span class="asterisco">*</span>  <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Responsable de la desincorporación"><i class="fa fa-question" ></i></span></label>
-                <select name="txtResponsable" id="txtResponsable" class="span12" required>
-                    <option value="0">SELECCIONE UN PERSONAL</option>
-                    <?php print $loFuncGenerales->fnCombosPersonalActivos($selectedPersonal); ?>
-                </select>
-            </div>
-        </div>
-       
-        <div class="row-fluid">
-            <div class="col-lg-6 span6">
                 <label>Motivo<span class="asterisco">*</span>  <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Motivo de la operación"><i class="fa fa-question" ></i></span></label>
                 <select name="txtMotivo" id="txtMotivo" class="span12" required>
                     <option value="0">SELECCIONE UN MOTIVO</option>
-                    <?php 
+                    <?php
                     print $loFuncGenerales->fnComboMotivosGeneral($selectMotivo,"5");
                     ?>
                 </select>
@@ -115,7 +100,7 @@ else
                 </div>
             </div>
             <br>
-              <div id="detalle_bn" class="row-fluid" border="2" class="label label-info">       
+              <div id="detalle_bn" class="row-fluid" border="2" class="label label-info">
                 <legend class="label label-info">
                     <h4>Bienes nacionales seleccionados</h4>
                 </legend>
@@ -137,9 +122,9 @@ else
             <table border="1" id="tabBienNacional" class="tablaItems">
 
             </table>
-                                
 
-        
+
+
 <!-- ******************************************* Detalle del bien nacional *************************************************-->
     <input type="hidden" id="validarCaberaLlena" name="validarCaberaLlena"> <!-- variable para validar la cabecera -->
     <tr>
@@ -149,15 +134,15 @@ else
                     <!-- pintar detalle dinamico -->
                         <?php if(isset($_SESSION["GlobalDetalleDesin"])) echo $_SESSION["GlobalDetalleDesin"]; ?>
                 </table>
-            </div> 
+            </div>
         </td>
     </tr>
-           
+
         <div class="botonera">
             <input type="button" class="btn btn-success" name="btn_enviar" id="btn_enviar" value="Aceptar" onclick="GuardarCambios();">
             <input type="button" class="btn btn-danger" name="btn_regresar" id="btn_regresar" value="Regresar" onclick="window.location.href='?vista=inv_bienesnacionales/ver_desincorporacion'">
         </div>
-      
+
         <div class="modal fade" id="ModalSeleccionaBienes" tabindex="-1" style="position:absolute;left:300px;width: 95%;height: 90%;display: none;" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -173,8 +158,8 @@ else
                                 <select name="txtTipoBN" id="txtTipoBN" class="span12" onchange="fpFiltraBienesPorTipo(this.value);">
                                     <option value="0">SELECCIONE UNA OPCIÓN</option>
                                     <?php
-                                        print $loFuncGenerales->fnCombosGeneralesActivos("tipobn","des_tbien","des_tbien","cod_tbien","status",$selectedTipoBN); 
-                                    ?> 
+                                        print $loFuncGenerales->fnCombosGeneralesActivos("tipobn","des_tbien","des_tbien","cod_tbien","status",$selectedTipoBN);
+                                    ?>
                                 </select>
                                 <br>
                                 <table class="table table-striped table-hover table-bordered bootstrap-datatable datatable dataTable" id="TablaBienesN">
@@ -182,7 +167,7 @@ else
                                         <th>Código BN</th><th>Código Inst.</th><th>Serial</th><th>Tipo de Bien</th><th>Marca</th><th>Modelo</th><th>Descripción</th><th>Observación</th><th>Acción</th>
                                     </thead>
                                     <tbody id="tbodyResulta">
-                                   
+
                                     </tbody>
                                 </table>
                             </div>
@@ -207,7 +192,7 @@ var loF=document.f_formulario;
 
     function MostrarSeleccionBN()
     {
-        $('#ModalSeleccionaBienes').modal('show');  
+        $('#ModalSeleccionaBienes').modal('show');
     }
 
     function ConsultarDocumento(id)
@@ -243,16 +228,16 @@ var loF=document.f_formulario;
                         var Confi=data['Master'];
                         if(Confi.lsExito==1)
                         {
-                            Notifica_Error("El Número de Documento '"+document.getElementById("txtNroDocumento").value+"' ya se encuentra registrado.");   
-                            document.getElementById("txtNroDocumento").value="";                      
-                            document.getElementById("txtNroDocumento").focus();                      
-                            document.getElementById("txtNroDocumento").style="border:1px solid red;"; 
+                            Notifica_Error("El Número de Documento '"+document.getElementById("txtNroDocumento").value+"' ya se encuentra registrado.");
+                            document.getElementById("txtNroDocumento").value="";
+                            document.getElementById("txtNroDocumento").focus();
+                            document.getElementById("txtNroDocumento").style="border:1px solid red;";
                         }
                         else
                         {
-                           document.getElementById("txtNroDocumento").style="border:1px solid green;"; 
+                           document.getElementById("txtNroDocumento").style="border:1px solid green;";
 
-                        }               
+                        }
                     }
                 });
             }
@@ -260,9 +245,9 @@ var loF=document.f_formulario;
         }
         else
         {
-            document.getElementById("txtNroDocumento").style="border:1px solid red;"; 
-            Notifica_Error("No ha ingresado Número de Documento válido.");   
-           
+            document.getElementById("txtNroDocumento").style="border:1px solid red;";
+            Notifica_Error("No ha ingresado Número de Documento válido.");
+
         }
 
     }
@@ -287,15 +272,15 @@ var loF=document.f_formulario;
                 if(Confi.lsExito==1)
                 {
 
-                        ListarBienesN(ListaBN);               
-         
+                        ListarBienesN(ListaBN);
+
                 }
                 else
                 {
                     Notifica_Error("No se pudo listar los bienes nacionales.");
                 }
-               
-                
+
+
             }
         });
 
@@ -360,14 +345,14 @@ var loF=document.f_formulario;
 
 
         });
-           
-                
+
+
             oTable = $('#TablaBienesN').dataTable({
             'bJQueryUI': true,
             'sPaginationType': 'full_numbers',
             'iDisplayLength': 10
             });
-    
+
 
     }
 
@@ -380,7 +365,7 @@ var loF=document.f_formulario;
 
         $(FilaObjeto).each(function(index, element)
             {
-         
+
             var CodBN = $(element).find("td").eq(0).html();
             var CodIns = $(element).find("td").eq(1).html();
             var Serial = $(element).find("td").eq(2).html();
@@ -392,9 +377,9 @@ var loF=document.f_formulario;
 
             fpAgregar(idobjeto);
 
-            liFila=Number(loF.txtFila.value);   
+            liFila=Number(loF.txtFila.value);
 
-            
+
             CodBN=evalCampoBN(CodBN);
             CodIns=evalCampoBN(CodIns);
             Serial=evalCampoBN(Serial);
@@ -436,17 +421,17 @@ var loF=document.f_formulario;
 
             if(FilaGuardada!="")
             {
-                fpQuitar(FilaFinal);           
+                fpQuitar(FilaFinal);
             }
-        
+
         }
     }
 
 
-    function fpAgregar(IDmodalFila) 
+    function fpAgregar(IDmodalFila)
     {
             var liFila=Number(loF.txtFila.value);
-       
+
             var loTabla = document.getElementById("tabBienNacional");
 
 
@@ -507,7 +492,7 @@ var loF=document.f_formulario;
             lotxtSerialBN.setAttribute('cols',"1");
             lotxtSerialBN.setAttribute('rows',"2");
             lotxtSerialBN.setAttribute('disabled',"true");
-           
+
             var lotxtTipoBN = document.createElement("textarea");
             lotxtTipoBN.setAttribute('class',"form-control");
             lotxtTipoBN.setAttribute('name',"txtTipoBN"+liFila);
@@ -571,7 +556,7 @@ var loF=document.f_formulario;
 
             var lobtnMinus = document.createElement("i");
             lobtnMinus.setAttribute('class',"fa fa-minus");
-            
+
              // CON EL METODO appendChild(); LOS AGREGO A LA CELDA QUE QUIERO
 
             loCelda1.appendChild(lotxtNumeFila).appendChild(lotxtIDBN);
@@ -584,7 +569,7 @@ var loF=document.f_formulario;
             loCelda8.appendChild(lotxtDescripcionBN);
             loCelda9.appendChild(lotxtObservacionBN);
             loCelda10.appendChild(lobtnQuitar).appendChild(lobtnMinus);
-  
+
     }
 
     function fpQuitarDesdeDetalles(NroFila)
@@ -684,10 +669,10 @@ var loF=document.f_formulario;
                 var Confi=data['Master'];
                 if(Confi.lsExito==1)
                 {
-                    
-                    
+
+
                     Notifica_Logro("Esta Desincorporación fue guardada con éxito.");
-                   
+
                     setTimeout(function()
                     {
                         if (confirm("Desea registrar una nueva Desincorporación?"))
@@ -701,14 +686,14 @@ var loF=document.f_formulario;
                     }, 2000);
 
 
-                   
+
                 }
                 else
                 {
-                    Notifica_Error("Esta Desincorporación no se pudo guardar, verifique los datos ingresados.");  
+                    Notifica_Error("Esta Desincorporación no se pudo guardar, verifique los datos ingresados.");
                 }
-               
-                
+
+
             }
         });
 
@@ -748,7 +733,6 @@ var loF=document.f_formulario;
     {
         var vInvalido=0;
         var vResult=false;
-        var fNroDocumento = $("#txtNroDocumento").val();
         var fFechaLlegada = $("#txtFechaLlegada").val();
         var fProveedor = $("#txtProveedor").val();
         var fResponsable = $("#txtResponsable").val();
@@ -756,14 +740,7 @@ var loF=document.f_formulario;
         var fFilaBN = parseInt($("#txtFila").val());
         var fechaActual = "<?php print $fechaHoy; ?>";
 
-        if(fNroDocumento.length<3)
-        {
-            Notifica_Error("Nro Documento inválido, debe ingresar un Nro Documento con mas de 2 digitos.");
-            $("#txtNroDocumento").focus();
-            vInvalido=1;
-        }
-
-        else if(fFechaLlegada=="")
+        if(fFechaLlegada=="")
         {
             Notifica_Error("El campo Fecha no puede quedar vacío.");
             $("#txtFechaLlegada").focus();
@@ -776,14 +753,6 @@ var loF=document.f_formulario;
             $("#txtFechaLlegada").focus();
             vInvalido=1;
         }
-
-        else if(fResponsable=="0")
-        {
-            Notifica_Error("Seleccione un Responsable de la operación.");
-            $("#txtResponsable").focus();
-            vInvalido=1;
-        }
-
         else if(fMotivo=="0")
         {
             Notifica_Error("Seleccione el Motivo de la operación.");
@@ -803,13 +772,13 @@ var loF=document.f_formulario;
             vResult=true;
         }
         return vResult;
-       
+
     }
 
 
     function AgregarBienesSeleccionados()
     {
-      
+
 
     }
 
@@ -820,7 +789,7 @@ var loF=document.f_formulario;
 
 
         $("#txtNroDocumento").focus();
-           
-      
+
+
     }
 </script>

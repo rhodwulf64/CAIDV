@@ -37,7 +37,15 @@ class clsRecepcion Extends ModeloConect{
 		$fecha = $obj_fechaHora->ObtenerFechaServer3();
 		$hora = $obj_fechaHora->ObtenerHoraServer();
 		$fechaDeLlegada = $obj_fechaHora->SubirFechaServer($this->G["txtFechaLlegada"]); //transformo la fecha a ser legible por la base de datos
-
+		$sql="SELECT COUNT(m.nro_document) AS nro FROM movimientobn AS m INNER JOIN motivobn AS mo ON(m.id_motivo_mov=mo.id_motivo_mov) WHERE mo.tipo_motivo=1 AND mo.status=1";
+		$rs = $this->ejecuta($sql);
+		$tupla = $this->converArray($rs);
+		$nro=$tupla['nro']+1;
+		$nro="REC-".$nro;
+		$sqlp="SELECT  p.idTpersonal AS id FROM tpersonal AS p INNER JOIN tusuario AS u ON(p.idTpersonal=u.idFpersonal) WHERE u.idTusuario='".$_SESSION['idTusuario']."'";
+		$rsp = $this->ejecuta($sqlp);
+		$tuplap = $this->converArray($rsp);
+		$idP=$tuplap['id'];
 		/***********************************************/
 		/** sql para insertar en la tabla movimiento (cabecera) de la transaccion **/
 		$sql = "INSERT INTO movimientobn (
@@ -59,13 +67,13 @@ class clsRecepcion Extends ModeloConect{
 		id_motivo_anulacion,
 		status
 		) VALUES(
-		'".$this->G["txtNroDocumento"]."',
+		'".$nro."',
 		'".$fecha."',
 		'".$hora."',
 		'".$fechaDeLlegada."',
 		'1',
 		NULORD('".$this->G["txtProveedor"]."'),
-		NULORD('".$this->G["txtResponsable"]."'),
+		NULORD('".$idP."'),
 		NULORD('".$_SESSION['idTusuario']."'),
 		NULORD('".$this->G["txtMotivo"]."'),
 		NULL,

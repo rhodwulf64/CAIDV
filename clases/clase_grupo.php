@@ -30,7 +30,7 @@
 					$Fila[$cont][2]=$laRow['status'];
 					$cont++;
 				}
-			
+
 			$this->desconectar();
 			return $Fila;
 		}
@@ -39,20 +39,30 @@
 		{
 			$this->conectar();
 			$cont=0;
-				$sql="SELECT id_categoria,nom_cat,status FROM categoriabn WHERE status='1' ";
+				$sql="SELECT idgrupo,nombregru,estatusgru FROM tgrupo WHERE estatusgru='1' ";
 				$pcsql=$this->filtro($sql);
 				while($laRow=$this->proximo($pcsql))
 				{
-					$Fila[$cont][0]=$laRow['id_categoria'];
-					$Fila[$cont][1]=$laRow['nom_cat'];
-					$Fila[$cont][2]=$laRow['status'];
+					$Fila[$cont][0]=$laRow['idgrupo'];
+					$Fila[$cont][1]=$laRow['nombregru'];
+					$Fila[$cont][2]=$laRow['estatusgru'];
 					$cont++;
 				}
-			
+
 			$this->desconectar();
 			return $Fila;
 		}
-
+		function consultar_aspirantes(){
+			$this->conectar();
+			$sql="SELECT COUNT(DISTINCT nombreunopar) AS total FROM tparticipante AS tp,tgrupo WHERE idgrupo = '$this->lcid_categoria' AND (YEAR (CURDATE()) - YEAR (tp.fechanacimientopar)) - (RIGHT (CURDATE(), 5) < RIGHT (tp.fechanacimientopar, 5)) BETWEEN edadmin AND edadmax";
+			$pcsql=$this->filtro($sql);
+			if($laRow=$this->proximo($pcsql))
+			{
+				$Fila[0]=$laRow['total'];
+			}
+			$this->desconectar();
+			return $Fila;
+		}
 		function consultar_grupo()
 		{
 			$this->conectar();
@@ -63,7 +73,7 @@
 					$Fila[0]=$laRow['id_categoria'];
 					$Fila[1]=$laRow['nom_cat'];
 				}
-			
+
 			$this->desconectar();
 			return $Fila;
 		}
@@ -71,14 +81,14 @@
 		function consultar_dependencia()
 		{
 			$this->conectar();
-			$dependencia=false;			
+			$dependencia=false;
 				$sql="SELECT * FROM tarticulo WHERE id_categoria='$this->lcid_categoria' ";
 				$pcsql=$this->filtro($sql);
 				if($laRow=$this->proximo($pcsql))
 				{
 					$dependencia=true;
 				}
-			
+
 			$this->desconectar();
 			return $dependencia;
 		}
@@ -87,7 +97,7 @@
 		{
 			$this->conectar();
 			$sql="INSERT INTO categoriabn (nom_cat)VALUES(UPPER('$this->lcNombre'))";
-			$lnHecho=$this->ejecutar($sql);			
+			$lnHecho=$this->ejecutar($sql);
 			$this->desconectar();
 			return $lnHecho;
 		}
@@ -96,7 +106,7 @@
 		{
 			$this->conectar();
 			$sql="UPDATE categoriabn SET status='0' WHERE id_categoria='$this->lcid_categoria' ";
-			$lnHecho=$this->ejecutar($sql);			
+			$lnHecho=$this->ejecutar($sql);
 			$this->desconectar();
 			return $lnHecho;
 		}
@@ -105,16 +115,16 @@
 		{
 			$this->conectar();
 			$sql="UPDATE categoriabn SET status='1' WHERE id_categoria='$this->lcid_categoria' ";
-			$lnHecho=$this->ejecutar($sql);			
+			$lnHecho=$this->ejecutar($sql);
 			$this->desconectar();
 			return $lnHecho;
 		}
-		
+
 		function editar_grupo()
 		{
 			$this->conectar();
 			$sql="UPDATE categoriabn SET nom_cat=UPPER('$this->lcNombre') WHERE id_categoria='$this->lcid_categoria' ";
-			$lnHecho=$this->ejecutar($sql);			
+			$lnHecho=$this->ejecutar($sql);
 			$this->desconectar();
 			return $lnHecho;
 		}

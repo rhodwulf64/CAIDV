@@ -40,30 +40,17 @@ else
     <input type="hidden"  name="txtFila" id="txtFila"/>
         <div class="row-fluid">
             <div class="col-lg-6 span6">
-                <label>Número de recepción<span class="asterisco">*</span>  <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Número de referencia que identifica la recepción"><i class="fa fa-question" ></i></span></label>
-                <input type="text" class="span12" maxlength="9"  name="txtNroDocumento" id="txtNroDocumento" onblur="BuscarRecepcionporCodigo(this.value)" <?php print($OnKey); ?> value="<?php print($Datos_Consultados['iddocente']);?>" required/>
-            </div>
-            <div class="col-lg-6 span6">
                 <label>Fecha de entrada<span class="asterisco">*</span>  <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Fecha de recepción del bien nacional"><i class="fa fa-question" ></i></span></label>
                 <div class="span10 input-append date"  id="dp3" data-date="<?php print $fechaHoy; ?>"  data-date-format="dd-mm-yyyy" data-date-viewmode="years">
                     <input type="text" class="span12"  name="txtFechaLlegada" size="16" id="txtFechaLlegada" required value="<?php print($Datos_Consultados['FechaLlegada']);?>" required/>
                   <span class="add-on"><i class="icon-th"></i></span>
                 </div>
             </div>
-        </div>
-        <div class="row-fluid">
             <div class="col-lg-6 span6">
                 <label>Proveedor<span class="asterisco">*</span>  <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Nombre del proveedor"><i class="fa fa-question" ></i></span></label>
                 <select name="txtProveedor" id="txtProveedor" class="span12" required>
                     <option value="0">SELECCIONE UN PROVEEDOR</option>
                     <?php print $loFuncGenerales->fnCombosGeneralesActivos("am_tempresa","idEmpresa","nombre","rif","estatus",$selectedProveedor); ?>
-                </select>
-            </div>
-            <div class="col-lg-6 span6">
-                <label>Personal responsable<span class="asterisco">*</span>  <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Nombre del receptor del bien nacional"><i class="fa fa-question" ></i></span></label>
-                <select name="txtResponsable" id="txtResponsable" class="span12" required>
-                    <option value="0">SELECCIONE UN PERSONAL</option>
-                    <?php print $loFuncGenerales->fnCombosPersonalActivos($selectedPersonal); ?>
                 </select>
             </div>
         </div>
@@ -212,10 +199,8 @@ else
     $('#dp3').datepicker();
     $(function(){
 
-    $("#txtNroDocumento").lemez_aceptar("todo","btn_enviar");
     $("#txtFechaLlegada").lemez_aceptar("fecha","btn_enviar");
     $("#txtProveedor").lemez_aceptar("numero","btn_enviar");
-    $("#txtResponsable").lemez_aceptar("numero","btn_enviar");
     $("#txtMotivo").lemez_aceptar("numero","btn_enviar");
 
     });
@@ -692,10 +677,8 @@ else
 
     function fpDesactivaForm()
     {
-            document.getElementById("txtNroDocumento").disabled=true;
             document.getElementById("txtFechaLlegada").disabled=true;
             document.getElementById("txtProveedor").disabled=true;
-            document.getElementById("txtResponsable").disabled=true;
             document.getElementById("txtMotivo").disabled=true;
             document.getElementById("txtObservacion").disabled=true;
 
@@ -713,10 +696,8 @@ else
 
     function fpLimpiarForm()
     {
-            document.getElementById("txtNroDocumento").value="";
             document.getElementById("txtFechaLlegada").value="";
             document.getElementById("txtProveedor").value="";
-            document.getElementById("txtResponsable").value="";
             document.getElementById("txtMotivo").value="";
             document.getElementById("txtObservacion").value="";
 
@@ -726,9 +707,6 @@ else
 
             document.getElementById("tabBienNacional").deleteRow(0);
             document.getElementById("txtFila").value="";
-
-
-            document.getElementById("txtNroDocumento").focus();
 
     }
 
@@ -759,13 +737,7 @@ else
         var fFilaBN = parseInt($("#txtFila").val());
         var fechaActual = "<?php print $fechaHoy; ?>";
 
-        if(fNroDocumento.length<3)
-        {
-            Notifica_Error("Nro Documento inválido, debe ingresar un Nro Documento con mas de 2 digitos.");
-            $("#txtNroDocumento").focus();
-            vInvalido=1;
-        }
-        else if(fFechaLlegada=="")
+        if(fFechaLlegada=="")
         {
             Notifica_Error("El campo Fecha no puede quedar vacío.");
             $("#txtFechaLlegada").focus();
@@ -781,12 +753,6 @@ else
         {
             Notifica_Error("Seleccione un Proveedor.");
             $("#txtProveedor").focus();
-            vInvalido=1;
-        }
-        else if(fResponsable=="0")
-        {
-            Notifica_Error("Seleccione un Responsable de la operación.");
-            $("#txtResponsable").focus();
             vInvalido=1;
         }
         else if(fMotivo=="0")

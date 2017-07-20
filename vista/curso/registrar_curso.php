@@ -19,7 +19,7 @@ else
     <h3>Planificar curso</h3>
     <form class="formulario" action="?vista=curso/registrar_curso" method="POST" >
         <input type="hidden" value="<?php print($operacion);?>" name="operacion" />
-        
+
         <div class="row-fluid">
             <div class="col-lg-4 span4">
                 <label>Grupo </label>
@@ -31,10 +31,10 @@ else
                 <label>Cantidad de aspirantes</label>
             </div>
         </div>
-          
+
         <div class="row-fluid">
             <div class="col-lg-4 span4">
-                    
+
             </div>
              <div class="col-lg-5 span4">
                 <input type="text" class="span3"  name="cantidad_cursos[]" id="cam_cantidad_cursos" required value="0"/>
@@ -84,7 +84,7 @@ else
                         else
                         {
                                 print('<option value="">No existen lapsos aperturados, debe aperturar un lapso.</option>');
-                        }                       
+                        }
                     ?>
                 </select>
             </div>
@@ -112,7 +112,7 @@ else
                     for($i=0;$i<count($Lista_Grupos);$i++)
                     {
                         echo '<th>'.$Lista_Grupos[$i][1].'</th>';
-                       
+
                     }
                 ?>
             </thead>
@@ -121,9 +121,9 @@ else
                     <?php
                     for($i=0;$i<count($Lista_Grupos);$i++)
                     {
-                        $ObjGrupo->set_Idgrupo($Lista_Grupos[$i][0]);
+                        $ObjGrupo->set_grupo($Lista_Grupos[$i][0]);
                         $Cantidad_Aspirantes = $ObjGrupo->consultar_aspirantes();
-                        echo '<td style="text-align:center">'.$Cantidad_Aspirantes[3].'</td>';
+                        echo '<td style="text-align:center">'.$Cantidad_Aspirantes[0].'</td>';
                     }
                 ?>
                 </tr>
@@ -171,9 +171,9 @@ else
                                     print('<optgroup label="'.$laAsignaturas[$k][4].'">');
                                 }//Fin IF
                                 ?><option value="<?php print($laAsignaturas[$k][0])?>" id="<?php print($laAsignaturas[$k][1])?>" ><?php print($laAsignaturas[$k][1])?></option>
-                            <?php 
+                            <?php
                             } //Fin For?>
-                        </select> 
+                        </select>
                     </td>
                     <td>
                         <input class="form-control span2 " type="text" name="nombre_curso[]" required />
@@ -186,9 +186,9 @@ else
                             for($a=0;$a<count($laDocentes);$a++)
                             {
                                 ?><option value="<?php print($laDocentes[$a][0])?>" id="<?php print($laDocentes[$a][3])?>" ><?php print($laDocentes[$a][0].' - '.$laDocentes[$a][1].'  '.$laDocentes[$a][3])?></option>
-                            <?php 
+                            <?php
                             } //Fin For?>
-                        </select> 
+                        </select>
                     </td>
                     <td>
                         <select class="span1" id="aula_curso_0" name="aula_curso[]" onchange="cargar_capacidad(this)" required>
@@ -198,9 +198,9 @@ else
                             for($a=0;$a<count($laAulas);$a++)
                             {
                                 ?><option value="<?php print($laAulas[$a][0])?>" id="<?php print($laAulas[$a][3])?>" ><?php print($laAulas[$a][1])?></option>
-                            <?php 
+                            <?php
                             } //Fin For?>
-                        </select> 
+                        </select>
                     </td>
                     <td><input type="text" class="span1" id="capacidad_curso_0" name="capacidad_curso[]" required value="" placeholder="Capacidad" onkeypress="return SoloNumeros(event)"/></td>
                     <td>
@@ -279,7 +279,7 @@ else
                 }
             }
         }
-        
+
     }
     function validar_capacidad(parametro)
     {
@@ -301,7 +301,7 @@ else
                             Notifica_Error('No puede ingresar una cantidad mayor a la permitida para esta aula: '+capacidad_aula);
                             capacidades[i].value=capacidad_aula;
                         }
-                    
+
                 }
                 else
                 {
@@ -310,7 +310,7 @@ else
                 }
             }
 
-        }   
+        }
     }
 
     function cargar_capacidad(e)
@@ -323,8 +323,8 @@ else
         capacidad_aula = e.options[x].id;
         capacidad_curso.value=capacidad_aula;
     }
-    function agregar()    
-   {     
+    function agregar()
+   {
 
     var grupos = document.getElementById("grupos_0");
     var cursos = document.getElementById("asignatura_curso_0");
@@ -375,7 +375,7 @@ else
    }
    function quitar(e)
      {
-        var filas = document.getElementById("filas");          
+        var filas = document.getElementById("filas");
         var td = e.parentNode;
         var tr = td.parentNode;
         filas.removeChild(tr);

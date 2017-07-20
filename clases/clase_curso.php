@@ -3,7 +3,7 @@
 	require_once('../nucleo/ModeloConect.php');
 	class clsCurso extends ModeloConect
 	{
-		
+
 		private $lcIdcurso;
 		private $lcNombrecur;
 		private $lcDescripcioncur;
@@ -90,7 +90,7 @@
 					$Fila[11]=$laRow['nombreunodoc'].' '.$laRow['apellidounodoc'];
 					$Fila[12]=$laRow['nombreaul'];
 				}
-			
+
 			$this->desconectar();
 			return $Fila;
 		}
@@ -118,7 +118,7 @@
 					$Fila[$cont][9]=$laRow['descripciongru'];
 					$cont++;
 				}
-			
+
 			$this->desconectar();
 			return $Fila;
 		}
@@ -140,7 +140,7 @@
 					$Fila[$cont][4]=$laRow['estatuscur'];
 					$cont++;
 				}
-			
+
 			$this->desconectar();
 			return $Fila;
 		}
@@ -162,12 +162,12 @@
 					$Fila[$cont][4]=$laRow['estatuscur'];
 					$cont++;
 				}
-			
+
 			$this->desconectar();
 			return $Fila;
 		}
 
-		
+
 
 		function consultar_cursos_activos()
 		{
@@ -190,13 +190,13 @@
 					$Fila[$cont][7]=$laRow['nombrelap'];
 					$Fila[$cont][8]=$laRow['nombregru'];
 					$Fila[$cont][9]=$laRow['descripciongru'];
-					$Fila[$cont][10]=$laRow['inscritos'];					
+					$Fila[$cont][10]=$laRow['inscritos'];
 					$Fila[$cont][11]=$laRow['nombreunodoc'];
 					$Fila[$cont][12]=$laRow['apellidounodoc'];
 					$Fila[$cont][13]=$laRow['iddocente'];
 					$cont++;
 				}
-			
+
 			$this->desconectar();
 			return $Fila;
 		}
@@ -228,7 +228,7 @@
 					$Fila[$cont][13]=$laRow['iddocente'];
 					$cont++;
 				}
-			
+
 			$this->desconectar();
 			return $Fila;
 		}
@@ -257,10 +257,10 @@
 		{
 			$this->conectar();
 			$sql="INSERT INTO `tcurso`(`nombrecur`, `desgripcioncur`, `capacidadcur`
-					, `estatuscur`, `tlapso_idlapso`, `tgrupo_idgrupo`, `tasignatura_idasignatura` ,`taula_idaula`,tdocente_iddocente) 
+					, `estatuscur`, `tlapso_idlapso`, `tgrupo_idgrupo`, `tasignatura_idasignatura` ,`taula_idaula`,tdocente_iddocente)
 				VALUES (UPPER('$this->lcNombrecur'),UPPER('$this->lcDescripcioncur'),'$this->lcCapacidadcur','1'
 					,'$this->lcLapso','$this->lcGrupo', '$this->lcAsignatura', '$this->lcAula', '$this->lcDocente')";
-			$lnHecho=$this->ejecutar($sql);			
+			$lnHecho=$this->ejecutar($sql);
 			$this->desconectar();
 			return $lnHecho;
 		}
@@ -269,7 +269,7 @@
 		{
 			$this->conectar();
 			$sql="UPDATE tcurso SET estatuscur='0' WHERE idcurso='$this->lcIdcurso'";
-			$lnHecho=$this->ejecutar($sql);			
+			$lnHecho=$this->ejecutar($sql);
 			$this->desconectar();
 			return $lnHecho;
 		}
@@ -301,7 +301,7 @@
 			$sql="UPDATE `tcurso` SET `nombrecur`=UPPER('$this->lcNombrecur'),`desgripcioncur`=UPPER('$this->lcDescripcioncur')
 			,`capacidadcur`='$this->lcCapacidadcur',`estatuscur`='$this->lcEstatuscur',`tlapso_idlapso`='$this->lcLapso'
 			,`tgrupo_idgrupo`='$this->lcGrupo' WHERE idcurso='$this->lcIdcurso'";
-			$lnHecho=$this->ejecutar($sql);			
+			$lnHecho=$this->ejecutar($sql);
 			$this->desconectar();
 			return $lnHecho;
 		}
@@ -312,9 +312,9 @@
 			$cont=0;
 				$sql="SELECT `idcurso`, `nombrecur`, `desgripcioncur`
 					, `capacidadcur`, `estatuscur`, `tlapso_idlapso`
-					, `tgrupo_idgrupo`, `nombrelap`, `nombregru`, `descripciongru`, nombreasi, 
-						(SELECT count(idcurso_participante) 
-							FROM tcurso_tparticipante 
+					, `tgrupo_idgrupo`, `nombrelap`, `nombregru`, `descripciongru`, nombreasi,
+						(SELECT count(idcurso_participante)
+							FROM tcurso_tparticipante
 							WHERE tcurso_idcurso=idcurso AND estatus='1') AS inscritos
 					FROM `tcurso`, `tlapso`, `tgrupo`, tasignatura
 					WHERE idlapso = tlapso_idlapso AND idgrupo = tgrupo_idgrupo
@@ -336,7 +336,7 @@
 					$Fila[$cont][11]=(isset($laRow['inscritos']))?$laRow['inscritos']:"0";
 					$cont++;
 				}
-			
+
 			$this->desconectar();
 			return $Fila;
 		}
@@ -347,9 +347,9 @@
 			$cont=0;
 				$sql="SELECT `idcurso`, `nombrecur`, `desgripcioncur`
 					, `capacidadcur`, `estatuscur`, `tlapso_idlapso`
-					, `tgrupo_idgrupo`, `nombrelap`, `nombregru`, `descripciongru`, nombreasi, 
-						(SELECT count(idcurso_participante) 
-							FROM tcurso_tparticipante 
+					, `tgrupo_idgrupo`, `nombrelap`, `nombregru`, `descripciongru`, nombreasi,
+						(SELECT count(idcurso_participante)
+							FROM tcurso_tparticipante
 							WHERE tcurso_idcurso=idcurso AND estatus='1') AS inscritos
 					FROM `tcurso`, `tlapso`, `tgrupo`, tasignatura,tcurso_tparticipante
 					WHERE tcurso_idcurso=idcurso AND idlapso = tlapso_idlapso AND idgrupo = tgrupo_idgrupo
@@ -371,7 +371,7 @@
 					$Fila[$cont][11]=(isset($laRow['inscritos']))?$laRow['inscritos']:"0";
 					$cont++;
 				}
-			
+
 			$this->desconectar();
 			return $Fila;
 		}
@@ -382,8 +382,8 @@
 			$cont=0;
 				$sql="SELECT `idcurso`, `nombrecur`, `desgripcioncur`
 					, `capacidadcur`, `estatuscur`, `tlapso_idlapso`
-					, `tgrupo_idgrupo`, `nombrelap`,fechainilap, `nombregru`, `descripciongru`, nombreasi, idasignatura, (SELECT count(idcurso_participante) 
-							FROM tcurso_tparticipante 
+					, `tgrupo_idgrupo`, `nombrelap`,fechainilap, `nombregru`, `descripciongru`, nombreasi, idasignatura, (SELECT count(idcurso_participante)
+							FROM tcurso_tparticipante
 							WHERE tcurso_idcurso=idcurso AND estatus='1') AS inscritos
 					FROM `tcurso`, `tlapso`, `tgrupo`, tasignatura
 					WHERE idlapso = tlapso_idlapso AND idgrupo = tgrupo_idgrupo
@@ -407,7 +407,7 @@
 					$Fila[13]=$laRow['fechainilap'];
 					$cont++;
 				}
-			
+
 			$this->desconectar();
 			return $Fila;
 		}
@@ -434,22 +434,23 @@
 					$Fila[$cont][8]=$laRow['idcurso_participante'];
 					$cont++;
 				}
-			
+
 			$this->desconectar();
 			return $Fila;
 		}
 
-		
+
 
 		function consultar_participantes_noinscritos()
 		{
+			$Fila=null;
 			$this->conectar();
 			$cont=0;
 
-					 $sql="SELECT  nombreunopar, nombredospar, apellidounopar, apellidodospar, cedulapar, tparticipante.idparticipante,fotoins,(YEAR(CURDATE())-YEAR(fechanacimientopar)) - (RIGHT(CURDATE(),5)<RIGHT(fechanacimientopar,5)) as edad 
+					 $sql="SELECT  nombreunopar, nombredospar, apellidounopar, apellidodospar, cedulapar, tparticipante.idparticipante,fotoins,(YEAR(CURDATE())-YEAR(fechanacimientopar)) - (RIGHT(CURDATE(),5)<RIGHT(fechanacimientopar,5)) as edad
 					FROM  tparticipante,tinscripcion
-					WHERE  estatuspar='1' AND tparticipante.idparticipante=tinscripcion.idparticipante AND cedulapar IN 
-					(select tp.cedulapar FROM tparticipante AS tp , tcurso, tgrupo  
+					WHERE  estatuspar='1' AND tparticipante.idparticipante=tinscripcion.idparticipante AND cedulapar IN
+					(select tp.cedulapar FROM tparticipante AS tp , tcurso, tgrupo
 						WHERE (YEAR(CURDATE())-YEAR(tp.fechanacimientopar)) - (RIGHT(CURDATE(),5)<RIGHT(tp.fechanacimientopar,5))  BETWEEN edadmin AND edadmax
 						AND idgrupo = tgrupo_idgrupo AND tcurso.idcurso='$this->lcIdcurso')
 					AND tparticipante.idparticipante NOT IN (SELECT tparticipante_idparticipante FROM tcurso_tparticipante,tcurso,tasignatura WHERE tcurso_idcurso='$this->lcIdcurso' AND tparticipante_idparticipante=tparticipante.idparticipante AND tasignatura_idasignatura=idasignatura AND estatus='1')
@@ -468,7 +469,7 @@
 					$Fila[$cont][7]=$laRow['edad'];
 					$cont++;
 				}
-			
+
 			$this->desconectar();
 			return $Fila;
 		}
@@ -495,7 +496,7 @@
 					$Fila[$cont][6]=$laRow['fotoins'];
 					$cont++;
 				}
-			
+
 			$this->desconectar();
 			return $Fila;
 		}
@@ -504,7 +505,7 @@
 		{
 			$this->conectar();
 			$cont=0;
-			$sql="SELECT  nombreunopar, nombredospar, apellidounopar, apellidodospar, cedulapar, idparticipante  
+			$sql="SELECT  nombreunopar, nombredospar, apellidounopar, apellidodospar, cedulapar, idparticipante
 				FROM  tparticipante
 				WHERE idparticipante  IN (SELECT p.idparticipante FROM tparticipante AS p, tcurso AS c, tcurso_tparticipante, tasignatura
 				WHERE idasignatura = tasignatura_idasignatura
@@ -550,7 +551,7 @@
 					$Fila[$cont][11]=$laRow['nombreasi'];
 					$cont++;
 				}
-			
+
 			$this->desconectar();
 			return $Fila;
 		}
@@ -580,7 +581,7 @@
 					$Fila[$cont][11]=$laRow['nombreasi'];
 					$cont++;
 				}
-			
+
 			$this->desconectar();
 			return $Fila;
 		}
@@ -589,10 +590,10 @@
 		{
 			$this->conectar();
 			$cont=0;
-				$sql="SELECT nombrecur, nombrelap, nombreasi, nombreaul, nombregru 
-				FROM tcurso, tlapso, tasignatura, taula,tgrupo 
-				WHERE 
-				tlapso.idlapso=tlapso_idlapso AND tgrupo.idgrupo = tgrupo_idgrupo 
+				$sql="SELECT nombrecur, nombrelap, nombreasi, nombreaul, nombregru
+				FROM tcurso, tlapso, tasignatura, taula,tgrupo
+				WHERE
+				tlapso.idlapso=tlapso_idlapso AND tgrupo.idgrupo = tgrupo_idgrupo
 				AND idasignatura = tasignatura_idasignatura AND idaula = taula_idaula AND idcurso IN
 				 (SELECT c.tcurso_idcurso FROM tcurso_tparticipante AS c WHERE tparticipante_idparticipante='$Participante') ORDER BY tlapso_idlapso;";
 				$pcsql=$this->filtro($sql);
@@ -605,7 +606,7 @@
 					$Fila[$cont][4]=$laRow['nombregru'];
 					$cont++;
 				}
-			
+
 			$this->desconectar();
 			return $Fila;
 		}
@@ -624,7 +625,7 @@
 					$Fila[$cont][3]=$laRow['estatusins'];
 					$cont++;
 				}
-			
+
 			$this->desconectar();
 			return $Fila;
 		}
@@ -633,14 +634,14 @@
 		{
 			$this->conectar();
 			$cont=0;
-				$sql="SELECT nombrecur, nombrelap, nombreasi, nombreaul, nombregru 
-				, 
+				$sql="SELECT nombrecur, nombrelap, nombreasi, nombreaul, nombregru
+				,
 				(SELECT count(*) FROM tcurso_tparticipante WHERE tcurso_idcurso=idcurso AND estatus='1') AS cantidad_participantes
 				,
 				(SELECT count(*) FROM tcurso_tparticipante WHERE tcurso_idcurso=idcurso AND estatus='2') AS cantidad_retirados
-				FROM tcurso, tlapso, tasignatura, taula,tgrupo 
-				WHERE 
-				tlapso.idlapso=tlapso_idlapso AND tgrupo.idgrupo = tgrupo_idgrupo 
+				FROM tcurso, tlapso, tasignatura, taula,tgrupo
+				WHERE
+				tlapso.idlapso=tlapso_idlapso AND tgrupo.idgrupo = tgrupo_idgrupo
 				AND idasignatura = tasignatura_idasignatura AND idaula = taula_idaula AND idcurso IN
 				 (SELECT tc.idcurso FROM tcurso AS tc WHERE tc.tlapso_idlapso='$this->lcLapso' );";
 				$pcsql=$this->filtro($sql);
@@ -655,7 +656,7 @@
 					$Fila[$cont][6]=$laRow['cantidad_retirados'];
 					$cont++;
 				}
-			
+
 			$this->desconectar();
 			return $Fila;
 		}
@@ -664,14 +665,14 @@
 		{
 			$this->conectar();
 			$cont=0;
-				$sql="SELECT nombrecur, nombrelap, nombreasi, nombreaul, nombregru 
-				, 
+				$sql="SELECT nombrecur, nombrelap, nombreasi, nombreaul, nombregru
+				,
 				(SELECT count(*) FROM tcurso_tparticipante WHERE tcurso_idcurso=idcurso AND estatus='1') AS cantidad_participantes
 				,
 				(SELECT count(*) FROM tcurso_tparticipante WHERE tcurso_idcurso=idcurso AND estatus='2') AS cantidad_retirados
-				FROM tcurso, tlapso, tasignatura, taula,tgrupo 
-				WHERE 
-				tlapso.idlapso=tlapso_idlapso AND tgrupo.idgrupo = tgrupo_idgrupo 
+				FROM tcurso, tlapso, tasignatura, taula,tgrupo
+				WHERE
+				tlapso.idlapso=tlapso_idlapso AND tgrupo.idgrupo = tgrupo_idgrupo
 				AND idasignatura = tasignatura_idasignatura AND idaula = taula_idaula AND idcurso IN
 				 ('$this->lcIdcurso');";
 				$pcsql=$this->filtro($sql);
@@ -686,7 +687,7 @@
 					$Fila['cantidad_retirados']=$laRow['cantidad_retirados'];
 					$cont++;
 				}
-			
+
 			$this->desconectar();
 			return $Fila;
 		}

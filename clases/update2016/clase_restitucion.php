@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start();
 	require_once('../nucleo/ModeloConect.php');
  //****************************COMIENZO DE LA CLASE DEL OBJETO MUNICIPIO**********************//
@@ -41,7 +41,7 @@ class clsRestitucion Extends ModeloConect{
 	{
 				$this->conectar();
 		$cont=0;
-		$sql = "SELECT 
+		$sql = "SELECT
 		mov.id_mov,
 		mov.nro_document,
 		mov.fecha_reg,
@@ -98,7 +98,7 @@ class clsRestitucion Extends ModeloConect{
 		LEFT JOIN tpersonal AS datuser ON datuser.idTpersonal=user.idFpersonal
 		INNER JOIN tentesexternos AS tentes ON tprest.idFentefiador=tentes.idTentesexternos
 		INNER JOIN tresponsableente AS tentres ON tprest.idFresponsableente=tentres.idTresponsableente
-		WHERE mov.id_mov='$this->idRestitucion' 
+		WHERE mov.id_mov='$this->idRestitucion'
 		ORDER BY arti.id_bien ASC";
 		$pcsql=$this->filtro($sql);
 		if($laRow=$this->proximo($pcsql))
@@ -161,7 +161,7 @@ class clsRestitucion Extends ModeloConect{
 		$respu=false;
 		$this->conectar();
 		$cont=0;
-			$sql="SELECT 
+			$sql="SELECT
 			mov.id_mov,
 			mov.nro_document,
 			mov.fecha_reg,
@@ -208,7 +208,7 @@ class clsRestitucion Extends ModeloConect{
 		$this->G["lsFechaAcordada"]=$lsFechaAcordada;
 		$this->G["lsEnteFiador"]=$lsEnteFiador;
 		$this->ArrArticulosID=$fila;
-		
+
 		$this->desconectar();
 		return $respu;
 	}
@@ -223,8 +223,16 @@ class clsRestitucion Extends ModeloConect{
 		$obj_fechaHora = new clsFechaHora();
 		$fecha = $obj_fechaHora->ObtenerFechaServer3();
 		$hora = $obj_fechaHora->ObtenerHoraServer();
-		$fechaDeLlegada = $obj_fechaHora->SubirFechaServer($this->G["txtFechaLlegada"]); //transformo la fecha a ser legible por la base de datos	
-
+		$fechaDeLlegada = $obj_fechaHora->SubirFechaServer($this->G["txtFechaLlegada"]); //transformo la fecha a ser legible por la base de datos
+		$sql="SELECT COUNT(m.nro_document) AS nro FROM movimientobn AS m INNER JOIN motivobn AS mo ON(m.id_motivo_mov=mo.id_motivo_mov) WHERE mo.tipo_motivo=12 AND mo.status=1";
+		$rs = $this->ejecuta($sql);
+		$tupla = $this->converArray($rs);
+		$nro=$tupla['nro']+1;
+		$nro="RES-".$nro;
+		$sqlp="SELECT  p.idTpersonal AS id FROM tpersonal AS p INNER JOIN tusuario AS u ON(p.idTpersonal=u.idFpersonal) WHERE u.idTusuario='".$_SESSION['idTusuario']."'";
+		$rsp = $this->ejecuta($sqlp);
+		$tuplap = $this->converArray($rsp);
+		$idP=$tuplap['id'];
 		/***********************************************/
 		/** sql para insertar en la tabla movimiento (cabecera) de la transaccion **/
 		$fechaDeAcordada=$this->G["lsFechaAcordada"];
@@ -251,7 +259,7 @@ class clsRestitucion Extends ModeloConect{
 		id_usuario_anulacion,
 		fecha_anulacion,
 		id_motivo_anulacion,
-		status) VALUES('".$this->G["txtNroDocumento"]."',
+		status) VALUES('".$nro."',
 		'".$fecha."',
 		'".$hora."',
 		'".$fechaDeLlegada."',
@@ -261,7 +269,7 @@ class clsRestitucion Extends ModeloConect{
 		NULORD('".$fechaDeLlegada."'),
 		NULORD('".$enteFiador."'),
 		'6',
-		NULORD('".$this->G["txtResponsable"]."'),
+		NULORD('".$idP."'),
 		NULORD('".$_SESSION["idTusuario"]."'),
 		NULORD('".$this->G["txtMotivo"]."'),
 		NULL,
@@ -277,10 +285,10 @@ class clsRestitucion Extends ModeloConect{
 		/* compruebo si inserto en la tabla movimiento*/
 		if ( $this->como_va() )
 		{ //pregunto si se realizo la consulta anterior
-				
+
 			$idMovimiento=$this->fpGetIDinsertado();
-			$this->lcIDdocumento=$idMovimiento;	
-			$cantidadArticulos=count($this->ArrArticulosID);		
+			$this->lcIDdocumento=$idMovimiento;
+			$cantidadArticulos=count($this->ArrArticulosID);
 	 		for($i=0;$i<$cantidadArticulos;$i++)
 		 	{
 		 		/* actualizo la condición del bien nacional a asignado */
@@ -289,7 +297,7 @@ class clsRestitucion Extends ModeloConect{
 				/* compruebo si inserto en la tabla bien nacional */
 					if( $this->como_va() )
 					{
-						$idArticulo=$this->fpGetIDinsertado();				
+						$idArticulo=$this->fpGetIDinsertado();
 						/* inserto en la tabla detalle del bien nacional */
 						$sql = "INSERT INTO dmovimientobn (id_mov,id_bien,status) VALUES ('$idMovimiento','".$this->ArrArticulosID[$i]."','1')";
 						$this->ejecuta($sql);
@@ -317,21 +325,21 @@ class clsRestitucion Extends ModeloConect{
 		{
 			$contadorFalse++;
 		}
-		
+
 		if( $contadorFalse==0)
 		{
 		 	$this->fin_trans(); // finalizo la transaccion con exito
 			$transaccion=true;
 		}else{
-		 	$this->deshacer_trans(); // finalizo la transaccion fallida 
+		 	$this->deshacer_trans(); // finalizo la transaccion fallida
 		}
 		return $transaccion;
 	} //cierre funcion incluir
 
 
 	function ValidarPeriodoAnulacion($id_mov){
-		$sql = 
-		"	SELECT m.id_periodo 
+		$sql =
+		"	SELECT m.id_periodo
 			FROM movimientobn as m
 			WHERE m.id_mov=".$id_mov." and m.id_periodo=".$_SESSION["id_periodo_mostrar"]."
 		";
@@ -358,9 +366,9 @@ class clsRestitucion Extends ModeloConect{
 		include_once('sacarHoraFechaServer.php');
 		$obj_fechaHora = new clsFechaHora();
 		$fechaServer = $obj_fechaHora->SubirFechaServer($fecha_asig); //transformo la fecha a ser legible por la base de datos
-			
+
 		/***********************************************/
-		$sql = 
+		$sql =
 		" 	SELECT t_b.cod_tbien,m.nom_marca,b_n.id_bien,b_n.cod_bien,b_n.serial_bien,b_n.id_marca,b_n.modelo,b_n.des_bien,b_n.precio,b_n.fecha_ent,b_n.observacion_bien
 			FROM articulobn as b_n INNER JOIN marca as m INNER JOIN tipobn as t_b
 			WHERE b_n.id_tbien='".$tipoBien."' and fecha_ent <='".$fechaServer."' and b_n.id_cond='1' and b_n.status='1' and m.id_marca=b_n.id_marca and t_b.id_tbien=b_n.id_tbien
@@ -369,23 +377,23 @@ class clsRestitucion Extends ModeloConect{
 		return $this->ejecuta($sql);
 	}
 	function consultarBien($id_mov){
-		$sql = 
+		$sql =
 		"	SELECT b_n.id_bien,b_n.cod_bien,b_n.id_tbien,b_n.serial_bien,b_n.id_marca,b_n.id_modelo,b_n.des_bien,b_n.id_cond,b_n.precio,b_n.fecha_ent,b_n.observacion_bien,cond.nom_cond, mar.nom_marca,tbien.cod_tbien,tbien.des_tbien
-			FROM dmovimientobn as d_m 
-			INNER JOIN articulobn as b_n 
-			INNER JOIN condicionbn as cond 
-			INNER JOIN marcabn as mar 
+			FROM dmovimientobn as d_m
+			INNER JOIN articulobn as b_n
+			INNER JOIN condicionbn as cond
+			INNER JOIN marcabn as mar
 			INNER JOIN tipobn as tbien
 			WHERE id_mov='$id_mov' and d_m.id_bien=b_n.id_bien and mar.id_marca=b_n.id_marca and cond.id_cond=b_n.id_cond and b_n.id_tbien=tbien.id_tbien and d_m.status='1'
 		";
 
-		return $this->ejecuta($sql);  
+		return $this->ejecuta($sql);
 	}
 	function formatearFecha($fec_asig){
 		/***** TRAER HORA Y FECHA DE BASE DE DATOS ****/
 		include_once('sacarHoraFechaServer.php');
 		$obj_fechaHora = new clsFechaHora();
-		$fechaFormateada = $obj_fechaHora->traerFecha2($fec_asig); 
+		$fechaFormateada = $obj_fechaHora->traerFecha2($fec_asig);
 		return $fechaFormateada;
 	}
 
@@ -394,7 +402,7 @@ class clsRestitucion Extends ModeloConect{
 		$this->conectar();
 		$this->ResultadoConsulta=false;
 		$cont=0;
-		$sql = "SELECT 
+		$sql = "SELECT
 		artibn.id_bien,
 		artibn.cod_bien,
 		artibn.LlavePrestado,
@@ -451,7 +459,7 @@ class clsRestitucion Extends ModeloConect{
 	function BuscarRestitucionExiste($cod)
 	{
 		$result=false;
-		$sql = "SELECT 
+		$sql = "SELECT
 		id_mov,
 		nro_document,
 		fecha_reg,
@@ -472,8 +480,8 @@ class clsRestitucion Extends ModeloConect{
 		id_usuario_anulacion,
 		fecha_anulacion,
 		id_motivo_anulacion,
-		status 
-		FROM movimientobn 
+		status
+		FROM movimientobn
 		WHERE nro_document='$cod' AND status='1'";
 		$rs = $this->ejecuta($sql);
 		if( $this->como_va() ){
@@ -487,7 +495,7 @@ class clsRestitucion Extends ModeloConect{
 		$this->conectar();
 		$cont=0;
 
-		$sql = "SELECT 
+		$sql = "SELECT
 		mov.id_mov,
 		mov.nro_document,
 		mov.fecha_reg,
@@ -525,7 +533,7 @@ class clsRestitucion Extends ModeloConect{
 		prov.des_prov,
 		depart.nombreasi,
 		CONCAT(tentres.nombrefull,' ',tentres.apellidofull) AS NombreApellidoRespEnte
-		FROM movimientobn AS mov 
+		FROM movimientobn AS mov
 		LEFT JOIN tpersonal AS per ON mov.id_per=per.idTpersonal
 		LEFT JOIN tusuario AS user ON mov.id_usuario=user.idTusuario
 		LEFT JOIN tpersonal AS datuser ON datuser.idTpersonal=user.idFpersonal
@@ -536,7 +544,7 @@ class clsRestitucion Extends ModeloConect{
 		LEFT JOIN tasignatura AS depart ON mov.id_dep=depart.idasignatura
 		INNER JOIN tentesexternos AS tentes ON mov.idFentefiador=tentes.idTentesexternos
 		INNER JOIN tresponsableente AS tentres ON mov.idFresponsableente=tentres.idTresponsableente
-		WHERE  mov.id_tipo_mov='6' 
+		WHERE  mov.id_tipo_mov='6'
 		AND mov.status='1' ORDER BY mov.fecha_reg,mov.hora_reg DESC";
 
 
@@ -582,7 +590,7 @@ class clsRestitucion Extends ModeloConect{
 				$Fila[$cont][36]=$laRow['NombreApellidoRespEnte'];
 				$cont++;
 			}
-			
+
 			$this->desconectar();
 			return $Fila;
 
@@ -595,7 +603,7 @@ class clsRestitucion Extends ModeloConect{
 
 	function consultarTrazabilidadBien($bien){
 
-		$sql = "SELECT 
+		$sql = "SELECT
 		arti.id_bien,
 		arti.cod_bien,
 		arti.LlavePrestado,
@@ -609,8 +617,8 @@ class clsRestitucion Extends ModeloConect{
 		arti.fecha_ent,
 		arti.FechaRegistro,
 		arti.status,
-		arti.observacion_bien 
-		FROM articulobn AS arti 
+		arti.observacion_bien
+		FROM articulobn AS arti
 		WHERE arti.id_cond='1' AND arti.id_bien='$bien' AND arti.status='1'";
 		$rs = $this->ejecuta($sql);
 		$cantidad = $this->converArray($rs);
@@ -622,20 +630,20 @@ class clsRestitucion Extends ModeloConect{
 		{
 			$resultado = false;
 		}
-		
+
 		return $resultado;
 	}
 
 	function anularRestitucion($idAsig,$MotAnulacion){
 		$transaccion = false; // inicializo la variable en false
 		$this->inicio_trans(); // inicializo la trasaccion
-		//actualizo el status				
+		//actualizo el status
 		$contaFalse=0;
 		/***** TRAER HORA Y FECHA DE BASE DE DATOS ****/
 		include_once('sacarHoraFechaServer.php');
 		$obj_fechaHora = new clsFechaHora();
 		$fecha = $obj_fechaHora->ObtenerFechaServer3();
-			
+
 		/***********************************************/
 
 		$sql = "UPDATE movimientobn SET status='0' id_mov_prestamo=NULL WHERE id_mov='".$idAsig."'";
@@ -659,7 +667,7 @@ class clsRestitucion Extends ModeloConect{
 				{
 
 					/* busco en la tabla detalle el id del bien nacional mediante el id de la recepcion para llegar a los bienes pertenecientes en su*/
-					$sql = "SELECT 
+					$sql = "SELECT
 					dmov.id_bien,
 					mov.id_mov_prestamo
 					FROM dmovimientobn AS dmov
@@ -669,8 +677,8 @@ class clsRestitucion Extends ModeloConect{
 					if( $this->como_va() )
 					{
 						/* actualizo en la tabla bien */
-						while ( $tupla = $this->converArray($rs) ) 
-						{	
+						while ( $tupla = $this->converArray($rs) )
+						{
 							$id_mov_prest=$tupla["id_mov_prestamo"];
 
 								$sql = "UPDATE articulobn SET id_cond='4' WHERE id_bien ='".$tupla["id_bien"]."'";
@@ -726,20 +734,20 @@ class clsRestitucion Extends ModeloConect{
 
 		if( $transaccion ){
 		 	$this->fin_trans(); // finalizo la transaccion con exito
-		 	//$this->deshacer_trans(); // finalizo la transaccion fallida 
+		 	//$this->deshacer_trans(); // finalizo la transaccion fallida
 		 	return true;
 		}else{
-		 	$this->deshacer_trans(); // finalizo la transaccion fallida 
+		 	$this->deshacer_trans(); // finalizo la transaccion fallida
 	 		return false;
 		}
 	}//cierre anulación asignacion
 
-	
+
 	function consultar_restitucion_bitacora()
 	{
 		$this->conectar();
 		$cont=0;
-		$sql = "SELECT 
+		$sql = "SELECT
 		mov.id_mov,
 		mov.nro_document,
 		mov.fecha_reg,

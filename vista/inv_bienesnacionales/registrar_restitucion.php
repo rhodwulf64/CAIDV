@@ -1,9 +1,9 @@
 <?php
 $consultar= $registrar= $eliminar=false;
-for($i=0;$i<count($laModulos);$i++) 
+for($i=0;$i<count($laModulos);$i++)
     {
-         
-        $laServicios=$lobjRol->consultar_servicios_menu($laModulos[$i][0]); 
+
+        $laServicios=$lobjRol->consultar_servicios_menu($laModulos[$i][0]);
         for ($j=0; $j <count($laServicios) ; $j++) //Se recorre un ciclo para poder extraer los datos de cada uno de los servicios que tiene asignado el modulo para poder constuir el menú
         {
             if($laServicios[$j][2]=='persona/consultar_docente')
@@ -46,8 +46,8 @@ else
 ?>
 
 <script type="text/javascript" charset="utf-8">
-    
-</script>  
+
+</script>
 <div style="float: left" class="col-lg-8 span8 pull-left">
     <h3><?php print($titulo); ?></h3>
     <div class="alert alert-info">
@@ -67,27 +67,11 @@ else
         <input type="hidden"  name="txtFila" id="txtFila"/>
         <div class="row-fluid">
             <div class="col-lg-6 span6">
-                <label>Número de restitución<span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Número de referencia que identifica la restitución"><i class="fa fa-question" ></i></span></label>
-                <input type="text" class="span12" maxlength="9"  name="txtNroDocumento" id="txtNroDocumento" onblur="BuscarRestitucionporCodigo(this.value)" <?php print($OnKey); ?> value="<?php print($Datos_Docente['iddocente']);?>" required/>
-
-            </div>
-
-            <div class="col-lg-6 span6">
                 <label>Fecha de la restitución<span class="asterisco">*</span><span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Fecha en que se realiza la restitución"><i class="fa fa-question" ></i></span></label>
                 <div class="span10 input-append date"  id="dp3" data-date="<?php print $fechaHoy; ?>"  data-date-format="dd-mm-yyyy" data-date-viewmode="years">
                     <input type="text" class="span12"  name="txtFechaLlegada" size="16" id="txtFechaLlegada" required value="<?php print($Datos_Consultados['FechaLlegada']);?>" required/>
                   <span class="add-on"><i class="icon-th"></i></span>
                 </div>
-            </div>
-
-        </div>
-        <div class="row-fluid">
-            <div class="col-lg-6 span6">
-                <label>Personal responsable<span class="asterisco">*</span>  <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Responsable de la restitución"><i class="fa fa-question" ></i></span></label>
-                <select name="txtResponsable" id="txtResponsable" class="span12" required>
-                    <option value="0">SELECCIONE UN PERSONAL</option>
-                    <?php print $loFuncGenerales->fnCombosPersonalActivos($selectedPersonal); ?>
-                </select>
             </div>
             <div class="col-lg-6 span6">
                 <label>Fecha acordada<span class="asterisco">*</span><span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Fecha de la restitución acordada."><i class="fa fa-question" ></i></span></label>
@@ -118,7 +102,7 @@ else
                 <label>Motivo<span class="asterisco">*</span>  <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Motivo de la operación."><i class="fa fa-question" ></i></span></label>
                 <select name="txtMotivo" id="txtMotivo" class="span12" required>
                     <option value="0">SELECCIONE UN MOTIVO</option>
-                    <?php 
+                    <?php
                     print $loFuncGenerales->fnComboMotivosGeneral($selectMotivo,"12");
                     ?>
                 </select>
@@ -137,7 +121,7 @@ else
                 </div>
             </div>
             <br>
-              <div id="detalle_bn" class="row-fluid" border="2" class="label label-info">       
+              <div id="detalle_bn" class="row-fluid" border="2" class="label label-info">
                 <legend class="label label-info">
                     <h4>Prestamo seleccionado</h4>
                 </legend>
@@ -166,9 +150,9 @@ else
                     <td style="padding:1px;"><button class="btn btn-info" id="btn_buscarPrestamo" href="#" title="Consultar" disabled=""><i class="icon-search icon-white"></i></button></td>
                 </tr>
             </table>
-                                
 
-        
+
+
 <!-- ******************************************* Detalle del bien nacional *************************************************-->
     <input type="hidden" id="validarCaberaLlena" name="validarCaberaLlena"> <!-- variable para validar la cabecera -->
     <tr>
@@ -178,15 +162,15 @@ else
                     <!-- pintar detalle dinamico -->
                         <?php if(isset($_SESSION["GlobalDetalleDesin"])) echo $_SESSION["GlobalDetalleDesin"]; ?>
                 </table>
-            </div> 
+            </div>
         </td>
     </tr>
-           
+
         <div class="botonera">
             <input type="button" class="btn btn-success" name="btn_enviar" id="btn_enviar" value="Aceptar" onclick="GuardarCambios();">
             <input type="button" class="btn btn-danger" name="btn_regresar" id="btn_regresar" value="Regresar" onclick="window.location.href='?vista=inv_bienesnacionales/ver_restitucion'">
         </div>
-      
+
         <div class="modal fade" id="ModalSeleccionaBienes" tabindex="-1" style="position:absolute;left:300px;width: 95%;height: 90%;display: none;" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -202,8 +186,8 @@ else
                                 <select name="txtTipoBN" id="txtTipoBN" class="span12" onchange="fpFiltraBienesPorTipo(this.value);">
                                     <option value="0">SELECCIONE UNA OPCIÓN</option>
                                     <?php
-                                        print $loFuncGenerales->fnCombosGeneralesActivos("tipobn","des_tbien","des_tbien","cod_tbien","status",$selectedTipoBN); 
-                                    ?> 
+                                        print $loFuncGenerales->fnCombosGeneralesActivos("tipobn","des_tbien","des_tbien","cod_tbien","status",$selectedTipoBN);
+                                    ?>
                                 </select>
                                 <br>
                                 <table class="table table-striped table-hover table-bordered bootstrap-datatable datatable dataTable" id="TablaPrestamos">
@@ -216,14 +200,14 @@ else
                                     require_once('../clases/update2016/clase_prestamobn.php');
                                     $loPrestamo=new clsPrestamo;
                                     $laArticulosBN=$loPrestamo->listarPrestamoSinRestituir();
-                                   
+
                                     for($i=0;$i<count($laArticulosBN);$i++)
                                     {
                                         if($laArticulosBN[$i][29]=="1")
                                         {
                                             $laArticulosBN[$i][29]='Activo';
                                         }
-                                        else 
+                                        else
                                         {
                                             $laArticulosBN[$i][29]='Inactivo';
                                         }
@@ -251,11 +235,11 @@ else
                                             echo '<td>';
 
                                             echo '<input type="radio" name="modoSeleccionPrestamo" id="modoSeleccionPrestamo" value="'.$laArticulosBN[$i][0].'" onclick="fpSeleccionaBienNacional(this.id,this.value,'.$laArticulosBN[$i][37].',$(this).parent().parent().index())" style="transform: scale(2);" title="Haga Click Aquí para seleccionar este Prestamo">';
-                                    
+
                                             echo "</td>";
                                         }
-                                        
-                                       
+
+
                                         echo '</tr>';
                                     }
 
@@ -289,7 +273,7 @@ var loF=document.f_formulario;
 
     function MostrarSeleccionBN()
     {
-        $('#ModalSeleccionaBienes').modal('show');  
+        $('#ModalSeleccionaBienes').modal('show');
     }
 
     function ConsultarDocumento(id)
@@ -326,16 +310,16 @@ var loF=document.f_formulario;
                         var Confi=data['Master'];
                         if(Confi.lsExito==1)
                         {
-                            Notifica_Error("El Número de Documento '"+document.getElementById("txtNroDocumento").value+"' ya se encuentra registrado.");   
-                            document.getElementById("txtNroDocumento").value="";                      
-                            document.getElementById("txtNroDocumento").focus();                      
-                            document.getElementById("txtNroDocumento").style="border:1px solid red;"; 
+                            Notifica_Error("El Número de Documento '"+document.getElementById("txtNroDocumento").value+"' ya se encuentra registrado.");
+                            document.getElementById("txtNroDocumento").value="";
+                            document.getElementById("txtNroDocumento").focus();
+                            document.getElementById("txtNroDocumento").style="border:1px solid red;";
                         }
                         else
                         {
-                           document.getElementById("txtNroDocumento").style="border:1px solid green;"; 
+                           document.getElementById("txtNroDocumento").style="border:1px solid green;";
 
-                        }               
+                        }
                     }
                 });
             }
@@ -343,9 +327,9 @@ var loF=document.f_formulario;
         }
         else
         {
-            document.getElementById("txtNroDocumento").style="border:1px solid red;"; 
-            Notifica_Error("No ha ingresado Número de Documento válido.");   
-           
+            document.getElementById("txtNroDocumento").style="border:1px solid red;";
+            Notifica_Error("No ha ingresado Número de Documento válido.");
+
         }
 
     }
@@ -364,13 +348,13 @@ var loF=document.f_formulario;
 
     function fpSeleccionaBienNacional(idobjeto,valorIDmov,valorIDente,filaNro)
     {
-       
+
         var liFila=Number(loF.txtFila.value);
         var FilaObjeto=$('#TablaPrestamos >tbody >tr').eq(filaNro);
 
         $(FilaObjeto).each(function(index, element)
             {
-         
+
             var NroPresta = $(element).find("td").eq(0).html();
             var FechaPesta = $(element).find("td").eq(1).html();
             var FechaReg = $(element).find("td").eq(2).html();
@@ -382,7 +366,7 @@ var loF=document.f_formulario;
             var MotivoPres = $(element).find("td").eq(8).html();
             var ObservBN = $(element).find("td").eq(9).html();
 
-                 
+
             NroPresta=evalCampoBN(NroPresta);
             FechaPesta=evalCampoBN(FechaPesta);
             FechaReg=evalCampoBN(FechaReg);
@@ -457,10 +441,10 @@ var loF=document.f_formulario;
                 var Confi=data['Master'];
                 if(Confi.lsExito==1)
                 {
-                    
-                    
+
+
                     Notifica_Logro("Este Restitución fue guardada con éxito.");
-                   
+
                     setTimeout(function()
                     {
                         if (confirm("Desea registrar una nueva Restitución?"))
@@ -471,14 +455,14 @@ var loF=document.f_formulario;
                         {
                             ConsultarDocumento(Confi.lsIDdocumento);
                         }
-                    }, 2000);                   
+                    }, 2000);
                 }
                 else
                 {
-                    Notifica_Error("Este Restitución no se pudo guardar, verifique los datos ingresados.");  
+                    Notifica_Error("Este Restitución no se pudo guardar, verifique los datos ingresados.");
                 }
-               
-                
+
+
             }
         });
 
@@ -506,7 +490,6 @@ var loF=document.f_formulario;
     {
         var vInvalido=0;
         var vResult=false;
-        var fNroDocumento = $("#txtNroDocumento").val();
         var fFechaLlegada = $("#txtFechaLlegada").val();
         var fFechaAcordada = $("#txtFechaRestitucion").val();
         var fResponsable = $("#txtResponsable").val();
@@ -516,14 +499,8 @@ var loF=document.f_formulario;
         var fFilaBN = parseInt($("#txtFila").val());
         var fechaActual = "<?php print $fechaHoy; ?>";
 
-        if(fNroDocumento.length<3)
-        {
-            Notifica_Error("Nro Documento inválido, debe ingresar un Nro Documento con mas de 2 digitos.");
-            $("#txtNroDocumento").focus();
-            vInvalido=1;
-        }
 
-        else if(fFechaLlegada=="")
+        if(fFechaLlegada=="")
         {
             Notifica_Error("El campo Fecha no puede quedar vacío.");
             $("#txtFechaLlegada").focus();
@@ -537,12 +514,6 @@ var loF=document.f_formulario;
             vInvalido=1;
         }
 
-        else if(fResponsable=="0")
-        {
-            Notifica_Error("Seleccione un Responsable de la operación.");
-            $("#txtResponsable").focus();
-            vInvalido=1;
-        }
 
         else if(fFechaAcordada=="")
         {
@@ -592,13 +563,13 @@ var loF=document.f_formulario;
             vResult=true;
         }
         return vResult;
-       
+
     }
 
 
     function AgregarBienesSeleccionados()
     {
-      
+
 
     }
 
@@ -611,11 +582,11 @@ var loF=document.f_formulario;
             'sPaginationType': 'full_numbers',
             'iDisplayLength': 10
             });
-    
+
 
 
         $("#txtNroDocumento").focus();
-           
-      
+
+
     }
 </script>

@@ -1,7 +1,7 @@
 <?php
 
   session_start();
-  if(!array_key_exists("usuario",$_SESSION)) 
+  if(!array_key_exists("usuario",$_SESSION))
 	{
 		header("location: ../Logout.php");
 	}
@@ -11,14 +11,14 @@
 	$MotAnulacion=$_POST["txtMotivoAnulacion"];
 	$lsNroDocumento=$_POST["txtNroDocumento"];
 
-	
+
 	//recepciones
    	require_once("../clases/update2016/clase_recepcionbn.php");
-	$loRecepci=new clsRecepcion();	
+	$loRecepci=new clsRecepcion();
 
 	//asignaciones
    	require_once("../clases/update2016/clase_asignacionbn.php");
-	$loAsigna=new clsAsignacion();	
+	$loAsigna=new clsAsignacion();
 
 	//devoluciones
    	require_once("../clases/update2016/clase_devolucionbn.php");
@@ -60,31 +60,31 @@
 					while($rs = $loRecepci->converArray($tupla))
 					{
 						if ($loRecepci->consultarTrazabilidadBien($rs["id_bien"]))
-						{  
+						{
 							$contarError++;
 						}
 					}
 					if($contarError==0)
-					{	
+					{
 						$lsExito=1;
 					}
    				break;
-   				
+
    				case 'desactivaRecepcion':
 
 					$resultado=$loRecepci->anularRecepcion($lsIDmovi,$MotAnulacion);
 					if($resultado)
-					{	
+					{
 						$lsExito=1;
 					}
 
-   				break; 
+   				break;
 
    				case 'BuscarRecepcionExiste':
 
 					$resultado=$loRecepci->BuscarRecepcionExiste($lsNroDocumento);
 					if($resultado)
-					{	
+					{
 						$lsExito=1;
 					}
 
@@ -94,25 +94,25 @@
 
 					$resultado=$loRecepci->BuscarBNExisteCOD($lsCODbn);
 					if($resultado)
-					{	
+					{
 						$lsExito=1;
 					}
 
    				break;
 
    				case 'incluirRecepcion':
-   				
-					$loRecepci->RecibirTodo($_POST); 
+
+					$loRecepci->RecibirTodo($_POST);
 					$resultado=$loRecepci->incluir();
 					$lsIDdocumento=$loRecepci->get_NroDocumento();
 					if($resultado)
-					{	
+					{
 						$lsExito=1;
 					}
 
    				break;
    			}
-			
+
 		break;
 
 		case "Asignaciones":
@@ -125,12 +125,12 @@
 					while($rs = $loAsigna->converArray($tupla))
 					{
 						if ($loAsigna->consultarTrazabilidadBien($rs["id_bien"]))
-						{  
+						{
 							$contarError++;
 						}
 					}
 					if($contarError==0)
-					{	
+					{
 						$lsExito=1;
 					}
    				break;
@@ -139,38 +139,38 @@
 
 					$resultadoListaBN=$loAsigna->ListameBNporTipo();
 					if($loAsigna->DameResultado())
-					{	
+					{
 						$lsExito=1;
 					}
    				break;
-   				
+
    				case 'BuscarAsignacionExiste':
 
 					$resultado=$loAsigna->BuscarAsignacionExiste($lsNroDocumento);
 					if($resultado)
-					{	
+					{
 						$lsExito=1;
 					}
 
-   				break;   				
+   				break;
 
    				case 'desactivaAsignacion':
 
 					$resultado=$loAsigna->anularAsignacion($lsIDmovi,$MotAnulacion);
 					if($resultado)
-					{	
+					{
 						$lsExito=1;
 					}
 
    				break;
 
    				case 'incluirAsignacion':
-   				
-					$loAsigna->RecibirTodo($_POST); 
+
+					$loAsigna->RecibirTodo($_POST);
 					$resultado=$loAsigna->incluir();
 					$lsIDdocumento=$loAsigna->get_NroDocumento();
 					if($resultado)
-					{	
+					{
 						$lsExito=1;
 					}
 
@@ -190,35 +190,35 @@
 					while($rs = $loDevolu->converArray($tupla))
 					{
 						if ($loDevolu->consultarTrazabilidadBien($rs["id_bien"]))
-						{  
+						{
 							$contarError++;
 						}
 					}
 					if($contarError==0)
-					{	
+					{
 						$lsExito=1;
 					}
    				break;
-   				
+
    				case 'ListarBNporTipo':
-					$loDevolu->RecibirTodo($_POST); 
+					$loDevolu->RecibirTodo($_POST);
 					$resultadoListaBN=$loDevolu->ListameBNporTipo();
 					if($loDevolu->DameResultado())
-					{	
+					{
 						$lsExito=1;
 					}
 
-   				break;   				
-   				
+   				break;
+
    				case 'BuscarDevolucionExiste':
 
 					$resultado=$loDevolu->BuscarDevolucionExiste($lsNroDocumento);
 					if($resultado)
-					{	
+					{
 						$lsExito=1;
 					}
 
-   				break;   				
+   				break;
 
 
 
@@ -226,25 +226,25 @@
 
 					$resultado=$loDevolu->anularDevolucion($lsIDmovi,$MotAnulacion);
 					if($resultado)
-					{	
+					{
 						$lsExito=1;
 					}
 
    				break;
 
    				case 'incluirDevolucion':
-   				
-					$loDevolu->RecibirTodo($_POST); 
+
+					$loDevolu->RecibirTodo($_POST);
 					$resultado=$loDevolu->incluir();
 					$lsIDdocumento=$loDevolu->get_NroDocumento();
 					if($resultado)
-					{	
+					{
 						$lsExito=1;
 					}
 
    				break;
 			}
-			
+
 		break;
 
 		case "Desincorporaciones":
@@ -258,13 +258,13 @@
 					while($rs = $loDesinc->converArray($tupla))
 					{
 						if ($loDesinc->consultarTrazabilidadBien($rs["id_bien"]))
-						{  
+						{
 							$contarError++;
 						}
 					}
 					*/
 					if($contarError==0)
-					{	
+					{
 						$lsExito=1;
 					}
    				break;
@@ -273,38 +273,38 @@
 
 					$resultadoListaBN=$loDesinc->ListameBNporTipo();
 					if($loDesinc->DameResultado())
-					{	
+					{
 						$lsExito=1;
 					}
    				break;
-   				
+
    				case 'BuscarDesincorporacionExiste':
 
 					$resultado=$loDesinc->BuscarDesincorporacionExiste($lsNroDocumento);
 					if($resultado)
-					{	
+					{
 						$lsExito=1;
 					}
 
-   				break;    				
+   				break;
 
    				case 'desactivaDesincorporacion':
 
 					$resultado=$loDesinc->anularDesincorporacion($lsIDmovi,$MotAnulacion);
 					if($resultado)
-					{	
+					{
 						$lsExito=1;
 					}
 
    				break;
 
    				case 'incluirDesincorporacion':
-   				
-					$loDesinc->RecibirTodo($_POST); 
+
+					$loDesinc->RecibirTodo($_POST);
 					$resultado=$loDesinc->incluir();
 					$lsIDdocumento=$loDesinc->get_NroDocumento();
 					if($resultado)
-					{	
+					{
 						$lsExito=1;
 					}
 
@@ -320,7 +320,7 @@
    				case 'consulTrazabilidad':
 
 					if ($loPresta->consultarTrazabilidadPrestamo($lsIDmovi)==false)
-					{  
+					{
 						$lsExito=1;
 					}
 
@@ -330,17 +330,17 @@
 
 					$resultado=$loPresta->BuscarPrestamoExiste($lsNroDocumento);
 					if($resultado)
-					{	
+					{
 						$lsExito=1;
 					}
 
-   				break; 
+   				break;
 
    				case 'ListarBNporTipo':
 
 					$resultadoListaBN=$loPresta->ListameBNporTipo();
 					if($loPresta->DameResultado())
-					{	
+					{
 						$lsExito=1;
 					}
    				break;
@@ -349,19 +349,19 @@
 
 					$resultado=$loPresta->anularPrestamo($lsIDmovi,$MotAnulacion);
 					if($resultado)
-					{	
+					{
 						$lsExito=1;
 					}
 
    				break;
 
    				case 'incluirPrestamo':
-   				
-					$loPresta->RecibirTodo($_POST); 
+
+					$loPresta->RecibirTodo($_POST);
 					$resultado=$loPresta->incluir();
 					$lsIDdocumento=$loPresta->get_NroDocumento();
 					if($resultado)
-					{	
+					{
 						$lsExito=1;
 					}
 
@@ -381,12 +381,12 @@
 					while($rs = $loResti->converArray($tupla))
 					{
 						if ($loResti->consultarTrazabilidadBien($rs["id_bien"]))
-						{  
+						{
 							$contarError++;
 						}
 					}
 					if($contarError==0)
-					{	
+					{
 						$lsExito=1;
 					}
    				break;
@@ -395,17 +395,17 @@
 
 					$resultado=$loResti->BuscarRestitucionExiste($lsNroDocumento);
 					if($resultado)
-					{	
+					{
 						$lsExito=1;
 					}
 
-   				break; 
+   				break;
 
    				case 'ListarBNporTipo':
 
 					$resultadoListaBN=$loResti->ListameBNporTipo();
 					if($loResti->DameResultado())
-					{	
+					{
 						$lsExito=1;
 					}
    				break;
@@ -414,16 +414,16 @@
 
 					$resultadoListaBN=$loResti->listarPrestamoSinRestituir();
 					if($loResti->DameResultado())
-					{	
+					{
 						$lsExito=1;
 					}
    				break;
 
    				case 'desactivaRestitucion':
-   					
+
 					$resultado=$loResti->anularRestitucion($lsIDmovi,$MotAnulacion);
 					if($resultado)
-					{	
+					{
 						$lsExito=1;
 					}
 
@@ -431,14 +431,14 @@
 
    				case 'incluirRestitucion':
    					$resultado=false;
-					$loResti->RecibirTodo($_POST); 
+					$loResti->RecibirTodo($_POST);
 					if($loResti->consultar_restitucion_especifica())
 					{
 						$resultado=$loResti->incluir();
 					}
 					$lsIDdocumento=$loResti->get_NroDocumento();
 					if($resultado)
-					{	
+					{
 						$lsExito=1;
 					}
 
@@ -447,11 +447,11 @@
 
 			break;
 
-    }    	 	
+    }
 
 
 		header('Content-type: text/javascript');
-		$json = array( 
+		$json = array(
 		"lsCod_Combo" => $lsCod_Combo,
 		"lsCod_Foraneo" => $lsCod_Foraneo,
 		"lsDescripcion" => $lsDescripcion,
@@ -461,11 +461,11 @@
 		"lsAccion" => $lsAccion,
 		"lsProsecucion" => $lsProsecucion,
 		"lsExito" => $lsExito);
-		
+
 		$envi = array("Master"=>$json,"ListadoBN"=>$resultadoListaBN);
 
 		echo json_encode( $envi );
-		
+
 
 ?>
 

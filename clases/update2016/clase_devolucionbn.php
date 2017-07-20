@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start();
 	require_once('../nucleo/ModeloConect.php');
  //****************************COMIENZO DE LA CLASE DEL OBJETO MUNICIPIO**********************//
@@ -41,7 +41,15 @@ class clsDevolucion Extends ModeloConect{
 		$fecha = $obj_fechaHora->ObtenerFechaServer3();
 		$hora = $obj_fechaHora->ObtenerHoraServer();
 		$fechaDeLlegada = $obj_fechaHora->SubirFechaServer($this->G["txtFechaLlegada"]); //transformo la fecha a ser legible por la base de datos
-		
+		$sql="SELECT COUNT(m.nro_document) AS nro FROM movimientobn AS m INNER JOIN motivobn AS mo ON(m.id_motivo_mov=mo.id_motivo_mov) WHERE mo.tipo_motivo=6 AND mo.status=1";
+		$rs = $this->ejecuta($sql);
+		$tupla = $this->converArray($rs);
+		$nro=$tupla['nro']+1;
+		$nro="DEV-".$nro;
+		$sqlp="SELECT  p.idTpersonal AS id FROM tpersonal AS p INNER JOIN tusuario AS u ON(p.idTpersonal=u.idFpersonal) WHERE u.idTusuario='".$_SESSION['idTusuario']."'";
+		$rsp = $this->ejecuta($sqlp);
+		$tuplap = $this->converArray($rsp);
+		$idP=$tuplap['id'];
 		/***********************************************/
 		/** sql para insertar en la tabla movimiento (cabecera) de la transaccion **/
 		$sql = "INSERT INTO movimientobn (
@@ -60,12 +68,12 @@ class clsDevolucion Extends ModeloConect{
 		id_usuario_anulacion,
 		fecha_anulacion,
 		id_motivo_anulacion,
-		status) VALUES('".$this->G["txtNroDocumento"]."',
+		status) VALUES('".$nro."',
 		'".$fecha."',
 		'".$hora."',
 		'".$fechaDeLlegada."',
 		'3',
-		NULORD('".$this->G["txtResponsable"]."'),
+		NULORD('".$idP."'),
 		NULORD('".$_SESSION["idTusuario"]."'),
 		NULORD('".$this->G["txtMotivo"]."'),
 		NULL,
@@ -81,9 +89,9 @@ class clsDevolucion Extends ModeloConect{
 		/* compruebo si inserto en la tabla movimiento*/
 		if ( $this->como_va() )
 		{ //pregunto si se realizo la consulta anterior
-				
-			$idMovimiento=$this->fpGetIDinsertado();	
-			$this->lcIDdocumento=$idMovimiento;		
+
+			$idMovimiento=$this->fpGetIDinsertado();
+			$this->lcIDdocumento=$idMovimiento;
 	 		for($i=1;$i<=$this->G["txtFila"];$i++)
 		 	{
 		 		/* actualizo la condición del bien nacional a asignado */
@@ -92,7 +100,7 @@ class clsDevolucion Extends ModeloConect{
 				/* compruebo si inserto en la tabla bien nacional */
 					if( $this->como_va() )
 					{
-						$idArticulo=$this->fpGetIDinsertado();				
+						$idArticulo=$this->fpGetIDinsertado();
 						/* inserto en la tabla detalle del bien nacional */
 						$sql = "INSERT INTO dmovimientobn (id_mov,id_bien,status) VALUES ('$idMovimiento','".$this->G["txtCodeInsti".$i]."','1')";
 						$this->ejecuta($sql);
@@ -113,21 +121,21 @@ class clsDevolucion Extends ModeloConect{
 		{
 			$contadorFalse++;
 		}
-		
+
 		if( $contadorFalse==0)
 		{
 		 	$this->fin_trans(); // finalizo la transaccion con exito
 			$transaccion=true;
 		}else{
-		 	$this->deshacer_trans(); // finalizo la transaccion fallida 
+		 	$this->deshacer_trans(); // finalizo la transaccion fallida
 		}
 		return $transaccion;
 	} //cierre funcion incluir
 
 
 	function ValidarPeriodoAnulacion($id_mov){
-		$sql = 
-		"	SELECT m.id_periodo 
+		$sql =
+		"	SELECT m.id_periodo
 			FROM movimientobn as m
 			WHERE m.id_mov=".$id_mov." and m.id_periodo=".$_SESSION["id_periodo_mostrar"]."
 		";
@@ -136,7 +144,7 @@ class clsDevolucion Extends ModeloConect{
 			return true;
 		}else { return false; }
 	}
-	
+
 	function Consultar_Cant_Movimientos(){
 		$sql = "SELECT count(id_mov) as cantidad FROM movimientobn WHERE id_tipo_mov=3 and status=1";
 		$rs = $this->ejecuta($sql);
@@ -156,21 +164,21 @@ class clsDevolucion Extends ModeloConect{
 		$obj_fechaHora = new clsFechaHora();
 		$fechaServer = $obj_fechaHora->SubirFechaServer($fecha_dev);
 
-		$sql = 
+		$sql =
 		"	SELECT a.id_bien,c.id_bien,c.cod_bien,c.id_tbien,c.serial_bien,c.id_marca,c.modelo,c.des_bien,c.id_cond,c.precio,c.fecha_ent,c.observacion_bien,cond.nom_cond, mar.nom_marca,tbien.cod_tbien,tbien.des_tbien
 
 			FROM dmovimientobn as a,movimientobn as b,articulobn as c,condicion as cond, marca as mar, tipobn as tbien
-			WHERE (a.id_mov=b.id_mov) and (a.id_bien=c.id_bien)  and (mar.id_marca=c.id_marca) and (cond.id_cond=c.id_cond) and (c.id_tbien=tbien.id_tbien) 
+			WHERE (a.id_mov=b.id_mov) and (a.id_bien=c.id_bien)  and (mar.id_marca=c.id_marca) and (cond.id_cond=c.id_cond) and (c.id_tbien=tbien.id_tbien)
 			and (a.status=1) and (b.status=1) and (c.id_cond=2) and (c.status=1) and (b.id_tipo_mov=2) and (b.id_dep=".$departamento.") and (a.id_detalle_mov in (
 
 			SELECT max(aa.id_detalle_mov) FROM dmovimientobn as aa,movimientobn as bb,articulobn as cc
 			WHERE (aa.id_mov=bb.id_mov) and (aa.id_bien=cc.id_bien) and (aa.status=1) and (bb.status=1) and (cc.id_cond=2 and cc.status=1) and (bb.id_tipo_mov=2) and (bb.fecha_mov<='".$fechaServer."') group by aa.id_bien ))
 		";
-		return $this->ejecuta($sql);  
+		return $this->ejecuta($sql);
 	}*/
 	function consultarBien($id_mov){
-		$sql = 
-		"	SELECT 
+		$sql =
+		"	SELECT
 			b_n.id_bien,
 			b_n.cod_bien,
 			b_n.id_tbien,
@@ -187,21 +195,21 @@ class clsDevolucion Extends ModeloConect{
 			d_m.id_mov,
 			tbien.cod_tbien,
 			tbien.des_tbien
-				FROM dmovimientobn as d_m 
-				INNER JOIN articulobn as b_n 
-				INNER JOIN condicionbn as cond 
-				INNER JOIN marcabn as mar 
+				FROM dmovimientobn as d_m
+				INNER JOIN articulobn as b_n
+				INNER JOIN condicionbn as cond
+				INNER JOIN marcabn as mar
 				INNER JOIN tipobn as tbien
 				WHERE id_mov='$id_mov' and d_m.id_bien=b_n.id_bien and mar.id_marca=b_n.id_marca and cond.id_cond=b_n.id_cond and b_n.id_tbien=tbien.id_tbien and d_m.status='1'
 		";
 
-		return $this->ejecuta($sql);   
+		return $this->ejecuta($sql);
 	}
 	function formatearFecha($fec_dev){
 		/***** TRAER HORA Y FECHA DE BASE DE DATOS ****/
 		include_once('sacarHoraFechaServer.php');
 		$obj_fechaHora = new clsFechaHora();
-		$fechaFormateada = $obj_fechaHora->traerFecha2($fec_dev); 
+		$fechaFormateada = $obj_fechaHora->traerFecha2($fec_dev);
 		return $fechaFormateada;
 	}
 
@@ -209,7 +217,7 @@ class clsDevolucion Extends ModeloConect{
 	function BuscarDevolucionExiste($cod)
 	{
 		$result=false;
-		$sql = "SELECT 
+		$sql = "SELECT
 		id_mov,
 		nro_document,
 		fecha_reg,
@@ -230,8 +238,8 @@ class clsDevolucion Extends ModeloConect{
 		id_usuario_anulacion,
 		fecha_anulacion,
 		id_motivo_anulacion,
-		status 
-		FROM movimientobn 
+		status
+		FROM movimientobn
 		WHERE nro_document='$cod' AND status='1'";
 		$rs = $this->ejecuta($sql);
 		if( $this->como_va() ){
@@ -246,7 +254,7 @@ class clsDevolucion Extends ModeloConect{
 		$this->conectar();
 		$this->ResultadoConsulta=false;
 		$cont=0;
-		$sql = "SELECT 
+		$sql = "SELECT
 		artibn.id_bien,
 		artibn.cod_bien,
 		artibn.LlavePrestado,
@@ -308,7 +316,7 @@ class clsDevolucion Extends ModeloConect{
 		$this->conectar();
 		$cont=0;
 
-		$sql = "SELECT 
+		$sql = "SELECT
 		mov.id_mov,
 		mov.nro_document,
 		mov.fecha_reg,
@@ -339,8 +347,8 @@ class clsDevolucion Extends ModeloConect{
 		tipo_mov.cod_tipo_mov,
 		tipo_mov.nom_tipo_mov,
 		prov.des_prov,
-		depart.nombreasi 
-		FROM movimientobn AS mov 
+		depart.nombreasi
+		FROM movimientobn AS mov
 		LEFT JOIN tpersonal AS per ON mov.id_per=per.idTpersonal
 		LEFT JOIN tusuario AS user ON mov.id_usuario=user.idTusuario
 		LEFT JOIN tpersonal AS datuser ON datuser.idTpersonal=user.idFpersonal
@@ -349,8 +357,8 @@ class clsDevolucion Extends ModeloConect{
 		LEFT JOIN tipomovibn AS tipo_mov ON mov.id_tipo_mov=tipo_mov.id_tipo_mov
 		LEFT JOIN proveedores AS prov ON mov.id_prov=prov.id_prov
 		LEFT JOIN tasignatura AS depart ON mov.id_dep=depart.idasignatura
-		WHERE  mov.id_tipo_mov='3' 
-		AND mov.status='1' 
+		WHERE  mov.id_tipo_mov='3'
+		AND mov.status='1'
 		ORDER BY mov.fecha_reg,mov.hora_reg DESC";
 
 
@@ -390,7 +398,7 @@ class clsDevolucion Extends ModeloConect{
 				$Fila[$cont][30]=$laRow['NombreApellidoRpdpto'];
 				$cont++;
 			}
-			
+
 			$this->desconectar();
 			return $Fila;
 
@@ -408,20 +416,20 @@ class clsDevolucion Extends ModeloConect{
 		}else{
 			$resultado = false;
 		}
-		
+
 		return $resultado;
 	}
 
 	function anularDevolucion($idDev,$MotAnulacion){
 		$transaccion = false; // inicializo la variable en false
 		$this->inicio_trans(); // inicializo la trasaccion
-		//actualizo el status				
-	
+		//actualizo el status
+
 		/***** TRAER HORA Y FECHA DE BASE DE DATOS ****/
 		include_once('sacarHoraFechaServer.php');
 		$obj_fechaHora = new clsFechaHora();
 		$fecha = $obj_fechaHora->ObtenerFechaServer3();
-			
+
 		/***********************************************/
 
 		$sql = "UPDATE movimientobn SET status='0' WHERE id_mov='".$idDev."'";
@@ -450,13 +458,13 @@ class clsDevolucion Extends ModeloConect{
 							$sql = "UPDATE articulobn SET id_cond='2' WHERE id_bien ='".$tupla["id_bien"]."'";
 							$this->ejecuta($sql);
 						}
-							
+
 						if( $this->como_va() ){
 							$transaccion = true;
 						}else{
 							$transaccion = false;
 						}
-						
+
 					}else{
 						$transaccion = false;
 					}
@@ -479,7 +487,7 @@ class clsDevolucion Extends ModeloConect{
 		 	$this->deshacer_trans(); // finalizo la transaccion con exito
 		 	return true;
 		}else{
-		 	$this->deshacer_trans(); // finalizo la transaccion fallida 
+		 	$this->deshacer_trans(); // finalizo la transaccion fallida
 	 		return false;
 		}
 	}//cierre anulación asignacion
@@ -492,7 +500,7 @@ class clsDevolucion Extends ModeloConect{
 	{
 				$this->conectar();
 		$cont=0;
-		$sql = "SELECT 
+		$sql = "SELECT
 		mov.id_mov,
 		mov.nro_document,
 		mov.fecha_reg,
