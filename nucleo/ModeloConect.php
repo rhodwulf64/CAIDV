@@ -1,5 +1,6 @@
 <?php
-require_once('../libreria/constantes.php');
+@include_once('../libreria/constantes.php');
+@include_once('../../libreria/constantes.php');
 class ModeloConect
 {
 

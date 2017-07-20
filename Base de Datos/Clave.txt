@@ -1,0 +1,2 @@
+Usuario: administrador
+clave: Caidv123* (ojo primera letra es mayuscula)

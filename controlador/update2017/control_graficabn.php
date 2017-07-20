@@ -1,0 +1,29 @@
+<?php
+	$bie=array();
+	if($_GET['o']==1){
+		include_once("../../clases/update2017/clase_graficabn.php");
+		$loGrafica=new clsGrafica;
+		$rs=$loGrafica->listarTipoBien();
+		$bie=array();
+		if($loGrafica->contar($rs)>0){
+			$bie=array();
+			while($tupla=$loGrafica->converArray($rs)){
+				$id=$tupla[0];
+				$de=$tupla[2];
+				$loGrafica->RecibirTodo($id);
+				$t=$loGrafica->totales();
+				$bie['nombre'][]=$de;
+				$bie['datab'][]=(int)($t[0]);
+				$bie['dataac'][]=(int)($t[1]);
+				$bie['dataa'][]=(int)($t[2]);
+				$bie['datad'][]=(int)($t[3]);
+				$bie['datap'][]=(int)($t[4]);
+			}
+		}else{
+			$bie[0]=0;
+		}
+	}else{
+		$bie[0]=0;
+	}
+	echo json_encode($bie);
+?>
